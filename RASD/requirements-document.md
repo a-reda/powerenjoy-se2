@@ -52,6 +52,23 @@ _26th October 2016_
 
   5. Glossary
 
+    - __Client__: The physical person that rents the electric car from PowerEnjoy using his smartphone.
+    - __Passengers__: One or many persons that may be with the client during the ride.  
+    - __Operator__: The PowerEnjoy's employee that supervises the operations and validates driving licenses.
+    - __Car__: The electric car that is connected to the Internet through 3G/4G. The car has an onboard computer
+    that senses the ignition, battery levels, number of passengers and location and sends them to  
+    the application server.
+    - __Ride__: A travel in the car by the clients and optionally passengers. A ride starts at the moment the
+    client ignites the engine and stops one he leaves the car.
+    - __Battery level__: The amount of energy left in the car's batteries. 100% being a full capacity battery and
+    0% and empty battery. The battery level is increased while charging and decreased while the car is traveling.
+    - __Charging station__: Locations where the cars can be charged by plugging them to the power grid.
+    - __Safe areas__: Areas in the map defined by PowerEnjoy's management. The clients should take the cars back to these areas at the end of the ride.
+    - __Discount__: A reduction (expressed in percentages) removed from the total
+    price of the ride. 
+
+
+
   6. System architecture
 
     Shows the different layers of our system (MVC Model). It is good as well to insert the external service such as Google Maps and others ...
@@ -60,6 +77,8 @@ _26th October 2016_
 
     Three main actors to identify:
     - _User_ : The physical person that rents the electric cars using the application.
+    The client has a smartphone connected to the Internet and has the mobile application
+    installed in his device.
     - _Operator_ : The employee that supervises the operations and verifies the driving licenses.
     - _Car_ (Assumption) We consider that the car has a computer on board and is always connected to Internet through 3G/4G and sends its status ( ride duration, current position, current battery level ).   
 
