@@ -45,7 +45,7 @@ _26th October 2016_
   Analysis of the world and of the shared phenomena. We suppose that these properties hold in the analyzed world :
 
   - There are planty of electric cars for users to use.
-  - Every car is equiped a GPS which allows the management system can locate the its position accuratly.
+  - Every car is equiped a GPS which allows the management system to locate the its position accuratly.
   - The GPS of cars cannot be switched off by users.
   - Every user paied a certain amount of deposit before they use the car.
   - Every user has enough bugget to pay the fee for using the car.
@@ -56,7 +56,8 @@ _26th October 2016_
   - Every user only registers one account.
   - Users rent a car only for their personal use or for their friends, but the driver on the car only can be the user who rents the car.
   - Cars will be serviced at least once a month.
-  - Every car 
+  - Every car
+
 
   4. Assumptions
 
