@@ -56,7 +56,7 @@ _26th October 2016_
   - Every user only registers one account.
   - Users rent a car only for their personal use or for their friends, but the driver on the car only can be the user who rents the car.
   - Cars will be serviced at least once a month.
-  - Every car will automatically upload the log to the management system every day at 3 AM.  
+  - Every car will automatically upload the log to the management system every day at 3 AM then the system will automaticall analysis the current conditon of the car.  
 
 
   4. Assumptions
