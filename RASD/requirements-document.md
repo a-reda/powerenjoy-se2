@@ -1,5 +1,7 @@
 
-//  TODO Insert Logo Here
+/resources/logo_polimi.png
+
+![logo](/resources/logo_polimi.png)
 
 ## __Requirements Analysis and Specifications Document__
 #### Version 0.0
@@ -36,26 +38,26 @@ _26th October 2016_
 ------------
 
 
- #### 1. Introduction
-  ##### 1. Description of the project
-  ##### 2. Goals
-  ##### 3. Domain properties
+#### 1. Introduction
+##### 1. Description of the project
+##### 2. Goals
+##### 3. Domain properties
 
   Analysis of the world and of the shared phenomena. We suppose that these properties hold in the analyzed world :
 
-  - There are planty of electric cars for users to use.
-  - Every car is equiped a GPS which allows the management system to locate its position accuratly.
+  - There are plenty of electric cars for users to use.
+  - Every car is equipped a GPS which allows the management system to locate its position accurately.
   - The GPS of cars cannot be switched off by users.
-  - Every user paied a certain amount of deposit before they use the car.
-  - Every user has enough bugget to pay the fee for using the car.
+  - Every user paid a deposit before they use the car.
+  - Every user has a valid payment to use the cars.
   - Every car is not damaged before users reserve it.
-  - Every user only can reserve or use one car at the same time.  
-  - The car always conect to the management system.
-  - Every user registers their account with real indentity information.
+  - Every user can only reserve/use one car at a time.  
+  - The car is always connected to the management system.
+  - Every user registers their account with real identity information that is verified by the operator.
   - Every user only registers one account.
-  - Users rent a car only for their personal use or for their friends, but the driver on the car only can be the user who rents the car.
-  - Cars will be serviced at least once a month.
-  - Every car will automatically upload the log to the management system every day at 3 AM then the system will automaticall analysis the current conditon of the car.  
+  - Users rent a car only for their personal use or for their friends, but the driver of the car can only be the user who rents the car.
+  - Cars will be serviced at least once a month. // why?
+  - Every car will automatically upload the log to the management system every day at 3 AM then the system will automatically analysis the current conditions of the car. // Why not real time?
 
 
 ##### 4. Assumptions
@@ -89,7 +91,7 @@ available for the users.
 - __Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride), //TODO ADD MORE IF NEEDED
 
 
-  ##### 6. System architecture
+##### 6. System architecture
 
 Shows the different layers of our system (MVC Model). It is good as well to insert the external service such as Google Maps and others ...
 
