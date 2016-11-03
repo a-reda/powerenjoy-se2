@@ -1,5 +1,6 @@
 
-![logo](./resources/logo_polimi.png)
+
+<img src="./resources/logo_polimi.png" alt="Logo" style="width: 200px;" align="middle" />
 
 ## __Requirements Analysis and Specifications Document__
 #### Version 0.0
