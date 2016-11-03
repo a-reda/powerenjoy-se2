@@ -37,11 +37,42 @@ _26th October 2016_
 
 ------------
 
-
 #### 1. Introduction
 ##### 1. Description of the project
-##### 2. Goals
-##### 3. Domain properties
+
+    - This Project is based on mobile  application.
+    - The target population is clients and drivers.
+    - This system is aimed to provide more efficient and reliable services for users to decrease their cost in daily travel. In addition, this system can offer more chances for drives to take more clients to get more profits.  
+    - The complete using process of system is that:
+        - __first__: Open the application(the user who first use this systemshould bind a credit card andwithout a complicated registration process).
+        - __second__：system uses GPS to get the position, you'll see the number and location of cars nearby.
+        - __third__：Book now or set time point to book cars in advance. Meanwhile, system offers Estimated arriving time and approximate price and driver information, and real-time view of the vehicle route through the APP.
+        - __Fourth__：when arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
+
+     - Some other settings:
+    the users who sharing cars will be given 10% discount.
+    Drivers and passengers can evaluate each other via software.
+  2. Goals
+
+     __Taxi drivers__
+      - G[1] Allows drivers to login this system.
+      - G[2] Allows drivers to accept or decline the incoming request for a later or immediate ride.
+      - G[3] Allows drivers to evaluate clients after services.
+      - G[4] Allows drivers to set work time and family address, so they can accept orders near their home in the last orders everyday.
+      - G[5] Somtimes the clients location is not accurate, drivers can decline these requests.
+      - G[6] Allows drivers to accquire clients phone number and can hide drivers phone number according to thier choices.
+      - G[7] Allows drivers to know the fees before incoming  requests.
+
+     __Clients__
+     - G[8] Allows clients to log in without registation, via phone number and credit information to enjoy immediate login.
+     - G[9] Allows clients to share cars with other people.
+     - G[10] Allows clients to select different car models, including car capacity and the size of trunk.
+     - G[11] Allows clients to see their miles and travel map before they pay to drivers.
+     - G[12] Allows clients to accquire drivers phone number and can hide clients phone number.
+     - G[13] Allows clients to change destination.
+     - G[14] Allows chients to select cars which have Child Safety Seats.
+
+#### 3. Domain properties
 
   Analysis of the world and of the shared phenomena. We suppose that these properties hold in the analyzed world :
 
