@@ -1,7 +1,5 @@
 
-/resources/logo_polimi.png
-
-![logo](/resources/logo_polimi.png)
+![logo](./resources/logo_polimi.png)
 
 ## __Requirements Analysis and Specifications Document__
 #### Version 0.0
