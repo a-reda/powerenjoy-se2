@@ -67,14 +67,14 @@ _26th October 2016_
   - G[9] Allows users to the user should be able to enable economy mode. Before they first use the services, they should bind the personal credit cards.
 
 __System__
- - G[1] Allows systems to locate all the cars if the drives login the system.
- - G[2] Allows systems to retrieve the real-time car variables.
- - G[3] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+ - G[10] Allows systems to locate all the cars if the drives login the system.
+ - G[11] Allows systems to retrieve the real-time car variables.
+ - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
 __Operator__
-- G[1] When the drivers registered, driving license and drivers identities should be checked and verified.
-- G[2] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
-- G[3] The operator can monitor the position of the cars.
+- G[13] When the drivers registered, driving license and drivers identities should be checked and verified.
+- G[14] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
+- G[15] The operator can monitor the position of the cars.
 
 #### 3. Domain properties
 
