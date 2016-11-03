@@ -1,6 +1,7 @@
 
+/resources/logo_polimi.png
 
-<img src="./resources/logo_polimi.png" alt="Logo" style="width: 200px;" align="middle" />
+![logo](/resources/logo_polimi.png)
 
 ## __Requirements Analysis and Specifications Document__
 #### Version 0.0
@@ -21,12 +22,12 @@ _26th October 2016_
 ### __Glossary__
 
 1. Introduction
-  1. Description of the project
-  2. Goals
-  3. Domain properties
-  4. Assumptions
-  5. Glossary
-  6. System architecture
+  1. Description of the project __JX__
+  2. Goals __JX__
+  3. Domain properties __LZ__
+  4. Assumptions __RA__
+  5. Glossary __RA__
+  6. System architecture __LZ__
 2. Actors
 3. Functional and Non-functional Requirements
   1. Functional Requirements
@@ -53,7 +54,7 @@ _26th October 2016_
   __Fourth__：when arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
 
   - Some other settings:
-     The users who sharing cars will be given discounts.
+     The users who sharing cars will be given discount.
     Drivers and passengers can evaluate each other via software.
 #### 3. Goals
   __Users__
@@ -67,15 +68,15 @@ _26th October 2016_
   - G[8] Allows users to check their rides history after they finished their rides.
   - G[9] Allows users to the user should be able to enable economy mode. Before they first use the services, they should bind the personal credit cards.
 
-__System__
- - G[10] Allows systems to locate all the cars if the drives login the system.
- - G[11] Allows systems to retrieve the real-time car variables.
- - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+  __System__
+  - G[10] Allows systems to locate all the cars if the drives login the system.
+  - G[11] Allows systems to retrieve the real-time car variables.
+  - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
-__Operator__
-- G[13] When the drivers registered, driving license and drivers identities should be checked and verified.
-- G[14] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
-- G[15] The operator can monitor the position of the cars.
+  __Operator__
+  - G[13] When the drivers registered, driving license and drivers identities should be checked and verified.
+  - G[14] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
+  - G[15] The operator can monitor the position of the cars.
 
 #### 3. Domain properties
 
@@ -134,8 +135,6 @@ Shows the different layers of our system (MVC Model). It is good as well to inse
 #### 2. Actors
 
 Three main actors to identify:
- -  _Visitor_: // TODO Describe
-
   - _User_ : The physical person that rents the electric cars using the application.
     The client has a smartphone connected to the Internet and has the mobile application
     installed in his device.
@@ -148,61 +147,69 @@ Three main actors to identify:
 
 #### 3. Functional and Non-functional Requirements
 
-#### 1. Functional Requirements JX
-  //TODO Should relate each one to a goal
+#### 1. Functional Requirements
 
 ##### User requirements
 
 - The user should be able to register in the system.
-  - The user should be able to enter his information into
-  - The user
+  - The user can register using his phone number, and system do not need complex registration.
+  - The user must be able to register to the system by providing their credentials and payment infomation.
+  - The user will receive a password to access the system.
 - The user should be able to modify his information
+  - The user can modify his destination before or after they check-in.
+  - The user can change his personal information.
+  - The user can change his payment information.
 - The user should see the cars around him or around an address.
+  - The user must be able to open his GPS to get his or her location.
+  - The system must be able to provide cars locations available according to users GPS location.
+  - The system must be able to provide cars locations available according to addresses inputted by users.
 - The user should be able to reserve a car.
+  - The user should provide his location and his destination when he request a reservation.
+  - The system must be able to check the origin location and the destination of a reservation.
+  - The system must be able to transfer the request to appropriate car drivers.
 - The user should be able to delete a reservation.
+  - The user can cancelled a reservation before check-in.
+  - The system should noticed the driver about this calcelled reservation.
+  - The operator should monitor this information.
 - The user should be able to unlock and check-in the car.
+  - The user that reaches a reserved car must be able to tell the system he is nearby using GPS.
+  - When the system accepts the infomation that the user reaches the reserved car, the car will be unlocked and the user can check-in the car.
 - The user should be able to see how much the ride cost him.
+  - The system must be able to provide the cost information of the ride after calculate the cost.
 - The user should be able to check his rides history.
-- Enable money saving option.
-- See the station where to park the car to get a discount.
-- Report issues to the operator.
+  - The operator can monitor the rides history.
+  - The system must be able to save the user rides history in the databases.
+- The user should be able to enable economy mode.
+  - The user must bind his credit card and payment information before the first ride.
+  - The system can save the user economy mode.
 
 ##### System Requirements
 
 - The system should be able to locate all the cars.
+  - The system must be able to detect the car's position according to the car's GPS.
 - Retrieve the real-time car variables.
-- Calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+  - The system can check the car variables if its GPS available in the real-time.
+- Calculate the price of the ride depending on the distance, time, left charge in the battery and number of passengers.
+  - The system must estimate the distance between the origin location and the destination.
+  - The system must calculate the time between the user chech-in and the service finish.
+  - The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
+  - The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
 
 ##### Operator requirements
 
 - Verify the driving license and identity of the drivers
+  - when the car drivers registered, the operator should check the upload driving license and identity of the drivers.
 - Verify the damaged and faulty cars.
+  - If the car damaged or it's the faulty car, the operator must be able to verify it before the car driver login the system.
 - Monitor the position of the cars.
+  - The oprator can monitor the car's position.
 
 
-#### 2. Non-functional Requirements
 
-##### 1. GUI Mock-ups LZ
+  2. Non-functional Requirements
 
-###### Android GUI Mock-ups
-
-  Users in the android app
-
-###### Web GUI Mock-ups
-
-  Users and operators
-
-##### 2. Constraints RA
- Example: use JEE, SQL ...
-
-### 4. Scenarios RA
-
-### 5. UML Diagrams
-
-#### 1. Class diagram RA
-
-#### 2. Use case Diagrams LZ
+4. UML Class Diagrams
 
     Put as much as UML Diagrams as we need
 
-### 6. Alloy Model and Checking
+5. Alloy Model and Checking
