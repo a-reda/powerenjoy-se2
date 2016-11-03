@@ -40,37 +40,43 @@ _26th October 2016_
 #### 1. Introduction
 ##### 1. Description of the project
 
-    - This Project is based on mobile  application.
-    - The target population is clients and drivers.
-    - This system is aimed to provide more efficient and reliable services for users to decrease their cost in daily travel. In addition, this system can offer more chances for drives to take more clients to get more profits.  
-    - The complete using process of system is that:
-        - __first__: Open the application(the user who first use this systemshould bind a credit card andwithout a complicated registration process).
-        - __second__：system uses GPS to get the position, you'll see the number and location of cars nearby.
-        - __third__：Book now or set time point to book cars in advance. Meanwhile, system offers Estimated arriving time and approximate price and driver information, and real-time view of the vehicle route through the APP.
-        - __Fourth__：when arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
+  - This Project is based on mobile  application.
+  - The target population is clients and drivers.
+  - This system is aimed to provide more efficient and reliable services for users to decrease their cost in daily travel. In addition, this system can offer more chances for drives to take more clients to get more profits.  
+  - The complete using process of system is that:
 
-     - Some other settings:
-    the users who sharing cars will be given 10% discount.
+  __first__: Open the application(the user who first use this systemshould bind a credit card andwithout a complicated registration process).
+
+  __second__：system uses GPS to get the position, you'll see the number and location of cars nearby.
+
+  __third__：Book now or set time point to book cars in advance. Meanwhile, system offers Estimated arriving time and approximate price and driver information, and real-time view of the vehicle route through the APP.
+
+  __Fourth__：when arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
+
+  - Some other settings:
+     The users who sharing cars will be given discounts.
     Drivers and passengers can evaluate each other via software.
-  2. Goals
+#### 3. Goals
+  __Users__
+  - G[1] Allows users to login this system according to their phone number and do not need complex registration process.
+  - G[2] Allows users to modify their information.
+  - G[3] Allows users to see the cars around him or around an address on the application.
+  - G[4] Allows users to reserve cars immediately or in advance.
+  - G[5] Allows users to delete reservation, but if they delete near the booked time, they will be asked to pay for some money.
+  - G[6] Allows users to unlock and check-in the car when they reserve the car immediately or reserve the car in advance.
+  - G[7] Allows drivers to know the fees after they take cars and what miles they ride.
+  - G[8] Allows users to check their rides history after they finished their rides.
+  - G[9] Allows users to the user should be able to enable economy mode. Before they first use the services, they should bind the personal credit cards.
 
-     __Taxi drivers__
-      - G[1] Allows drivers to login this system.
-      - G[2] Allows drivers to accept or decline the incoming request for a later or immediate ride.
-      - G[3] Allows drivers to evaluate clients after services.
-      - G[4] Allows drivers to set work time and family address, so they can accept orders near their home in the last orders everyday.
-      - G[5] Somtimes the clients location is not accurate, drivers can decline these requests.
-      - G[6] Allows drivers to accquire clients phone number and can hide drivers phone number according to thier choices.
-      - G[7] Allows drivers to know the fees before incoming  requests.
+__System__
+ - G[1] Allows systems to locate all the cars if the drives login the system.
+ - G[2] Allows systems to retrieve the real-time car variables.
+ - G[3] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
-     __Clients__
-     - G[8] Allows clients to log in without registation, via phone number and credit information to enjoy immediate login.
-     - G[9] Allows clients to share cars with other people.
-     - G[10] Allows clients to select different car models, including car capacity and the size of trunk.
-     - G[11] Allows clients to see their miles and travel map before they pay to drivers.
-     - G[12] Allows clients to accquire drivers phone number and can hide clients phone number.
-     - G[13] Allows clients to change destination.
-     - G[14] Allows chients to select cars which have Child Safety Seats.
+__Operator__
+- G[1] When the drivers registered, driving license and drivers identities should be checked and verified.
+- G[2] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
+- G[3] The operator can monitor the position of the cars.
 
 #### 3. Domain properties
 
