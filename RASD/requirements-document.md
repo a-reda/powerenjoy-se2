@@ -20,12 +20,12 @@ _26th October 2016_
 ### __Glossary__
 
 1. Introduction
-  1. Description of the project __JX__
-  2. Goals __JX__
-  3. Domain properties __LZ__
-  4. Assumptions __RA__
-  5. Glossary __RA__
-  6. System architecture __LZ__
+  1. Description of the project
+  2. Goals
+  3. Domain properties
+  4. Assumptions
+  5. Glossary
+  6. System architecture
 2. Actors
 3. Functional and Non-functional Requirements
   1. Functional Requirements
@@ -133,6 +133,8 @@ Shows the different layers of our system (MVC Model). It is good as well to inse
 #### 2. Actors
 
 Three main actors to identify:
+ -  _Visitor_: // TODO Describe
+
   - _User_ : The physical person that rents the electric cars using the application.
     The client has a smartphone connected to the Internet and has the mobile application
     installed in his device.
@@ -145,12 +147,14 @@ Three main actors to identify:
 
 #### 3. Functional and Non-functional Requirements
 
-#### 1. Functional Requirements
+#### 1. Functional Requirements JX
   //TODO Should relate each one to a goal
 
 ##### User requirements
 
 - The user should be able to register in the system.
+  - The user should be able to enter his information into
+  - The user
 - The user should be able to modify his information
 - The user should see the cars around him or around an address.
 - The user should be able to reserve a car.
@@ -158,7 +162,9 @@ Three main actors to identify:
 - The user should be able to unlock and check-in the car.
 - The user should be able to see how much the ride cost him.
 - The user should be able to check his rides history.
-- The user should be able to enable economy mode.
+- Enable money saving option.
+- See the station where to park the car to get a discount.
+- Report issues to the operator.
 
 ##### System Requirements
 
@@ -173,11 +179,29 @@ Three main actors to identify:
 - Monitor the position of the cars.
 
 
+#### 2. Non-functional Requirements
 
-  2. Non-functional Requirements
+##### 1. GUI Mock-ups LZ
 
-4. UML Class Diagrams
+###### Android GUI Mock-ups
+
+  Users in the android app
+
+###### Web GUI Mock-ups
+
+  Users and operators
+
+##### 2. Constraints RA
+ Example: use JEE, SQL ...
+
+### 4. Scenarios RA
+
+### 5. UML Diagrams
+
+#### 1. Class diagram RA
+
+#### 2. Use case Diagrams LZ
 
     Put as much as UML Diagrams as we need
 
-5. Alloy Model and Checking
+### 6. Alloy Model and Checking
