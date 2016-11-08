@@ -1,22 +1,4 @@
-
-
-![](RASD/resources/logo_polimi.png){ width=50% }
-
-## __Requirements Analysis and Specifications Document__
-#### Version 0.0
-
-
-
-* Reda Aissaoui
-* Jinling Xing
-* Lidong Zhang
-
-
-
-_26th October 2016_
-
-
-----------
+\input{RASD/coverpage.tex}
 
 ### __Glossary__
 
@@ -34,7 +16,7 @@ _26th October 2016_
 4. UML Class Diagrams
 5. Alloy Model and Checking
 
-------------
+\pagebreak
 
 #### 1. Introduction
 ##### 1. Description of the project
