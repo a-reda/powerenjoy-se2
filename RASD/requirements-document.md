@@ -1,6 +1,6 @@
 \input{RASD/coverpage.tex}
 
-### __Glossary__
+### __Content__
 
 1. Introduction
   1. Description of the project
@@ -188,6 +188,11 @@ Three main actors to identify:
 
 #### 2. Use case Diagrams LZ
 
+1.<img src="./resources/usecases diagram 1.png" alt="Figure" style="width: 600px;" align="middle" />
+
+2.<img src="./resources/usecases diagram 2.png" alt="Figure" style="width: 600px;" align="middle" />
+
+3.<img src="./resources/usecases diagram 3.png" alt="Figure" style="width: 600px;" align="middle" />
     Put as much as UML Diagrams as we need
 
 ### 6. Alloy Model and Checking
