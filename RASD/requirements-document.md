@@ -177,10 +177,36 @@ Three main actors to identify:
 
   Users and operators
 
-##### 2. Constraints RA
- Example: use JEE, SQL ...
+##### 2. System Constraints
 
-### 4. Scenarios RA
+- __Performance:__ The users will rely on the application to get a car to move around. For this reason, we have to ensure that the application is very reactive and quick.
+
+- __Scalability:__ The application should respond properly to the increase of users, usually during commuting hours.
+
+- __Extensibility:__ The application should be easily extensible in order to support other platforms for example Windows phones or interface with other applications. For this reason, RESTful web services will be privileged for communication between the application nodes (User's phone, car, server).
+
+- __Privacy and security:__ Given the fact that the application holds sensitive information about the users, it should ensure the confidentiality of the information. This will be enforced by the use of SSL for network communications. In addition to that, the passwords should be encrypted using a high-security encryption.  
+
+- __Maintainability:__ To facilitate the addition of features, the application should be easily maintainable. A well-written code and a complete documentation will be used in order to enforce this point.
+
+\pagebreak
+
+### 4. Scenarios
+
+#### Scenario 1
+Maria discovers PowerEnjoy through her social media. She is really interested because she occasionally needs a car but she don't want to invest in one. Using the mobile PowerEnjoy application, she registers herself by entering her information and payment details. She went to one of the PowerEnjoy offices to get her account validated by showing her driving license. The account is validated instantly and she is now ready to take her first ride with a PowerEnjoy car.
+
+#### Scenario 2
+John want to go to a furniture and home appliances store to get some new furniture for his apartment. However, he wants to buy so many things that he can't take them with him in public transportation. He checks PowerEnjoy's website and finds a car right next to the store. He reserves it and he is now sure that he will take all his shopping home without trouble.
+
+#### Scenario 3
+Jessy and his friends like to play football during weekends to destress. The problem is that the football field is out of the reach of public transport. Since Jessy is a PowerEnjoy member, he can reserve a car and drive all his friends to the football field. He will even benefit from a discount because he had three passengers with him.
+
+#### Scenario 4
+// TODO
+
+#### Scenario 5
+// TODO
 
 ### 5. UML Diagrams
 
