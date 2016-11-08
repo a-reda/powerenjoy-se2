@@ -129,7 +129,11 @@ available for the users.
 
 ##### 6. System architecture
 
+Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC partten, so with just one server application we manage both web application and mobile application, as Fig.1.     
+
 Shows the different layers of our system (MVC Model). It is good as well to insert the external service such as Google Maps and others ...
+
+<img src="./resources/Architecture.png" alt="Figure" style="width: 600px;" align="middle" />
 
 #### 2. Actors
 
