@@ -1,22 +1,4 @@
-
-
-<img src="./resources/logo_polimi.png" alt="Logo" style="width: 200px;" align="middle" />
-
-## __Requirements Analysis and Specifications Document__
-#### Version 0.0
-
-
-
-* Reda Aissaoui
-* Jinling Xing
-* Lidong Zhang
-
-
-
-_26th October 2016_
-
-
-----------
+\input{RASD/coverpage.tex}
 
 ### __Glossary__
 
@@ -34,7 +16,7 @@ _26th October 2016_
 4. UML Class Diagrams
 5. Alloy Model and Checking
 
-------------
+\pagebreak
 
 #### 1. Introduction
 ##### 1. Description of the project
@@ -139,12 +121,11 @@ Shows the different layers of our system (MVC Model). It is good as well to inse
 
 Three main actors to identify:
  -  _Visitor_: // TODO Describe
-
-  - _User_ : The physical person that rents the electric cars using the application.
+ - _User_ : The physical person that rents the electric cars using the application.
     The client has a smartphone connected to the Internet and has the mobile application
     installed in his device.
 
-  - _Operator_ : The employee that supervises the operations and verifies the driving licenses.
+ - _Operator_ : The employee that supervises the operations and verifies the driving licenses.
     We consider that the employees of PowerEnjoy are all operators. This access grants the user the
     ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet.
     The operator is the agent that takes care if the maintenance of the cars. He can see the status of the

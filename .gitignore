@@ -15,3 +15,6 @@ Icon
 ### IDE
 
 .idea/
+
+### Save-commands to generate pdf
+save-commands.json
