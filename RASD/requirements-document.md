@@ -115,7 +115,7 @@ Our system contains mobile application, WEB application and server. We will impl
 
 Shows the different layers of our system (MVC Model). It is good as well to insert the external service such as Google Maps and others ...
 
-<img src="./resources/Architecture.png" alt="Figure" style="width: 600px;" align="middle" />
+<img src="./resources/Architecture.png" alt="Figure" style="width: 400px;" align="middle" />
 
 #### 2. Actors
 
@@ -188,11 +188,18 @@ Three main actors to identify:
 
 #### 2. Use case Diagrams LZ
 
-1.<img src="./resources/usecases diagram 1.png" alt="Figure" style="width: 600px;" align="middle" />
+1.<img src="./resources/usecases diagram 1.png" alt="Figure" style="width: 400px;" align="middle" />
 
-2.<img src="./resources/usecases diagram 2.png" alt="Figure" style="width: 600px;" align="middle" />
 
-3.<img src="./resources/usecases diagram 3.png" alt="Figure" style="width: 600px;" align="middle" />
-    Put as much as UML Diagrams as we need
+
+2.<img src="./resources/usecases diagram 2.png" alt="Figure" style="width: 400px;" align="middle" />
+
+
+
+3.<img src="./resources/usecases diagram 3.png" alt="Figure" style="width: 400px;" align="middle" />
+
+
+
+  Put as much as UML Diagrams as we need
 
 ### 6. Alloy Model and Checking
