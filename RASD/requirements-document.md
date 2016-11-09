@@ -1,4 +1,6 @@
+\input{RASD/coverpage.tex}
 
+<<<<<<< HEAD
 /resources/logo_polimi.png
 
 ![logo](/resources/logo_polimi.png)
@@ -20,6 +22,9 @@ _26th October 2016_
 ----------
 
 ### __Glossary__
+=======
+### __Content__
+>>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
 
 1. Introduction
   1. Description of the project __JX__
@@ -35,7 +40,7 @@ _26th October 2016_
 4. UML Class Diagrams
 5. Alloy Model and Checking
 
-------------
+\pagebreak
 
 #### 1. Introduction
 ##### 1. Description of the project
@@ -86,6 +91,8 @@ _26th October 2016_
   - Every car is equipped a GPS which allows the management system to locate its position accurately.
   - The GPS of cars cannot be switched off by users.
   - Every user paid a deposit before they use the car.
+  - Every user has a smartphone always connected to the Internet.
+  - The position of the user is calculated by his smartphone and is accurate enough to be able to say he is close to the car ( Around 5m accuracy )
   - Every user has a valid payment to use the cars.
   - Every car is not damaged before users reserve it.
   - Every user can only reserve/use one car at a time.  
@@ -107,6 +114,8 @@ _26th October 2016_
     we will consider that ASSUMPTIONS are more user and car oriented (in the scope of our company)(How the user behaves how the connection of the car behaves... etc  ), where as the domain properties are more general (city specific ... )
 
     The city where PowerEnjoy operates is a medium to big size city. The city is equipped with charging stations everywhere ...
+
+    Text assumptions: maybe what the text says and our way of understanding it  <====
 
 ##### 5. Glossary
 
@@ -130,20 +139,29 @@ available for the users.
 
 ##### 6. System architecture
 
+Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC pattern, so with just one server application we manage both web application and mobile application, as Fig.1.     
+
 Shows the different layers of our system (MVC Model). It is good as well to insert the external service such as Google Maps and others ...
+
+![Application architecture](RASD/resources/Architecture.png)
+
+\pagebreak
 
 #### 2. Actors
 
 Three main actors to identify:
+<<<<<<< HEAD
   - _User_ : The physical person that rents the electric cars using the application.
     The client has a smartphone connected to the Internet and has the mobile application
     installed in his device.
+=======
 
-  - _Operator_ : The employee that supervises the operations and verifies the driving licenses.
-    We consider that the employees of PowerEnjoy are all operators. This access grants the user the
-    ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet.
-    The operator is the agent that takes care if the maintenance of the cars. He can see the status of the
-    cars (charge, )
+ -  _Visitor_: The person that visits the website or the mobile application without being registered. His access to the application is limited.
+ - _User_ : The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device.
+ - _Operator_ : The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
+>>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
+
+\pagebreak
 
 #### 3. Functional and Non-functional Requirements
 
@@ -206,10 +224,72 @@ Three main actors to identify:
 
 
 
+<<<<<<< HEAD
   2. Non-functional Requirements
 
 4. UML Class Diagrams
+=======
+##### 2. System Quality
 
-    Put as much as UML Diagrams as we need
+- __Performance:__ The users will rely on the application to get a car to move around. For this reason, we have to ensure that the application is very reactive and quick.
 
+- __Scalability:__ The application should respond properly to the increase of users, usually during commuting hours.
+
+- __Extensibility:__ The application should be easily extensible in order to support other platforms for example Windows phones or interface with other applications. For this reason, RESTful web services will be privileged for communication between the application nodes (User's phone, car, server).
+
+- __Privacy and security:__ Given the fact that the application holds sensitive information about the users, it should ensure the confidentiality of the information. This will be enforced by the use of SSL for network communications. In addition to that, the passwords should be encrypted using a high-security encryption.  
+
+- __Maintainability:__ To facilitate the addition of features, the application should be easily maintainable. A well-written code and a complete documentation will be used in order to enforce this point.
+
+##### 3. Technology Enablers
+
+As detailed in // TODO ADD REFERENCE TO ARCHITECTURE, our application will follow the 3-tier client-server application. The application will be composed in this way:
+
+  - *Presentation layer:* An Android mobile application and a web application should be used as a graphical user interface.
+  - *Application layer:* A JEE application running on a Glassfish server will take care of running the business logic of the application.
+  - *Data tier*: A MySQL server should be used in order to persist all the data that is needed for running the application.
+
+\pagebreak
+
+### 4. Scenarios
+
+#### Scenario 1
+Maria discovers PowerEnjoy through her social media. She is really interested because she occasionally needs a car but she don't want to invest in one. Using the mobile PowerEnjoy application, she registers herself by entering her information and payment details. She went to one of the PowerEnjoy offices to get her account validated by showing her driving license. The account is validated instantly and she is now ready to take her first ride with a PowerEnjoy car.
+
+#### Scenario 2
+John want to go to a furniture and home appliances store to get some new furniture for his apartment. However, he wants to buy so many things that he can't take them with him in public transportation. He checks PowerEnjoy's website and finds a car right next to the store. He reserves it and he is now sure that he will take all his shopping home without trouble.
+
+#### Scenario 3
+Jessy and his friends like to play football during weekends to destress. The problem is that the football field is out of the reach of public transport. Since Jessy is a PowerEnjoy member, he can reserve a car and drive all his friends to the football field. He will even benefit from a discount because he had three passengers with him.
+
+#### Scenario 4
+Maria is a very concerned about the environment and wants to adopt new habits to protect the environment. She knows that electric cars are very environment-friendly but she cannot afford an electric car. With PowerEnjoy she can easily lookup all the electric cars available on a map and reserve one using her smartphone. By using PowerEnjoy for all her commutes, Maria decreases her carbon footprint.
+
+#### Scenario 5
+
+\pagebreak
+
+### 5. UML Diagrams
+
+#### 1. Class diagram RA
+
+#### 2. Use case diagrams LZ
+>>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
+
+![User](RASD/resources/usecases diagram 1.png)
+// TODO Description  
+
+![Operator](RASD/resources/usecases diagram 2.png)
+// TODO Description
+
+![Visitor](RASD/resources/usecases diagram 3.png)
+// TODO Description
+
+<<<<<<< HEAD
 5. Alloy Model and Checking
+=======
+### 6. Alloy Model and Checking
+
+
+#### Hours worked
+>>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
