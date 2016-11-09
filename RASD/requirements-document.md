@@ -286,7 +286,106 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 // TODO Description
 
 <<<<<<< HEAD
-5. Alloy Model and Checking
+#### 3. Use case description  ------JX
+
+#### _Use cases diagram 1_
+
+##### User requries to take a car
+- Name: User requires to take a car
+- Actors: User
+- Entry requirements:
+  - User has login.
+  - User is in the operation homepage.
+- Flow of event:
+  - User click the button to take a immediately.
+  - User open his GPS to monitor his location.
+  - User can see the cars close to his place.
+  - User decides to take a car and push the take car button.
+  - User input the destination and passenger numbers.
+- Exit conditions: The system forwards the request to the appropriate car and the use case “operator responds to a request” begins.
+- Exceptions:
+  - User has not open the GPS.
+  - User furnishes invalid data.
+
+##### User requries to reserve a car
+- Name : User requires to reserve a car
+- Actors : User
+- Entry requirements:
+  - User has login.
+  - User is in the operation homepage.
+- Flow of event:
+  - User click the "Reserve Car" button to make a reservation.
+  - User chooses the car to reserve.
+  - The system redirects the user to a form where the user has to give some information like theplace of departure and his destination of the ride.
+  - User decides to take a car and click the take car button.
+  - User sets the “number of passengers” to finish the share car information.
+- Exit conditions:
+  - The system forwards the request to cars which can be reserved and the use case “operator responds to a request” begins.
+- Exceptions:
+  - User has not open the GPS.
+  - User doesn't input some basic information which is necessary, such as the starting location and destination.
+
+##### User requries to cancel a reservation
+- Name: User requires to cancel a reservation
+- Actors: User
+- Entry requirements:
+  - User has login.
+  - User is in the reservation homepage.
+  - User has make a reservation.
+- Flow of event:
+  - User cancels the reservation.
+- Exit conditions:
+  - The system forwards the request to cars which has already been cancelled.
+  - The system forwards the page that the reservation cannot be cancelled.
+- Exceptions:
+  - User has taken the car and checked-in.
+
+#### _Use cases diagram 2_
+
+##### Operator requries to login
+- Name: Operator requries to login
+- Actors: Operator
+- Entry requirements:
+  - There are no entry requirements.
+- Flow of event:
+  - The operator inputs his operate code (his ID) and his password.
+  - The operator clicks on the log in button.
+  - The system redirects the operator to the operate page.
+- Exit conditions:
+  - The operator is successfully redirected to the operate page.
+- Exceptions:
+  - The code and password furnished by the operator are not
+correct.
+
+##### Operator manages the system
+- Name: Operator manages the system
+- Actors: Operator
+- Entry requirements:
+  - The operator has login and has got the operate authentication.
+- Flow of event:
+  - The operator deal with the information of feedback.
+  - Monitor the position of the cars.
+- Exit conditions:
+  - The operator is successfully dealed with the feedback report.
+- Exceptions:
+  - The operate process has already time-out.
+
+
+##### Operator verefies information
+- Name: Operator verefies information
+- Actors: Operator
+- Entry requirements:
+  - The operator has login and has got the operate authentication.
+- Flow of event:
+  - Verify the driving license and identity of the drivers.
+  - Verify the damaged and faulty cars.
+- Exit conditions:
+  - no information needs to be verified.
+- Exceptions:
+  - The operate process has already time-out.
+
+
+
 =======
 ### 6. Alloy Model and Checking
 
