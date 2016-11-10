@@ -54,6 +54,7 @@ __Users__
 __System__
 
 - G[10] Allows systems to keep real-time data about the car variables.
+- G[11] Reservations should time-out if the user doesn't check-in the car.
 - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
 __Operator__
@@ -204,7 +205,7 @@ The employee that supervises the operations and verifies the driving licenses.We
     + The system can check the car variables if its GPS available in the real-time.
 - Calculate the price of the ride depending on the distance, time, left charge in the battery and number of passengers.
     + The system must estimate the distance between the origin location and the destination.
-    + The system must calculate the time between the user chech-in and the service finish.
+    + The system must calculate the time between the user check-in and the service finish.
 - The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
 - The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
 
@@ -239,7 +240,7 @@ As detailed in // TODO ADD REFERENCE TO ARCHITECTURE, our application will follo
 
   - *Presentation layer:* An Android mobile application and a web application should be used as a graphical user interface.
   - *Application layer:* A JEE application running on a Glassfish server will take care of running the business logic of the application.
-  - *Data tier*: A MySQL server should be used in order to persist all the data that is needed for running the application.
+  - *Data layer*: A MySQL server should be used in order to persist all the data that is needed for running the application.
 
 \pagebreak
 
