@@ -26,7 +26,7 @@
   - This system is aimed to provide more efficient and reliable services for users to decrease their cost in daily travel. In addition, this system can offer more chances for drives to take more clients to get more profits.  
   - The complete using process of system is that:
 
-  __first__: Open the application(the user who first use this systemshould bind a credit card andwithout a complicated registration process).
+  __first__: Open the application(the user who first use this system should bind a credit card andwithout a complicated registration process).
 
   __second__：system uses GPS to get the position, you'll see the number and location of cars nearby.
 
@@ -40,27 +40,27 @@
 
 __Users__
 
-- G[1] Allows users to login this system according to their phone number and do not need complex registration process.
+- G[1] Allows users to register in the PowerEnjoy application
+- G[1] Allows registered users to login using their credentials
 - G[2] Allows users to modify their information.
 - G[3] Allows users to see the cars around him or around an address on the application.
-- G[4] Allows users to reserve cars immediately or in advance.
-- G[5] Allows users to delete reservation, but if they delete near the booked time, they will be asked to pay for some money.
-- G[6] Allows users to unlock and check-in the car when they reserve the car immediately or reserve the car in advance.
-- G[7] Allows drivers to know the fees after they take cars and what miles they ride.
-- G[8] Allows users to check their rides history after they finished their rides.
-- G[9] Allows users to the user should be able to enable economy mode. Before they first use the services, they should bind the personal credit cards.
+- G[4] Allows users to reserve cars up to one hour in advance.
+- G[5] Allows users to cancel a reservation.
+- G[6] Allows users to unlock and check-in the reserved car.
+- G[7] Allows users to see how much the previous ride cost along with more ride information.
+- G[8] Allows users to check their rides history.
+- G[9] Allows users to the user should be able to enable economy mode.
 
 __System__
 
-- G[10] Allows systems to locate all the cars if the drives login the system.
-- G[11] Allows systems to retrieve the real-time car variables.
+- G[10] Allows systems to keep real-time data about the car variables.
 - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
 __Operator__
 
-- G[13] When the drivers registered, driving license and drivers identities should be checked and verified.
-- G[14] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
-- G[15] The operator can monitor the position of the cars.
+- G[13] Allows the operator to validate the identity and driving license of the user after checking them personally.
+- G[14] Allows the operator  to verify the damaged and faulty cars.
+- G[15] Allows the operator can monitor the position of the cars.
 
 #### 3. Domain properties
 
@@ -78,7 +78,9 @@ __Operator__
 - Every user only registers one account.
 - Users rent a car only for their personal use or for their friends, but the driver of the car can only be the user who rents the car.
 - Cars will be serviced at least once a month. // why?
-- Every car will automatically upload the log to the management system every day at 3 AM then the system will automatically analysis the current conditions of the car. // Why not real time?
+- Cars report their variables to the system on a real-time basis. This way the information available in the database is always accurate and up-to-date.
+- The users having a valid status in the database have a valid payment information.
+- We assume that the user can delete a reservation, but will pay the 1€ fee.
 
 ##### 4. Assumptions
 
