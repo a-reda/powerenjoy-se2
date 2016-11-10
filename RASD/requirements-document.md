@@ -8,7 +8,7 @@
   3. Domain properties
   4. Assumptions
   5. Glossary
-  6. System architecture 
+  6. System architecture
 2. Actors
 3. Functional and Non-functional Requirements
   1. Functional Requirements
@@ -34,51 +34,51 @@
 
   __Fourth__：when arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
 
-  - Some other settings:
-     The users who sharing cars will be given discount.
-    Drivers and passengers can evaluate each other via software.
+- Some other settings:The users who sharing cars will be given discount.Drivers and passengers can evaluate each other via software.
+
 #### 3. Goals
-  __Users__
-  - G[1] Allows users to login this system according to their phone number and do not need complex registration process.
-  - G[2] Allows users to modify their information.
-  - G[3] Allows users to see the cars around him or around an address on the application.
-  - G[4] Allows users to reserve cars immediately or in advance.
-  - G[5] Allows users to delete reservation, but if they delete near the booked time, they will be asked to pay for some money.
-  - G[6] Allows users to unlock and check-in the car when they reserve the car immediately or reserve the car in advance.
-  - G[7] Allows drivers to know the fees after they take cars and what miles they ride.
-  - G[8] Allows users to check their rides history after they finished their rides.
-  - G[9] Allows users to the user should be able to enable economy mode. Before they first use the services, they should bind the personal credit cards.
 
-  __System__
-  - G[10] Allows systems to locate all the cars if the drives login the system.
-  - G[11] Allows systems to retrieve the real-time car variables.
-  - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+__Users__
 
-  __Operator__
-  - G[13] When the drivers registered, driving license and drivers identities should be checked and verified.
-  - G[14] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
-  - G[15] The operator can monitor the position of the cars.
+- G[1] Allows users to login this system according to their phone number and do not need complex registration process.
+- G[2] Allows users to modify their information.
+- G[3] Allows users to see the cars around him or around an address on the application.
+- G[4] Allows users to reserve cars immediately or in advance.
+- G[5] Allows users to delete reservation, but if they delete near the booked time, they will be asked to pay for some money.
+- G[6] Allows users to unlock and check-in the car when they reserve the car immediately or reserve the car in advance.
+- G[7] Allows drivers to know the fees after they take cars and what miles they ride.
+- G[8] Allows users to check their rides history after they finished their rides.
+- G[9] Allows users to the user should be able to enable economy mode. Before they first use the services, they should bind the personal credit cards.
+
+__System__
+
+- G[10] Allows systems to locate all the cars if the drives login the system.
+- G[11] Allows systems to retrieve the real-time car variables.
+- G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+
+__Operator__
+
+- G[13] When the drivers registered, driving license and drivers identities should be checked and verified.
+- G[14] The operator should verify the damaged and faulty cars and asked drivers to upload the certifications.
+- G[15] The operator can monitor the position of the cars.
 
 #### 3. Domain properties
 
-  Analysis of the world and of the shared phenomena. We suppose that these properties hold in the analyzed world :
-
-  - There are plenty of electric cars for users to use.
-  - Every car is equipped a GPS which allows the management system to locate its position accurately.
-  - The GPS of cars cannot be switched off by users.
-  - Every user paid a deposit before they use the car.
-  - Every user has a smartphone always connected to the Internet.
-  - The position of the user is calculated by his smartphone and is accurate enough to be able to say he is close to the car ( Around 5m accuracy )
-  - Every user has a valid payment to use the cars.
-  - Every car is not damaged before users reserve it.
-  - Every user can only reserve/use one car at a time.  
-  - The car is always connected to the management system.
-  - Every user registers their account with real identity information that is verified by the operator.
-  - Every user only registers one account.
-  - Users rent a car only for their personal use or for their friends, but the driver of the car can only be the user who rents the car.
-  - Cars will be serviced at least once a month. // why?
-  - Every car will automatically upload the log to the management system every day at 3 AM then the system will automatically analysis the current conditions of the car. // Why not real time?
-
+- There are plenty of electric cars for users to use.
+- Every car is equipped a GPS which allows the management system to locate its position accurately.
+- The GPS of cars cannot be switched off by users.
+- Every user paid a deposit before they use the car.
+- Every user has a smartphone always connected to the Internet.
+- The position of the user is calculated by his smartphone and is accurate enough to be able to say he is close to the car ( Around 5m accuracy )
+- Every user has a valid payment to use the cars.
+- Every car is not damaged before users reserve it.
+- Every user can only reserve/use one car at a time.  
+- The car is always connected to the management system.
+- Every user registers their account with real identity information that is verified by the operator.
+- Every user only registers one account.
+- Users rent a car only for their personal use or for their friends, but the driver of the car can only be the user who rents the car.
+- Cars will be serviced at least once a month. // why?
+- Every car will automatically upload the log to the management system every day at 3 AM then the system will automatically analysis the current conditions of the car. // Why not real time?
 
 ##### 4. Assumptions
 
@@ -93,31 +93,46 @@
 
     Text assumptions: maybe what the text says and our way of understanding it  <====
 
+\pagebreak
+
 ##### 5. Glossary
 
-- __Client__: The physical person that rents the electric car from PowerEnjoy using his smartphone.
-- __Passengers__: One or many persons that may be with the client during the ride.  
-- __Operator__: The PowerEnjoy's employee that supervises the operations and validates driving licenses.
-- __Car__: The electric car that is connected to the Internet through 3G/4G. The car has an onboard computer that senses the ignition, battery levels, number of passengers and location and sends them to  the application server.
-- __Ride__: A travel in the car by the clients and optionally passengers. A ride starts at the moment the client ignites the engine and stops one he leaves the car.
-- __Battery level__: The amount of energy left in the car's batteries. 100% being a full capacity battery and 0% and empty battery. The battery level is increased while charging and decreased while the car is traveling.
-- __Charging station__: Locations where the cars can be charged by plugging them to the power grid.
-- __Safe areas__: Areas in the map defined by PowerEnjoy's management. The clients should take the cars back to these areas at the end of the ride.
-- __Discount__: A reduction (expressed in percentages) removed from the total price of the ride.
-- __Car availability__: The car have three availability statuses: Available (A), Booked(B), In a ride (R) or Out of service (O).
-- __Available__: It is the status when the car is not booked by a user and it is ready to be used (Charged battery, no mechanical problems...).
-- __Booked__: It is the status when the car is booked by a user. A car cannot be in the "Booked" status for more than one hour after the user has reserved it.  
-- __In a ride__: It is the status when the car is being driven by the user.
-- __Out of service__: It the exceptional status of when a car has damage or needs maintenance, thus not
-available for the users.
-- __Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride), //TODO ADD MORE IF NEEDED
+In this section, we define the frequently used words in order to avoid ambiguity. These are the most important concepts used in the documentation of the project.
 
+__Client__: The physical person that rents the electric car from PowerEnjoy using his smartphone.
+
+__Passengers__: One or many persons that may be with the client during the ride.
+
+__Operator__: The PowerEnjoy's employee that supervises the operations and validates driving licenses.
+
+__Car__: The electric car that is connected to the Internet through 3G/4G. The car has an onboard computer that senses the ignition, battery levels, number of passengers and location and sends them to  the application server.
+
+__Ride__: A travel in the car by the clients and optionally passengers. A ride starts at the moment the client ignites the engine and stops one he leaves the car.
+
+__Battery level__: The amount of energy left in the car's batteries. 100% being a full capacity battery and 0% and empty battery. The battery level is increased while charging and decreased while the car is traveling.
+
+__Charging station__: Locations where the cars can be charged by plugging them to the power grid.
+
+__Safe areas__: Areas in the map defined by PowerEnjoy's management. The clients should take the cars back to these areas at the end of the ride.
+
+__Discount__: A reduction (expressed in percentages) removed from the total price of the ride.
+
+__Car availability__: The car have three availability statuses: Available (A), Booked(B), In a ride (R) or Out of service (O).
+
+__Available__: It is the status when the car is not booked by a user and it is ready to be used (Charged battery, no mechanical problems...).
+
+__Booked__: It is the status when the car is booked by a user. A car cannot be in the "Booked" status for more than one hour after the user has reserved it.
+
+__In a ride__: It is the status when the car is being driven by the user.
+
+__Out of service__: It the exceptional status of when a car has damage or needs maintenance, thus not
+available for the users.
+
+__Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride), //TODO ADD MORE IF NEEDED
 
 ##### 6. System architecture
 
 Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC pattern, so with just one server application we manage both web application and mobile application, as Fig.1.     
-
-Shows the different layers of our system (MVC Model). It is good as well to insert the external service such as Google Maps and others ...
 
 ![Application architecture](RASD/resources/Architecture.png)
 
@@ -125,11 +140,16 @@ Shows the different layers of our system (MVC Model). It is good as well to inse
 
 #### 2. Actors
 
-Three main actors to identify:
+The following actors will be using the application:
 
- -  _Visitor_: The person that visits the website or the mobile application without being registered. His access to the application is limited.
- - _User_ : The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device.
- - _Operator_ : The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
+##### Visitor
+The person that visits the website or the mobile application without being registered. His access to the application is limited.
+
+##### User
+The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device. The user has access from both the mobile application and web interface.
+
+##### Operator
+The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
 
 
 \pagebreak
@@ -140,58 +160,60 @@ Three main actors to identify:
 
 ##### User requirements
 
+// TODO Link the goals with the Goals paragraph using the same nomenclature
+
 - The user should be able to register in the system.
-  - The user can register using his phone number, and system do not need complex registration.
-  - The user must be able to register to the system by providing their credentials and payment infomation.
-  - The user will receive a password to access the system.
+    + The user can register using his phone number, and system do not need complex registration.
+    + The user must be able to register to the system by providing their credentials and payment infomation.
+    + The user will receive a password to access the system.
 - The user should be able to modify his information
-  - The user can modify his destination before or after they check-in.
-  - The user can change his personal information.
-  - The user can change his payment information.
+    + The user can modify his destination before or after they check-in.
+    + The user can change his personal information.
+    + The user can change his payment information.
 - The user should see the cars around him or around an address.
-  - The user must be able to open his GPS to get his or her location.
-  - The system must be able to provide cars locations available according to users GPS location.
-  - The system must be able to provide cars locations available according to addresses inputted by users.
+    + The user must be able to open his GPS to get his or her location.
+    + The system must be able to provide cars locations available according to users GPS location.
+    + The system must be able to provide cars locations available according to addresses inputted by users.
 - The user should be able to reserve a car.
-  - The user should provide his location and his destination when he request a reservation.
-  - The system must be able to check the origin location and the destination of a reservation.
-  - The system must be able to transfer the request to appropriate car drivers.
+    + The user should provide his location and his destination when he request a reservation.
+    + The system must be able to check the origin location and the destination of a reservation.
+    + The system must be able to transfer the request to appropriate car drivers.
 - The user should be able to delete a reservation.
-  - The user can cancelled a reservation before check-in.
-  - The system should noticed the driver about this cancelled reservation.
-  - The operator should monitor this information.
+    + The user can cancelled a reservation before check-in.
+    + The system should noticed the driver about this cancelled reservation.
+    + The operator should monitor this information.
 - The user should be able to unlock and check-in the car.
-  - The user that reaches a reserved car must be able to tell the system he is nearby using GPS.
-  - When the system accepts the information that the user reaches the reserved car, the car will be unlocked and the user can check-in the car.
+    + The user that reaches a reserved car must be able to tell the system he is nearby using GPS.
+    + When the system accepts the information that the user reaches the reserved car, the car will be unlocked and the user can check-in the car.
 - The user should be able to see how much the ride cost him.
-  - The system must be able to provide the cost information of the ride after calculate the cost.
+    + The system must be able to provide the cost information of the ride after calculate the cost.
 - The user should be able to check his rides history.
-  - The operator can monitor the rides history.
-  - The system must be able to save the user rides history in the databases.
+    + The operator can monitor the rides history.
+    + The system must be able to save the user rides history in the databases.
 - The user should be able to enable economy mode.
-  - The user must bind his credit card and payment information before the first ride.
-  - The system can save the user economy mode.
+    + The user must bind his credit card and payment information before the first ride.
+    + The system can save the user economy mode.
 
 ##### System Requirements
 
 - The system should be able to locate all the cars.
-  - The system must be able to detect the car's position according to the car's GPS.
+    + The system must be able to detect the car's position according to the car's GPS.
 - Retrieve the real-time car variables.
-  - The system can check the car variables if its GPS available in the real-time.
+    + The system can check the car variables if its GPS available in the real-time.
 - Calculate the price of the ride depending on the distance, time, left charge in the battery and number of passengers.
-  - The system must estimate the distance between the origin location and the destination.
-  - The system must calculate the time between the user chech-in and the service finish.
-  - The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
-  - The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
+    + The system must estimate the distance between the origin location and the destination.
+    + The system must calculate the time between the user chech-in and the service finish.
+- The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
+- The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
 
 ##### Operator requirements
 
 - Verify the driving license and identity of the drivers
-  - when the car drivers registered, the operator should check the upload driving license and identity of the drivers.
+    + when the car drivers registered, the operator should check the upload driving license and identity of the drivers.
 - Verify the damaged and faulty cars.
-  - If the car damaged or it's the faulty car, the operator must be able to verify it before the car driver login the system.
+    + If the car damaged or it's the faulty car, the operator must be able to verify it before the car driver login the system.
 - Monitor the position of the cars.
-  - The operator can monitor the car's position.
+    + The operator can monitor the car's position.
 
 #### 2. Non-functional Requirements
 
