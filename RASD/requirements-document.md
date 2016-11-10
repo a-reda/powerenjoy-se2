@@ -1,38 +1,14 @@
 \input{RASD/coverpage.tex}
 
-<<<<<<< HEAD
-/resources/logo_polimi.png
-
-![logo](/resources/logo_polimi.png)
-
-## __Requirements Analysis and Specifications Document__
-#### Version 0.0
-
-
-
-* Reda Aissaoui
-* Jinling Xing
-* Lidong Zhang
-
-
-
-_26th October 2016_
-
-
-----------
-
-### __Glossary__
-=======
 ### __Content__
->>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
 
 1. Introduction
-  1. Description of the project __JX__
-  2. Goals __JX__
-  3. Domain properties __LZ__
-  4. Assumptions __RA__
-  5. Glossary __RA__
-  6. System architecture __LZ__
+  1. Description of the project
+  2. Goals
+  3. Domain properties
+  4. Assumptions
+  5. Glossary
+  6. System architecture 
 2. Actors
 3. Functional and Non-functional Requirements
   1. Functional Requirements
@@ -150,16 +126,11 @@ Shows the different layers of our system (MVC Model). It is good as well to inse
 #### 2. Actors
 
 Three main actors to identify:
-<<<<<<< HEAD
-  - _User_ : The physical person that rents the electric cars using the application.
-    The client has a smartphone connected to the Internet and has the mobile application
-    installed in his device.
-=======
 
  -  _Visitor_: The person that visits the website or the mobile application without being registered. His access to the application is limited.
  - _User_ : The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device.
  - _Operator_ : The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
->>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
+
 
 \pagebreak
 
@@ -187,11 +158,11 @@ Three main actors to identify:
   - The system must be able to transfer the request to appropriate car drivers.
 - The user should be able to delete a reservation.
   - The user can cancelled a reservation before check-in.
-  - The system should noticed the driver about this calcelled reservation.
+  - The system should noticed the driver about this cancelled reservation.
   - The operator should monitor this information.
 - The user should be able to unlock and check-in the car.
   - The user that reaches a reserved car must be able to tell the system he is nearby using GPS.
-  - When the system accepts the infomation that the user reaches the reserved car, the car will be unlocked and the user can check-in the car.
+  - When the system accepts the information that the user reaches the reserved car, the car will be unlocked and the user can check-in the car.
 - The user should be able to see how much the ride cost him.
   - The system must be able to provide the cost information of the ride after calculate the cost.
 - The user should be able to check his rides history.
@@ -220,15 +191,12 @@ Three main actors to identify:
 - Verify the damaged and faulty cars.
   - If the car damaged or it's the faulty car, the operator must be able to verify it before the car driver login the system.
 - Monitor the position of the cars.
-  - The oprator can monitor the car's position.
+  - The operator can monitor the car's position.
 
+#### 2. Non-functional Requirements
 
+##### 1. Mock-ups
 
-<<<<<<< HEAD
-  2. Non-functional Requirements
-
-4. UML Class Diagrams
-=======
 ##### 2. System Quality
 
 - __Performance:__ The users will rely on the application to get a car to move around. For this reason, we have to ensure that the application is very reactive and quick.
@@ -273,9 +241,6 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 
 #### 1. Class diagram RA
 
-#### 2. Use case diagrams LZ
->>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
-
 ![User](RASD/resources/usecases diagram 1.png)
 // TODO Description  
 
@@ -285,7 +250,6 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 ![Visitor](RASD/resources/usecases diagram 3.png)
 // TODO Description
 
-<<<<<<< HEAD
 #### 3. Use case description  ------JX
 
 #### _Use cases diagram 1_
@@ -384,11 +348,7 @@ correct.
 - Exceptions:
   - The operate process has already time-out.
 
-
-
-=======
 ### 6. Alloy Model and Checking
 
 
 #### Hours worked
->>>>>>> acacde9ca86c87ef6270f5372de0daf5f20adbfb
