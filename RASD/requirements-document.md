@@ -70,7 +70,7 @@ __Operator__
 - The GPS of cars cannot be switched off by users.
 - Every user paid a deposit before they use the car.
 - Every user has a smartphone always connected to the Internet.
-- The position of the user is calculated by his smartphone and is accurate enough to be able to say he is close to the car ( Around 5m accuracy )
+- The position of the user is calculated by his smartphone and is accurate enough to be able to say he is close to the car ( Around 5m accuracy ).
 - Every user has a valid payment to use the cars.
 - Every car is not damaged before users reserve it.
 - Every user can only reserve/use one car at a time.  
