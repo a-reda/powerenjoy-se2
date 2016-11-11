@@ -272,8 +272,6 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 ![Operator](RASD/resources/usecases diagram 2.png)
 // TODO Description
 
-![Visitor](RASD/resources/usecases diagram 3.png)
-// TODO Description
 
 #### 3. Use case description  ------JX
 
