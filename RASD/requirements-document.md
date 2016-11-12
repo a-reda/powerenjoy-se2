@@ -266,16 +266,16 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 
 #### 1. Class diagram RA
 
-![User](RASD/resources/usecases diagram 1.png)
+#### 2. Use cases diagrams LZ
+
+![User](RASD/resources/UML/Usecases_diagram_user.png)
 // TODO Description  
-
-![Operator](RASD/resources/usecases diagram 2.png)
+![Operator](RASD/resources/Usecases_diagram_operator.png)
 // TODO Description
-
 
 #### 3. Use case description  ------JX
 
-#### _Use cases diagram 1_
+#### _Use cases diagram user_
 
 ##### User requries to take a car
 - Name: User requires to take a car
@@ -327,7 +327,8 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 - Exceptions:
   - User has taken the car and checked-in.
 
-#### _Use cases diagram 2_
+
+#### _Use cases diagram operator_
 
 ##### Operator requries to login
 - Name: Operator requries to login
@@ -370,6 +371,12 @@ correct.
   - no information needs to be verified.
 - Exceptions:
   - The operate process has already time-out.
+
+#### 4. Sequence diagrams -----LZ
+![Sequence diagram_login](RASD/resources/UML/Sequence_diagram_login.png)
+
+![Sequence diagram_reservation](RASD/resources/UML/Sequence_diagram_reservation.png)
+
 
 ### 6. Alloy Model and Checking
 
