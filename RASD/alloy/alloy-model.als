@@ -1,7 +1,7 @@
-open util/boolean 
+open util/boolean
 /*
 one sig PowerEnjoy {
-				fleet: set Car, 
+				fleet: set Car,
 				clients: set Client,
 				operators: set Operator,
 				chargingStations: set ChargingStation,
@@ -25,7 +25,7 @@ sig Car {
 		batteryLevel: Int,
 		position: one Position,
 		isLocked: one Bool,
-		isCharging: one Bool, 
+		isCharging: one Bool,
 		isOnRide: one Bool
 } {
 		batteryLevel <= 100
@@ -38,10 +38,6 @@ fact isOnRideNotCharg {
 fact isOnRideNotLock {
 		all c: Car | ( c.isOnRide = True ) => ( c.isLocked = False )
 }
-/*
-fact OneCarOneReserv {
-		no c: Car, r1, r2: CurrentReservation  | r1 != r2 and r1.car = c and r2.car = c
-}*/
 
 sig LicensePlate {}
 
@@ -51,10 +47,10 @@ sig Position {
 } {
 		latitude >= 0
 		longitude >=0
-}	
+}
 
-abstract sig Reservation { 
-		car: one Car, 
+abstract sig Reservation {
+		car: one Car,
 		ride: lone Ride,
 		bill: one Bill
 }
@@ -64,10 +60,6 @@ sig PastReservation extends Reservation {}
 fact AllReservationHaveClient {
 		all r: Reservation | one c: Client | r in c.reservations
 }
-/*
-fact allReservedCarsNotOnRide {
-		no c: Car, r1, r2: CurrentReservation | r1 != r2 and c in r1.car and c in r2.car 
-}*/
 
 sig  Ride {
 		startPoint: one Position,
@@ -82,11 +74,11 @@ fact {
 		all r: Ride | one res: Reservation | r = res.ride
 }
 
-sig  Bill {	
+sig  Bill {
 }
 
 sig ChargingStation {
-		position: one Position, 
+		position: one Position,
 		numberPlugs: Int,
 		pluggedCars: set Car
 }
@@ -101,15 +93,15 @@ sig SafeArea {
 } {
 	#borders >= 3
 }
-// License plate is unique 
+// License plate is unique
 fact licensePlateUnique {
 		all c1, c2: Car | (c1 != c2) => c1.licensePlate != c2.licensePlate
 }
-// A Reservations has a unique client 
+// A Reservations has a unique client
 fact reservationBelongsToOneUser {
 		no r: Reservation | some c1, c2: Client  | c1 != c2 and r in c1.reservations and r in c2.reservations
 }
-// A User can only have one current reservation 
+// A User can only have one current reservation
 fact {
 		no c: Client | some r1, r2: CurrentReservation | r1 != r2 and r1 in c.reservations and r2 in c.reservations
 }
@@ -123,7 +115,7 @@ assert ReservationIsUnique {
 			implies r != r1
 }
 
-pred PowerEnjoy { 
+pred PowerEnjoy {
 	#Client = 3
 	#CurrentReservation = 2
 	#Car = 2

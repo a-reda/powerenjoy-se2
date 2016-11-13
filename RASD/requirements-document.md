@@ -97,11 +97,11 @@ The following always holds in the environment where the application will be depl
 - The car is always connected to the management system through 4G/3G.
 - Every user registers their account with real identity information that is verified by the operator.
 - Every user only registers one account.
-- Users rent a car only for their personal use or for their friends, but the driver of the car can only be the user who rents the car.
+- Users rent a car only for their personal use or with friends, but the driver of the car can only be the user who rents the car.
 - Cars will be serviced at least once a month to guarantee that all the cars are working.
 - Cars report their variables to the system on a real-time basis. This way the information available in the database is always accurate and up-to-date.
 - The users having a valid status in the database have a valid payment information.
-- We assume that the user can delete a reservation, but will pay the 1€ fee.
+- We assume that the user can cancel a reservation to make the car available to other users, but will pay the 1€ fee.
 - We assume that the city is fully covered with 3G/4G network.
 - We assume that the car have a system that exposes an API to check the status of the car (location, battery level, is charging, number of passengers)
 
@@ -140,7 +140,9 @@ __In a ride__: It is the status when the car is being driven by the user.
 __Out of service__: It the exceptional status of when a car has damage or needs maintenance, thus not
 available for the users.
 
-__Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride), //TODO ADD MORE IF NEEDED
+__Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride).
+
+__Unverified account__: An account that was not verified (Photo ID and driving license) by an operator.
 
 \pagebreak
 
@@ -182,64 +184,89 @@ The employee that supervises the operations and verifies the driving licenses.We
 
 #### 1. Functional Requirements
 
-##### 1. User requirements
-
-- The user should be able to register in the system.
-    + The user can register using his phone number, and system do not need complex registration.
-    + The user must be able to register to the system by providing their credentials and payment infomation.
+- __G[1]__ Allows visitors to register in the PowerEnjoy application
+    + The visitor is prompted to register in the website or mobile application.
+    + The visitor registers to the system by providing their credentials and payment information.
     + The user will receive a password to access the system.
-- The user should be able to modify his information
+    + The user is prompted to confirm his identity with an operator.
+- __G[2]__ Allows registered users to login using their credentials
+    + The user enters his username and password in the login page.
+    + The access is granted to user after verification of his credentials.
+    + The access is reject in case of false credentials, wrong payment information or unverified accounts.
+- __G[3]__ Allows users to modify their information.
     + The user can modify his destination before or after they check-in.
-    + The user can change his personal information.
+    + The user can change his personal information (except identity and driving license).
     + The user can change his payment information.
-- The user should see the cars around him or around an address.
-    + The user must be able to open his GPS to get his or her location.
+- __G[4]__ Allows users to see the cars around him or around an address on the application.
     + The system must be able to provide cars locations available according to users GPS location.
-    + The system must be able to provide cars locations available according to addresses inputted by users.
-- The user should be able to reserve a car.
-    + The user should provide his location and his destination when he request a reservation.
-    + The system must be able to check the origin location and the destination of a reservation.
-    + The system must be able to transfer the request to appropriate car drivers.
-- The user should be able to delete a reservation.
-    + The user can cancelled a reservation before check-in.
-    + The system should noticed the driver about this cancelled reservation.
-    + The operator should monitor this information.
-- The user should be able to unlock and check-in the car.
+    + The system must be able to provide cars locations available according to addresses input by users.
+- __G[5]__ Allows users to reserve cars up to one hour in advance.
+    + The users chooses the car that suits his need.
+    + The car is reserved for the given user and cannot be reserved by other users.
+    + The reservation is held for one hour after the reservation time.
+- __G[6]__ Allows users to cancel a reservation.
+    + The user choses to cancel the reservation.
+    + The user is noticed about the fee of cancelation.
+    + The car is available again after the cancellation of the reservation.
+- __G[7]__ Allows users to unlock and check-in the reserved car.
     + The user that reaches a reserved car must be able to tell the system he is nearby using GPS.
-    + When the system accepts the information that the user reaches the reserved car, the car will be unlocked and the user can check-in the car.
-- The user should be able to see how much the ride cost him.
-    + The system must be able to provide the cost information of the ride after calculate the cost.
-- The user should be able to check his rides history.
-    + The operator can monitor the rides history.
+    + The user is notified that he is close and clicks a button to unlock the car.
+    + The user can enter the car and ignite the engine.
+- __G[8]__ Allows users to see how much the previous ride cost along with more ride information.
+    + The user can chose a previous ride.
+    + The user is shown information about the chosen ride.
+- __G[9]__ Allows users to check their rides history.
     + The system must be able to save the user rides history in the databases.
-- The user should be able to enable economy mode.
-    + The user must bind his credit card and payment information before the first ride.
-    + The system can save the user economy mode.
+- __G[10]__ Allows users to the user should be able to enable economy mode.
+    + Before making a reservation, the user can enable the economy mode.
+- __G[11]__ Allows users to see where to park the car in order to get discount.
+    + The user enters the address of his destination.
+    + The system calculates the best place to park the car to have an even distribution.
+    + The user is suggested the place to have a discount.
+- __G[12]__ Allows systems to keep real-time data about the car variables.
+    + Through the car interface, the system keeps the database in an up-to-date state of the car variables.
+- __G[13]__ Reservations should time-out if the user doesn't check-in the car.
+    + The system checks all the current reservations to check if they timed out or not.
+    + If a reservation times out, the user is charged and the car is available.
+- __G[14]__ System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+    + Taking in consideration the time of the ride, the battery level and the number of passengers, the system calculates the cost of the ride.
+- __G[15]__ Allows the operator to validate the identity and driving license of the user after checking them personally.
+    + The operator looks for the newly registered user.
+    + If the provided photo ID and driving license are valid, the user is marked as valid.
+- __G[16]__ Allows the operator to verify the damaged and faulty cars.
+    + The operator can have a complete overview of the fleet and the status of each car on a map.
+- __G[17]__ Allows the operator can monitor the position of the cars.
+    + The operator can see where each car is.
 
-##### 2. System Requirements
-
-- The system should be able to locate all the cars.
-    + The system must be able to detect the car's position according to the car's GPS.
-- Retrieve the real-time car variables.
-    + The system can check the car variables if its GPS available in the real-time.
-- Calculate the price of the ride depending on the distance, time, left charge in the battery and number of passengers.
-    + The system must estimate the distance between the origin location and the destination.
-    + The system must calculate the time between the user check-in and the service finish.
-- The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
-- The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
-
-##### 3. Operator requirements
-
-- Verify the driving license and identity of the drivers
-    + when the car drivers registered, the operator should check the upload driving license and identity of the drivers.
-- Verify the damaged and faulty cars.
-    + If the car damaged or it's the faulty car, the operator must be able to verify it before the car driver login the system.
-- Monitor the position of the cars.
-    + The operator can monitor the car's position.
+\pagebreak
 
 #### 2. Non-functional Requirements
 
 ##### 1. Mock-ups
+
+In the following, we present an overview of how the graphical user interface of the application will look for both the mobile and web applications.
+
+![Mobile - Welcome activity](RASD/resources/Mock-up/mobile/Welcome page.png){ width=40% }
+
+![Mobile - User's personal space](RASD/resources/Mock-up/mobile/Personal page.png){ width=40% }
+
+![Mobile - Main activity](RASD/resources/Mock-up/mobile/Main page.png){ width=40% }
+
+![Mobile - Reservation activity](RASD/resources/Mock-up/mobile/Reservation page.png){ width=40% }
+
+![Mobile - History](RASD/resources/Mock-up/mobile/History page.png){ width=40% }
+
+![Mobile - Car mode](RASD/resources/Mock-up/mobile/Car mode page.png){ width=40% }
+
+![Mobile - Route to the car](RASD/resources/Mock-up/mobile/Routing page.png){ width=40% }
+
+![Mobile - Notification to unlock the car](RASD/resources/Mock-up/mobile/Notification page.png){ width=40% }
+
+![Web - Login page](RASD/resources/Mock-up/web/Login page_web.png)
+
+![Web - Main page](RASD/resources/Mock-up/web/Main page_web.png)
+
+\pagebreak
 
 ##### 2. System Quality
 
@@ -255,7 +282,7 @@ The employee that supervises the operations and verifies the driving licenses.We
 
 ##### 3. Technology Enablers
 
-As detailed in // TODO ADD REFERENCE TO ARCHITECTURE, our application will follow the 3-tier client-server application. The application will be composed in this way:
+As detailed in *1.6 System Architecture*, our application will follow the 3-tier client-server application. The application will be composed in this way:
 
   - *Presentation layer:* An Android mobile application and a web application should be used as a graphical user interface.
   - *Application layer:* A JEE application running on a Glassfish server will take care of running the business logic of the application.
@@ -282,61 +309,62 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 ### 5. UML Diagrams
 
 #### 1. Class diagram
-![Class](RASD\resources\UML\class-diagram.png)
+
+![Class](RASD\resources\UML\class-diagram.png) // TODO
+
+\pagebreak
 
 #### 2. Use cases diagrams
 
 ![User](RASD/resources/UML/Usecases_diagram_user.png)
 
-![Operator](RASD/resources/Usecases_diagram_operator.png)
+![Operator](RASD/resources/UML/Usecases_diagram_operator.png)
 
+\pagebreak
 
 #### 3. Use cases description
 
 #### _Use cases diagram user_
 
-##### User requries to take a car
+##### User search the cars
 - Name: User requires to take a car
 - Actors: User
 - Entry requirements:
   - User has login.
-  - User is in the operation homepage.
+  - User is in the homepage.
 - Flow of event:
-  - User click the button to take a immediately.
-  - User open his GPS to monitor his location.
-  - User can see the cars close to his place.
-  - User decides to take a car and push the take car button.
-  - User input the destination and passenger numbers.
-- Exit conditions: The system forwards the request to the appropriate car and the use case “operator responds to a request” begins.
+  - User open his GPS to monitor his location or enters an address.
+  - User can see the cars close to his place along with other information.
+- Exit conditions: The system forwards the request to the appropriate car and the use case "User requires to reserve the a car "begins.
 - Exceptions:
-  - User has not open the GPS.
-  - User furnishes invalid data.
+  - User has not open the GPS or not entered and address.
+  - User is not validated.
 
-##### User requries to reserve a car
+##### User requires to reserve a car
 - Name : User requires to reserve a car
 - Actors : User
 - Entry requirements:
   - User has login.
-  - User is in the operation homepage.
+  - User is in the homepage.
 - Flow of event:
   - User click the "Reserve Car" button to make a reservation.
   - User chooses the car to reserve.
-  - The system redirects the user to a form where the user has to give some information like theplace of departure and his destination of the ride.
+  - The system redirects the user to an information page about the car that includes many information about the car.
   - User decides to take a car and click the take car button.
   - User sets the “number of passengers” to finish the share car information.
 - Exit conditions:
-  - The system forwards the request to cars which can be reserved and the use case “operator responds to a request” begins.
+  - The users validates the car to reserve.
 - Exceptions:
-  - User has not open the GPS.
-  - User doesn't input some basic information which is necessary, such as the starting location and destination.
+  - The chosen car is not available.
+  - The number of passengers exceeds the capacity of the car.
 
-##### User requries to cancel a reservation
+##### User requires to cancel a reservation
 - Name: User requires to cancel a reservation
 - Actors: User
 - Entry requirements:
   - User has login.
   - User is in the reservation homepage.
-  - User has make a reservation.
+  - User has made a reservation.
 - Flow of event:
   - User cancels the reservation.
 - Exit conditions:
@@ -348,8 +376,8 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 
 #### _Use cases diagram operator_
 
-##### Operator requries to login
-- Name: Operator requries to login
+##### Operator requires to login
+- Name: Operator requires to login
 - Actors: Operator
 - Entry requirements:
   - There are no entry requirements.
@@ -367,35 +395,40 @@ correct.
 - Name: Operator manages the system
 - Actors: Operator
 - Entry requirements:
-  - The operator has login and has got the operate authentication.
+  - The operator has login and has got the operation role.
 - Flow of event:
-  - The operator deal with the information of feedback.
-  - Monitor the position of the cars.
+  - The users checks the information about cars.
 - Exit conditions:
-  - The operator is successfully dealed with the feedback report.
+  - The operator made sure that all the cars are working.
 - Exceptions:
-  - The operate process has already time-out.
+  - None
 
 
-##### Operator verefies information
-- Name: Operator verefies information
+##### Operator verifies information
+- Name: Operator verifies information
 - Actors: Operator
 - Entry requirements:
   - The operator has login and has got the operate authentication.
 - Flow of event:
-  - Verify the driving license and identity of the drivers.
-  - Verify the damaged and faulty cars.
+  - Verify the driving license.
+  - Verify the identity of the drivers
 - Exit conditions:
-  - no information needs to be verified.
+  - Mark the user as valid if the information is verified.
 - Exceptions:
-  - The operate process has already time-out.
+  - The information provided by the client is false.
+
+\pagebreak
 
 #### 4. Sequence diagrams
-![Sequence diagram_login](RASD/resources/UML/Sequence_diagram_login.png)
 
-![Sequence diagram_reservation](RASD/resources/UML/Sequence_diagram_reservation.png)
+![Sequence Diagram - Login](RASD/resources/UML/Sequence_diagram_login.png)
+
+![Sequence Diagram - Reservation ](RASD/resources/UML/Sequence_diagram_reservation.png)
+
+\pagebreak
 
 ### 6. Alloy Model and Checking
+
 ```
 open util/boolean
 /*
@@ -437,10 +470,6 @@ fact isOnRideNotCharg {
 fact isOnRideNotLock {
 		all c: Car | ( c.isOnRide = True ) => ( c.isLocked = False )
 }
-/*
-fact OneCarOneReserv {
-		no c: Car, r1, r2: CurrentReservation  | r1 != r2 and r1.car = c and r2.car = c
-}*/
 
 sig LicensePlate {}
 
@@ -463,10 +492,6 @@ sig PastReservation extends Reservation {}
 fact AllReservationHaveClient {
 		all r: Reservation | one c: Client | r in c.reservations
 }
-/*
-fact allReservedCarsNotOnRide {
-		no c: Car, r1, r2: CurrentReservation | r1 != r2 and c in r1.car and c in r2.car
-}*/
 
 sig  Ride {
 		startPoint: one Position,
@@ -522,7 +547,7 @@ assert ReservationIsUnique {
 			implies r != r1
 }
 
-pred example {
+pred PowerEnjoy {
 	#Client = 3
 	#CurrentReservation = 2
 	#Car = 2
@@ -535,6 +560,39 @@ pred addReservation(c: Client, r: CurrentReservation, car: Car) {
 
 run addReservation
 check ReservationIsUnique
-run example
+run PowerEnjoy
+
 ```
-#### Hours worked
+\pagebreak
+
+### Alloy model checking
+
+![Assert](RASD/alloy/ss1.png)
+
+![Predicate 1 ](RASD/alloy/ss2.png)
+
+![Predicate 2 ](RASD/alloy/ss3.png)
+
+\pagebreak
+
+![World generated](RASD/alloy/world.png)
+
+\pagebreak
+
+## Used tools
+
+- Atom - Text editor
+- Pandoc - PDF Creation
+- Github
+- Alloy Analywzer 4.2
+- Microsoft Visio - Diagrams
+
+\pagebreak
+
+## Hours worked
+
+#### Reda Aissaoui
+
+#### Jinling Xing
+
+#### Lidong Zhang
