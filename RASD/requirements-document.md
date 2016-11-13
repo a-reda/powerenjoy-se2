@@ -1,25 +1,46 @@
 \input{RASD/coverpage.tex}
 
 ### __Content__
-
 1. Introduction
   1. Description of the project
   2. Goals
+    1. User
+    2. System
+    3. Operator
   3. Domain properties
   4. Assumptions
   5. Glossary
   6. System architecture
 2. Actors
+  1. Vistor
+  2. User
+  3. Operator
 3. Functional and Non-functional Requirements
   1. Functional Requirements
-  2. Non-functional Requirements
-4. UML Class Diagrams
-5. Alloy Model and Checking
+    1. User Requipment
+    2. System Requipment
+    3. Operator Requipment
+  2. Non-functional Requirements  
+    1. Mock-up
+    2. System Quality
+    3. Technology Enablers
+4. Scenarios
+  1. Scenario 1
+  2. Scenario 2
+  3. Scenario 3
+  4. Scenario 4
+5. UML Class Diagrams
+  1. Class Diagram
+  2. Use Case Diagram
+  3. Use Case Diagram
+  4. Sequence Diagram
+6. Alloy Model and Checking
 
 \pagebreak
 
-#### 1. Introduction
-##### 1. Description of the project
+### 1. Introduction
+
+#### 1. Description of the project
 
   - This Project is based on mobile  application.
   - The target population is clients and drivers.
@@ -36,9 +57,9 @@
 
 - Some other settings:The users who sharing cars will be given discount.Drivers and passengers can evaluate each other via software.
 
-#### 3. Goals
+#### 2. Goals
 
-__Users__
+##### 1.Users
 
 - G[1] Allows users to register in the PowerEnjoy application
 - G[1] Allows registered users to login using their credentials
@@ -51,14 +72,12 @@ __Users__
 - G[8] Allows users to check their rides history.
 - G[9] Allows users to the user should be able to enable economy mode.
 
-__System__
-
+##### 2.System
 - G[10] Allows systems to keep real-time data about the car variables.
 - G[11] Reservations should time-out if the user doesn't check-in the car.
 - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
-__Operator__
-
+##### 3.Operator
 - G[13] Allows the operator to validate the identity and driving license of the user after checking them personally.
 - G[14] Allows the operator  to verify the damaged and faulty cars.
 - G[15] Allows the operator can monitor the position of the cars.
@@ -83,7 +102,7 @@ __Operator__
 - The users having a valid status in the database have a valid payment information.
 - We assume that the user can delete a reservation, but will pay the 1€ fee.
 
-##### 4. Assumptions
+#### 4. Assumptions
 
 - We assume that the city is fully covered with 3G/4G network.
 - We assume that the car have a system that exposes an API to check the status of the car (location, battery level, is charging, number of passengers)
@@ -98,7 +117,7 @@ __Operator__
 
 \pagebreak
 
-##### 5. Glossary
+#### 5. Glossary
 
 In this section, we define the frequently used words in order to avoid ambiguity. These are the most important concepts used in the documentation of the project.
 
@@ -133,7 +152,7 @@ available for the users.
 
 __Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride), //TODO ADD MORE IF NEEDED
 
-##### 6. System architecture
+#### 6. System architecture
 
 Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC pattern, so with just one server application we manage both web application and mobile application, as Fig.1.     
 
@@ -141,29 +160,27 @@ Our system contains mobile application, WEB application and server. We will impl
 
 \pagebreak
 
-#### 2. Actors
+### 2. Actors
 
 The following actors will be using the application:
 
-##### Visitor
+#### 1.Visitor
 The person that visits the website or the mobile application without being registered. His access to the application is limited.
 
-##### User
+#### 2.User
 The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device. The user has access from both the mobile application and web interface.
 
-##### Operator
+#### 3.Operator
 The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
 
 
 \pagebreak
 
-#### 3. Functional and Non-functional Requirements
+### 3. Functional and Non-functional Requirements
 
 #### 1. Functional Requirements
 
-##### User requirements
-
-// TODO Link the goals with the Goals paragraph using the same nomenclature
+##### 1.User requirements
 
 - The user should be able to register in the system.
     + The user can register using his phone number, and system do not need complex registration.
@@ -197,7 +214,7 @@ The employee that supervises the operations and verifies the driving licenses.We
     + The user must bind his credit card and payment information before the first ride.
     + The system can save the user economy mode.
 
-##### System Requirements
+##### 2.System Requirements
 
 - The system should be able to locate all the cars.
     + The system must be able to detect the car's position according to the car's GPS.
@@ -209,7 +226,7 @@ The employee that supervises the operations and verifies the driving licenses.We
 - The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
 - The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
 
-##### Operator requirements
+##### 3.Operator requirements
 
 - Verify the driving license and identity of the drivers
     + when the car drivers registered, the operator should check the upload driving license and identity of the drivers.
@@ -258,22 +275,21 @@ Jessy and his friends like to play football during weekends to destress. The pro
 #### Scenario 4
 Maria is a very concerned about the environment and wants to adopt new habits to protect the environment. She knows that electric cars are very environment-friendly but she cannot afford an electric car. With PowerEnjoy she can easily lookup all the electric cars available on a map and reserve one using her smartphone. By using PowerEnjoy for all her commutes, Maria decreases her carbon footprint.
 
-#### Scenario 5
-
 \pagebreak
 
 ### 5. UML Diagrams
 
-#### 1. Class diagram RA
+#### 1. Class diagram
+![Class](RASD\resources\UML\class-diagram.png)
 
-#### 2. Use cases diagrams LZ
+#### 2. Use cases diagrams
 
 ![User](RASD/resources/UML/Usecases_diagram_user.png)
-// TODO Description  
-![Operator](RASD/resources/Usecases_diagram_operator.png)
-// TODO Description
 
-#### 3. Use case description  ------JX
+![Operator](RASD/resources/Usecases_diagram_operator.png)
+
+
+#### 3. Use cases description
 
 #### _Use cases diagram user_
 
@@ -372,13 +388,12 @@ correct.
 - Exceptions:
   - The operate process has already time-out.
 
-#### 4. Sequence diagrams -----LZ
+#### 4. Sequence diagrams
 ![Sequence diagram_login](RASD/resources/UML/Sequence_diagram_login.png)
 
 ![Sequence diagram_reservation](RASD/resources/UML/Sequence_diagram_reservation.png)
 
 
 ### 6. Alloy Model and Checking
-
 
 #### Hours worked
