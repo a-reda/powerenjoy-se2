@@ -62,25 +62,26 @@
 ##### 1.Users
 
 - G[1] Allows users to register in the PowerEnjoy application
-- G[1] Allows registered users to login using their credentials
-- G[2] Allows users to modify their information.
-- G[3] Allows users to see the cars around him or around an address on the application.
-- G[4] Allows users to reserve cars up to one hour in advance.
-- G[5] Allows users to cancel a reservation.
-- G[6] Allows users to unlock and check-in the reserved car.
-- G[7] Allows users to see how much the previous ride cost along with more ride information.
-- G[8] Allows users to check their rides history.
-- G[9] Allows users to the user should be able to enable economy mode.
+- G[2] Allows registered users to login using their credentials
+- G[3] Allows users to modify their information.
+- G[4] Allows users to see the cars around him or around an address on the application.
+- G[5] Allows users to reserve cars up to one hour in advance.
+- G[6] Allows users to cancel a reservation.
+- G[7] Allows users to unlock and check-in the reserved car.
+- G[8] Allows users to see how much the previous ride cost along with more ride information.
+- G[9] Allows users to check their rides history.
+- G[10] Allows users to the user should be able to enable economy mode.
+- G[11] Allows users to see where to leave the car in order to get discount.  
 
 ##### 2.System
-- G[10] Allows systems to keep real-time data about the car variables.
-- G[11] Reservations should time-out if the user doesn't check-in the car.
-- G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+- G[12] Allows systems to keep real-time data about the car variables.
+- G[13] Reservations should time-out if the user doesn't check-in the car.
+- G[14] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
 ##### 3.Operator
-- G[13] Allows the operator to validate the identity and driving license of the user after checking them personally.
-- G[14] Allows the operator  to verify the damaged and faulty cars.
-- G[15] Allows the operator can monitor the position of the cars.
+- G[15] Allows the operator to validate the identity and driving license of the user after checking them personally.
+- G[16] Allows the operator  to verify the damaged and faulty cars.
+- G[17] Allows the operator can monitor the position of the cars.
 
 #### 3. Domain properties
 
