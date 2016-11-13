@@ -11,7 +11,7 @@
     7. Stakeholders
     8. Reference documents
 2. Actors
-    1. Vistor
+    1. Visitor
     2. User
     3. Operator
 3. Functional and Non-functional Requirements
@@ -576,8 +576,9 @@ run PowerEnjoy
 - Atom - Text editor
 - Pandoc - PDF Creation
 - Github
-- Alloy Analywzer 4.2
-- Microsoft Visio - Diagrams
+- Alloy Analyzer 4.2
+- Microsoft Visio 2016 - Diagrams
+- Axure RP Pro 7.0 - Web and mobile mock-ups
 
 \pagebreak
 
