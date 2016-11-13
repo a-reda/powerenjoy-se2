@@ -19,9 +19,9 @@
   3. Operator
 3. Functional and Non-functional Requirements
   1. Functional Requirements
-    1. User Requipment
-    2. System Requipment
-    3. Operator Requipment
+    1. User Requirements
+    2. System Requirements
+    3. Operator Requirements
   2. Non-functional Requirements  
     1. Mock-up
     2. System Quality
@@ -42,17 +42,13 @@
 
 ### 1. Introduction
 
-#### 1. Description of the project
+#### 1. Description
 
-This Project is a car sharing service based on Android mobile application, providing more efficient and reliable services for users to pick up cars near their zones located by GPS.
+The aim of this project is to develop an application for an electric car sharing service company, PowerEnjoy. The company has a fleet of electric cars available all around the city. The city is equipped, by PowerEnjoy, with charging stations for the electric cars. The objective of the use of the electric cars is to offer a good transportation mean that is environment-friendly. In this context, PowerEnjoy wants to motivate its users to carpool. For this reason, discounts are offered to users that have many passengers with them. Discounts are also offered to users that help recharging cars or distribute them evenly in the city. This helps to keep a good service level for the car sharing company.
 
-The system should provide the functions that new user can register and new driver can verify the driving license. In addition, the new user can login using his phone number and credential information.
+The application is the true companion of the user as it enables him to reserve cars, find them, check-in and see information about the rides that his makes. Any major person holding a driving license can register with PowerEnjoy using their mobile application or website.
 
-Once the user login using the mobile application , he can be able to take a car immediately or reserve a car in a certain time, the position of the cars will be calculated by the system amd the map which has been embedded in the application will monitor the location of the cars.  
-
-Meanwhile, system offers Estimated arriving time and approximate price and driver information, and real-time view of the vehicle route through the APP. When arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
-
-Some other settings: The users who sharing cars will be given discount. Drivers and passengers can evaluate each other via software.
+\pagebreak
 
 #### 2. Goals
 
@@ -68,62 +64,46 @@ Some other settings: The users who sharing cars will be given discount. Drivers 
 - G[8] Allows users to see how much the previous ride cost along with more ride information.
 - G[9] Allows users to check their rides history.
 - G[10] Allows users to the user should be able to enable economy mode.
-- G[11] Allows users to see where to leave the car in order to get discount.  
+- G[11] Allows users to see where to park the car in order to get discount.  
 
-<<<<<<< HEAD
-##### 2. System
-- G[10] Allows systems to keep real-time data about the car variables.
-- G[11] Reservations should time-out if the user doesn't check-in the car.
-- G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
-
-##### 3. Operator
-- G[13] Allows the operator to validate the identity and driving license of the user after checking them personally.
-- G[14] Allows the operator  to verify the damaged and faulty cars.
-- G[15] Allows the operator can monitor the position of the cars.
-=======
 ##### 2.System
+
 - G[12] Allows systems to keep real-time data about the car variables.
 - G[13] Reservations should time-out if the user doesn't check-in the car.
 - G[14] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
 ##### 3.Operator
+
 - G[15] Allows the operator to validate the identity and driving license of the user after checking them personally.
 - G[16] Allows the operator  to verify the damaged and faulty cars.
 - G[17] Allows the operator can monitor the position of the cars.
->>>>>>> ce3f14ad3fada80bd7ee56e74d5decc3e3c26655
 
-#### 3. Domain properties
+\pagebreak
 
-- There are plenty of electric cars for users to use.
-- Every car is equipped a GPS which allows the management system to locate its position accurately.
+#### 3. Domain assumptions
+
+The following always holds in the environment where the application will be deployed.
+
+- The number of cars available in the city are sufficient for the expected demand.
+- The number and locations of charging stations are well chosen to suit the density of the city.
+- The battery range is sufficient enough to get between two points of the city.
+- Every car is equipped a GPS which allows the system to locate its position accurately.
 - The GPS of cars cannot be switched off by users.
-- Every user paid a deposit before they use the car.
 - Every user has a smartphone always connected to the Internet.
-- The position of the user is calculated by his smartphone and is accurate enough to be able to say he is close to the car ( Around 5m accuracy ).
+- The position of the user is calculated by his smartphone and is accurate enough to be able to say that he/she is close to the car ( Around 5m accuracy ).
 - Every user has a valid payment to use the cars.
 - Every car is not damaged before users reserve it.
 - Every user can only reserve/use one car at a time.  
-- The car is always connected to the management system.
+- The car is always connected to the management system through 4G/3G.
 - Every user registers their account with real identity information that is verified by the operator.
 - Every user only registers one account.
 - Users rent a car only for their personal use or for their friends, but the driver of the car can only be the user who rents the car.
-- Cars will be serviced at least once a month. // why?
+- Cars will be serviced at least once a month to guarantee that all the cars are working.
 - Cars report their variables to the system on a real-time basis. This way the information available in the database is always accurate and up-to-date.
 - The users having a valid status in the database have a valid payment information.
 - We assume that the user can delete a reservation, but will pay the 1€ fee.
-
-#### 4. Assumptions
-
 - We assume that the city is fully covered with 3G/4G network.
 - We assume that the car have a system that exposes an API to check the status of the car (location, battery level, is charging, number of passengers)
-- We assume
-
-    __Brain storming for domain properties__
-    we will consider that ASSUMPTIONS are more user and car oriented (in the scope of our company)(How the user behaves how the connection of the car behaves... etc  ), where as the domain properties are more general (city specific ... )
-
-    The city where PowerEnjoy operates is a medium to big size city. The city is equipped with charging stations everywhere ...
-
-    Text assumptions: maybe what the text says and our way of understanding it  <====
 
 \pagebreak
 
@@ -162,21 +142,23 @@ available for the users.
 
 __Car status__: The set of variables that describes the status of the car, this includes but is not limited to: battery level, position, mechanical problems, availability (Free, booked, in a ride), //TODO ADD MORE IF NEEDED
 
+\pagebreak
+
 #### 6. System architecture
 
-Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC pattern, so with just one server application we manage both web application and mobile application, as Fig.1.     
+Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC design pattern, so with just one server application we manage both web application and mobile application. The following diagram describes the architecture of the proposed system.  
 
 ![Application architecture](RASD/resources/Architecture.png)
-#### 7. Identifying stakeholders
-We can image if we have a company who wants to
-manage the car-sharing service in an efficient way on mobile application or a government who want to improve the current taxi service in terms of usability, efficiency and cost, so our stakeholders are either company or government.
+
+#### 7. Stakeholders
+
+The stakeholder of our application is a company that wants to introduce the car sharing service to a city. The company is sponsored by the government and some private companies as it improves the carbon footprint of the country.
 
 #### 8. Reference documents
 
-Sample Document: RASD sample from Oct. 20 lecture
-Special Ducument: Assignments AA 2016-2017
-• IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements
-
+* Assignments AA 2016-2017
+* Sample Document: RASD sample from Oct. 20 lecture
+* IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements
 
 \pagebreak
 
@@ -184,13 +166,13 @@ Special Ducument: Assignments AA 2016-2017
 
 The following actors will be using the application:
 
-#### 1. Visitor
+#### Visitor
 The person that visits the website or the mobile application without being registered. His access to the application is limited.
 
-#### 2. User
+#### User
 The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device. The user has access from both the mobile application and web interface.
 
-#### 3. Operator
+#### Operator
 The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
 
 
