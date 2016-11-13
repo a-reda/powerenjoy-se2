@@ -123,7 +123,7 @@ assert ReservationIsUnique {
 			implies r != r1
 }
 
-pred example { 
+pred PowerEnjoy { 
 	#Client = 3
 	#CurrentReservation = 2
 	#Car = 2
@@ -136,4 +136,4 @@ pred addReservation(c: Client, r: CurrentReservation, car: Car) {
 
 run addReservation
 check ReservationIsUnique
-run example 
+run PowerEnjoy
