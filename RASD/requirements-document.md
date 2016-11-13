@@ -59,7 +59,7 @@
 
 #### 2. Goals
 
-##### 1.Users
+##### 1. Users
 
 - G[1] Allows users to register in the PowerEnjoy application
 - G[1] Allows registered users to login using their credentials
@@ -72,12 +72,12 @@
 - G[8] Allows users to check their rides history.
 - G[9] Allows users to the user should be able to enable economy mode.
 
-##### 2.System
+##### 2. System
 - G[10] Allows systems to keep real-time data about the car variables.
 - G[11] Reservations should time-out if the user doesn't check-in the car.
 - G[12] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
 
-##### 3.Operator
+##### 3. Operator
 - G[13] Allows the operator to validate the identity and driving license of the user after checking them personally.
 - G[14] Allows the operator  to verify the damaged and faulty cars.
 - G[15] Allows the operator can monitor the position of the cars.
@@ -164,13 +164,13 @@ Our system contains mobile application, WEB application and server. We will impl
 
 The following actors will be using the application:
 
-#### 1.Visitor
+#### 1. Visitor
 The person that visits the website or the mobile application without being registered. His access to the application is limited.
 
-#### 2.User
+#### 2. User
 The person that rents the electric cars using the application.The client has a smartphone connected to the Internet and has the mobile application installed in his device. The user has access from both the mobile application and web interface.
 
-#### 3.Operator
+#### 3. Operator
 The employee that supervises the operations and verifies the driving licenses.We consider that the employees of PowerEnjoy are all operators. This access grants the user the ability to manage (CRUD) the cars and users. They are the supervisors of the cars fleet. The operator is the agent that takes care if the maintenance of the cars. He can see all the cars variables.
 
 
@@ -180,7 +180,7 @@ The employee that supervises the operations and verifies the driving licenses.We
 
 #### 1. Functional Requirements
 
-##### 1.User requirements
+##### 1. User requirements
 
 - The user should be able to register in the system.
     + The user can register using his phone number, and system do not need complex registration.
@@ -214,7 +214,7 @@ The employee that supervises the operations and verifies the driving licenses.We
     + The user must bind his credit card and payment information before the first ride.
     + The system can save the user economy mode.
 
-##### 2.System Requirements
+##### 2. System Requirements
 
 - The system should be able to locate all the cars.
     + The system must be able to detect the car's position according to the car's GPS.
@@ -226,7 +226,7 @@ The employee that supervises the operations and verifies the driving licenses.We
 - The system must using a fixed fee for each passengers, and then multiple the total fee of all the passengers and reduce the price of a sharing discount percentage.
 - The system must be able to check the battery empty and the parking areas to be recharged, so the system should apply a discount on the last ride.
 
-##### 3.Operator requirements
+##### 3. Operator requirements
 
 - Verify the driving license and identity of the drivers
     + when the car drivers registered, the operator should check the upload driving license and identity of the drivers.
@@ -393,7 +393,146 @@ correct.
 
 ![Sequence diagram_reservation](RASD/resources/UML/Sequence_diagram_reservation.png)
 
-
 ### 6. Alloy Model and Checking
+```
+open util/boolean
+/*
+one sig PowerEnjoy {
+				fleet: set Car,
+				clients: set Client,
+				operators: set Operator,
+				chargingStations: set ChargingStation,
+				safeAreas: set SafeArea,
+				reservations: set Reservation,
+				rides: set Ride
+}*/
 
+abstract sig  User {
+}
+
+sig Client extends User {
+				reservations: some Reservation
+}
+
+sig Operator extends User {
+}
+
+sig Car {
+		licensePlate: one LicensePlate,
+		batteryLevel: Int,
+		position: one Position,
+		isLocked: one Bool,
+		isCharging: one Bool,
+		isOnRide: one Bool
+} {
+		batteryLevel <= 100
+		batteryLevel >= 0
+}
+// If a car is charging it's not in a ride
+fact isOnRideNotCharg {
+		all c: Car | (c.isCharging = True) => ( c.isOnRide = False )
+}
+fact isOnRideNotLock {
+		all c: Car | ( c.isOnRide = True ) => ( c.isLocked = False )
+}
+/*
+fact OneCarOneReserv {
+		no c: Car, r1, r2: CurrentReservation  | r1 != r2 and r1.car = c and r2.car = c
+}*/
+
+sig LicensePlate {}
+
+sig Position {
+		latitude: Int, //Float
+		longitude: Int //Float
+} {
+		latitude >= 0
+		longitude >=0
+}
+
+abstract sig Reservation {
+		car: one Car,
+		ride: lone Ride,
+		bill: one Bill
+}
+
+sig CurrentReservation extends Reservation {}
+sig PastReservation extends Reservation {}
+fact AllReservationHaveClient {
+		all r: Reservation | one c: Client | r in c.reservations
+}
+/*
+fact allReservedCarsNotOnRide {
+		no c: Car, r1, r2: CurrentReservation | r1 != r2 and c in r1.car and c in r2.car
+}*/
+
+sig  Ride {
+		startPoint: one Position,
+		endPoint: one Position,
+		passenger: Int,
+} {
+	startPoint != endPoint
+	passenger >= 0
+}
+// All ride are in a reservation
+fact {
+		all r: Ride | one res: Reservation | r = res.ride
+}
+
+sig  Bill {
+}
+
+sig ChargingStation {
+		position: one Position,
+		numberPlugs: Int,
+		pluggedCars: set Car
+}
+
+//If car is plugged, status is Charging
+fact carPlugged {
+		all c: Car | one ch: ChargingStation |  (c.isCharging = True)  => c in ch.pluggedCars// return all the set of cars
+}
+
+sig SafeArea {
+		borders: set Position
+} {
+	#borders >= 3
+}
+// License plate is unique
+fact licensePlateUnique {
+		all c1, c2: Car | (c1 != c2) => c1.licensePlate != c2.licensePlate
+}
+// A Reservations has a unique client
+fact reservationBelongsToOneUser {
+		no r: Reservation | some c1, c2: Client  | c1 != c2 and r in c1.reservations and r in c2.reservations
+}
+// A User can only have one current reservation
+fact {
+		no c: Client | some r1, r2: CurrentReservation | r1 != r2 and r1 in c.reservations and r2 in c.reservations
+}
+// Bill has one reservation
+fact billUniqueReservation {
+		no r1, r2: Reservation | r1 != r2 and r1.bill = r2.bill
+}
+// To check
+assert ReservationIsUnique {
+		all disj r, r1: Reservation , c: Client | r in c.reservations and r1 in c.reservations
+			implies r != r1
+}
+
+pred example {
+	#Client = 3
+	#CurrentReservation = 2
+	#Car = 2
+    #Ride = 2
+}
+
+pred addReservation(c: Client, r: CurrentReservation, car: Car) {
+		c.reservations = c.reservations + r
+}
+
+run addReservation
+check ReservationIsUnique
+run example
+```
 #### Hours worked
