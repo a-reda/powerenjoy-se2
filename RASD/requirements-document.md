@@ -11,6 +11,8 @@
   4. Assumptions
   5. Glossary
   6. System architecture
+  7. Identifying stakeholders
+  8. Reference documents
 2. Actors
   1. Vistor
   2. User
@@ -42,20 +44,15 @@
 
 #### 1. Description of the project
 
-  - This Project is based on mobile  application.
-  - The target population is clients and drivers.
-  - This system is aimed to provide more efficient and reliable services for users to decrease their cost in daily travel. In addition, this system can offer more chances for drives to take more clients to get more profits.  
-  - The complete using process of system is that:
+This Project is a car sharing service based on Android mobile application, providing more efficient and reliable services for users to pick up cars near their zones located by GPS.
 
-  __first__: Open the application(the user who first use this system should bind a credit card andwithout a complicated registration process).
+The system should provide the functions that new user can register and new driver can verify the driving license. In addition, the new user can login using his phone number and credential information.
 
-  __second__：system uses GPS to get the position, you'll see the number and location of cars nearby.
+Once the user login using the mobile application , he can be able to take a car immediately or reserve a car in a certain time, the position of the cars will be calculated by the system amd the map which has been embedded in the application will monitor the location of the cars.  
 
-  __third__：Book now or set time point to book cars in advance. Meanwhile, system offers Estimated arriving time and approximate price and driver information, and real-time view of the vehicle route through the APP.
+Meanwhile, system offers Estimated arriving time and approximate price and driver information, and real-time view of the vehicle route through the APP. When arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
 
-  __Fourth__：when arrived the destination, a bound credit card  will be  charged automatically according to mileage and service time.
-
-- Some other settings:The users who sharing cars will be given discount.Drivers and passengers can evaluate each other via software.
+Some other settings: The users who sharing cars will be given discount. Drivers and passengers can evaluate each other via software.
 
 #### 2. Goals
 
@@ -157,6 +154,16 @@ __Car status__: The set of variables that describes the status of the car, this 
 Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC pattern, so with just one server application we manage both web application and mobile application, as Fig.1.     
 
 ![Application architecture](RASD/resources/Architecture.png)
+#### 7. Identifying stakeholders
+We can image if we have a company who wants to
+manage the car-sharing service in an efficient way on mobile application or a government who want to improve the current taxi service in terms of usability, efficiency and cost, so our stakeholders are either company or government.
+
+#### 8. Reference documents
+
+Sample Document: RASD sample from Oct. 20 lecture
+Special Ducument: Assignments AA 2016-2017
+• IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements
+
 
 \pagebreak
 
