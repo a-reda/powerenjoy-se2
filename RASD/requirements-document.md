@@ -2,40 +2,28 @@
 
 ### __Content__
 1. Introduction
-  1. Description of the project
-  2. Goals
-    1. User
-    2. System
-    3. Operator
-  3. Domain properties
-  4. Assumptions
-  5. Glossary
-  6. System architecture
-  7. Identifying stakeholders
-  8. Reference documents
+    1. Description
+    2. Goals
+    3. Domain assumptions
+    4. Glossary
+    5. System architecture
+    6. Identifying stakeholders
+    7. Stakeholders
+    8. Reference documents
 2. Actors
-  1. Vistor
-  2. User
-  3. Operator
+    1. Vistor
+    2. User
+    3. Operator
 3. Functional and Non-functional Requirements
-  1. Functional Requirements
-    1. User Requirements
-    2. System Requirements
-    3. Operator Requirements
-  2. Non-functional Requirements  
-    1. Mock-up
-    2. System Quality
-    3. Technology Enablers
+    1. Functional Requirements
+    2. Non-functional Requirements  
 4. Scenarios
-  1. Scenario 1
-  2. Scenario 2
-  3. Scenario 3
-  4. Scenario 4
 5. UML Class Diagrams
-  1. Class Diagram
-  2. Use Case Diagram
-  3. Use Case Diagram
-  4. Sequence Diagram
+    1. Class Diagram
+    2. Use cases diagrams
+    3. Use cases description
+    4. Sequence diagrams
+    5. State diagram
 6. Alloy Model and Checking
 
 \pagebreak
@@ -107,7 +95,7 @@ The following always holds in the environment where the application will be depl
 
 \pagebreak
 
-#### 5. Glossary
+#### 4. Glossary
 
 In this section, we define the frequently used words in order to avoid ambiguity. These are the most important concepts used in the documentation of the project.
 
@@ -146,17 +134,17 @@ __Unverified account__: An account that was not verified (Photo ID and driving l
 
 \pagebreak
 
-#### 6. System architecture
+#### 5. System architecture
 
 Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC design pattern, so with just one server application we manage both web application and mobile application. The following diagram describes the architecture of the proposed system.  
 
 ![Application architecture](RASD/resources/Architecture.png)
 
-#### 7. Stakeholders
+#### 6. Stakeholders
 
 The stakeholder of our application is a company that wants to introduce the car sharing service to a city. The company is sponsored by the government and some private companies as it improves the carbon footprint of the country.
 
-#### 8. Reference documents
+#### 7. Reference documents
 
 * Assignments AA 2016-2017
 * Sample Document: RASD sample from Oct. 20 lecture
@@ -310,7 +298,7 @@ Maria is a very concerned about the environment and wants to adopt new habits to
 
 #### 1. Class diagram
 
-![Class](RASD\resources\UML\class-diagram.png) // TODO
+![Class diagram](RASD/resources/UML/class-diagram.png)
 
 \pagebreak
 
@@ -424,6 +412,12 @@ correct.
 ![Sequence Diagram - Login](RASD/resources/UML/Sequence_diagram_login.png)
 
 ![Sequence Diagram - Reservation ](RASD/resources/UML/Sequence_diagram_reservation.png)
+
+\pagebreak
+
+#### 5. State diagram
+
+![State Diagram ](RASD/resources/UML/State_diagram.png)
 
 \pagebreak
 
@@ -573,8 +567,6 @@ run PowerEnjoy
 
 ![Predicate 2 ](RASD/alloy/ss3.png)
 
-\pagebreak
-
 ![World generated](RASD/alloy/world.png)
 
 \pagebreak
@@ -592,7 +584,42 @@ run PowerEnjoy
 ## Hours worked
 
 #### Reda Aissaoui
+- 27/10/16: 30m
+- 28/10/16: 2h
+- 27/10/16: 3h Meeting
+- 02/11/16: 3h
+- 03/11/16: 3h Meeting
+- 07/11/16: 2h
+- 08/11/16: 2h
+- 09/11/16: 3h
+- 10/11/16: 5h Meeting
+- 12/11/16: 2h
+- 13/11/16: 4h
 
 #### Jinling Xing
 
+- 27/10/16: 3h
+- 28/10/16: 4h
+- 03/11/16: 6h
+- 06/11/16: 3h
+- 08/11/16: 2h
+- 10/11/16: 3h
+- 13/11/16: 4h
+
 #### Lidong Zhang
+
+- 26/10/16: 30m
+- 27/10/16: 3h group meeting
+- 28/10/16: 30m
+- 29/10/16: 1h
+- 02/11/16: 1.5h
+- 03/11/16: 3h group meeting
+- 04/11/16: 30m
+- 05/11/16: 30m
+- 06/11/16: 2h
+- 07/11/16: 2h
+- 10/11/16: 5h group meeting
+- 10/11/16: 2h
+- 11/11/16: 2.5h
+- 12/11/16: 5h
+- 13/11/16: 4h
