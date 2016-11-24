@@ -39,6 +39,8 @@ In this document, more technical details will be presented than the RASD about t
 
 This document aims to present how we implement the system specifically.   
 
+\pagebreak
+
 ## 2. Architecture design
 ### 1. Overview
 ### 2. High level components and their interaction
@@ -52,6 +54,17 @@ The figure above describes the high level components and their interaction. It i
 ### 4. Deploying view
 
 ![Deploying view](DD/resources/deployingview/deploying-view.png){ width=90% }
+
+### 5. Run-time view
+
+Sequence diagrams for
+- Login process W
+- Reservation process RA  
+- Billing process RA
+- Check-in car process J
+- Check-out car process J
+- Money saving process W
+
 
 ### 7. Selected architectural styles and pattern
 
