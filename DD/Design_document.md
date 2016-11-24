@@ -47,6 +47,12 @@ This document aims to present how we implement the system specifically.
 
 The figure above describes the high level components and their interaction. It is based on the application architecture presented in the RASD Document // TODO Add section //. The REST Server is the main component in our application as it is the central point between the GUI (Web and mobile), the database and the cars. It holds the business logic of our system. This component will be detailed in a lower level in the following section.
 
+\pagebreak
+
+### 4. Deploying view
+
+![Deploying view](DD/resources/deployingview/deploying-view.png){ width=90% }
+
 ### 7. Selected architectural styles and pattern
 
 ##### Application architecture
