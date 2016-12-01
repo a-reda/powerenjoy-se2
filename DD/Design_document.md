@@ -50,9 +50,9 @@ This document aims to present how we implement the system specifically.
 The figure above describes the high level components and their interaction. It is based on the application architecture presented in the RASD Document // TODO Add section //. The REST Server is the main component in our application as it is the central point between the GUI (Web and mobile), the database and the cars. It holds the business logic of our system. This component will be detailed in a lower level in the following section.
 
 \pagebreak
-### 3.component view
+### 3.Component view
 
-NotificationHlper : Manage notifications, noticing the user that they are already close to the car.
+Notification Helper : Manage notifications, noticing the user that they are already close to the car.
 
 Ride Controller : manage rides,
 
