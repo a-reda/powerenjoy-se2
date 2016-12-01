@@ -68,6 +68,8 @@ Router : route the request to related controller,
 
 Clients : mobile application based on Android and web application (browser),
 
+User Controller : manage user, access log in or sign in request.
+
 
 ### 4. Deploying view
 
