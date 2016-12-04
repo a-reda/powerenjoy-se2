@@ -37,7 +37,22 @@
 
 In this document, more technical details will be presented than the RASD about the PowerEnjoy system.
 
-This document aims to present how we implement the system specifically.   
+As we compeleted before in the RSAD, we have shown a general system what it looks like and how it works. This document aims to present how we implement the system specifically includes compnent view, Run-time view, deploying view, algorithm design,etc.  
+
+### 2. Scope
+The project PowerEnjoy, which is a service based on mobile application( based on Android) and web application.
+The system allows user to reservate a electric car via mobile app and web app.
+
+### 3. Definition, acronyms, abbreviations
+- RASD: requirements analysis and specifications document
+
+- DD: design document
+
+- API: application programming interface; it is a common way to communicate with another system or service.
+
+
+### 4. Document structure
+
 
 \pagebreak
 
@@ -52,23 +67,23 @@ The figure above describes the high level components and their interaction. It i
 \pagebreak
 ### 3.component view
 
-NotificationHlper : Manage notifications, noticing the user that they are already close to the car.
+- NotificationHlper : Manage notifications, noticing the user that they are already close to the car.
 
-Ride Controller : manage rides,
+- Ride Controller : manage rides,
 
-Reservation Controller : manage reservation,
+- Reservation Controller : manage reservation,
 
-Bill Controller : manage payment method and bills,
+- Bill Controller : manage payment method and bills,
 
-Economic Controller : manage money saving request,
+- Economic Controller : manage money saving request,
 
-Car Controller : manage the status and availability of cars,
+- Car Controller : manage the status and availability of cars,
 
-Router : route the request to related controller,
+- Router : route the request to related controller,
 
-Clients : mobile application based on Android and web application (browser),
+- Clients : mobile application based on Android and web application (browser),
 
-User Controller : manage user, access log in or sign in request.
+- User Controller : manage user, access log in or sign in request.
 
 
 ### 4. Deploying view
@@ -79,11 +94,16 @@ User Controller : manage user, access log in or sign in request.
 
 Sequence diagrams for
 - Login process W
+
+In this sequence diagram it can be shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matchs the username then the UserController returns login_success message to the Mobile applicaiton so that user can login into the system. Otherwise, the system shows error messages.
+
 - Reservation process RA  
 - Billing process RA
 - Check-in car process J
 - Check-out car process J
 - Money saving process W
+
+In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system.  
 
 
 ### 7. Selected architectural styles and pattern
