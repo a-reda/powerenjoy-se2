@@ -65,9 +65,13 @@ The system allows user to reservate a electric car via mobile app and web app.
 The figure above describes the high level components and their interaction. It is based on the application architecture presented in the RASD Document // TODO Add section //. The REST Server is the main component in our application as it is the central point between the GUI (Web and mobile), the database and the cars. It holds the business logic of our system. This component will be detailed in a lower level in the following section.
 
 \pagebreak
-### 3.component view
+### 3.Component view
 
+<<<<<<< HEAD
 - NotificationHlper : Manage notifications, noticing the user that they are already close to the car.
+=======
+Notification Helper : Manage notifications, noticing the user that they are already close to the car.
+>>>>>>> 81ceddaf99022d1704e632c7367e5f8e7abbe353
 
 - Ride Controller : manage rides,
 
