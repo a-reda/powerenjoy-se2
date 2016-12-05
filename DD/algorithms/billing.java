@@ -1,4 +1,3 @@
-
 int PRICE_PER_MIN = config.getPricePerMin();
 
 public Bill caculate_Bill(Reservation r)
@@ -22,5 +21,5 @@ public Bill caculate_Bill(Reservation r)
 
    float ChargedAmount = BaseFee * (1 - discount );
 
-   return new Bill(new Date (), ChargedAmount);  
+   return new Bill(new Date (), ChargedAmount);
 }
