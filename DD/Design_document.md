@@ -41,16 +41,30 @@ As we compeleted before in the RSAD, we have shown a general system what it look
 
 ### 2. Scope
 The project PowerEnjoy, which is a service based on mobile application( based on Android) and web application.
-The system allows user to reservate a electric car via mobile app and web app.
+The system allows user to reservate a electric car via mobile app and web app. When user wants to reservate a car the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will will show the concrete steps for users to get money saving or a discount once their situation qualify the requirement.
+
+The main purpose of the system to make people's life more convenient and meet the needs of the public while don't need them to buy a car. Also its a way to protect the environment.
 
 ### 3. Definition, acronyms, abbreviations
 - **RASD**: requirements analysis and specifications document.
 - **DD**: design document.
-- **API**: application programming interface; it is a common way to communicate with another system or service.
-- **GUI**: **G**raphical **U**ser **I**nterface.
+- **API**: application programming interface: it is a common way to communicate with another system or service.
+- **GUI**: Graphical User Interface.
+- **MVC**: Modle view controller.
+- **REST**: Representational state transfer (REST), it is a structure style of sfotware.
 
 ### 4. Document structure
 
+- Introduction: This part briefly introduces the purpouse of this document. And it also states the definition of some special words to help reader understand this document.  
+- Archtecture Design: This sction contains 8 parts:
+  1. Overview:
+  2. High level components and their interaction:
+  3. Compnent view:
+  4. Deploying view:
+  5. Run-time view:
+  6. Compnent interface:
+  7. Selected architectural styles and patterns:
+  8. Other design decisions    
 
 \pagebreak
 
@@ -126,7 +140,7 @@ The billing process is started at the end of a ride. The ride controller signals
 - Check-out car process J
 - Money saving process W
 
-In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system.  
+In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
 
 
 ### 7. Selected architectural styles and pattern
