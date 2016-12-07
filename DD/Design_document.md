@@ -70,6 +70,7 @@ The main purpose of the system to make people's life more convenient and meet th
 
 ## 2. Architecture design
 ### 1. Overview
+
 ### 2. High level components and their interaction
 
 ![High Level Components](DD/resources/architecture/high-level-component.png)
@@ -137,7 +138,14 @@ The user starts the process, in the mobile application, by searching for cars cl
 The billing process is started at the end of a ride. The ride controller signals the bill controller that a ride has ended. The reservation relative to that ride is passed as a parameter as it contains many variables that are used in calculating the bill.
 
 - Check-in car process J
+
+After reservation, the user need to ask for a check-in process. The user controller send a required message to the car controller and the car controller transfer the ride information to the reservation controller. If this process success, the car controller will transfer the success information to the user and display the ride information on the device of user. Meanwhile, the ride controller received the ride information to start ride.
+
 - Check-out car process J
+
+When the ride process finished, the user ask for check out and send a check-out request to bill controller. The bill controller transfer the request to the ride controller to get the destination information and the bill controller calculate the bill of the certain ride and then return the bill information to the user.
+
+
 - Money saving process W
 
 In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
@@ -153,6 +161,73 @@ The fact that the business logic is held at the level of our servers, the client
 Model-View-Controller patter is used in both the web server and the application server.
 
 \pagebreak
+
+## 5.Required Traceability
+The design document is aiming to explain the goals in the RASD.
+
+G[1] Allows users to register in the PowerEnjoy application
+  - The User controller
+
+G[2] Allows registered users to login using their credentials
+  - The User controller
+
+G[3] Allows users to modify their information.
+  - The User controller
+
+G[4] Allows users to see the cars around him or around an address on the application.
+  - The user controller
+  - The localization controller
+
+G[5] Allows users to reserve cars up to one hour in advance.
+  - The reservation controller
+
+G[6] Allows users to cancel a reservation.
+  - The reservation controller
+  - The user controller
+
+G[7] Allows users to unlock and check-in the reserved car.
+  - The user controller
+  - The ride controller
+  - The reservation controller
+
+G[8] Allows users to see how much the previous ride cost along with more ride information.
+  - The bill controller
+  - The user controller
+
+G[9] Allows users to check their rides history.
+  - The user controller
+
+G[10] Allows users to the user should be able to enable economy mode.
+  - The reservation controller
+  - The economic controller
+
+G[11] Allows users to see where to park the car in order to get discount.
+  - The localization controller
+  - The user controller
+
+G[12] Allows systems to keep real-time data about the car variables.
+  - The car controller
+
+G[13] Reservations should time-out if the user doesn't check-in the car.
+  - The car controller
+  - The user controller
+  - The reservation controller
+
+G[14] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+  - The ride controller
+  - The bill controller
+  - The car controller
+
+G[15] Allows the operator to validate the identity and driving license of the user after checking them personally.
+  - The car controller
+
+G[16] Allows the operator  to verify the damaged and faulty cars.
+  - The car controller
+
+G[17] Allows the operator monitor the position of the cars.
+  - The car controller
+  - The localization controller
+
 
 ## 3. Algorithm Design
 ### 1. Billing process
@@ -193,10 +268,59 @@ public Bill caculate_Bill(Reservation r)
 }
 ```
 
-# Hours Worked
+
+### 2. Reservation process
+When the user asked for a reservation request, the application has to monitor the location of the user.
+In addtion, the application allows the user to cancel reservation.
+
+If the users ask for sharing services, the reservation controller need to merge the requests together and monitor the information on the user interface.  
+
+
+```java
+// A new request coming
+public request(Destination destination)
+{
+ isWaitingOrdered = true;
+ User.request(destination);
+}
+//Monitor the location and cars nearby
+public updateLocation(double[] location)
+{
+  User.updateLocation(location);
+}
+//Allow user to cancel reservation
+public cancelReservation()
+{
+   if (isWaitingOrdered) {
+   isWaitingOrdered = false;
+   User.cancelReservation();
+}
+//If users requried sharing service
+public MergedRequest (request r)
+{  
+  // New request asked for a sharing service
+  // Suppose all the cars have 4 seats for passengers
+  if (newrequest.info(r) && car.seat != 4)
+            matching (newrequest,request);    
+   return MergedRequest(newrequest,request);
+}
+
+```
+
+
+
+## 5.Requirements Traceability
+
+## 6.Reference
+## 7.Hours Worked
 
 ### Reda Aissaoui
 - 23/11/2016 4h
 - 24/11/2016 4h
 - 01/12/2016 4h
 - 05/12/2016 1h
+### Xing Jinling
+- 23/11/2016 3h
+- 24/11/2016 3h
+- 01/12/2016 3h
+- 07/12/2016 3h
