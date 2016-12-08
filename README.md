@@ -10,8 +10,8 @@
 
 #### Project schedule
 
-- Group registration deadline __16/10/2016__
-- RASD submission deadline __13/11/2016__
+- ~~Group registration deadline __16/10/2016__~~
+- ~~RASD submission deadline __13/11/2016__~~
 - DD submission deadline __11/12/2016__
 - Testing document submission deadline __15/01/2017__
 - Project management deadline __22/01/2017__
