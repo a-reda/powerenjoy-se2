@@ -57,15 +57,17 @@ The main purpose of the system to make people's life more convenient and meet th
 
 - Introduction: This part briefly introduces the purpouse of this document. And it also states the definition of some special words to help reader understand this document.  
 - Archtecture Design: This sction contains 8 parts:
-  1. Overview:
-  2. High level components and their interaction:
-  3. Compnent view:
-  4. Deploying view:
-  5. Run-time view:
-  6. Compnent interface:
-  7. Selected architectural styles and patterns:
-  8. Other design decisions    
-
+  - Overview:this esction explains the architecture of the PowerEnjoy system
+  - High level components and their interaction:In this part, we give the communication mechanism of each components
+  - Compnent view: this part shows all the controllers and models in this application
+  - Deploying view: this section gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly
+  - Run-time view: this section contians the sequence diagrams of different components and how to work together and deliver the messages
+  -  Compnent interface: this is the part involves  what we have down in the RASD
+  - Selected architectural styles and patterns: the application involves the architecture and why this architecture is suitable for this application
+  -  Other design decisions    
+- Algorithm design: this part is the most important and difficult part in the DD. From three algorithm, we can describe how things going according to the logic and design.
+- User Interface design: in this part, we involve what we have done in the RASD
+- Requirements Traceability: this section shows detailed description of the architecture of the DD.
 \pagebreak
 
 ## 2. Architecture design
@@ -270,40 +272,53 @@ public Bill caculate_Bill(Reservation r)
 
 
 ### 2. Reservation process
-When the user asked for a reservation request, the application has to monitor the location of the user.
-In addtion, the application allows the user to cancel reservation.
-
-If the users ask for sharing services, the reservation controller need to merge the requests together and monitor the information on the user interface.  
+When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addtion, the application allows the user to cancel reservation and it can also monitor the ride information.
 
 
 ```java
-// A new request coming
-public request(Destination destination)
+//Define the reservation time
+public ReservationTimeValid(time)
 {
- isWaitingOrdered = true;
- User.request(destination);
+  if (time.Nowtime)
+  return true;
+  else {
+          if(time.Nowtime<=1)
+          return new time;
+          else
+          return false;
+        }
+}
+public Reservation (Car c, User u)
+{
+
+  if (c.status=="available"&& u.status=="available"&&ReservationTimeValid(time))
+  {
+    isThisReservation= true;
+    User.startRide();
+  }
+  else if (time.timeNow<=1)// the user made a reservation one hour ahead of the reservation
+  return Reservation(Reservation time(), User ID());
+
+}
+//Create a new reservation
+public createReservation()
+{
+   Reservation r = new reservation;
+   User.Reservation();
+}
+//Allow user to cancel reservation
+public cancelReservation()
+{
+   if (isThisReservation) {
+   isThisReservation = false;
+   User.cancelReservation();
 }
 //Monitor the location and cars nearby
 public updateLocation(double[] location)
 {
   User.updateLocation(location);
 }
-//Allow user to cancel reservation
-public cancelReservation()
-{
-   if (isWaitingOrdered) {
-   isWaitingOrdered = false;
-   User.cancelReservation();
-}
-//If users requried sharing service
-public MergedRequest (request r)
-{  
-  // New request asked for a sharing service
-  // Suppose all the cars have 4 seats for passengers
-  if (newrequest.info(r) && car.seat != 4)
-            matching (newrequest,request);    
-   return MergedRequest(newrequest,request);
-}
+
 
 ```
 
