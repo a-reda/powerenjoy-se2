@@ -138,7 +138,7 @@ __Unverified account__: An account that was not verified (Photo ID and driving l
 
 Our system contains mobile application, WEB application and server. We will implement a client-server architecture based on common REST API and MVC design pattern, so with just one server application we manage both web application and mobile application. The following diagram describes the architecture of the proposed system.  
 
-![Application architecture](RASD/resources/Architecture.png)
+![Application architecture](RASD/resources/main-architecture.jpg)
 
 #### 6. Stakeholders
 
@@ -624,3 +624,7 @@ run PowerEnjoy
 - 11/11/16: 2.5h
 - 12/11/16: 5h
 - 13/11/16: 4h
+
+## Changelog
+
+- __1.1__ Modified system architecture by adding the car system. *8/12/16*
