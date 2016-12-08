@@ -28,7 +28,7 @@
 
 ###### 6. Reference
 
-###### 7. Hours of working
+###### 7. Hours worked
 
 \pagebreak
 
@@ -46,12 +46,17 @@ The system allows user to reservate a electric car via mobile app and web app. W
 The main purpose of the system to make people's life more convenient and meet the needs of the public while don't need them to buy a car. Also its a way to protect the environment.
 
 ### 3. Definition, acronyms, abbreviations
-- **RASD**: requirements analysis and specifications document.
-- **DD**: design document.
-- **API**: application programming interface: it is a common way to communicate with another system or service.
+- **RASD**: Requirements Analysis and Specifications Document.
+- **DD**: Design Document.
+- **API**: Application Programming Interface: it is a common way to communicate with another system or service.
 - **GUI**: Graphical User Interface.
-- **MVC**: Modle view controller.
-- **REST**: Representational state transfer (REST), it is a structure style of sfotware.
+- **MVC**: Model View Controller is a design pattern used for GUIs.
+- **REST**: Representational state transfer (REST), it is a structure style of software.
+- **DBMS**: Database Management System.
+- **CRUD**: The usual Create, Read, Update and Delete that a user or system can do.
+- **HTTP**: Hyper Text Transfer Protocol is the main protocol used for the world wide web.
+- **URI**: Uniform Resource Identifier which is the set of characters that identify the location of a resource
+- **JSON**: JavaScript Object Notation is a lightweight data-interchange format.
 
 ### 4. Document structure
 
@@ -68,16 +73,25 @@ The main purpose of the system to make people's life more convenient and meet th
 - Algorithm design: this part is the most important and difficult part in the DD. From three algorithm, we can describe how things going according to the logic and design.
 - User Interface design: in this part, we involve what we have done in the RASD
 - Requirements Traceability: this section shows detailed description of the architecture of the DD.
+
 \pagebreak
 
 ## 2. Architecture design
 ### 1. Overview
 
+![Application  Architecture](DD/resources/architecture/main-architecture.jpeg)
+
+As stated in the RASD document, we decided to have a 3-tier architecture. The figure above highlights the 3 tiers of our application:
+
+  - __Presentation tier__: Composed of he mobile application, web browser and web server, this tier takes care of formatting the data for user viewing.
+  - __Logic tier__: This tier holds the business logic  of the application. It is composed of the application server.
+  - __Persistence tier__: This tier persists the data used in our application. It is composed of a DBMS.
+
 ### 2. High level components and their interaction
 
 ![High Level Components](DD/resources/architecture/high-level-component.png)
 
-The figure above describes the high level components and their interaction. It is based on the application architecture presented in the RASD Document // TODO Add section //. The REST Server is the main component in our application as it is the central point between the GUI (Web and mobile), the database and the cars. It holds the business logic of our system.
+The figure above describes the high level components and their interaction. It is based on the application architecture presented in the RASD Document in the Section 5. The REST Server is the main component in our application as it is the central point between the GUI (Web and mobile), the database and the cars. It holds the business logic of our system.
 
 #### Web browser
 Any common web browser can be used by the client or the operator to access the application. The user and the operator have different access levels. The user can register, manage his account and reserve a car through the website. The operator, on the other hand, have more rights in the website. He can check the localization of all the cars despite their status. He can also do all CRUD operations on the cars and users. The operator can as well validate the users when he checks their driving license.
@@ -103,7 +117,7 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 - Notification Helper : Manage notifications, noticing the user that they are already close to the car.
 
-- Ride Controller : manage rides,
+- Ride Controller : manage rides.
 
 - Reservation Controller : manage reservation,
 
@@ -127,40 +141,93 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 ### 5. Run-time view
 
 Sequence diagrams for
-- Login process W
+- Login process
 
 In this sequence diagram it can be shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matches the username then the UserController returns login_success message to the Mobile application so that user can login into the system. Otherwise, the system shows error messages.
 
-- Reservation process RA  
+- Reservation process  
 
 The user starts the process, in the mobile application, by searching for cars close to him or around an address. The mobile application sends a request to the Car Controller (through the router). The location is passed as a parameter in the call. The location comes from the GPS module of the smartphone or is manually entered by the user. The Car Controller calls the Localization Controller to get all the cars close to the location. Upon return, the list is filtered and then displayed to the user, if it is not empty. The user can choose a car to reserve, it is then added as a reservation and marked as unavailable. To conclude the operation, a success message is displayed to the user.
 
-- Billing process RA
+- Billing process
 
 The billing process is started at the end of a ride. The ride controller signals the bill controller that a ride has ended. The reservation relative to that ride is passed as a parameter as it contains many variables that are used in calculating the bill.
 
-- Check-in car process J
+- Check-in car process
 
 After reservation, the user need to ask for a check-in process. The user controller send a required message to the car controller and the car controller transfer the ride information to the reservation controller. If this process success, the car controller will transfer the success information to the user and display the ride information on the device of user. Meanwhile, the ride controller received the ride information to start ride.
 
-- Check-out car process J
+- Check-out car process
 
 When the ride process finished, the user ask for check out and send a check-out request to bill controller. The bill controller transfer the request to the ride controller to get the destination information and the bill controller calculate the bill of the certain ride and then return the bill information to the user.
 
 
-- Money saving process W
+- Money saving process
 
 In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
 
 
 ### 7. Selected architectural styles and pattern
 
-##### Application architecture
-As stated in the RASD Document, we will be using the 3-tier client-server architecture. The presentation tier is composed of the mobile application and the website. The application layer is composed of two parts. The REST Server that exposes the REST API and holds the business logic. It can be consumed by the web server or the mobile application. In addition, it is a security barrier between the client and the database as it prevents direct accesses to the database by the user. The other component of the application layer is the web server. The web server takes care of formatting the data in webpages and communicating with the web browser. The last tier is the data tier which is, in this case, composed of only one database that takes care of persisting the data of the whole application.
+##### 3-tier for application architecture
+
+As stated in the RASD Document, we will be using the **3-tier client-server architecture**. The presentation tier is composed of the mobile application and the website. The application layer is composed of two parts. The REST Server that exposes the REST API and holds the business logic. It can be consumed by the web server or the mobile application. In addition, it is a security barrier between the client and the database as it prevents direct accesses to the database by the user.
+The other component of the application layer is the web server. The web server takes care of formatting the data in webpages and communicating with the web browser. The last tier is the data tier which is, in this case, composed of only one database that takes care of persisting the data of the whole application.
 The fact that the business logic is held at the level of our servers, the client-side of the application is kept as light as possible. Therefore, users can quickly access the application by installing it on their device or browsing the website. It also prevents the direct access to the database from the GUI which increases security.
 
-##### Servers application
-Model-View-Controller patter is used in both the web server and the application server.
+##### MVC for web server
+**M**odel-**V**iew-**C**ontroller is a design pattern that is commonly used for GUIs. It relies on three objects:
+
+- **Model**: is the logical structure of data used by the application.
+- **View**: all the elements that the user can interact with including buttons, text fields ...
+- **Controller**: connects the model and the view.
+
+The separation of concerns is the main motivation behind using MVC design pattern as it increases the possibility to reuse the components. It is important to note that in this case the controller in the web server does not perform any business logic on the data since the application server is the one to do it. The controller serves as a glue between the Model and the View.
+
+##### REST over HTTP
+
+**RE**presentational **S**tate **T**ransfer is the architectural style that we decided to use. REST is a lightweight way to make calls between the different machines of a client server application. REST is used in PowerEnjoy in almost all communications between the servers in our system. It relies on the HTTP Methods (GET, POST, PUT and DELETE).
+
+The motivation behind using REST is that it improves portability; our system may be integrated with any client since it is supported by almost any platform. By being stateless, it reduces the load on the application server since it does not have to keep track of the user sessions.
+
+Concerning security, authentication is required to communicate with the REST API and the data is encrypted using SSL.
+
+The data will be embedded in a JSON format in the body of the HTTP requests.
+
+The following table shows the main REST endpoints that are needed in our application. The Method sections shows the HTTP method used to do the REST call (GET,POST,PUT,DELETE). The endpoint is the URI that should be queried. Arguments are the parameters sent in the body in a JSON format. The response contains the parameters received in the body of the response, formatted in JSON also.
+
+| **Method** | **Endpoint**     | **Arguments**                   | **Response**               |
+|:-----------|:-----------------|:--------------------------------|:---------------------------|
+| POST       | /login           | **username** Username of        | **token** Token to use for |
+|            |                  | the user that wants to connect  | further requests           |
+|            |                  | **password** Password entered   | **message** Authentication |
+|            |                  | by the user                     | status                     |
+|            |                  |                                 |                            |
+| POST       | /cars/locate     | **location** GPS coordinates of | **carsList** List of cars  |
+|            |                  | user or entered address         | available around           |
+|            |                  |                                 |                            |
+| GET        | /reserve/:id     |                                 | **message** To signal      |
+|            |                  |                                 | success or failure         |
+|            |                  |                                 |                            |
+| DELETE     | /reserve/:id     |                                 | **message** To signal      |
+|            |                  |                                 | success or failure         |
+|            |                  |                                 |                            |
+|            |                  |                                 |                            |
+| POST       | /rides/end       | **ride**  ride to end           | **message** To signal      |
+|            |                  |                                 | success or failure         |
+|            |                  |                                 |                            |
+| POST       | /moneysaving     | **location** GPS coordinates of | **chStation** Charging     |
+|            |                  | user or entered address         | station to get discount    |
+|            |                  |                                 |                            |
+|            |                  |                                 |                            |
+| GET        | /bills           |                                 | **bills** Past bills of    |
+|            |                  |                                 | user                       |
+|            |                  |                                 |                            |
+| GET        | /cars/:id/unlock |                                 | **message** To signal      |
+|            |                  |                                 | success or failure         |
+|            |                  |                                 |                            |
+
+The authentication is taken care by REST through the `GET /login` endpoint. When this user is sent and the credentials are verified, the server sends back a token that should always be included for further requests. The token puts the server into context as it refers uniquely to a single user. Given the fact that REST API is stateless, this is how the server knows which "state" should be used.
 
 \pagebreak
 
@@ -334,6 +401,8 @@ public updateLocation(double[] location)
 - 24/11/2016 4h
 - 01/12/2016 4h
 - 05/12/2016 1h
+- 08/12/2016 6h
+
 ### Xing Jinling
 - 23/11/2016 3h
 - 24/11/2016 3h
