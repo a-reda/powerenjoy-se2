@@ -33,19 +33,19 @@
 \pagebreak
 
 ## 1. Introduction
-### 1. Purpose
+### 1.1. Purpose
 
 In this document, more technical details will be presented than the RASD about the PowerEnjoy system.
 
 As we compeleted before in the RSAD, we have shown a general system what it looks like and how it works. This document aims to present how we implement the system specifically includes compnent view, Run-time view, deploying view, algorithm design,etc.  
 
-### 2. Scope
+### 1.2. Scope
 The project PowerEnjoy, which is a service based on mobile application( based on Android) and web application.
 The system allows user to reservate a electric car via mobile app and web app. When user wants to reservate a car the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will will show the concrete steps for users to get money saving or a discount once their situation qualify the requirement.
 
 The main purpose of the system to make people's life more convenient and meet the needs of the public while don't need them to buy a car. Also its a way to protect the environment.
 
-### 3. Definition, acronyms, abbreviations
+### 1.3. Definition, acronyms, abbreviations
 - **RASD**: Requirements Analysis and Specifications Document.
 - **DD**: Design Document.
 - **API**: Application Programming Interface: it is a common way to communicate with another system or service.
@@ -58,7 +58,7 @@ The main purpose of the system to make people's life more convenient and meet th
 - **URI**: Uniform Resource Identifier which is the set of characters that identify the location of a resource
 - **JSON**: JavaScript Object Notation is a lightweight data-interchange format.
 
-### 4. Document structure
+### 1.4. Document structure
 
 - Introduction: This part briefly introduces the purpouse of this document. And it also states the definition of some special words to help reader understand this document.  
 - Archtecture Design: This sction contains 8 parts:
@@ -77,7 +77,7 @@ The main purpose of the system to make people's life more convenient and meet th
 \pagebreak
 
 ## 2. Architecture design
-### 1. Overview
+### 2.1. Overview
 
 ![Application  Architecture](DD/resources/architecture/main-architecture.jpeg)
 
@@ -87,7 +87,7 @@ As stated in the RASD document, we decided to have a 3-tier architecture. The fi
   - __Logic tier__: This tier holds the business logic  of the application. It is composed of the application server.
   - __Persistence tier__: This tier persists the data used in our application. It is composed of a DBMS.
 
-### 2. High level components and their interaction
+### 2.2. High level components and their interaction
 
 ![High Level Components](DD/resources/architecture/high-level-component.png)
 
@@ -113,7 +113,7 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 \pagebreak
 
-### 3.Component view
+### 2.3.Component view
 
 - Notification Helper : Manage notifications, noticing the user that they are already close to the car.
 
@@ -134,11 +134,11 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 - User Controller : manage user, access log in or sign in request.
 
 
-### 4. Deploying view
+### 2.4. Deploying view
 
 ![Deploying view](DD/resources/deployingview/deploying-view.png){ width=90% }
 
-### 5. Run-time view
+### 2.5. Run-time view
 
 Sequence diagrams for
 - Login process
@@ -166,16 +166,18 @@ When the ride process finished, the user ask for check out and send a check-out 
 
 In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
 
+### 2.6. Component interfaces
 
-### 7. Selected architectural styles and pattern
 
-##### 3-tier for application architecture
+### 2.7. Selected architectural styles and pattern
 
-As stated in the RASD Document, we will be using the **3-tier client-server architecture**. The presentation tier is composed of the mobile application and the website. The application layer is composed of two parts. The REST Server that exposes the REST API and holds the business logic. It can be consumed by the web server or the mobile application. In addition, it is a security barrier between the client and the database as it prevents direct accesses to the database by the user.
+##### 2.7.1. Three-tier for application architecture
+
+As stated in the RASD Document, we will be using the **Three-tier client-server architecture**. The presentation tier is composed of the mobile application and the website. The application layer is composed of two parts. The REST Server that exposes the REST API and holds the business logic. It can be consumed by the web server or the mobile application. In addition, it is a security barrier between the client and the database as it prevents direct accesses to the database by the user.
 The other component of the application layer is the web server. The web server takes care of formatting the data in webpages and communicating with the web browser. The last tier is the data tier which is, in this case, composed of only one database that takes care of persisting the data of the whole application.
 The fact that the business logic is held at the level of our servers, the client-side of the application is kept as light as possible. Therefore, users can quickly access the application by installing it on their device or browsing the website. It also prevents the direct access to the database from the GUI which increases security.
 
-##### MVC for web server
+##### 2.7.2. MVC for web server
 **M**odel-**V**iew-**C**ontroller is a design pattern that is commonly used for GUIs. It relies on three objects:
 
 - **Model**: is the logical structure of data used by the application.
@@ -184,7 +186,7 @@ The fact that the business logic is held at the level of our servers, the client
 
 The separation of concerns is the main motivation behind using MVC design pattern as it increases the possibility to reuse the components. It is important to note that in this case the controller in the web server does not perform any business logic on the data since the application server is the one to do it. The controller serves as a glue between the Model and the View.
 
-##### REST over HTTP
+##### 2.7.3. REST over HTTP
 
 **RE**presentational **S**tate **T**ransfer is the architectural style that we decided to use. REST is a lightweight way to make calls between the different machines of a client server application. REST is used in PowerEnjoy in almost all communications between the servers in our system. It relies on the HTTP Methods (GET, POST, PUT and DELETE).
 
@@ -231,7 +233,120 @@ The authentication is taken care by REST through the `GET /login` endpoint. When
 
 \pagebreak
 
-## 5.Required Traceability
+
+
+
+## 3. Algorithm Design
+### 3.1. Billing process
+After the user finishes a ride in a PowerEnjoy car, the application has to calculate the amount that should be charged to the user. The amount is calculated is the multiplication of the time (in minutes) spent in the car and the price per minute. After calculating this amount, discounts/penalties may be applied:
+
+- *10% discount* if the driver had other passengers with him.
+- *20% discount* if he left the car with at least 50% battery.
+- *30% discount* if he parked the car in a charging station and plugged it.
+- *30% penalty* if he left the car 3km away from charging stations or with less than 20% battery.
+
+If many discounts or penalties should be applied, they cumulate and are applied on the total ride amount. For example, a client had more than two passengers with him and left the car charging in a station he will benefit of 40% discount (10% + 30%).
+
+```java
+int PRICE_PER_MIN = config.getPricePerMin();
+
+public Bill caculate_Bill(Reservation r)
+{
+  Ride ride = r.ride;
+  Car  car  = r.car;
+
+  float BaseFee = ride.duration * PRICE_PER_MIN;
+  float discount = 0;
+  // More than 2 passengers discount
+  if (car.passengers >= 2) discount += 0.1 ; // 10% Discount
+  // More than  50% battery left
+  if (car.battery >= 0.5 ) discount += 0.2; // 20% Discount
+  // User recharged car
+  if (car.isCharging()) discount += 0.3; // 30% Discount
+  // If car is left 3KM away from charging OR 20% battery
+  boolean isFar = LocalisationController.isCarFar();
+
+  if (LocalisationController.isCarFar(car) || car.battery <= 0.2)
+              discount -= 0.3;
+
+   float ChargedAmount = BaseFee * (1 - discount );
+
+   return new Bill(new Date (), ChargedAmount);
+}
+```
+
+
+### 3.2. Reservation process
+When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addtion, the application allows the user to cancel reservation and it can also monitor the ride information.
+
+
+```java
+
+//Define the reservation time
+public ReservationTimeValid(time)
+{
+  if (time.Nowtime)
+  return true;
+  else {
+          if(time.Nowtime<=1)
+          return new time;
+          else
+          return false;
+        }
+}
+public Reservation (Car c, User u)
+{
+
+  if (c.status=="available"&& u.status=="available"&&ReservationTimeValid(time))
+  {
+    isThisReservation= true;
+    User.startRide();
+  }
+  else if (time.timeNow<=1)// the user made a reservation one hour ahead of the reservation
+  return Reservation(Reservation time(), User ID());
+
+}
+//Create a new reservation
+public createReservation()
+{
+   Reservation r = new reservation;
+   User.Reservation();
+}
+//Allow user to cancel reservation
+public cancelReservation()
+{
+   if (isThisReservation) {
+   isThisReservation = false;
+   User.cancelReservation();
+}
+//Monitor the location and cars nearby
+public updateLocation(double[] location)
+{
+  User.updateLocation(location);
+}
+```
+
+### 3.3.Money savig process
+
+
+```java
+
+```
+
+## 4.User interface design
+
+#### 4.1. Mock-ups
+
+#### 4.2. UX flow chart
+
+We introduce the UX ( User experience ) flow chart to show the workflow of functions.
+##### 4.2.1. Login process
+
+##### 4.2.2 Reservation process
+
+
+
+## 5.Requirements Traceability
 The design document is aiming to explain the goals in the RASD.
 
 G[1] Allows users to register in the PowerEnjoy application
@@ -297,102 +412,6 @@ G[17] Allows the operator monitor the position of the cars.
   - The car controller
   - The localization controller
 
-
-## 3. Algorithm Design
-### 1. Billing process
-After the user finishes a ride in a PowerEnjoy car, the application has to calculate the amount that should be charged to the user. The amount is calculated is the multiplication of the time (in minutes) spent in the car and the price per minute. After calculating this amount, discounts/penalties may be applied:
-
-- *10% discount* if the driver had other passengers with him.
-- *20% discount* if he left the car with at least 50% battery.
-- *30% discount* if he parked the car in a charging station and plugged it.
-- *30% penalty* if he left the car 3km away from charging stations or with less than 20% battery.
-
-If many discounts or penalties should be applied, they cumulate and are applied on the total ride amount. For example, a client had more than two passengers with him and left the car charging in a station he will benefit of 40% discount (10% + 30%).
-
-```java
-int PRICE_PER_MIN = config.getPricePerMin();
-
-public Bill caculate_Bill(Reservation r)
-{
-  Ride ride = r.ride;
-  Car  car  = r.car;
-
-  float BaseFee = ride.duration * PRICE_PER_MIN;
-  float discount = 0;
-  // More than 2 passengers discount
-  if (car.passengers >= 2) discount += 0.1 ; // 10% Discount
-  // More than  50% battery left
-  if (car.battery >= 0.5 ) discount += 0.2; // 20% Discount
-  // User recharged car
-  if (car.isCharging()) discount += 0.3; // 30% Discount
-  // If car is left 3KM away from charging OR 20% battery
-  boolean isFar = LocalisationController.isCarFar();
-
-  if (LocalisationController.isCarFar(car) || car.battery <= 0.2)
-              discount -= 0.3;
-
-   float ChargedAmount = BaseFee * (1 - discount );
-
-   return new Bill(new Date (), ChargedAmount);
-}
-```
-
-
-### 2. Reservation process
-When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addtion, the application allows the user to cancel reservation and it can also monitor the ride information.
-
-
-```java
-//Define the reservation time
-public ReservationTimeValid(time)
-{
-  if (time.Nowtime)
-  return true;
-  else {
-          if(time.Nowtime<=1)
-          return new time;
-          else
-          return false;
-        }
-}
-public Reservation (Car c, User u)
-{
-
-  if (c.status=="available"&& u.status=="available"&&ReservationTimeValid(time))
-  {
-    isThisReservation= true;
-    User.startRide();
-  }
-  else if (time.timeNow<=1)// the user made a reservation one hour ahead of the reservation
-  return Reservation(Reservation time(), User ID());
-
-}
-//Create a new reservation
-public createReservation()
-{
-   Reservation r = new reservation;
-   User.Reservation();
-}
-//Allow user to cancel reservation
-public cancelReservation()
-{
-   if (isThisReservation) {
-   isThisReservation = false;
-   User.cancelReservation();
-}
-//Monitor the location and cars nearby
-public updateLocation(double[] location)
-{
-  User.updateLocation(location);
-}
-
-
-```
-
-
-
-## 5.Requirements Traceability
-
 ## 6.Reference
 ## 7.Hours Worked
 
@@ -408,3 +427,12 @@ public updateLocation(double[] location)
 - 24/11/2016 3h
 - 01/12/2016 3h
 - 07/12/2016 3h
+
+### Zhang Lidong
+- 20/11/2016 0.5h
+- 23/11/2016 3h
+- 24/11/2016 4h
+- 27/11/2016 2h
+- 01/12/2016 3h
+- 08/12/2016 3h
+- 10/12/2016 2h
