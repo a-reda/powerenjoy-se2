@@ -21,8 +21,14 @@
   8. Other design decisions
 
 ###### 3. Algorithm design
+  1. Bill process
+  2. Reservation process
+  3. Money saving process
 
 ###### 4. User interface design
+  1. Mock-ups
+  2. UX flow chart
+  3. BCE pattern
 
 ###### 5. Requirements traceability
 
@@ -37,11 +43,11 @@
 
 In this document, more technical details will be presented than the RASD about the PowerEnjoy system.
 
-As we compeleted before in the RSAD, we have shown a general system what it looks like and how it works. This document aims to present how we implement the system specifically includes compnent view, Run-time view, deploying view, algorithm design,etc.  
+As we compeleted before in the RSAD, we have shown a general system what it looks like and how it works. This document aims to present how we implement the system specifically includes component view, Run-time view, deploying view, algorithm design,etc.  
 
 ### 1.2. Scope
 The project PowerEnjoy, which is a service based on mobile application( based on Android) and web application.
-The system allows user to reservate a electric car via mobile app and web app. When user wants to reservate a car the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will will show the concrete steps for users to get money saving or a discount once their situation qualify the requirement.
+The system allows user to reservate a electric car via mobile app or web app. When user wants to reservate a car the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will will show the concrete steps for users to get money saving or a discount once their situation qualify the requirement.
 
 The main purpose of the system to make people's life more convenient and meet the needs of the public while don't need them to buy a car. Also its a way to protect the environment.
 
@@ -67,7 +73,7 @@ The main purpose of the system to make people's life more convenient and meet th
 - Archtecture Design: This sction contains 8 parts:
   - Overview:this esction explains the architecture of the PowerEnjoy system
   - High level components and their interaction:In this part, we give the communication mechanism of each components
-  - Compnent view: this part shows all the controllers and models in this application
+  - Component view: this part shows all the controllers and models in this application,and how they work together to assure the system work together.
   - Deploying view: this section gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly
   - Run-time view: this section contians the sequence diagrams of different components and how to work together and deliver the messages
   -  Compnent interface: this is the part involves  what we have down in the RASD
@@ -138,7 +144,7 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 
 ### 2.4. Deploying view
-
+Deploying view gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly. The user can use personal computer or smart phone to make a reservation, both of computer and smart phone use google map to fix location. In the system, we set system server to save the related information and the application server used the REST API socket. It also has a database server to support system.
 ![Deploying view](DD/resources/deployingview/deploying-view.png){ width=90% }
 
 ### 2.5. Run-time view
@@ -318,9 +324,12 @@ public createReservation()
 //Allow user to cancel reservation
 public cancelReservation()
 {
-   if (isThisReservation) {
-   isThisReservation = false;
-   User.cancelReservation();
+   if (isThisReservation)
+   {
+     isThisReservation = false;
+     User.cancelReservation();
+     User.bill-=1;// if user cancelled the order, system will asked for 1 euro as compensation
+   }
 }
 //Monitor the location and cars nearby
 public updateLocation(double[] location)
@@ -455,7 +464,17 @@ G[17] Allows the operator monitor the position of the cars.
   - The car controller
   - The localization controller
 
-## 6.Reference
+## 6.References
+1. Books
+  - Sample Design Deliverable Discussed on Nov. 2
+  - Assignments AA 2016-2017
+  - IEEE standard on requirement engineering
+
+2. Used tools
+  - Draw.io
+  - Atom
+
+
 ## 7.Hours Worked
 
 ### Reda Aissaoui
@@ -470,6 +489,8 @@ G[17] Allows the operator monitor the position of the cars.
 - 24/11/2016 3h
 - 01/12/2016 3h
 - 07/12/2016 3h
+- 08/12/2016 4h
+- 11/12/2016 1h
 
 ### Zhang Lidong
 - 20/11/2016 0.5h
