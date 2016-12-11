@@ -33,6 +33,8 @@
 ###### 5. Requirements traceability
 
 ###### 6. Reference
+  1. Bibliography
+  2. Used tools
 
 ###### 7. Hours worked
 
@@ -465,14 +467,18 @@ G[17] Allows the operator monitor the position of the cars.
   - The localization controller
 
 ## 6.References
-1. Books
+
+
+#### 6.1. Bibliography
   - Sample Design Deliverable Discussed on Nov. 2
   - Assignments AA 2016-2017
   - IEEE standard on requirement engineering
 
-2. Used tools
-  - Draw.io
-  - Atom
+#### 6.2. Used tools
+  - Draw.io: for UML,UX,BCE diagrams.
+  - Atom: for writing document.
+  - Pandoc: for PDF creating.
+  - Github: for version controller.
 
 
 ## 7.Hours Worked
