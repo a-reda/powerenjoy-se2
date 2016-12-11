@@ -478,4 +478,5 @@ G[17] Allows the operator monitor the position of the cars.
 - 27/11/2016 2h
 - 01/12/2016 3h
 - 08/12/2016 3h
-- 10/12/2016 2h
+- 10/12/2016 4h
+- 11/12/2016 2h
