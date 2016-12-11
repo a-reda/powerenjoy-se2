@@ -17,7 +17,6 @@
   5. Run-time view
   6. Component interfaces
   7. Selected architectural styles and pattern
-  8. Other design decisions
 
 ###### 3. Algorithm design
   1. Bill process
