@@ -41,15 +41,15 @@
 ## 1. Introduction
 ### 1.1. Purpose
 
-In this document, more technical details will be presented than the RASD about the PowerEnjoy system.
+In this document, a detailed design is presented. It is base on the RASD document and provides a more detailed view of the architecture of PowerEnjoy's application
 
-As we compeleted before in the RSAD, we have shown a general system what it looks like and how it works. This document aims to present how we implement the system specifically includes component view, Run-time view, deploying view, algorithm design,etc.  
+The RASD presented a general view of the system and what are the functions that the system should execute. This document aims to present the how of the implementation the system including components, run-time processes, deployment, user experience and algorithm design.  
 
 ### 1.2. Scope
 The project PowerEnjoy, which is a service based on mobile application( based on Android) and web application.
-The system allows user to reservate a electric car via mobile app or web app. When user wants to reservate a car the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will will show the concrete steps for users to get money saving or a discount once their situation qualify the requirement.
+The system allows user to reserve a electric car via mobile app or web app. When user wants to reserve a car, the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will show the steps for users to get a discount once their situation qualify the requirement.
 
-The main purpose of the system to make people's life more convenient and meet the needs of the public while don't need them to buy a car. Also its a way to protect the environment.
+The main purpose of the system to make people's life more convenient by making cars available through an app. All this while protecting the environment through carpooling and electric vehicles.
 
 ### 1.3. Definition, acronyms, abbreviations
 - **RASD**: Requirements Analysis and Specifications Document.
@@ -64,24 +64,22 @@ The main purpose of the system to make people's life more convenient and meet th
 - **URI**: Uniform Resource Identifier which is the set of characters that identify the location of a resource
 - **JSON**: JavaScript Object Notation is a lightweight data-interchange format.
 - **UX**: User experience diagram.
-- **BCE**: Boundary-Control-Entity pattern.
 - **GPS**: Global Positioning System.
 
 ### 1.4. Document structure
 
-- Introduction: This part briefly introduces the purpouse of this document. And it also states the definition of some special words to help reader understand this document.  
-- Archtecture Design: This sction contains 8 parts:
-  - Overview:this esction explains the architecture of the PowerEnjoy system
-  - High level components and their interaction:In this part, we give the communication mechanism of each components
-  - Component view: this part shows all the controllers and models in this application,and how they work together to assure the system work together.
-  - Deploying view: this section gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly
-  - Run-time view: this section contians the sequence diagrams of different components and how to work together and deliver the messages
-  -  Compnent interface: this is the part involves  what we have down in the RASD
-  - Selected architectural styles and patterns: the application involves the architecture and why this architecture is suitable for this application
-  -  Other design decisions    
-- Algorithm design: this part is the most important and difficult part in the DD. From three algorithm, we can describe how things going according to the logic and design.
+- Introduction: This part briefly introduces the purpose of this document. And it also states the definition of some special words to help reader understand this document.  
+- Architecture Design: This section contains 8 parts:
+- Overview: this section explains the architecture of the PowerEnjoy system
+- High level components and their interaction: In this part, we give the communication mechanism of each component.
+- Component view: this part shows all the controllers and models in this application and how they work together to assure the system work together.
+- Deploying view: this section shows how each component of the system is deployed and in which device.
+- Run-time view: this section contains the sequence diagrams of different components and how they work together in order to execute functions.
+- Component interface: this part shows the different interfaces between components
+- Selected architectural styles and patterns: the application involves different architectures and motivations behind the choice.
+- Algorithm design: a description of the main algorithms.
 - User Interface design: in this part, we involve what we have done in the RASD
-- Requirements Traceability: this section shows detailed description of the architecture of the DD.
+- Requirements Traceability: this section shows how this document fulfills the goals stated before in the RASD.
 
 \pagebreak
 
@@ -126,9 +124,9 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 ![Component View Diagram](DD/resources/component-view-diagram.png)
 
-- Notification Helper : Manage notifications, noticing the user that they are already close to the car.
+- Notification Helper : Manage notifications, noticing the user that they are already close to the car
 
-- Ride Controller : manage rides.
+- Ride Controller : manage rides
 
 - Reservation Controller : manage reservation
 
@@ -144,6 +142,17 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 - User Controller : manage user, access log in or sign in operations
 
+- Database : store persistent data
+
+- Localization Controller : manage location
+
+The system exposes a REST API with many public endpoints and resources, most of them require a proper authentication and authorization to be used.
+
+The router will dispatch the request to the relevant controllers. Then each controller will do further process as the user required.
+
+For example, when a reservation request comes it will arrive to the router first then it will be dispatched to reservation controller by router then the controller will dispose the request.
+
+
 \pagebreak
 
 ### 2.4. Deploying view
@@ -158,7 +167,7 @@ Deploying view gives the correct design of components and when all the component
 
 ![Login Sequence Diagram](DD/resources/sequence-diagrams/s_login_process.png)
 
-In this sequence diagram it can be shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matches the username then the UserController returns login_success message to the Mobile application so that user can login into the system. Otherwise, the system shows error messages.
+In this sequence diagram it is shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matches the username then the UserController returns login_success message to the Mobile application so that user can login into the system. Otherwise, the system shows error messages.
 
 \pagebreak
 
@@ -208,16 +217,19 @@ In this sequence diagram it can be seen that if users ask for Money Saving optio
 
 ### 2.6. Component interfaces
 
+![Component interfaces diagram](DD/resources/component-interfaces.png)
+
+\pagebreak
 
 ### 2.7. Selected architectural styles and pattern
 
-##### 2.7.1. Three-tier for application architecture
+##### Three-tier for application architecture
 
 As stated in the RASD Document, we will be using the **Three-tier client-server architecture**. The presentation tier is composed of the mobile application and the website. The application layer is composed of two parts. The REST Server that exposes the REST API and holds the business logic. It can be consumed by the web server or the mobile application. In addition, it is a security barrier between the client and the database as it prevents direct accesses to the database by the user.
 The other component of the application layer is the web server. The web server takes care of formatting the data in webpages and communicating with the web browser. The last tier is the data tier which is, in this case, composed of only one database that takes care of persisting the data of the whole application.
 The fact that the business logic is held at the level of our servers, the client-side of the application is kept as light as possible. Therefore, users can quickly access the application by installing it on their device or browsing the website. It also prevents the direct access to the database from the GUI which increases security.
 
-##### 2.7.2. MVC for web server
+##### MVC for web server
 **M**odel-**V**iew-**C**ontroller is a design pattern that is commonly used for GUIs. It relies on three objects:
 
 - **Model**: is the logical structure of data used by the application.
@@ -226,7 +238,7 @@ The fact that the business logic is held at the level of our servers, the client
 
 The separation of concerns is the main motivation behind using MVC design pattern as it increases the possibility to reuse the components. It is important to note that in this case the controller in the web server does not perform any business logic on the data since the application server is the one to do it. The controller serves as a glue between the Model and the View.
 
-##### 2.7.3. REST over HTTP
+##### REST over HTTP
 
 **RE**presentational **S**tate **T**ransfer is the architectural style that we decided to use. REST is a lightweight way to make calls between the different machines of a client server application. REST is used in PowerEnjoy in almost all communications between the servers in our system. It relies on the HTTP Methods (GET, POST, PUT and DELETE).
 
@@ -314,8 +326,7 @@ public Bill caculate_Bill(Reservation r)
 
 
 ### 3.2. Reservation process
-When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addtion, the application allows the user to cancel reservation and it can also monitor the ride information.
-
+When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addition, the application allows the user to cancel reservation and it can also monitor the ride information.
 
 ```java
 
@@ -366,9 +377,9 @@ public updateLocation(double[] location)
 }
 ```
 
-### 3.3.Money savig process
+### 3.3.Money saving process
 
-When the user use the car they are allowed to request to get the money-saving option. The system will check that whether there is a charging station and the availability of the station nearby the destination, which the user inputted. If the request fills all conditions then the GPS will navigate the user to the charging sation where they can get money saving. And the system will keep the chaging plugs for the user in a period of time.
+When the user use the car they are allowed to request to get the money-saving option. The system will check that whether there is a charging station and the availability of the station nearby the destination, which the user inputted. If the request fills all conditions then the GPS will navigate the user to the charging station where they can get money saving. And the system will keep the charging plugs for the user in a period of time.
 
 ```java
 import Location.Map;
@@ -422,11 +433,15 @@ We introduce the UX ( User experience ) flow chart to show the workflow of funct
 
 ##### Login process
 
-![Login UX](DD/resources/ux-diagrams/ux_login_process.png)
+![Login UX](DD/resources/ux-diagrams/ux_login_process.png){ width=40% }
+
+\pagebreak
 
 ##### Reservation process
 
 ![Reservation UX](DD/resources/ux-diagrams/ux_reservation_process.png)
+
+\pagebreak
 
 ## 5.Requirements Traceability
 The design document is aiming to explain the goals in the RASD.
@@ -515,11 +530,13 @@ The design document is aiming to explain the goals in the RASD.
 
 
 #### 6.1. Bibliography
+
   - Sample Design Deliverable Discussed on Nov. 2
   - Assignments AA 2016-2017
   - IEEE standard on requirement engineering
 
 #### 6.2. Used tools
+
   - Draw.io: for UML,UX,BCE diagrams.
   - Atom: for writing document.
   - Pandoc: for PDF creating.
@@ -534,6 +551,7 @@ The design document is aiming to explain the goals in the RASD.
 - 01/12/2016 4h
 - 05/12/2016 1h
 - 08/12/2016 6h
+- 11/12/2016 2h
 
 ### Xing Jinling
 - 23/11/2016 3h
