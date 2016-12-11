@@ -1,5 +1,4 @@
-
-
+\input{DD/coverpage.tex}
 
 ### Content
 ###### 1. Introduction
@@ -28,7 +27,6 @@
 ###### 4. User interface design
   1. Mock-ups
   2. UX flow chart
-  3. BCE pattern
 
 ###### 5. Requirements traceability
 
@@ -126,56 +124,87 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 ### 2.3.Component view
 
+![Component View Diagram](DD/resources/component-view-diagram.png)
+
 - Notification Helper : Manage notifications, noticing the user that they are already close to the car.
 
 - Ride Controller : manage rides.
 
-- Reservation Controller : manage reservation,
+- Reservation Controller : manage reservation
 
-- Bill Controller : manage payment method and bills,
+- Bill Controller : manage payment method and bills
 
-- Economic Controller : manage money saving request,
+- Economic Controller : manage money saving request
 
-- Car Controller : manage the status and availability of cars,
+- Car Controller : manage the status and availability of cars
 
-- Router : route the request to related controller,
+- Router : route the request to related controller
 
-- Clients : mobile application based on Android and web application (browser),
+- Clients : mobile application based on Android and web application (In browser)
 
-- User Controller : manage user, access log in or sign in request.
+- User Controller : manage user, access log in or sign in operations
 
+\pagebreak
 
 ### 2.4. Deploying view
 Deploying view gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly. The user can use personal computer or smart phone to make a reservation, both of computer and smart phone use google map to fix location. In the system, we set system server to save the related information and the application server used the REST API socket. It also has a database server to support system.
 ![Deploying view](DD/resources/deployingview/deploying-view.png){ width=90% }
 
+\pagebreak
+
 ### 2.5. Run-time view
 
-Sequence diagrams for
-- Login process
+##### Login process
+
+![Login Sequence Diagram](DD/resources/sequence-diagrams/s_login_process.png)
 
 In this sequence diagram it can be shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matches the username then the UserController returns login_success message to the Mobile application so that user can login into the system. Otherwise, the system shows error messages.
 
-- Reservation process  
+\pagebreak
+
+##### Reservation process  
+
+![Reservation Sequence Diagram](DD/resources/sequence-diagrams/s_reservation.png){ width=50% }
+
+\pagebreak
 
 The user starts the process, in the mobile application, by searching for cars close to him or around an address. The mobile application sends a request to the Car Controller (through the router). The location is passed as a parameter in the call. The location comes from the GPS module of the smartphone or is manually entered by the user. The Car Controller calls the Localization Controller to get all the cars close to the location. Upon return, the list is filtered and then displayed to the user, if it is not empty. The user can choose a car to reserve, it is then added as a reservation and marked as unavailable. To conclude the operation, a success message is displayed to the user.
 
-- Billing process
+\pagebreak
+
+##### Billing process
+
+![Billing Sequence Diagram](DD/resources/sequence-diagrams/s_billing_process.png)
 
 The billing process is started at the end of a ride. The ride controller signals the bill controller that a ride has ended. The reservation relative to that ride is passed as a parameter as it contains many variables that are used in calculating the bill.
 
-- Check-in car process
+\pagebreak
+
+##### Check-in car process
+
+![Check-in sequence diagram](DD/resources/sequence-diagrams/s_check_in.png){ width=50% }
+
+\pagebreak
 
 After reservation, the user need to ask for a check-in process. The user controller send a required message to the car controller and the car controller transfer the ride information to the reservation controller. If this process success, the car controller will transfer the success information to the user and display the ride information on the device of user. Meanwhile, the ride controller received the ride information to start ride.
 
-- Check-out car process
+\pagebreak
+
+##### Check-out car process
+
+![Check-out sequence diagram](DD/resources/sequence-diagrams/s_check_out.png)
 
 When the ride process finished, the user ask for check out and send a check-out request to bill controller. The bill controller transfer the request to the ride controller to get the destination information and the bill controller calculate the bill of the certain ride and then return the bill information to the user.
 
+\pagebreak
 
-- Money saving process
+##### Money saving process
 
-In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
+![Money saving sequence diagram](DD/resources/sequence-diagrams/s_money_saving.png)
+
+In this sequence diagram it can be seen that if users ask for Money Saving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
+
+\pagebreak
 
 ### 2.6. Component interfaces
 
@@ -243,9 +272,6 @@ The following table shows the main REST endpoints that are needed in our applica
 The authentication is taken care by REST through the `GET /login` endpoint. When this user is sent and the credentials are verified, the server sends back a token that should always be included for further requests. The token puts the server into context as it refers uniquely to a single user. Given the fact that REST API is stateless, this is how the server knows which "state" should be used.
 
 \pagebreak
-
-
-
 
 ## 3. Algorithm Design
 ### 3.1. Billing process
@@ -351,19 +377,19 @@ public class moneySaving {
 
 private boolean mNearByChargeStation;
 private int mPlugsAvailability;
-private String mChargeStaionName;
+private String mChargeStationName;
 private Location Path;
 public moneySavingOptions(boolean NearByChargeStation, int PlugsAvailability ){
     if(NearByChargeStation == true){
-      mChargeStaionName = ChargeStaionName;
+      mChargeStationName = ChargeStationName;
       if(PlugsAvailability >= 2){
         //keep the plugs for the user.
         mPlugsAvailability = PlugsAvailability-1;
         // navigate the user to the charging station.
-        Path = Map.location.Naviagte(ChargeStaionName);
+        Path = Map.location.Naviagte(ChargeStationName);
       } else Toast.makeText(this, "No available plugs for charging").show();
 // show error
-    } else Toast.makeText(this,"No shargeStation nearby the destination").show();//show error.
+    } else Toast.makeText(this,"No Charge Station nearby the destination").show();//show error.
 
 }
 //determine whether there is a charging station nearby the destination.
@@ -373,11 +399,11 @@ public boolean isNearByChargeStation(Location d ){
       }
    }
 // return the name of the charging station.
-public void getChargeStaionName(boolean NearByChargeStation){
-     mChargeStaionName = ChargeStaionName;
+public void getChargeStationName(boolean NearByChargeStation){
+     mChargeStationName = ChargeStationName;
 }
 //  return the availability of charging plugs in the charge station.
-public int getPlugsAvailability(String ChargeStaionName){
+public int getPlugsAvailability(String ChargeStationName){
       return mPlugsAvailability;
   }
 }
@@ -388,81 +414,100 @@ public int getPlugsAvailability(String ChargeStaionName){
 
 #### 4.1. Mock-ups
 
+The mock-ups were presented in the RASD Document in section 2.1.
+
 #### 4.2. UX flow chart
 
 We introduce the UX ( User experience ) flow chart to show the workflow of functions.
-##### 4.2.1. Login process
 
-##### 4.2.2 Reservation process
+##### Login process
 
-#### 4.3. BCE pattern
-The Boundary-Control-Entity Pattern ( BCE ) is a variation of the Model-View-Controller Pattern. We insert this to present how each user action is managed internally and how it’s linked with our model.
+![Login UX](DD/resources/ux-diagrams/ux_login_process.png)
 
+##### Reservation process
 
+![Reservation UX](DD/resources/ux-diagrams/ux_reservation_process.png)
 
 ## 5.Requirements Traceability
 The design document is aiming to explain the goals in the RASD.
 
-G[1] Allows users to register in the PowerEnjoy application
+**G[1]** Allows users to register in the PowerEnjoy application
+
   - The User controller
 
-G[2] Allows registered users to login using their credentials
+**G[2]** Allows registered users to login using their credentials
+
   - The User controller
 
-G[3] Allows users to modify their information.
+**G[3]** Allows users to modify their information.
+
   - The User controller
 
-G[4] Allows users to see the cars around him or around an address on the application.
+**G[4]** Allows users to see the cars around him or around an address on the application.
+
   - The user controller
   - The localization controller
 
-G[5] Allows users to reserve cars up to one hour in advance.
+**G[5]** Allows users to reserve cars up to one hour in advance.
+
   - The reservation controller
 
-G[6] Allows users to cancel a reservation.
+**G[6]** Allows users to cancel a reservation.
+
   - The reservation controller
   - The user controller
 
-G[7] Allows users to unlock and check-in the reserved car.
+**G[7]** Allows users to unlock and check-in the reserved car.
+
   - The user controller
   - The ride controller
   - The reservation controller
 
-G[8] Allows users to see how much the previous ride cost along with more ride information.
+**G[8]** Allows users to see how much the previous ride cost along with more ride information.
+
   - The bill controller
   - The user controller
 
-G[9] Allows users to check their rides history.
+**G[9]** Allows users to check their rides history.
+
   - The user controller
 
-G[10] Allows users to the user should be able to enable economy mode.
+**G[10]** Allows users to the user should be able to enable economy mode.
+
   - The reservation controller
   - The economic controller
 
-G[11] Allows users to see where to park the car in order to get discount.
+**G[11]** Allows users to see where to park the car in order to get discount.
+
   - The localization controller
   - The user controller
 
-G[12] Allows systems to keep real-time data about the car variables.
+**G[12]** Allows systems to keep real-time data about the car variables.
+
   - The car controller
 
-G[13] Reservations should time-out if the user doesn't check-in the car.
+**G[13]** Reservations should time-out if the user doesn't check-in the car.
+
   - The car controller
   - The user controller
   - The reservation controller
 
-G[14] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+**G[14]** System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+
   - The ride controller
   - The bill controller
   - The car controller
 
-G[15] Allows the operator to validate the identity and driving license of the user after checking them personally.
+**G[15]** Allows the operator to validate the identity and driving license of the user after checking them personally.
+
   - The car controller
 
-G[16] Allows the operator  to verify the damaged and faulty cars.
+**G[16]** Allows the operator  to verify the damaged and faulty cars.
+
   - The car controller
 
-G[17] Allows the operator monitor the position of the cars.
+**G[17]** Allows the operator monitor the position of the cars.
+
   - The car controller
   - The localization controller
 
