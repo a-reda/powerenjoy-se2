@@ -1,28 +1,33 @@
 import Location.Map;
 import ChargeStation.dao;
-import Bill;
-import Reservation;
 public class moneySaving {
-   Bill Amount = caculate_Bill(r);
-   //check whether there is a charge station nearby  the destination which user inputed.
-   if checkDestination() == true{
-     //define the variable.
-       private boolean ChargeStation = new getChargeStation();
-       private int plugs = new getPlugsAvailability();
-      //
-       if ( Plugs >= 1){
-           Amount = Amount*caculate_Bill(r).Discount; // recaculate the bill with a new discount.
-           Return new Bill(new Date (), Amount);
-           }
-           // show error message
-           else Toast.makeText(this, "No available plugs for charging").show();
-     }
-     // show error message
-     else Toast.makeText(this,"No shargeStation nearby the destination").show();
 
-public void checkChargeStation(Location d ){
+private boolean mNearByChargeStation;
+private int mPlugsAvailability;
+private String mChargeStaionName;
+private Location Path;
+public moneySavingOptions(boolean NearByChargeStation, int PlugsAvailability ){
+    if(NearByChargeStation == true){
+      mChargeStaionName = ChargeStaionName;
+      if(PlugsAvailability >= 1){
+        mPlugsAvailability = PlugsAvailability-1;
+        Path = Map.location.Naviagte(ChargeStaionName);
+      } else Toast.makeText(this, "No available plugs for charging").show();
+
+    } else Toast.makeText(this,"No shargeStation nearby the destination").show();
+
+}
+
+public boolean isNearByChargeStation(Location d ){
     if Map.Location(d) != none {
-       Returen true;
+      return mNearByChargeStation;
       }
    }
+
+public void getChargeStaionName(boolean NearByChargeStation){
+     mChargeStaionName = ChargeStaionName;
+}
+public int getPlugsAvailability(String ChargeStaionName){
+      return mPlugsAvailability;
+  }
 }

@@ -57,6 +57,9 @@ The main purpose of the system to make people's life more convenient and meet th
 - **HTTP**: Hyper Text Transfer Protocol is the main protocol used for the world wide web.
 - **URI**: Uniform Resource Identifier which is the set of characters that identify the location of a resource
 - **JSON**: JavaScript Object Notation is a lightweight data-interchange format.
+- **UX**: User experience diagram.
+- **BCE**: Boundary-Control-Entity pattern.
+- **GPS**: Global Positioning System.
 
 ### 1.4. Document structure
 
@@ -328,8 +331,45 @@ public updateLocation(double[] location)
 
 ### 3.3.Money savig process
 
+When the user use the car they are allowed to request to get the money-saving option. The system will check that whether there is a charging station and the availability of the station nearby the destination, which the user inputted. If the request fills all conditions then the GPS will navigate the user to the charging sation where they can get money saving. And the system will keep the chaging plugs for the user in a period of time.
 
 ```java
+import Location.Map;
+import ChargeStation.dao;
+public class moneySaving {
+
+private boolean mNearByChargeStation;
+private int mPlugsAvailability;
+private String mChargeStaionName;
+private Location Path;
+public moneySavingOptions(boolean NearByChargeStation, int PlugsAvailability ){
+    if(NearByChargeStation == true){
+      mChargeStaionName = ChargeStaionName;
+      if(PlugsAvailability >= 2){
+        //keep the plugs for the user.
+        mPlugsAvailability = PlugsAvailability-1;
+        // navigate the user to the charging station.
+        Path = Map.location.Naviagte(ChargeStaionName);
+      } else Toast.makeText(this, "No available plugs for charging").show();
+// show error
+    } else Toast.makeText(this,"No shargeStation nearby the destination").show();//show error.
+
+}
+//determine whether there is a charging station nearby the destination.
+public boolean isNearByChargeStation(Location d ){
+    if Map.Location(d) != none {
+      return mNearByChargeStation;
+      }
+   }
+// return the name of the charging station.
+public void getChargeStaionName(boolean NearByChargeStation){
+     mChargeStaionName = ChargeStaionName;
+}
+//  return the availability of charging plugs in the charge station.
+public int getPlugsAvailability(String ChargeStaionName){
+      return mPlugsAvailability;
+  }
+}
 
 ```
 
@@ -343,6 +383,9 @@ We introduce the UX ( User experience ) flow chart to show the workflow of funct
 ##### 4.2.1. Login process
 
 ##### 4.2.2 Reservation process
+
+#### 4.3. BCE pattern
+The Boundary-Control-Entity Pattern ( BCE ) is a variation of the Model-View-Controller Pattern. We insert this to present how each user action is managed internally and how it’s linked with our model.
 
 
 
