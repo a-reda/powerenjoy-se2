@@ -144,6 +144,16 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 - User Controller : manage user, access log in or sign in request.
 
+- Database : store persistent data.
+
+- Localization Controller : manage location.
+
+The system exposes a RESTful API with many public endpoints and resources, some of them require a proper authentication and authorization to be used.
+
+The router will dispatch the request to relative controllers. Then each controller will do further process as the user required.
+
+For example, when a reservation request comes it will arrive to the router first then it will be dispatched to reservation controller by router then the controller will dispose the request.
+
 
 ### 2.4. Deploying view
 Deploying view gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly. The user can use personal computer or smart phone to make a reservation, both of computer and smart phone use google map to fix location. In the system, we set system server to save the related information and the application server used the REST API socket. It also has a database server to support system.
