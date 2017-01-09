@@ -1,5 +1,4 @@
-
-
+\input{DD/coverpage.tex}
 
 ### Content
 ###### 1. Introduction
@@ -18,7 +17,6 @@
   5. Run-time view
   6. Component interfaces
   7. Selected architectural styles and pattern
-  8. Other design decisions
 
 ###### 3. Algorithm design
   1. Bill process
@@ -28,7 +26,6 @@
 ###### 4. User interface design
   1. Mock-ups
   2. UX flow chart
-  3. BCE pattern
 
 ###### 5. Requirements traceability
 
@@ -43,15 +40,15 @@
 ## 1. Introduction
 ### 1.1. Purpose
 
-In this document, more technical details will be presented than the RASD about the PowerEnjoy system.
+In this document, a detailed design is presented. It is base on the RASD document and provides a more detailed view of the architecture of PowerEnjoy's application
 
-As we compeleted before in the RSAD, we have shown a general system what it looks like and how it works. This document aims to present how we implement the system specifically includes component view, Run-time view, deploying view, algorithm design,etc.  
+The RASD presented a general view of the system and what are the functions that the system should execute. This document aims to present the how of the implementation the system including components, run-time processes, deployment, user experience and algorithm design.  
 
 ### 1.2. Scope
 The project PowerEnjoy, which is a service based on mobile application( based on Android) and web application.
-The system allows user to reservate a electric car via mobile app or web app. When user wants to reservate a car the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will will show the concrete steps for users to get money saving or a discount once their situation qualify the requirement.
+The system allows user to reserve a electric car via mobile app or web app. When user wants to reserve a car, the GPS function will locate the user's current position and the system will filter available cars which are close to user's current position. Also users can apply for the money-saving option when they are ready to finish using the car. And the system will show the steps for users to get a discount once their situation qualify the requirement.
 
-The main purpose of the system to make people's life more convenient and meet the needs of the public while don't need them to buy a car. Also its a way to protect the environment.
+The main purpose of the system to make people's life more convenient by making cars available through an app. All this while protecting the environment through carpooling and electric vehicles.
 
 ### 1.3. Definition, acronyms, abbreviations
 - **RASD**: Requirements Analysis and Specifications Document.
@@ -66,24 +63,22 @@ The main purpose of the system to make people's life more convenient and meet th
 - **URI**: Uniform Resource Identifier which is the set of characters that identify the location of a resource
 - **JSON**: JavaScript Object Notation is a lightweight data-interchange format.
 - **UX**: User experience diagram.
-- **BCE**: Boundary-Control-Entity pattern.
 - **GPS**: Global Positioning System.
 
 ### 1.4. Document structure
 
-- Introduction: This part briefly introduces the purpouse of this document. And it also states the definition of some special words to help reader understand this document.  
-- Archtecture Design: This sction contains 8 parts:
-  - Overview:this esction explains the architecture of the PowerEnjoy system
-  - High level components and their interaction:In this part, we give the communication mechanism of each components
-  - Component view: this part shows all the controllers and models in this application,and how they work together to assure the system work together.
-  - Deploying view: this section gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly
-  - Run-time view: this section contians the sequence diagrams of different components and how to work together and deliver the messages
-  -  Compnent interface: this is the part involves  what we have down in the RASD
-  - Selected architectural styles and patterns: the application involves the architecture and why this architecture is suitable for this application
-  -  Other design decisions    
-- Algorithm design: this part is the most important and difficult part in the DD. From three algorithm, we can describe how things going according to the logic and design.
+- Introduction: This part briefly introduces the purpose of this document. And it also states the definition of some special words to help reader understand this document.  
+- Architecture Design: This section contains 8 parts:
+- Overview: this section explains the architecture of the PowerEnjoy system
+- High level components and their interaction: In this part, we give the communication mechanism of each component.
+- Component view: this part shows all the controllers and models in this application and how they work together to assure the system work together.
+- Deploying view: this section shows how each component of the system is deployed and in which device.
+- Run-time view: this section contains the sequence diagrams of different components and how they work together in order to execute functions.
+- Component interface: this part shows the different interfaces between components
+- Selected architectural styles and patterns: the application involves different architectures and motivations behind the choice.
+- Algorithm design: a description of the main algorithms.
 - User Interface design: in this part, we involve what we have done in the RASD
-- Requirements Traceability: this section shows detailed description of the architecture of the DD.
+- Requirements Traceability: this section shows how this document fulfills the goals stated before in the RASD.
 
 \pagebreak
 
@@ -126,23 +121,35 @@ It is the abstraction of the on-board computer. It take care of gathering all ca
 
 ### 2.3.Component view
 
-- Notification Helper : Manage notifications, noticing the user that they are already close to the car.
+![Component View Diagram](DD/resources/component-view-diagram.png)
 
-- Ride Controller : manage rides.
+- Notification Helper : Manage notifications, noticing the user that they are already close to the car
 
-- Reservation Controller : manage reservation,
+- Ride Controller : manage rides
 
-- Bill Controller : manage payment method and bills,
+- Reservation Controller : manage reservation
 
-- Economic Controller : manage money saving request,
+- Bill Controller : manage payment method and bills
 
-- Car Controller : manage the status and availability of cars,
+- Economic Controller : manage money saving request
 
-- Router : route the request to related controller,
+- Car Controller : manage the status and availability of cars
 
-- Clients : mobile application based on Android and web application (browser),
+- Router : route the request to related controller
 
-- User Controller : manage user, access log in or sign in request.
+- Clients : mobile application based on Android and web application (In browser)
+
+- User Controller : manage user, access log in or sign in operations
+
+- Database : store persistent data
+
+- Localization Controller : manage location
+
+The system exposes a REST API with many public endpoints and resources, most of them require a proper authentication and authorization to be used.
+
+The router will dispatch the request to the relevant controllers. Then each controller will do further process as the user required.
+
+For example, when a reservation request comes it will arrive to the router first then it will be dispatched to reservation controller by router then the controller will dispose the request.
 
 - Database : store persistent data.
 
@@ -155,50 +162,83 @@ The router will dispatch the request to relative controllers. Then each controll
 For example, when a reservation request comes it will arrive to the router first then it will be dispatched to reservation controller by router then the controller will dispose the request.
 
 
+\pagebreak
+
 ### 2.4. Deploying view
 Deploying view gives the correct design of components and when all the components work, the deploying view should make sure the running view correctly. The user can use personal computer or smart phone to make a reservation, both of computer and smart phone use google map to fix location. In the system, we set system server to save the related information and the application server used the REST API socket. It also has a database server to support system.
 ![Deploying view](DD/resources/deployingview/deploying-view.png){ width=90% }
 
+\pagebreak
+
 ### 2.5. Run-time view
 
-Sequence diagrams for
-- Login process
+##### Login process
 
-In this sequence diagram it can be shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matches the username then the UserController returns login_success message to the Mobile application so that user can login into the system. Otherwise, the system shows error messages.
+![Login Sequence Diagram](DD/resources/sequence-diagrams/s_login_process.png)
 
-- Reservation process  
+In this sequence diagram it is shown that users have to input their login information to the App when they want to use the system. The login request is sent with these information to the system as parameter. First these information will be sent to the UserController which will check these in the database. If users' information(username) is found in the database and the password matches the username then the UserController returns login_success message to the Mobile application so that user can login into the system. Otherwise, the system shows error messages.
+
+\pagebreak
+
+##### Reservation process  
+
+![Reservation Sequence Diagram](DD/resources/sequence-diagrams/s_reservation.png){ width=50% }
+
+\pagebreak
 
 The user starts the process, in the mobile application, by searching for cars close to him or around an address. The mobile application sends a request to the Car Controller (through the router). The location is passed as a parameter in the call. The location comes from the GPS module of the smartphone or is manually entered by the user. The Car Controller calls the Localization Controller to get all the cars close to the location. Upon return, the list is filtered and then displayed to the user, if it is not empty. The user can choose a car to reserve, it is then added as a reservation and marked as unavailable. To conclude the operation, a success message is displayed to the user.
 
-- Billing process
+\pagebreak
+
+##### Billing process
+
+![Billing Sequence Diagram](DD/resources/sequence-diagrams/s_billing_process.png)
 
 The billing process is started at the end of a ride. The ride controller signals the bill controller that a ride has ended. The reservation relative to that ride is passed as a parameter as it contains many variables that are used in calculating the bill.
 
-- Check-in car process
+\pagebreak
+
+##### Check-in car process
+
+![Check-in sequence diagram](DD/resources/sequence-diagrams/s_check_in.png){ width=50% }
+
+\pagebreak
 
 After reservation, the user need to ask for a check-in process. The user controller send a required message to the car controller and the car controller transfer the ride information to the reservation controller. If this process success, the car controller will transfer the success information to the user and display the ride information on the device of user. Meanwhile, the ride controller received the ride information to start ride.
 
-- Check-out car process
+\pagebreak
+
+##### Check-out car process
+
+![Check-out sequence diagram](DD/resources/sequence-diagrams/s_check_out.png)
 
 When the ride process finished, the user ask for check out and send a check-out request to bill controller. The bill controller transfer the request to the ride controller to get the destination information and the bill controller calculate the bill of the certain ride and then return the bill information to the user.
 
+\pagebreak
 
-- Money saving process
+##### Money saving process
 
-In this sequence diagram it can be seen that if users ask for MoneySaving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
+![Money saving sequence diagram](DD/resources/sequence-diagrams/s_money_saving.png)
+
+In this sequence diagram it can be seen that if users ask for Money Saving option they will be asked to input a destination by the system. The request is then sent with the filled information as parameter to the system. And the system will determine whether the request meets the requirement.  
+
+\pagebreak
 
 ### 2.6. Component interfaces
 
+![Component interfaces diagram](DD/resources/component-interfaces.png)
+
+\pagebreak
 
 ### 2.7. Selected architectural styles and pattern
 
-##### 2.7.1. Three-tier for application architecture
+##### Three-tier for application architecture
 
 As stated in the RASD Document, we will be using the **Three-tier client-server architecture**. The presentation tier is composed of the mobile application and the website. The application layer is composed of two parts. The REST Server that exposes the REST API and holds the business logic. It can be consumed by the web server or the mobile application. In addition, it is a security barrier between the client and the database as it prevents direct accesses to the database by the user.
 The other component of the application layer is the web server. The web server takes care of formatting the data in webpages and communicating with the web browser. The last tier is the data tier which is, in this case, composed of only one database that takes care of persisting the data of the whole application.
 The fact that the business logic is held at the level of our servers, the client-side of the application is kept as light as possible. Therefore, users can quickly access the application by installing it on their device or browsing the website. It also prevents the direct access to the database from the GUI which increases security.
 
-##### 2.7.2. MVC for web server
+##### MVC for web server
 **M**odel-**V**iew-**C**ontroller is a design pattern that is commonly used for GUIs. It relies on three objects:
 
 - **Model**: is the logical structure of data used by the application.
@@ -207,7 +247,7 @@ The fact that the business logic is held at the level of our servers, the client
 
 The separation of concerns is the main motivation behind using MVC design pattern as it increases the possibility to reuse the components. It is important to note that in this case the controller in the web server does not perform any business logic on the data since the application server is the one to do it. The controller serves as a glue between the Model and the View.
 
-##### 2.7.3. REST over HTTP
+##### REST over HTTP
 
 **RE**presentational **S**tate **T**ransfer is the architectural style that we decided to use. REST is a lightweight way to make calls between the different machines of a client server application. REST is used in PowerEnjoy in almost all communications between the servers in our system. It relies on the HTTP Methods (GET, POST, PUT and DELETE).
 
@@ -254,9 +294,6 @@ The authentication is taken care by REST through the `GET /login` endpoint. When
 
 \pagebreak
 
-
-
-
 ## 3. Algorithm Design
 ### 3.1. Billing process
 After the user finishes a ride in a PowerEnjoy car, the application has to calculate the amount that should be charged to the user. The amount is calculated is the multiplication of the time (in minutes) spent in the car and the price per minute. After calculating this amount, discounts/penalties may be applied:
@@ -298,8 +335,7 @@ public Bill caculate_Bill(Reservation r)
 
 
 ### 3.2. Reservation process
-When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addtion, the application allows the user to cancel reservation and it can also monitor the ride information.
-
+When the user make a reservation, we should check the status of user ,the car status and the reservation time. The system allows user to make a reservation 1 hour ahead of the reservation time. In addition, the application allows the user to cancel reservation and it can also monitor the ride information.
 
 ```java
 
@@ -350,9 +386,9 @@ public updateLocation(double[] location)
 }
 ```
 
-### 3.3.Money savig process
+### 3.3.Money saving process
 
-When the user use the car they are allowed to request to get the money-saving option. The system will check that whether there is a charging station and the availability of the station nearby the destination, which the user inputted. If the request fills all conditions then the GPS will navigate the user to the charging sation where they can get money saving. And the system will keep the chaging plugs for the user in a period of time.
+When the user use the car they are allowed to request to get the money-saving option. The system will check that whether there is a charging station and the availability of the station nearby the destination, which the user inputted. If the request fills all conditions then the GPS will navigate the user to the charging station where they can get money saving. And the system will keep the charging plugs for the user in a period of time.
 
 ```java
 import Location.Map;
@@ -361,19 +397,19 @@ public class moneySaving {
 
 private boolean mNearByChargeStation;
 private int mPlugsAvailability;
-private String mChargeStaionName;
+private String mChargeStationName;
 private Location Path;
 public moneySavingOptions(boolean NearByChargeStation, int PlugsAvailability ){
     if(NearByChargeStation == true){
-      mChargeStaionName = ChargeStaionName;
+      mChargeStationName = ChargeStationName;
       if(PlugsAvailability >= 2){
         //keep the plugs for the user.
         mPlugsAvailability = PlugsAvailability-1;
         // navigate the user to the charging station.
-        Path = Map.location.Naviagte(ChargeStaionName);
+        Path = Map.location.Naviagte(ChargeStationName);
       } else Toast.makeText(this, "No available plugs for charging").show();
 // show error
-    } else Toast.makeText(this,"No shargeStation nearby the destination").show();//show error.
+    } else Toast.makeText(this,"No Charge Station nearby the destination").show();//show error.
 
 }
 //determine whether there is a charging station nearby the destination.
@@ -383,11 +419,11 @@ public boolean isNearByChargeStation(Location d ){
       }
    }
 // return the name of the charging station.
-public void getChargeStaionName(boolean NearByChargeStation){
-     mChargeStaionName = ChargeStaionName;
+public void getChargeStationName(boolean NearByChargeStation){
+     mChargeStationName = ChargeStationName;
 }
 //  return the availability of charging plugs in the charge station.
-public int getPlugsAvailability(String ChargeStaionName){
+public int getPlugsAvailability(String ChargeStationName){
       return mPlugsAvailability;
   }
 }
@@ -398,81 +434,104 @@ public int getPlugsAvailability(String ChargeStaionName){
 
 #### 4.1. Mock-ups
 
+The mock-ups were presented in the RASD Document in section 2.1.
+
 #### 4.2. UX flow chart
 
 We introduce the UX ( User experience ) flow chart to show the workflow of functions.
-##### 4.2.1. Login process
 
-##### 4.2.2 Reservation process
+##### Login process
 
-#### 4.3. BCE pattern
-The Boundary-Control-Entity Pattern ( BCE ) is a variation of the Model-View-Controller Pattern. We insert this to present how each user action is managed internally and how it’s linked with our model.
+![Login UX](DD/resources/ux-diagrams/ux_login_process.png){ width=40% }
 
+\pagebreak
 
+##### Reservation process
+
+![Reservation UX](DD/resources/ux-diagrams/ux_reservation_process.png)
+
+\pagebreak
 
 ## 5.Requirements Traceability
 The design document is aiming to explain the goals in the RASD.
 
-G[1] Allows users to register in the PowerEnjoy application
+**G[1]** Allows users to register in the PowerEnjoy application
+
   - The User controller
 
-G[2] Allows registered users to login using their credentials
+**G[2]** Allows registered users to login using their credentials
+
   - The User controller
 
-G[3] Allows users to modify their information.
+**G[3]** Allows users to modify their information.
+
   - The User controller
 
-G[4] Allows users to see the cars around him or around an address on the application.
+**G[4]** Allows users to see the cars around him or around an address on the application.
+
   - The user controller
   - The localization controller
 
-G[5] Allows users to reserve cars up to one hour in advance.
+**G[5]** Allows users to reserve cars up to one hour in advance.
+
   - The reservation controller
 
-G[6] Allows users to cancel a reservation.
+**G[6]** Allows users to cancel a reservation.
+
   - The reservation controller
   - The user controller
 
-G[7] Allows users to unlock and check-in the reserved car.
+**G[7]** Allows users to unlock and check-in the reserved car.
+
   - The user controller
   - The ride controller
   - The reservation controller
 
-G[8] Allows users to see how much the previous ride cost along with more ride information.
+**G[8]** Allows users to see how much the previous ride cost along with more ride information.
+
   - The bill controller
   - The user controller
 
-G[9] Allows users to check their rides history.
+**G[9]** Allows users to check their rides history.
+
   - The user controller
 
-G[10] Allows users to the user should be able to enable economy mode.
+**G[10]** Allows users to the user should be able to enable economy mode.
+
   - The reservation controller
   - The economic controller
 
-G[11] Allows users to see where to park the car in order to get discount.
+**G[11]** Allows users to see where to park the car in order to get discount.
+
   - The localization controller
   - The user controller
 
-G[12] Allows systems to keep real-time data about the car variables.
+**G[12]** Allows systems to keep real-time data about the car variables.
+
   - The car controller
 
-G[13] Reservations should time-out if the user doesn't check-in the car.
+**G[13]** Reservations should time-out if the user doesn't check-in the car.
+
   - The car controller
   - The user controller
   - The reservation controller
 
-G[14] System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+**G[14]** System should calculate the price of the ride depending on the time, left charge in the battery and number of passengers.
+
   - The ride controller
   - The bill controller
   - The car controller
 
-G[15] Allows the operator to validate the identity and driving license of the user after checking them personally.
+**G[15]** Allows the operator to validate the identity and driving license of the user after checking them personally.
+
   - The car controller
 
-G[16] Allows the operator  to verify the damaged and faulty cars.
+**G[16]** Allows the operator  to verify the damaged and faulty cars.
+
   - The car controller
 
-G[17] Allows the operator monitor the position of the cars.
+**G[17]** Allows the operator monitor the position of the cars.
+
   - The car controller
   - The localization controller
 
@@ -480,11 +539,13 @@ G[17] Allows the operator monitor the position of the cars.
 
 
 #### 6.1. Bibliography
+
   - Sample Design Deliverable Discussed on Nov. 2
   - Assignments AA 2016-2017
   - IEEE standard on requirement engineering
 
 #### 6.2. Used tools
+
   - Draw.io: for UML,UX,BCE diagrams.
   - Atom: for writing document.
   - Pandoc: for PDF creating.
@@ -499,6 +560,7 @@ G[17] Allows the operator monitor the position of the cars.
 - 01/12/2016 4h
 - 05/12/2016 1h
 - 08/12/2016 6h
+- 11/12/2016 2h
 
 ### Xing Jinling
 - 23/11/2016 3h
