@@ -59,7 +59,21 @@ The main purpose of this document is to make up the system when the subcomponent
 
 ### 1. Entry Criteria
 
+For doing this part we should ensure that all units of project work can commence to achieve the corresponding unit test qulity objectives and outputing the corresponding test report.
+
+Besides, the following documents should have been compeleted, reviewed, approved to do unit testing phase, for instance, the Requirements Analysis and Speciﬁcation Document and the Design Document. W.R.T integration testing phase, we assume that the project has already being code-complete. And there are no missing features or media elements. The product satisfies the performance and memory requirements specified by the Functional Spec. All priority bugs have been fixed and closed. Internal documentation has been updated to reflect the current state of the product.
+
+Also, we should as possible as keeping the percentage of completion of every component with respect to its functionalities as:
+
+- 100% for the Data Access Utilities component
+- At least 90% for the Car Management System subsystem
+- At least 70% for the System Administration and Account Management subsystems
+- At least 50% for the client applications  
+
+
 ### 2. Elements to be Integrated
+
+
 
 ### 3. Integration Testing Strategy
 
