@@ -55,6 +55,7 @@ The main purpose of this document is to make up the system when the subcomponent
   - Assignments AA 2016-2017
   - Integration testing example document
   - IEEE standard on requirement engineering
+
 ## 2. Integration Strategy
 
 ### 1. Entry Criteria
@@ -76,13 +77,43 @@ Also, we should as possible as keeping the percentage of completion of every com
 
 
 ### 3. Integration Testing Strategy
+#### 1. User Management System
+
+##### 1. User Registration, Data Access Utilities
+##### 2. User Login, Data Access Utilities
+##### 3. Password, Data Access Utilities
+##### 4. Settings Management, Data Access Utilities
+##### 5. User Management, Bill Management
+##### 6. User Management, Reservation Management
+
+#### 2. Car Management System
+##### 1. Car Management, Reservation Management
+##### 2. Car Management, Reservation Management
+##### 3. Reservation Management, Localision Management
+##### 4. Ride Management, Localision Management
+##### 5. Ride Management, Localision Management
+##### 6. Ride Management, Bill Management
+##### 7. Bill Management, Car Management
+
+#### 3. Operator Management System
+##### 1. Car Management, Localision Management
+##### 2. Localision Management, Reservation Management
+##### 3. Reservation Management, Ride Management
+##### 4. Ride Management, Localision Management
+##### 5. Localision Management, Economic Management
+##### 6. Economic Management, Bill Management
+##### 7. Localision Management, Data Access Utilities
+##### 8. API Management, Data Access Utilities
+##### 9. Car Management, Data Access Utilities
 
 ### 4. Sequence of Component/Function Integration
 
         Software Integration Sequence & Subsystem Integration Sequence
 
 ## 3. Individual Steps and Test Description
-
+Management System
+Economic Management System
+Localision
 ## 4. Tools and Test Equipment Required
 
 ## 5. Program Stubs and Test Data Required
