@@ -73,7 +73,13 @@ Also, we should as possible as keeping the percentage of completion of every com
 
 ### 2. Elements to be Integrated
 
-As we presented before in design document our system is composed by many components and units. So in this section, we will list all the components which will be integrated in this phrase.
+As we presented before in design document our system is composed by many components and units. So in this section, we will list all the main components which will be integrated in this phrase. And we concern the integration phase as two levels of abstraction:
+- High-level components integration testing
+- Lower-level components integration testing
+
+For high-level integration testing, as we introduced 3-tier structure to build our system(PowerEnjoy) in Design Document so we will follow the structure to process the testing, 1. presentation tier ( mobile client, web client, web server ), 2. logic tier ( application server ), 3. persistence tier ( DB server ).
+
+At lower-level integration testing, we decided to integrate those components which are highly depending on one another to oﬀer the higher level functionalities of PowerEnjoy. In this case, these components will be involved : Ride controller, Bill controller, Reservation controller, Economic controller. And we assume that the car controller and charge station and the interaction between car and charge station will be well integration tested by third part. 
 
 
 
