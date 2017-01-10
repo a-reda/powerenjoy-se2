@@ -67,11 +67,13 @@ Also, we should as possible as keeping the percentage of completion of every com
 
 - 100% for the Data Access Utilities component
 - At least 90% for the Car Management System subsystem
-- At least 70% for the System Administration and Account Management subsystems
-- At least 50% for the client applications  
+- At least 80% for the System Administration and Account Management subsystems
+- At least 70% for the client applications  
 
 
 ### 2. Elements to be Integrated
+
+As we presented before in design document our system is composed by many components and units. So in this section, we will list all the components which will be integrated in this phrase.
 
 
 
