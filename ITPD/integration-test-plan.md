@@ -80,48 +80,46 @@ As we presented before in design document our system is composed by many compone
 
 For high-level integration testing, as we introduced 3-tier structure to build our system(PowerEnjoy) in Design Document so we will follow the structure to process the testing, 1. presentation tier ( mobile client, web client, web server ), 2. logic tier ( application server ), 3. persistence tier ( DB server ).
 
-At lower-level integration testing, we decided to integrate those components which are highly depending on one another to oﬀer the higher level functionalities of PowerEnjoy. In this case, these components will be involved : Ride controller, Bill controller, Reservation controller, Economic controller. And we assume that the car controller and charge station and the interaction between car and charge station will be well integration tested by third part. 
+At lower-level integration testing, we decided to integrate those components which are highly depending on one another to oﬀer the higher level functionalities of PowerEnjoy. In this case, these components will be involved : Ride controller, Bill controller, Reservation controller, Economic controller. And we assume that the car controller and charge station and the interaction between car and charge station will be well integration tested by third part.
 
 
 
 ### 3. Integration Testing Strategy
-#### 1. User Management System
-
-##### 1. User Registration, Data Access Utilities
-##### 2. User Login, Data Access Utilities
-##### 3. Password, Data Access Utilities
-##### 4. Settings Management, Data Access Utilities
-##### 5. User Management, Bill Management
-##### 6. User Management, Reservation Management
-
-#### 2. Car Management System
-##### 1. Car Management, Reservation Management
-##### 2. Car Management, Reservation Management
-##### 3. Reservation Management, Localision Management
-##### 4. Ride Management, Localision Management
-##### 5. Ride Management, Localision Management
-##### 6. Ride Management, Bill Management
-##### 7. Bill Management, Car Management
-
-#### 3. Operator Management System
-##### 1. Car Management, Localision Management
-##### 2. Localision Management, Reservation Management
-##### 3. Reservation Management, Ride Management
-##### 4. Ride Management, Localision Management
-##### 5. Localision Management, Economic Management
-##### 6. Economic Management, Bill Management
-##### 7. Localision Management, Data Access Utilities
-##### 8. API Management, Data Access Utilities
-##### 9. Car Management, Data Access Utilities
 
 ### 4. Sequence of Component/Function Integration
 
         Software Integration Sequence & Subsystem Integration Sequence
 
 ## 3. Individual Steps and Test Description
-Management System
-Economic Management System
-Localision
+### 1. User Management System
+
+#### 1. User Registration, Data Access Utilities
+#### 2. User Login, Data Access Utilities
+#### 3. Password, Data Access Utilities
+#### 4. Settings Management, Data Access Utilities
+#### 5. User Management, Bill Management
+#### 6. User Management, Reservation Management
+
+### 2. Car Management System
+#### 1. Car Management, Reservation Management
+#### 2. Car Management, Reservation Management
+#### 3. Reservation Management, Localision Management
+#### 4. Ride Management, Localision Management
+#### 5. Ride Management, Localision Management
+#### 6. Ride Management, Bill Management
+#### 7. Bill Management, Car Management
+
+### 3. Operator Management System
+#### 1. Car Management, Localision Management
+#### 2. Localision Management, Reservation Management
+#### 3. Reservation Management, Ride Management
+#### 4. Ride Management, Localision Management
+#### 5. Localision Management, Economic Management
+#### 6. Economic Management, Bill Management
+#### 7. Localision Management, Data Access Utilities
+#### 8. API Management, Data Access Utilities
+#### 9. Car Management, Data Access Utilities
+
 ## 4. Tools and Test Equipment Required
 
 ## 5. Program Stubs and Test Data Required
