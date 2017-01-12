@@ -65,7 +65,7 @@ For doing this part we should ensure that all units of project work can commence
 
 Besides, the following documents should have been completed, reviewed, approved to do unit testing phase, for instance, the Requirements Analysis and Specification Document and the Design Document. W.R.T integration testing phase, we assume that the project has already being code-complete. And there are no missing features or media elements. The product satisfies the performance and memory requirements specified by the Functional Spec. All priority bugs have been fixed and closed. Internal documentation has been updated to reflect the current state of the product.
 
-Also, we should as possible as keeping the percentage of completion of every component with respect to its functionalities as:
+Also, we should as far as possible to keep the percentage of completion of every component with respect to its functionalities as:
 
 - 100% for the Data Persistence component
 - At least 90% for the **Car Management** subsystem
