@@ -87,42 +87,48 @@ At lower-level integration testing, we decided to integrate those components whi
 
 The goal of integration testing is to uncover errors that may arise when two or more components are integrated together. As stated before, unit tests are performed and validated before conducting the integration tests. The latter provides assurance that bugs arise from the integrations and not from the components (units) themselves.
 
-We opted for a bottom-up strategy because of many reasons. First, we are using a lot of already-developed or commercially available components that interact directly with our low level components. Since those components are already tested, they represent reliable building blocks to integrate from. Second, using a bottom-up approach removes the need to develop stubs that are needed in a top-down approach. In addition to that, our main datasources (database and car parameters) are already tested which removes the need for stubs. Furthermore, the low-level modules are the most critical in our application (model, localization and car communication) and almost all other components depend on them. So the bottom-up approach ensures that these components are integrated first making sure that they are bug-free earlier. In case errors are uncovered, they can be fixed early in the process.
+We opted for a bottom-up strategy because of many reasons. First, we are using many of already-developed or commercially available components that interact directly with our low level components. Since those components are already tested, they represent reliable building blocks to integrate from. Second, using a bottom-up approach removes the need to develop stubs that are needed in a top-down approach. In addition to that, our main datasources (database and car parameters) are already tested which removes the need for stubs. Furthermore, the low-level modules are the most critical in our application (model, localization and car communication) and almost all other components depend on them. So the bottom-up approach ensures that these components are integrated first making sure that they are bug-free earlier. In case errors are uncovered, they can be fixed early in the process.
 
 
 ### 4. Sequence of Component/Function Integration
 
-        Software Integration Sequence & Subsystem Integration Sequence
+Given the choice of a bottom-up approach, we should put on the first stage the components that do not have any dependency and then integrate on them. The components in question are: database system, notification helper and Google localization API.
+
+In order to determine the sequence of the integrations, we will prioritize the components that many other components depends on. In other words, the most critical components will be integrated first.
 
 ## 3. Individual Steps and Test Description
-### 1. User Management System
 
-#### 1. User Registration, Data Access Utilities
-#### 2. User Login, Data Access Utilities
-#### 3. Password, Data Access Utilities
-#### 4. Settings Management, Data Access Utilities
-#### 5. User Management, Bill Management
-#### 6. User Management, Reservation Management
+### 1. External System
+
+#### 1. DBMS, Model
+#### 2. Google Maps Component, Localization
+#### 3. CarComponents, Model
 
 ### 2. Car Management System
-#### 1. Car Management, Reservation Management
-#### 2. Car Management, Reservation Management
-#### 3. Reservation Management, Localization Management
-#### 4. Ride Management, Localization Management
-#### 5. Ride Management, Localization Management
-#### 6. Ride Management, Bill Management
-#### 7. Bill Management, Car Management
 
-### 3. Operator Management System
-#### 1. Car Management, Localization Management
-#### 2. Localization Management, Reservation Management
-#### 3. Reservation Management, Ride Management
-#### 4. Ride Management, Localization Management
-#### 5. Localization Management, Economic Management
-#### 6. Economic Management, Bill Management
-#### 7. Localization Management, Data Access Utilities
-#### 8. API Management, Data Access Utilities
-#### 9. Car Management, Data Access Utilities
+#### 1. Localization, Model
+#### 2. Car Component, Model
+#### 3. Car Component, Bill Component
+#### 4. Car Component, Localization Component
+
+
+### 3. Operations Management System
+#### 1. Reservation Component, Model
+#### 2. Bill Component, Model
+#### 3. Ride Component, Model
+#### 4. Reservation Component, Car Component
+#### 5. Reservation Component, Bill Component
+#### 6. Reservation Component, Ride Component
+#### 7. Bill Component, Ride Component
+#### 8. Ride Component, Localization Component
+#### 9. Localization Component, Economic Component
+
+### 4. User Management System
+
+#### 1. User Component, Model
+#### 2. User Component, Car Component
+#### 3. User Component, Bill Component
+#### 4. User Component, Reservation Component
 
 ## 4. Tools and Test Equipment Required
 
