@@ -101,6 +101,19 @@ In order to determine the sequence of the integrations, we will prioritize the c
 ### 1. External System
 
 #### 1. DBMS, Model
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{\textbf{insertReservation(reservation)}} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & A NullArgumentException is raised. \\ \hline
+\begin{tabular}[c]{@{}l@{}}A reservation with an id\\ already existent in the\\ database\end{tabular} & \begin{tabular}[c]{@{}l@{}}An InvalidArgumentValueException is\\ raised.\end{tabular} \\ \hline
+lksqnflkdjflkds & lkfjsdflkjsdlkfjsd \\ \hline
+\end{tabular}
+\end{table}
+
 #### 2. Google Maps Component, Localization
 #### 3. CarComponents, Model
 
