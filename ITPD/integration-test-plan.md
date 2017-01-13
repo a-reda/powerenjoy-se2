@@ -477,11 +477,128 @@ UserId is valid & \multicolumn{4}{l}{The economic ride information can be monito
 ### 4. User Management System
 #### 1. User Component, Model
 
+\begin{table}[]
+\centering
+\begin{tabular}{ll}
+\multicolumn{2}{c}{creatUser(user)} \\ \hline
+\multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Insert the user's information into the DB \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{ll}
+\multicolumn{2}{c}{updateUserInfo(user)} \\ \hline
+\multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & The user's information is updated in the DB \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{ll}
+\multicolumn{2}{c}{feedbackRequest(feedback)} \\ \hline
+\multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & The user's feedback information is inserted into the DB \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{udateUserPassword (userID, password, newPassword)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+UserID dosen't match password & Throw invalidValueException \\ \hline
+A valid parameter & Update the user's password in DB \\ \hline
+\end{tabular}
+\end{table}
 
 #### 2. User Component, Car Component
+
+\begin{table}[]
+\centering
+\begin{tabular}{ll}
+\multicolumn{2}{c}{unlockCar (userID, reservationInfo)} \\ \hline
+\multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+UserID dosen't match the reservationInfo & Throw invalidValueEception \\ \hline
+Valid parameter & Unlock the car \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{ll}
+\multicolumn{2}{c}{getAvailableCarList (userID, localization)} \\ \hline
+\multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+An invalid localization & Throw invalidValueException \\ \hline
+A valid parameter & Return the availabe car list to the user \\ \hline
+\end{tabular}
+\end{table}
+
 #### 3. User Component, Bill Component
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{getBill(userID, ride)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+UserID dosen't match  the ride information & Throw invalidValueException \\ \hline
+A valid parameter & Return the bill details to the user \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{checkHistoryBill(userID, date)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Return the bill details to the user for those dates \\ \hline
+\end{tabular}
+\end{table}
+
 #### 4. User Component, Reservation Component
 
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{reservationRequest(userID, reservationInfo)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Return ture \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{cancelReservation(userID, reservationID)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A reservationID that dosen't exsit & Throw invalidValueException which means the user didn't make a reservation \\ \hline
+Valid userID and reservation ID & Remove the reservation from DB and add this operation into the log \\ \hline
+\end{tabular}
+\end{table}
 
 ## 4. Tools and Test Equipment Required
 
