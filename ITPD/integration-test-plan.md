@@ -103,9 +103,96 @@ We opted for a bottom-up strategy because of many reasons. First, we are using a
 ### 2. Car Management System
 #### 1. Localization, Model
 
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{getLocalization(map)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Return localization \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{getCarLocalization(carID, localization)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A inexistent carID & Throw invalidValueException \\ \hline
+A valid parameter & Return the current localization infromation of the car \\ \hline
+\end{tabular}
+\end{table}
+
 #### 2. Car Component, Model
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{getCarStatus(carID)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Return the car's status and details \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{getReservatedCarStatus(carID, userID, reservationID)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+carID and userID and reservationID are invalid & Throw invalidValueException \\ \hline
+carID != reservation( info).carID & Throw invalidValueException \\ \hline
+Valid parameters & Return details and current status of the car to the user \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{isAvailableCar(carID)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Return true or false \\ \hline
+\end{tabular}
+\end{table}
+
 #### 3. Car Component, Bill Component
+
+
 #### 4. Car Component, Localization Component
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{updateCarLocalization(carID, localization)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A inexistent carID & Throw invalidValueException \\ \hline
+A valid parameter & Return the current localization infromation of the car \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|c|}{isCarInSafeArea(carID, localiaztion)} \\ \hline
+\multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
+A null parameter & Throw nullPointerException \\ \hline
+A non-null parameter & Return true or false \\ \hline
+\end{tabular}
+\end{table}
 
 ### 3. Operations Management System
 #### 1. Reservation Component, Model
