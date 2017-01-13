@@ -475,13 +475,14 @@ UserId is valid & \multicolumn{4}{l}{The ride can be paid economically because o
 \centering
 \caption{My caption}
 \label{my-label}
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{MonitorEconomicRide(UserId, location)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A location whose coordinates are invalid & \multicolumn{4}{l}{A InvalidArgumentException is raised.} \\
-A non-existing User id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-UserId is valid & \multicolumn{4}{l}{The economic ride information can be monitor on the user's application,}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{MonitorEconomicRide(UserId, location)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A location whose coordinates are invalid & \multicolumn{4}{l|}{A InvalidArgumentException is raised.} \\ \hline
+A non-existing User id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+UserId is valid & \multicolumn{4}{l|}{The economic ride information can be monitor on the user's application,} \\ \hline
 \end{tabular}
 \end{table}
 
