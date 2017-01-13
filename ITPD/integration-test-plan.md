@@ -113,27 +113,27 @@ We opted for a bottom-up strategy because of many reasons. First, we are using a
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{insertReservation(reservation)} \\
-Input & \multicolumn{4}{l}{Effect} \\
-A null parameter & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-\multicolumn{1}{|l|}{By means of Model, A reservation with an id already existent in the database} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-Formally valid arguments & \multicolumn{4}{l}{By means of Model, an entry containing the reservation datais inserted into the database.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{insertReservation(reservation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}By means of Model, A reservation \\ with an id already existent in the database\end{tabular} & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+Formally valid arguments & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, an entry containing the\\ reservation datais inserted into the database.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
-
 - delete reservation
-
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{deleteReservation(reservation)} \\
-Input & \multicolumn{4}{l}{Effect} \\
-A null parameter & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-\multicolumn{1}{|l|}{By means of Model, A reservation with an id already existent in the database} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-Formally valid arguments & \multicolumn{4}{l}{By means of Model, an entry containing the reservation data is deleted from the database.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{deleteReservation(reservation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}By means of Model, A reservation with \\ an id already existent in the database.\end{tabular} & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+Formally valid arguments & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, an entry containing the \\ reservation data is deleted from the database.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -142,14 +142,15 @@ Formally valid arguments & \multicolumn{4}{l}{By means of Model, an entry contai
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{updateReservationList(reservationList)} \\
-Input & \multicolumn{4}{l}{Effect} \\
-A null parameter & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-\multicolumn{1}{|l|}{An empty array} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An array containing somenull values & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-An array of non-null, but inexistent reservations & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-An array of valid and existing reservations & \multicolumn{4}{l}{By means of Model, the corresponding entries in the database are updated to set the reservation as completed.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{updateReservationList(reservationList)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An empty array & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An array containing somenull values & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+An array of non-null, but inexistent reservations & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+An array of valid and existing reservations & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, the corresponding entries \\ in the database are updated to set the reservation\\ as completed.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -159,14 +160,15 @@ An array of valid and existing reservations & \multicolumn{4}{l}{By means of Mod
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{updateBillQueues(billQueue)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameter} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An empty array & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-An array containing somenull values & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-An array of non-nullqueues, but containing null values & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A non-empty array of valid bill queues & \multicolumn{4}{l}{By means of Model, The content of the queues is updated in the database.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{updateBillQueues(billQueue)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An empty array & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+An array containing somenull values & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}An array of non-nullqueues, but containing\\ null values\end{tabular} & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A non-empty array of valid bill queues & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, The content of the queues \\ is updated in the database.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -174,29 +176,30 @@ A non-empty array of valid bill queues & \multicolumn{4}{l}{By means of Model, T
 
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{getBillInfo(UserId, ride)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null user id} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An invalid user id & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A non-existing ride & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-A valid user id and ride & \multicolumn{4}{l}{By means of Model, Th bill information can be get from database.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{getBillInfo(UserId, ride)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null user id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An invalid user id & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A non-existing ride & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A valid user id and ride & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, Th bill information can \\ be get from database.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
+
 #### 3. Ride Component, Model
 - startRide
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{startRide(carId, currentLocation)} \\
-Input & \multicolumn{4}{l}{Effect} \\
-A null location & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A non-existing location} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-A location far from the current location & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A current location & \multicolumn{4}{l}{By means of Model, the corresponding location in the database are selected to start rides.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{startRide(carId, currentLocation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A non-existing location & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A location far from the current location & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A current location & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, the corresponding location \\ in the database are selected to start rides.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -204,25 +207,27 @@ A current location & \multicolumn{4}{l}{By means of Model, the corresponding loc
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{updateRideInfo(CarId,RideInfoAvailable)} \\
-Input & \multicolumn{4}{l}{Effect} \\
-A null location & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A non-existing CarId} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-A set of valid parameters & \multicolumn{4}{l}{By means of Model, the corresponding ride information in the database are updated}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{updateRideInfo(CarId,RideInfoAvailable)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A non-existing CarId & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A set of valid parameters & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, the corresponding ride \\ information in the database are updated\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
-
 - getRideInfo
+
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{getRideInfo(CarId,RideInfoAvailable)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A non-existing CarId} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-A set of valid parameters & \multicolumn{4}{l}{By means of Model, Returns the stored ride information in the database}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{getRideInfo(CarId,RideInfoAvailable)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A non-existing CarId & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A set of valid parameters & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, Returns the stored ride \\ information in the database\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -230,30 +235,31 @@ A set of valid parameters & \multicolumn{4}{l}{By means of Model, Returns the st
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{endRide(CarId, currentLocation)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A non-existing CarId & \multicolumn{4}{l}{An InvalidArgumentValueException israised.} \\
-A valid CarId and current-Location, the Car is on a ride and current Location is inside city & \multicolumn{4}{l}{By means of Model, the ride is considered closed and is,nal-ized in the database.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{endRide(CarId, currentLocation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A non-existing CarId & \multicolumn{4}{l|}{An InvalidArgumentValueException israised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A valid CarId and current-Location, \\ the Car is on a ride and current \\ Location is inside city\end{tabular} & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By means of Model, the ride is considered \\ closed and is,nal-ized in the database.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
-
 
 #### 4. Reservation Component, Car Component
 - ReservationCar
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{ReservationCar(passengerId, passengerLocation, destination)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameter} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A passengerId not cor-rectly formatted & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A passenger Location whose coordinates are invalid & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A destination whose coordinates are invalid & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A passengerLocation outside the city & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A valid set of parameters & \multicolumn{4}{l}{A new reservation is created and handled}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{ReservationCar(passengerId, passengerLocation, destination)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A passengerId not cor-rectly formatted & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A passenger Location whose coordinates are invalid & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A destination whose coordinates are invalid & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A passengerLocation outside the city & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A valid set of parameters & \multicolumn{4}{l|}{A new reservation is created and handled} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -261,13 +267,14 @@ A valid set of parameters & \multicolumn{4}{l}{A new reservation is created and 
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{existsAvailableCar(reservation, location)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameter} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An inexistent location & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A zone with invalid fields & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A valid set of parameters & \multicolumn{4}{l}{Returns true if a Car driver is available to serve the reservation, false otherwise.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{existsAvailableCar(reservation, location)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An inexistent location & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A zone with invalid fields & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A valid set of parameters & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Returns true if a Car driver is available to\\ serve the reservation, false otherwise.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -276,13 +283,12 @@ A valid set of parameters & \multicolumn{4}{l}{Returns true if a Car driver is a
 
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{CarDriverAcceptedReservation(CarId)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{An invalid CarId} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-A valid CarId & \multicolumn{4}{l}{the car driver accept reservation and by means of model, the database update instantly}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{CarDriverAcceptedReservation(CarId)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+An invalid CarId & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A valid CarId & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}the car driver accept reservation and by means \\ of model, the database update instantly\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -291,25 +297,28 @@ A valid CarId & \multicolumn{4}{l}{the car driver accept reservation and by mean
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{CarDriverRefusedReservation(CarId)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{An invalid CarId} & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\ \cline{1-1}
-A valid CarId & \multicolumn{4}{l}{the car driver refuse reservation and by means of model, the database update instantly}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{CarDriverRefusedReservation(CarId)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+An invalid CarId & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A valid CarId & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}the car driver refuse reservation and by means\\ of model, the database update instantly\end{tabular}} \\ \hline
 \end{tabular}
-\end{table
+\end{table}
+
 #### 5. Reservation Component, Bill Component
 - checkBillInfo
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{checkBillInfo(reservation, ride)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameters} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An invalid parameters & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A non-existing ride or reservation & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-A valid reservation and ride & \multicolumn{4}{l}{From the reservation and ride, the corresponding bill can be check by user}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{checkBillInfo(reservation, ride)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameters & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An invalid parameters & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A non-existing ride or reservation & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A valid reservation and ride & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}From the reservation and ride, the corresponding \\ bill can be check by user\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -317,27 +326,30 @@ A valid reservation and ride & \multicolumn{4}{l}{From the reservation and ride,
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{ConfirmBillInfo(reservation, ride)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameters} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An invalid parameters & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A non-existing ride or reservation & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-A valid reservation and ride & \multicolumn{4}{l}{From the reservation and ride, the corresponding bill needs to be confirmed when the user check-out}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{ConfirmBillInfo(reservation, ride)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameters & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An invalid parameters & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A non-existing ride or reservation & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A valid reservation and ride & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}From the reservation and ride, the corresponding\\ bill needs to be confirmed when the user check-out.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
+
 #### 6. Reservation Component, Ride Component
 - ride of reservation
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{RideOfReservation(CarDriver, reservation)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameter} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A passenger location whose coordinates are invalid & \multicolumn{4}{l}{An InvalidLocationException is raised.} \\
-An inexistent car driver & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A valid car driver and a reservation & \multicolumn{4}{l}{Returns the reservation information and ride information of passengers location, destination and passengers number and whether share car or not.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{RideOfReservation(CarDriver, reservation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A passenger location whose coordinates \\ are invalid\end{tabular} & \multicolumn{4}{l|}{An InvalidLocationException is raised.} \\ \hline
+An inexistent car driver & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A valid car driver and a reservation & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Returns the reservation information and ride\\ information of passengers location, destination \\ and passengers number and whether share car or not.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -345,12 +357,13 @@ A valid car driver and a reservation & \multicolumn{4}{l}{Returns the reservatio
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{PassengerChangedDestination(CarDriver, reservation)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameter} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A change with an invalid destination & \multicolumn{4}{l}{An InvalidLocationException is raised.} \\
-A change with a valid destination & \multicolumn{4}{l}{Returns the reservation information and ride information of new destination}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{PassengerChangedDestination(CarDriver, reservation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A change with an invalid destination & \multicolumn{4}{l|}{An InvalidLocationException is raised.} \\ \hline
+A change with a valid destination & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Returns the reservation information and\\ ride information of new destination\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -359,117 +372,120 @@ A change with a valid destination & \multicolumn{4}{l}{Returns the reservation i
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{PassengerInterruptRide(CarDriver, reservation)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameter} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-Passengers don't want to go to the destination and asked interrupt ride immediately & \multicolumn{4}{l}{Returns the current ride information}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{PassengerInterruptRide(CarDriver, reservation)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameter & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Passengers don't want to\\ go to the destination and \\ asked interrupt ride immediately\end{tabular} & \multicolumn{4}{l|}{Returns the current ride information} \\ \hline
 \end{tabular}
 \end{table}
+
+
 #### 7. Bill Component, Ride Component
 - CalculateBill
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{CalculateBill(ride)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null parameters} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-An invalid parameters & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A non-existing ride & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-A valid ride & \multicolumn{4}{l}{According to the formulas we write on DD, the bill can be calculated}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{CalculateBill(ride)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null parameters & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+An invalid parameters & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A non-existing ride & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+A valid ride & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}According to the formulas we write on DD,\\  the bill can be calculated\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
-
 
 - GetStoredBillInfo
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{GetStoredBillInfo(UserId)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A location whose coordinates are invalid & \multicolumn{4}{l}{A InvalidArgumentException is raised.} \\
-A non-existing car id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-UserId is valid & \multicolumn{4}{l}{User can get the bill information which stored in the database}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{GetStoredBillInfo(UserId)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A location whose coordinates \\ are invalid\end{tabular} & \multicolumn{4}{l|}{A InvalidArgumentException is raised.} \\ \hline
+A non-existing car id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+UserId is valid & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}User can get the bill information \\ which stored in the database\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
 #### 8. Ride Component, Localization Component
 - MonitorCurrentLocation
 
+
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{MonitorCurrentLocation(CarId, location)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A location whose coordinates are invalid & \multicolumn{4}{l}{An InvalidArgumentValueException is raised.} \\
-A non-existing car id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-CarId is valid, location is inside city & \multicolumn{4}{l}{By GPS ,its status is set to available and its location is written in the database and monitor on the user application of his current ride.}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{MonitorCurrentLocation(CarId, location)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A location whose \\ coordinates are \\ invalid\end{tabular} & \multicolumn{4}{l|}{An InvalidArgumentValueException is raised.} \\ \hline
+A non-existing car id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}CarId is valid, location\\ is inside city\end{tabular} & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}By GPS ,its status is set to available and \\ its location is written in the database and \\ monitor on the user application of his curr\\ -ent ride.\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
-
  - GetStoredRideRoute
-
-
  \begin{table}[]
  \centering
- \begin{tabular}{lllll}
- \multicolumn{5}{c}{GetStoredRideRoute(CarId,location)} \\
- Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
- \multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
- A location whose coordinates are invalid & \multicolumn{4}{l}{A InvalidArgumentException is raised.} \\
- A non-existing car id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
- CarId is valid, location is stored in the database & \multicolumn{4}{l}{From the location， user can get the ride route exists in the database}
+ \begin{tabular}{|l|l|l|l|l|}
+ \hline
+ \multicolumn{5}{|c|}{GetStoredRideRoute(CarId,location)} \\ \hline
+ Input & \multicolumn{4}{l|}{Effect} \\ \hline
+ A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+ \begin{tabular}[c]{@{}l@{}}A location whose \\ coordinates are invalid\end{tabular} & \multicolumn{4}{l|}{A InvalidArgumentException is raised.} \\ \hline
+ A non-existing car id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+ \begin{tabular}[c]{@{}l@{}}CarId is valid, location\\ is stored in the database\end{tabular} & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}From the location， user can get the\\ ride route exists in the database\end{tabular}} \\ \hline
  \end{tabular}
  \end{table}
+
 #### 9. Localization Component, Economic Component
 
 - RemindEconomicInfo
 
+
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{RemindEconomicInfo(UserId)} \\
-Input & \multicolumn{4}{l}{Effect} \\
-A non-existing User id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-UserId is valid & \multicolumn{4}{l}{System will remind the economic information when the user make a reservation and on his location who wants to share cars}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{RemindEconomicInfo(UserId)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A non-existing User id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+UserId is valid & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}System will remind the economic information when the user make\\ a reservation and on his location who wants to share cars\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
-
 
 - CalculateEconomicRide
 
 \begin{table}[]
 \centering
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{CalculateEconomicRide(UserId, location)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A location whose coordinates are invalid & \multicolumn{4}{l}{A InvalidArgumentException is raised.} \\
-A non-existing User id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-UserId is valid & \multicolumn{4}{l}{The ride can be paid economically because of sharing cars, the percentage of discount can be calculate by the formulas we given on the DD}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{CalculateEconomicRide(UserId, location)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A location whose coordinates\\  are invalid\end{tabular} & \multicolumn{4}{l|}{A InvalidArgumentException is raised.} \\ \hline
+A non-existing User id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+UserId is valid & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}The ride can be paid economically because of sharing cars, \\ the percentageof discount can be calculate by the formulas\\ we given on the DD\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
-
 - MonitorEconomicRide
 
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{lllll}
-\multicolumn{5}{c}{MonitorEconomicRide(UserId, location)} \\
-Input & \multicolumn{4}{l}{Effect} \\ \cline{1-1}
-\multicolumn{1}{|l|}{A null location} & \multicolumn{4}{l}{A NullArgumentException is raised.} \\ \cline{1-1}
-A location whose coordinates are invalid & \multicolumn{4}{l}{A InvalidArgumentException is raised.} \\
-A non-existing User id & \multicolumn{4}{l}{A NullArgumentException is raised.} \\
-UserId is valid & \multicolumn{4}{l}{The economic ride information can be monitor on the user's application,}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{|c|}{MonitorEconomicRide(UserId, location)} \\ \hline
+Input & \multicolumn{4}{l|}{Effect} \\ \hline
+A null location & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A location whose coordi\\ -nates are invalid\end{tabular} & \multicolumn{4}{l|}{A InvalidArgumentException is raised.} \\ \hline
+A non-existing User id & \multicolumn{4}{l|}{A NullArgumentException is raised.} \\ \hline
+UserId is valid & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}The economic ride information can be \\ monitor on the user's application,\end{tabular}} \\ \hline
 \end{tabular}
 \end{table}
 
