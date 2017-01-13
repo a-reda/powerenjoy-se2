@@ -107,6 +107,7 @@ In order to determine the sequence of the integrations, we will prioritize the c
 ### 2. Car Management System
 
 #### 1. Localization, Model
+
 #### 2. Car Component, Model
 #### 3. Car Component, Bill Component
 #### 4. Car Component, Localization Component
@@ -126,6 +127,8 @@ In order to determine the sequence of the integrations, we will prioritize the c
 ### 4. User Management System
 
 #### 1. User Component, Model
+
+
 #### 2. User Component, Car Component
 #### 3. User Component, Bill Component
 #### 4. User Component, Reservation Component
@@ -139,3 +142,7 @@ In order to determine the sequence of the integrations, we will prioritize the c
 ### Reda Aissaoui
 - 08/01/2017 2h
 - 11/01/2017 3h
+
+- 08/01/2017 2h
+- 09/01/2017 3h
+- 10/01/2017 3h
