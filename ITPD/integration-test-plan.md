@@ -109,7 +109,7 @@ We opted for a bottom-up strategy because of many reasons. First, we are using a
 \hline
 \multicolumn{2}{|c|}{getLocalization(map)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Return localization \\ \hline
 \end{tabular}
 \end{table}
@@ -121,8 +121,8 @@ A non-null parameter & Return localization \\ \hline
 \hline
 \multicolumn{2}{|c|}{getCarLocalization(carID, localization)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-A inexistent carID & Throw invalidValueException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+A inexistent carID & Throw InvalidArgumentValueException \\ \hline
 A valid parameter & Return the current localization infromation of the car \\ \hline
 \end{tabular}
 \end{table}
@@ -135,7 +135,7 @@ A valid parameter & Return the current localization infromation of the car \\ \h
 \hline
 \multicolumn{2}{|c|}{getCarStatus(carID)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Return the car's status and details \\ \hline
 \end{tabular}
 \end{table}
@@ -147,9 +147,9 @@ A non-null parameter & Return the car's status and details \\ \hline
 \hline
 \multicolumn{2}{|c|}{getReservatedCarStatus(carID, userID, reservationID)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-carID and userID and reservationID are invalid & Throw invalidValueException \\ \hline
-carID != reservation( info).carID & Throw invalidValueException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+carID and userID and reservationID are invalid & Throw InvalidArgumentValueException \\ \hline
+carID != reservation( info).carID & Throw InvalidArgumentValueException \\ \hline
 Valid parameters & Return details and current status of the car to the user \\ \hline
 \end{tabular}
 \end{table}
@@ -160,7 +160,7 @@ Valid parameters & Return details and current status of the car to the user \\ \
 \hline
 \multicolumn{2}{|c|}{isAvailableCar(carID)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Return true or false \\ \hline
 \end{tabular}
 \end{table}
@@ -176,8 +176,8 @@ A non-null parameter & Return true or false \\ \hline
 \hline
 \multicolumn{2}{|c|}{updateCarLocalization(carID, localization)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-A inexistent carID & Throw invalidValueException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+A inexistent carID & Throw InvalidArgumentValueException \\ \hline
 A valid parameter & Return the current localization infromation of the car \\ \hline
 \end{tabular}
 \end{table}
@@ -189,7 +189,7 @@ A valid parameter & Return the current localization infromation of the car \\ \h
 \hline
 \multicolumn{2}{|c|}{isCarInSafeArea(carID, localiaztion)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Return true or false \\ \hline
 \end{tabular}
 \end{table}
@@ -585,7 +585,7 @@ UserId is valid & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}The economic ri
 \begin{tabular}{ll}
 \multicolumn{2}{c}{creatUser(user)} \\ \hline
 \multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Insert the user's information into the DB \\ \hline
 \end{tabular}
 \end{table}
@@ -596,7 +596,7 @@ A non-null parameter & Insert the user's information into the DB \\ \hline
 \begin{tabular}{ll}
 \multicolumn{2}{c}{updateUserInfo(user)} \\ \hline
 \multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & The user's information is updated in the DB \\ \hline
 \end{tabular}
 \end{table}
@@ -607,7 +607,7 @@ A non-null parameter & The user's information is updated in the DB \\ \hline
 \begin{tabular}{ll}
 \multicolumn{2}{c}{feedbackRequest(feedback)} \\ \hline
 \multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & The user's feedback information is inserted into the DB \\ \hline
 \end{tabular}
 \end{table}
@@ -620,8 +620,8 @@ A non-null parameter & The user's feedback information is inserted into the DB \
 \hline
 \multicolumn{2}{|c|}{udateUserPassword (userID, password, newPassword)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-UserID dosen't match password & Throw invalidValueException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+UserID dosen't match password & Throw InvalidArgumentValueException \\ \hline
 A valid parameter & Update the user's password in DB \\ \hline
 \end{tabular}
 \end{table}
@@ -633,8 +633,8 @@ A valid parameter & Update the user's password in DB \\ \hline
 \begin{tabular}{ll}
 \multicolumn{2}{c}{unlockCar (userID, reservationInfo)} \\ \hline
 \multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-UserID dosen't match the reservationInfo & Throw invalidValueEception \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+UserID dosen't match the reservationInfo & Throw InvalidArgumentValueException \\ \hline
 Valid parameter & Unlock the car \\ \hline
 \end{tabular}
 \end{table}
@@ -645,8 +645,8 @@ Valid parameter & Unlock the car \\ \hline
 \begin{tabular}{ll}
 \multicolumn{2}{c}{getAvailableCarList (userID, localization)} \\ \hline
 \multicolumn{1}{c}{\textit{Input}} & \multicolumn{1}{c}{\textit{Effect}} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-An invalid localization & Throw invalidValueException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+An invalid localization & Throw InvalidArgumentValueException \\ \hline
 A valid parameter & Return the availabe car list to the user \\ \hline
 \end{tabular}
 \end{table}
@@ -659,8 +659,8 @@ A valid parameter & Return the availabe car list to the user \\ \hline
 \hline
 \multicolumn{2}{|c|}{getBill(userID, ride)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-UserID dosen't match  the ride information & Throw invalidValueException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+UserID dosen't match  the ride information & Throw InvalidArgumentValueException \\ \hline
 A valid parameter & Return the bill details to the user \\ \hline
 \end{tabular}
 \end{table}
@@ -672,7 +672,7 @@ A valid parameter & Return the bill details to the user \\ \hline
 \hline
 \multicolumn{2}{|c|}{checkHistoryBill(userID, date)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Return the bill details to the user for those dates \\ \hline
 \end{tabular}
 \end{table}
@@ -685,7 +685,7 @@ A non-null parameter & Return the bill details to the user for those dates \\ \h
 \hline
 \multicolumn{2}{|c|}{reservationRequest(userID, reservationInfo)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
 A non-null parameter & Return ture \\ \hline
 \end{tabular}
 \end{table}
@@ -697,13 +697,15 @@ A non-null parameter & Return ture \\ \hline
 \hline
 \multicolumn{2}{|c|}{cancelReservation(userID, reservationID)} \\ \hline
 \multicolumn{1}{|c|}{Input} & \multicolumn{1}{c|}{Effect} \\ \hline
-A null parameter & Throw nullPointerException \\ \hline
-A reservationID that dosen't exsit & Throw invalidValueException which means the user didn't make a reservation \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+A reservationID that dosen't exsit & Throw InvalidArgumentValueException which means the user didn't make a reservation \\ \hline
 Valid userID and reservation ID & Remove the reservation from DB and add this operation into the log \\ \hline
 \end{tabular}
 \end{table}
 
 ## 4. Tools and Test Equipment Required
+
+
 
 ## 5. Program Stubs and Test Data Required
 
@@ -712,7 +714,9 @@ Valid userID and reservation ID & Remove the reservation from DB and add this op
 ### Reda Aissaoui
 - 08/01/2017 2h
 - 11/01/2017 3h
-
+### Lidong Zhang
 - 08/01/2017 2h
 - 09/01/2017 3h
 - 10/01/2017 3h
+- 13/01/2017 4h
+- 14/01/2017
