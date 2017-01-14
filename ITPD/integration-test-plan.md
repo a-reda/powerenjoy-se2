@@ -780,6 +780,9 @@ We will use Rest-Assured to test the implementation of REST-API instead of using
 
 #### 4.2.2 Client side
 
+For our system (PowerEnjoy) it will be applied on both mobile-phone terminals and PC terminals (browsers). In order to increase the user experience, we will as far as possible to realize that the system can be used in different operation systems and vary devices. So our system will support Android (2.0 later), IOS(7.0 later), WindowsPhone(8.0 later) operation systems. And it will be ensure that the system can be run on at least 80% of different sizes of display screens. As for browsers, we request Mozilla Firefox, v36 above, Microsoft Edge, Internet Explorer for Windows, v9.0 above, Google Chrome, v55.0, Opera, v40 above, and Safari, v5 above.  
+
+
 
 ## 5. Program Stubs and Test Data Required
 
@@ -794,4 +797,4 @@ We will use Rest-Assured to test the implementation of REST-API instead of using
 - 09/01/2017 3h
 - 10/01/2017 3h
 - 13/01/2017 4h
-- 14/01/2017
+- 14/01/2017 3h
