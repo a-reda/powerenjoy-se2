@@ -755,6 +755,32 @@ Valid userID and reservation ID & Remove the reservation from DB and add this op
 \pagebreak
 
 ## 4. Tools and Test Equipment Required
+### 4.1 Tools
+
+There are a ton of tools out there for automated testing, and just about any tool can be used for just about any testing methodology.
+
+Testing the system is not how much on the technology we use, but on the difference between functional testing and system testing and on how we use tools in functional testing. Functional or feature testing is the process of testing newly written code to ensure it functions as designed. System or integration testing is the process of ensuring individual functional areas integrate (play nicely together).
+
+#### 4.1.1 Integration testing
+
+
+
+#### 4.1.2 REST API testing
+
+**Rest-Assured**: As we used RESTful architecture pattern in our system and it(REST-API) as one of our system's core method to make sure the communication between system and server goes well.
+
+We will use Rest-Assured to test the implementation of REST-API instead of using JUnit which is usually used to test it by JAVA programmers. For somehow the latter is a white box test, programmers can clearly know which class is being tested, which method is being used but all of this are not from users' view to test which API is being used. REST Assured is a simple Java library for testing of REST services, it can write code directly and initiate the HTTP request to the server and verify the returned result.
+
+#### 4.1.3 Performance testing
+
+
+### 4.2 Equipment required
+
+#### 4.2.1 Server side
+
+
+#### 4.2.2 Client side
+
 
 ## 5. Program Stubs and Test Data Required
 
@@ -763,6 +789,7 @@ Valid userID and reservation ID & Remove the reservation from DB and add this op
 ### Reda Aissaoui
 - 08/01/2017 2h
 - 11/01/2017 3h
+
 ### Lidong Zhang
 - 08/01/2017 2h
 - 09/01/2017 3h
