@@ -841,6 +841,13 @@ In order to test the Car component, we assume both valid and invalid users to ex
 - 08/01/2017 2h
 - 11/01/2017 3h
 
+### Jinling Xing
+- 08/01/2017 5h
+- 10/01/2017 2h
+- 11/01/2017 0.5h
+- 13/01/2017 7h
+- 14/01/2017 3h
+- 15/01/2017 0.5h
 ### Lidong Zhang
 - 08/01/2017 2h
 - 09/01/2017 3h
