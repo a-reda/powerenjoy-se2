@@ -27,24 +27,25 @@ header-includes:
 ## 1. Introduction
 ### 1. Purpose and Scope
 
-In our project, the Integration Testing Plan Document is an important part, which can guarantee all the subcomponents be  integrated consistently.
+In our project, the Integration Testing Plan Document is an important part, which can guarantee that all components can work together. It is also a way to find bugs earlier in the development process.
 
-The main purpose of this document is to make up the system when the subcomponents need to be revised according to the user's requirements or other unexpected reasons. The  Integration Testing Plan Document can give us a clear and simple way to organize all the testing of subcomponents. We will provide these sections as follows:
+The main purpose of this document is present the approach for the integration testing . The  Integration Testing Plan Document shows the way and chronology to organize all the testing of subcomponents. We will provide these sections as follows:
   - To introduce the integration testing subsystems and their subcomponents involved in the integration activity.
   - The Elements to be Integrated and their entry criteria.
   - A description of the Integration Testing Strategy.
   - The Sequence of Components needs to be integrated, including Software Integration Sequence and Subsystem Integration Sequence.
   - Individual steps and test description and their input data and the expected output.
-  - A description of performance analysis.
-  - All the tools used in testing, and a description of the operating environment that perform all the tests.
+  - All the tools used in testing, and a description of the operating environment in which all the tests will be performed.
 
 ### 2. Definitions and Abbreviations
 
 #### 1. Definitions
+
   - Subsystem: a single, pre-defined work environment and a high-level functional unit of the system.
   - Subcomponent: Implementation of subsystem functions
 
 #### 2. Abbreviations
+
   - RASD: Requirements Analysis and Specification Document
   - DD: Design Document
   - ITPD: Integration Test Plan Document
@@ -68,7 +69,7 @@ The main purpose of this document is to make up the system when the subcomponent
 
 ### 1. Entry Criteria
 
-For doing this part we should ensure that all units of project work can commence to achieve the corresponding unit test quality objectives and output the corresponding test report.
+In order to initiate the integration testing process, our system should satisfy some preconditions. First, the components should be developed. Secondly, the unit tests of each component should be successful. Furthermore, if any bug was detected during the unit test, it should be fixed before the integration tests.
 
 Besides, the following documents should have been completed, reviewed, approved to do unit testing phase, for instance, the Requirements Analysis and Specification Document and the Design Document. W.R.T integration testing phase, we assume that the project has already being code-complete. And there are no missing features or media elements. The product satisfies the performance and memory requirements specified by the Functional Spec. All priority bugs have been fixed and closed. Internal documentation has been updated to reflect the current state of the product.
 
@@ -83,10 +84,11 @@ Also, we should as far as possible to keep the percentage of completion of every
 ### 2. Elements to be Integrated
 
 As we presented before in the design document our system is composed by many components and units. So in this section, we will list all the main components which will be integrated in this phase. And we concern the integration phase as two levels of abstraction:
+
 - High-level components integration testing
 - Lower-level components integration testing
 
-For high-level integration testing, as we introduced 3-tier structure to build our system(PowerEnjoy) in Design Document so we will follow the structure to process the testing, 1. presentation tier ( mobile client, web client, web server ), 2. logic tier ( application server ), 3. persistence tier ( DB server ).
+For high-level integration testing, as we introduced 3-tier structure to build our system(PowerEnjoy) in Design Document so we will follow the structure to process the testing, 1. Presentation tier ( mobile client, web client, web server ), 2. Logic tier ( application server ), 3. Persistence tier ( DB server ).
 
 At lower-level integration testing, we decided to integrate those components which are highly depending on one another to oﬀer the higher level functionalities of PowerEnjoy. In this case, these components will be involved : Ride controller, Bill controller, Reservation controller, Economic controller. And we assume that the car controller and charge station and the interaction between car and charge station will be well integration tested by third part.
 
@@ -304,7 +306,7 @@ A non-null parameter & Return localization \\ \hline
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{getCarLocalization(carID, localization)} \\ \hline
+\multicolumn{2}{|c|}{getCarLocalization(carID)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null parameter & Throw NullArgumentException \\ \hline
 A inexistent carID & Throw InvalidArgumentValueException \\ \hline
@@ -387,7 +389,6 @@ A non-null parameter & Return true or false \\ \hline
 
 #### 1. Reservation Component, Model
 
-- insertReservation
 
 \begin{table}[H]
 \centering
@@ -401,8 +402,6 @@ Formally valid arguments & By means of Model, an entry containing the reservatio
 \end{tabular}
 \end{table}
 
-- delete reservation
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
@@ -414,9 +413,6 @@ By means of Model, A reservation with an id already existent in the database. & 
 Formally valid arguments & By means of Model, an entry containing the reservation data is deleted from the database. \\ \hline
 \end{tabular}
 \end{table}
-
-
-- update reservation
 
 \begin{table}[H]
 \centering
@@ -435,24 +431,6 @@ An array of valid and existing reservations & By means of Model, the correspondi
 \pagebreak
 
 #### 2. Bill Component, Model
-
-- update bill queues
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{2}{|c|}{updateBillQueues(billQueue)} \\ \hline
-\textit{Input} & \textit{Effect} \\ \hline
-A null parameter & A NullArgumentException is raised. \\ \hline
-An empty array & An InvalidArgumentValueException is raised. \\ \hline
-An array containing somenull values & A NullArgumentException is raised. \\ \hline
-An array of non-nullqueues, but containing null values & An InvalidArgumentValueException is raised. \\ \hline
-A non-empty array of valid bill queues & By means of Model, The content of the queues is updated in the database. \\ \hline
-\end{tabular}
-\end{table}
-
-- get bill information
 
 \begin{table}[H]
 \centering
@@ -486,8 +464,6 @@ A current location & By means of Model, the corresponding location in the databa
 \end{tabular}
 \end{table}
 
-- updateRideInfo
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}  
@@ -500,9 +476,6 @@ A set of valid parameters & By means of Model, the corresponding ride informatio
 \end{tabular}
 \end{table}
 
-- getRideInfo
-
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}  
@@ -513,8 +486,6 @@ A non-existing CarId & An InvalidArgumentValueException is raised. \\ \hline
 A set of valid parameters & By means of Model, Returns the stored ride information in the database \\ \hline
 \end{tabular}
 \end{table}
-
-- endRide
 
 \begin{table}[H]
 \centering
@@ -538,39 +509,33 @@ A valid CarId and current-Location, the Car is on a ride and current Location is
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{ReservationCar(passengerId, passengerLocation, destination)} \\ \hline
+\multicolumn{2}{|c|}{reserveCar(clientId, clientrLocation)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null parameter & A NullArgumentException is raised. \\ \hline
-A passengerId not cor-rectly formatted & An InvalidArgumentValueException is raised. \\ \hline
-A passenger Location whose coordinates are invalid & An InvalidArgumentValueException is raised. \\ \hline
+A clientId not correctly formatted & An InvalidArgumentValueException is raised. \\ \hline
+A client location whose coordinates are invalid & An InvalidArgumentValueException is raised. \\ \hline
 A destination whose coordinates are invalid & An InvalidArgumentValueException is raised. \\ \hline
 A passengerLocation outside the city & An InvalidArgumentValueException is raised. \\ \hline
 A valid set of parameters & A new reservation is created and handled \\ \hline
 \end{tabular}
 \end{table}
 
-- existsAvailableCar
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{existsAvailableCar(reservation, location)} \\ \hline
+\multicolumn{2}{|c|}{isCarAvailable(reservation, location)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null parameter & A NullArgumentException is raised. \\ \hline
 An inexistent location & An InvalidArgumentValueException is raised. \\ \hline
-A zone with invalid elds & An InvalidArgumentValueException is raised. \\ \hline
+A zone with invalid locations & An InvalidArgumentValueException is raised. \\ \hline
 A valid set of parameters & Returns true if a Car driver is available to serve the reservation, false otherwise. \\ \hline
 \end{tabular}
 \end{table}
 
-
-
 \pagebreak
 
 #### 5. Reservation Component, Bill Component
-
-- checkBillInfo
 
 \begin{table}[H]
 \centering
@@ -584,8 +549,6 @@ A non-existing ride or reservation & A NullArgumentException is raised. \\ \hlin
 A valid reservation and ride & From the reservation and ride, the corresponding bill can be check by user \\ \hline
 \end{tabular}
 \end{table}
-
-- ConfirmBillInfo
 
 \begin{table}[H]
 \centering
@@ -604,47 +567,16 @@ A valid reservation and ride & From the reservation and ride, the corresponding 
 
 #### 6. Reservation Component, Ride Component
 
-- ride of reservation
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{RideOfReservation(CarDriver, reservation)} \\ \hline
+\multicolumn{2}{|c|}{RideOfReservation(Client, reservation)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null parameter & A NullArgumentException is raised. \\ \hline
-A passenger location whose coordinates are invalid & An InvalidLocationException is raised. \\ \hline
+A client location whose coordinates are invalid & An InvalidLocationException is raised. \\ \hline
 An inexistent car driver & An InvalidArgumentValueException is raised. \\ \hline
 A valid car driver and a reservation & Returns the reservation information and ride information of passengers location, destination and passengers number and whether share car or not. \\ \hline
-\end{tabular}
-\end{table}
-
-- passenger Changed Destination
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{2}{|c|}{PassengerChangedDestination(CarDriver, reservation)} \\ \hline
-\textit{Input} & \textit{Effect} \\ \hline
-A null parameter & A NullArgumentException is raised. \\ \hline
-A change with an invalid destination & An InvalidLocationException is raised. \\ \hline
-A change with a valid destination & Returns the reservation information and ride information of new destination \\ \hline
-\end{tabular}
-\end{table}
-
-
-- PassengerInterruptRide
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{2}{|c|}{PassengerInterruptRide(CarDriver, reservation)} \\ \hline
-\textit{Input} & \textit{Effect} \\ \hline
-A null parameter & A NullArgumentException is raised. \\ \hline
-Passengers don't want to go to the destination and asked interrupt ride immediately & Returns the current ride information \\ \hline
-A change with a valid destination & Returns the reservation information and ride information of new destination \\ \hline
 \end{tabular}
 \end{table}
 
@@ -652,13 +584,11 @@ A change with a valid destination & Returns the reservation information and ride
 
 #### 7. Bill Component, Ride Component
 
-- CalculateBill
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{CalculateBill(ride)} \\ \hline
+\multicolumn{2}{|c|}{calculateBill(ride)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null parameters & A NullArgumentException is raised. \\ \hline
 An invalid parameters & An InvalidArgumentValueException is raised. \\ \hline
@@ -667,13 +597,11 @@ A valid ride & According to the formulas we write on DD the bill can be calculat
 \end{tabular}
 \end{table}
 
-- GetStoredBillInfo
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{GetStoredBillInfo(UserId)} \\ \hline
+\multicolumn{2}{|c|}{getBillInfo(UserId)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null location & A NullArgumentException is raised. \\ \hline
 A location whose coordinates are invalid & A InvalidArgumentException is raised. \\ \hline
@@ -685,8 +613,6 @@ UserId is valid & User can get the bill information which stored in the database
 \pagebreak
 
 #### 8. Ride Component, Localization Component
-
-- MonitorCurrentLocation
 
 \begin{table}[H]
 \centering
@@ -701,13 +627,11 @@ CarId is valid, location is inside city & By GPS ,its status is set to available
 \end{tabular}
 \end{table}
 
- - GetStoredRideRoute
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{GetStoredRideRoute(CarId,location)} \\ \hline
+\multicolumn{2}{|c|}{getRideRoute(CarId,location)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
  A null location & A NullArgumentException is raised. \\ \hline
  A location whose coordinates are invalid & A InvalidArgumentException is raised. \\ \hline
@@ -720,26 +644,22 @@ CarId is valid, location is inside city & By GPS ,its status is set to available
 
 #### 9. Economic Component, Localization Component
 
-- RemindEconomicInfo
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{RemindEconomicInfo(UserId)} \\ \hline
+\multicolumn{2}{|c|}{getEconomicInfo(UserId)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A non-existing User id & A NullArgumentException is raised. \\ \hline
 UserId is valid & System will remind the economic information when the user make a reservation and on his location who wants to share cars \\ \hline
 \end{tabular}
 \end{table}
 
-- CalculateEconomicRide
-
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{CalculateEconomicRide(UserId, location)} \\ \hline
+\multicolumn{2}{|c|}{calculateEconomicRide(UserId, location)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null location & A NullArgumentException is raised. \\ \hline
 A location whose coordinates are invalid & A InvalidArgumentException is raised. \\ \hline
@@ -747,8 +667,6 @@ A non-existing User id & A NullArgumentException is raised. \\ \hline
 UserId is valid & The ride can be paid economically because of sharing cars, the percentageof discount can be calculate by the formulas we given on the DD \\ \hline
 \end{tabular}
 \end{table}
-
-- MonitorEconomicRide
 
 \begin{table}[H]
 \centering
@@ -808,7 +726,7 @@ A non-null parameter & The user's feedback information is inserted into the DB \
 \centering
 \begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
-\multicolumn{2}{|c|}{udateUserPassword (userID, password, newPassword)} \\ \hline
+\multicolumn{2}{|c|}{updateUserPassword (userID, password, newPassword)} \\ \hline
 \textit{Input} & \textit{Effect} \\ \hline
 A null parameter & Throw NullArgumentException \\ \hline
 UserID dosen't match password & Throw InvalidArgumentValueException \\ \hline
@@ -931,7 +849,7 @@ In order to ensure the stability and fluency of the system, we are going to use 
 
 For our system (PowerEnjoy) it will be applied on both mobile-phone terminals and PC terminals (browsers). In order to increase the user experience, we will as far as possible to realize that the system can be used in different operation systems and vary devices. So our system will support Android (2.0 later), IOS(7.0 later), WindowsPhone(8.0 later) operation systems. And it will be ensure that the system can be run on at least 80% of different sizes of display screens. As for browsers, we request Mozilla Firefox, v36 above, Microsoft Edge, Internet Explorer for Windows, v9.0 above, Google Chrome, v55.0, Opera, v40 above, and Safari, v5 above.  
 
-
+\pagebreak
 
 ## 5. Program Stubs and Test Data Required
 ### 1 Program Stubs and components
@@ -948,29 +866,29 @@ received the messages.
 
 - This testing module will invoke the methods exposed by the car subcomponent, in order to test its interaction with the Model, the reservation component, the localization component and the ride component and the Mapping component.
 
-**bill component**
+**Bill component**
 
-- this testing module will invoke the methods exposed by the bill subcomponent, in order to test its interaction with the reservation component, the user component and the economic component.
+- TThis testing module will invoke the methods exposed by the bill subcomponent, in order to test its interaction with the reservation component, the user component and the economic component.
 
 **Ride component**
 
-- this testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the reservation component, the bill component and the economic component.
+- This testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the reservation component, the bill component and the economic component.
 
 **Economic component**
 
-- this testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the the bill component and the localization component.
+- This testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the the bill component and the localization component.
 
 **Model**
 
-- this testing module will invoke the methods exposed by the Model, in order to test its interaction with all the other components and database.
+- This testing module will invoke the methods exposed by the Model, in order to test its interaction with all the other components and database.
 
 **Localization component**
 
-- this testing module will invoke the methods exposed by the localization subcomponent, in order to test its interaction with the car component and model.
+- This testing module will invoke the methods exposed by the localization subcomponent, in order to test its interaction with the car component and model.
 
 **Reservation component**
 
-- this testing module will invoke the methods exposed by the reservation subcomponent, in order to test its interaction with the the user component and car component.
+- This testing module will invoke the methods exposed by the reservation subcomponent, in order to test its interaction with the the user component and car component.
 
 ### 2. Test Data
 **To test User component**
@@ -1017,6 +935,7 @@ In order to test the Car component, we assume both valid and invalid users to ex
 - An array containing somenull values
 - An array of non-null, but inexistent reservations
 
+\pagebreak
 
 ## 6. Effort Spent
 
