@@ -124,17 +124,32 @@ In the process of integrating external components, the next step is integrating 
 \includegraphics[width=8cm]{google-localization}
 \end{figure}
 
-### Car management system
+### Car management subsystem
 
-The Car Management system takes care of gathering data about cars and persist it in the database. It is the system that makes sure of the constant communication with cars. It is composed of three elements: Car Component, Localization and Model. The Car Component and Localization should be integrated with the model to ensure data persistence. The Car Component use the Localization one to calculate distances and localizations.
+The Car Management subsystem takes care of gathering data about cars and persist it in the database. It is the system that makes sure of the constant communication with cars. It is composed of three elements: Car Component, Localization and Model. The Car Component and Localization should be integrated with the model to ensure data persistence. The Car Component use the Localization one to calculate distances and localizations.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{car-mgmt}
 \end{figure}
 
+### Operations management subsystem
+
+This subsystem represents the core of daily operations performed by PowerEnjoy. It takes care of reservations, billing and rides. Concerning the components of this subsystem. We start by integrating the reservation and bill components. Then we integrate bill component and ride component.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{orts-mgmt}
+\end{figure}
+
+We have also integrate with components that are not in this subsystem. The first one that is important is the model because it used in data persistence of all the components. All the components need to be integrated with it. The other one is the economic component and localization one.
+
+// ADD GRAPH
 
 
+### Account management subsytem
+
+This subsystem takes care of all the account operations including login, creation and modification.
 
 
 \pagebreak
