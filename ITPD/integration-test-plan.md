@@ -940,10 +940,12 @@ As we said before, we are going to adopt a bottom-up approach to component integ
 received the messages.
 
 **User component**
+
 - This testing module will invoke the methods exposed by the  user subcomponent, in order to test its interaction with the Model, the car component, the reservation component and bill component.
 
 
 **Car component**
+
 - This testing module will invoke the methods exposed by the car subcomponent, in order to test its interaction with the Model, the reservation component, the localization component and the ride component and the Mapping component.
 
 **bill component**
@@ -955,21 +957,26 @@ received the messages.
 - this testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the reservation component, the bill component and the economic component.
 
 **Economic component**
+
 - this testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the the bill component and the localization component.
 
 **Model**
+
 - this testing module will invoke the methods exposed by the Model, in order to test its interaction with all the other components and database.
 
 **Localization component**
+
 - this testing module will invoke the methods exposed by the localization subcomponent, in order to test its interaction with the car component and model.
 
 **Reservation component**
+
 - this testing module will invoke the methods exposed by the reservation subcomponent, in order to test its interaction with the the user component and car component.
 
 ### 2. Test Data
 **To test User component**
 
 In order to test the User component, we assume both valid and invalid users to exhibite the following problems:
+
 - Null username
 - Invalid username
 - Null password
@@ -1017,7 +1024,8 @@ In order to test the Car component, we assume both valid and invalid users to ex
 - 08/01/2017 2h
 - 11/01/2017 3h
 - 14/01/2017 4h
-- 14/01/2017 6h
+- 15/01/2017 6h
+
 
 ### Jinling Xing
 - 08/01/2017 5h
@@ -1026,6 +1034,8 @@ In order to test the Car component, we assume both valid and invalid users to ex
 - 13/01/2017 7h
 - 14/01/2017 3h
 - 15/01/2017 0.5h
+
+
 ### Lidong Zhang
 - 08/01/2017 2h
 - 09/01/2017 3h
