@@ -734,20 +734,19 @@ Valid userID and reservation ID & Remove the reservation from DB and add this op
 
 There are a ton of tools out there for automated testing, and just about any tool can be used for just about any testing methodology.
 
-Testing the system is not how much on the technology we use, but on the difference between functional testing and system testing and on how we use tools in functional testing. Functional or feature testing is the process of testing newly written code to ensure it functions as designed. System or integration testing is the process of ensuring individual functional areas integrate (play nicely together).
-
-#### 4.1.1 Integration testing
+Testing the system is not how much on the technology we use, but on the difference between functional testing and system testing and on how we use tools in functional testing. Functional or feature testing is the process of testing newly written code to ensure it functions as designed. System or integration testing is the process of ensuring individual functional areas integrate (play nicely together). For what concerns the business logic components running in the Java Enterprise Edition runtime environment, we are going to take advantage of few tools to implement different functions in testing.
 
 
+**Mockito**: Usually, Mockito helps us to cut all dependencies in unit tests, but it can be useful also in the integration tests where programmers often want to have all real applications layers.
 
-#### 4.1.2 REST API testing
+In our case, we will use Mockito to do this testing on the main server and applications. To do so we want to have our integration tests, but without a real call to database. Because our dao layer is using some native queries to get data from database, and some embedded database doesn't support some query syntax.
 
-**Rest-Assured**: As we used RESTful architecture pattern in our system and it(REST-API) as one of our system's core method to make sure the communication between system and server goes well.
+**Arquillian**: A new testing framework developed at JBoss.org, empowers the developer to write integration tests for business objects that are executed inside a container or that interact with the container as a client. We will apply it to execute tests against a Java container in order to check that the interaction between a component and its surrounding execution environment is happening correctly.
 
-We will use Rest-Assured to test the implementation of REST-API instead of using JUnit which is usually used to test it by JAVA programmers. For somehow the latter is a white box test, programmers can clearly know which class is being tested, which method is being used but all of this are not from users' view to test which API is being used. REST Assured is a simple Java library for testing of REST services, it can write code directly and initiate the HTTP request to the server and verify the returned result.
 
-#### 4.1.3 Performance testing
+**Rest-Assured**: As we used RESTful architecture pattern in our system and it(REST-API) as one of our system's core methods to make sure the interaction between system and server goes well.
 
+We will use Rest-Assured to test the implementation of REST-API instead of using JUnit which is usually used to test it by JAVA programmers. From some point of views the latter is a white box test, programmers can clearly know which class is being tested, which method is being used but all of this are not from users' view to test which API is being used. REST Assured is a simple Java library for testing of REST services, it can write code directly and initiate the HTTP request to the server and verify the returned result.
 
 ### 4.2 Equipment required
 
@@ -755,6 +754,9 @@ We will use Rest-Assured to test the implementation of REST-API instead of using
 
 
 #### 4.2.2 Client side
+
+For our system (PowerEnjoy) it will be applied on both mobile-phone terminals and PC terminals (browsers). In order to increase the user experience, we will as far as possible to realize that the system can be used in different operation systems and vary devices. So our system will support Android (2.0 later), IOS(7.0 later), WindowsPhone(8.0 later) operation systems. And it will be ensure that the system can be run on at least 80% of different sizes of display screens. As for browsers, we request Mozilla Firefox, v36 above, Microsoft Edge, Internet Explorer for Windows, v9.0 above, Google Chrome, v55.0, Opera, v40 above, and Safari, v5 above.  
+
 
 
 ## 5. Program Stubs and Test Data Required
@@ -846,4 +848,4 @@ In order to test the Car component, we assume both valid and invalid users to ex
 - 09/01/2017 3h
 - 10/01/2017 3h
 - 13/01/2017 4h
-- 14/01/2017
+- 14/01/2017 3h
