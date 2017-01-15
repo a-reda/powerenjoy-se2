@@ -391,32 +391,7 @@ A valid set of parameters & Returns true if a Car driver is available to serve t
 \end{tabular}
 \end{table}
 
-- Car accept reservation
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{2}{|c|}{CarDriverAcceptedReservation(CarId)} \\ \hline
-\textit{Input} & \textit{Effect} \\ \hline
-An invalid CarId & An InvalidArgumentValueException is raised. \\ \hline
-A valid CarId & The car driver accept reservation and by means of model the database update instantly \\ \hline
-\end{tabular}
-\end{table}
-
-
-- Car refused reservation
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{2}{|c|}{CarDriverRefusedReservation(CarId)} \\ \hline
-\textit{Input} & \textit{Effect} \\ \hline
-An invalid CarId & An InvalidArgumentValueException is raised. \\ \hline
-A valid CarId & "the car driver refuse reservation and by means of model the database update instantly" \\ \hline
-\end{tabular}
-\end{table}
 
 \pagebreak
 
@@ -783,6 +758,82 @@ We will use Rest-Assured to test the implementation of REST-API instead of using
 
 
 ## 5. Program Stubs and Test Data Required
+### 1 Program Stubs and components
+
+As we said before, we are going to adopt a bottom-up approach to component integration and testing. In this part, the purpose of these stubs is to write on a log that they have correctly
+received the messages.
+
+**User component**
+- This testing module will invoke the methods exposed by the  user subcomponent, in order to test its interaction with the Model, the car component, the reservation component and bill component.
+
+
+**Car component**
+- This testing module will invoke the methods exposed by the car subcomponent, in order to test its interaction with the Model, the reservation component, the localization component and the ride component and the Mapping component.
+
+**bill component**
+
+- this testing module will invoke the methods exposed by the bill subcomponent, in order to test its interaction with the reservation component, the user component and the economic component.
+
+**Ride component**
+
+- this testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the reservation component, the bill component and the economic component.
+
+**Economic component**
+- this testing module will invoke the methods exposed by the ride subcomponent, in order to test its interaction with the the bill component and the localization component.
+
+**Model**
+- this testing module will invoke the methods exposed by the Model, in order to test its interaction with all the other components and database.
+
+**Localization component**
+- this testing module will invoke the methods exposed by the localization subcomponent, in order to test its interaction with the car component and model.
+
+**Reservation component**
+- this testing module will invoke the methods exposed by the reservation subcomponent, in order to test its interaction with the the user component and car component.
+
+### 2. Test Data
+**To test User component**
+
+In order to test the User component, we assume both valid and invalid users to exhibite the following problems:
+- Null username
+- Invalid username
+- Null password
+- Invaild password
+
+**To test Car component**
+In order to test the Car component, we assume both valid and invalid users to exhibite the following problems:
+- A null parameter
+- A Invalid parameter
+- Driving license not compliant with the legal format
+
+**To test bill component**
+- A null user id
+- A Invalid parameter
+- A non-existing ride or reservation
+
+**To test Ride component**
+- An invalid user id
+- A non-existing car id
+- A null location
+- A non-existing location
+- UserID dosen't match the ride information
+
+
+**To test Economic component**
+- A non-existing User id
+- A ride which is unfinished
+
+
+**To test Localization component**
+- A null parameter
+- A non-existing location
+- A location far from the current location
+- A passenger location whose coordinates are invalid
+
+**To test Reservation component**
+- A null parameter
+- An array containing somenull values
+- An array of non-null, but inexistent reservations
+
 
 ## 6. Effort Spent
 
