@@ -1,6 +1,8 @@
 ---
 header-includes:
   - \usepackage{float}
+  - \usepackage{graphicx}
+  - \graphicspath{ {ITPD/resources/integrations/} }
 ---
 
 ### __Content__
@@ -95,7 +97,47 @@ We opted for a bottom-up strategy because of many reasons. First, we are using a
 
 ### 4. Sequence of Component/Function Integration
 
-        Software Integration Sequence & Subsystem Integration Sequence
+In the section below, we present the sequence of component integrations following the bottom-up approach described above. The arrows describe the dependencies; an arrow going from component A to B means that component A depends on component B.
+
+The model is present in all the integrations because it is an important component as all the other components use it to persist data.
+
+### Model
+
+Since the model is the most depended-on component of the system, we will start the integration test with it. In this test, we have to make sure that all operations (Create, Read, Update and Delete) are successfully transfered to the DBMS and applied in the database. This test checks also the data integrity.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{dbms-model}
+\end{figure}
+
+### Google Maps & Car Component
+
+In the process of integrating external components, the next step is integrating the Car Component and the Google Maps Component with the model and Localization Component respectively. The goal is to have these integrations before starting the integration of components we developed. The Car Component is the component that is made available by the car maker to communicate with the car and get all the variables. The Google Maps component is the component used to the translation of GPS Coordinates into places and also other localization concerns.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{car-model}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{google-localization}
+\end{figure}
+
+### Car management system
+
+The Car Management system takes care of gathering data about cars and persist it in the database. It is the system that makes sure of the constant communication with cars. It is composed of three elements: Car Component, Localization and Model. The Car Component and Localization should be integrated with the model to ensure data persistence. The Car Component use the Localization one to calculate distances and localizations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{car-mgmt}
+\end{figure}
+
+
+
+
+
+\pagebreak
 
 ## 3. Individual Steps and Test Description
 
@@ -542,7 +584,7 @@ CarId is valid, location is inside city & By GPS ,its status is set to available
 
 \pagebreak
 
-#### 9. Localization Component, Economic Component
+#### 9. Economic Component, Localization Component
 
 - RemindEconomicInfo
 
