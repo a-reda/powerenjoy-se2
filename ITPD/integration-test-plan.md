@@ -178,11 +178,8 @@ A non-null parameter & Return true or false \\ \hline
 
 \pagebreak
 
-#### 3. Car Component, Bill Component
 
-\pagebreak
-
-#### 4. Car Component, Localization Component
+#### 3. Car Component, Localization Component
 
 \begin{table}[H]
 \centering
@@ -752,7 +749,7 @@ We will use Rest-Assured to test the implementation of REST-API instead of using
 
 #### 4.2.1 Server side
 
-In order to ensure the stability and fluency of the system, we are going to use **B/S** model to develop our server terminal. From economy, scalable, extensible, easy to develop and easy to maintain points we propose to buy a subscription to **Amazon EC2** rather than a physical server. 
+In order to ensure the stability and fluency of the system, we are going to use **B/S** model to develop our server terminal. From economy, scalable, extensible, easy to develop and easy to maintain points we propose to buy a subscription to **Amazon EC2** rather than a physical server.
 
 #### 4.2.2 Client side
 
