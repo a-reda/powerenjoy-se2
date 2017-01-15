@@ -5,6 +5,8 @@ header-includes:
   - \graphicspath{ {ITPD/resources/integrations/} }
 ---
 
+\input{ITPD/coverpage.tex}
+
 ### __Content__
 1. Introduction
     1. Purpose and Scope
@@ -15,7 +17,6 @@ header-includes:
     2. Elements to be Integrated
     3. Integration Testing Strategy
     4. Sequence of Component/Function Integration
-        Software Integration Sequence & Subsystem Integration Sequence
 3. Individual Steps and Test Description
 4. Tools and Test Equipment Required
 5. Program Stubs and Test Data Required
@@ -52,6 +53,7 @@ The main purpose of this document is to make up the system when the subcomponent
   - DBMS: Database Management System
   - GPS: Global Positioning System
   - SDK: Software Development Kit
+  - CRUD: Create, Read, Update and Delete
   - Req: Requirement
   - App: Application
 
@@ -142,27 +144,144 @@ This subsystem represents the core of daily operations performed by PowerEnjoy. 
 \includegraphics[width=\textwidth]{orts-mgmt}
 \end{figure}
 
-We have also integrate with components that are not in this subsystem. The first one that is important is the model because it used in data persistence of all the components. All the components need to be integrated with it. The other one is the economic component and localization one.
+We have also integrate with components that are not in this subsystem. The first one that is important is the model because it is used in data persistence of all the components. All the components need to be integrated with it. The other one is the economic component and localization one.
 
-// ADD GRAPH
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{opts-model}
+\end{figure}
 
+The process of going from a reservation to an actual ride require the gathering of car informations (locking, distance travelled, charge...). Therefore, the reservation, ride and car components need to integrated as well in this step.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{ride-res-car}
+\end{figure}
+
+We need to integrate the economic component, the one that takes care of suggesting dropping point for discounts, with the localization component. The localization component is the one that manages the safe zones and charging stations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{econom-local}
+\end{figure}
 
 ### Account management subsytem
 
-This subsystem takes care of all the account operations including login, creation and modification.
+This subsystem takes care of all the account operations including login, creation and modification. For persistence matters, we start by integrating with the model.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{user-model}
+\end{figure}
+
+The user component needs to be integrated with the following components: car, reservation and bill components.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{user-integration}
+\end{figure}
+
+As soon as the previous integrations are done, we can process the subsystems integration. The following diagram shows a high-level integration between the subsystems.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{total-integration}
+\end{figure}
 
 \pagebreak
 
 ## 3. Individual Steps and Test Description
 
-### 1. External System
+### 1. External Systems
 
 #### 1. DBMS, Model
 
+For each entity that we have, we need to check if the entity is saved entirely in the database. We need also to perform data validation on the entities. We also need to be able to perform all CRUD operations. The following test should be performed to all entites.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{saveEntity(Entity)} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+An invalid entity & Throw InvalidEntityException\\ \hline
+A valid entity & Return ID of saved entity \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{getEntity(EntityID)} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+An inexistent ID & Throw InexistentEntityException\\ \hline
+An existent ID & Return entity \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{updateEntity(ID, Entity)} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+An inexistent ID & Throw InexistentEntityException\\ \hline
+An existent ID and invalid entity & Throw InvalidEntityException\\ \hline
+An existent ID and valid entity & Return success message\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{deleteEntity(EntityID)} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+An inexistent ID & Throw InexistentEntityException\\ \hline
+An existent ID & Return success message \\ \hline
+\end{tabular}
+\end{table}
+
 #### 2. Google Maps Component, Localization
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{getPlaceName(GPSCoordinates)} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+Valid GPS Coordinates & Name of the place/street\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{getPlaceName(GPSStaart, GPSEnd)} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+A null parameter & Throw NullArgumentException \\ \hline
+Valid GPS Coordinates & Return the distance\\ \hline
+\end{tabular}
+\end{table}
+
 #### 3. CarComponents, Model
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{2}{|c|}{updateCarLocalization()} \\ \hline
+\textit{Input} & \textit{Effect} \\ \hline
+No input & All the cars information is updated in the database\\ \hline
+\end{tabular}
+\end{table}
 
 \pagebreak
 
@@ -897,6 +1016,8 @@ In order to test the Car component, we assume both valid and invalid users to ex
 ### Reda Aissaoui
 - 08/01/2017 2h
 - 11/01/2017 3h
+- 14/01/2017 4h
+- 14/01/2017 6h
 
 ### Lidong Zhang
 - 08/01/2017 2h
