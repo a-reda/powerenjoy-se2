@@ -51,7 +51,7 @@ header-includes:
 
 ## 2.Project size, cost and effort estimation
 
-### 2.1 Size estimation: function points
+### 2.1 Size estimation: Function Points
 
 Complexity matrix for function points
 
@@ -117,6 +117,30 @@ File Type Referenced & 1-5 & 6-19 & 20+ \\ \hline
 \end{tabular}
 \caption{Complexity Weight Assignment }
 \end{table}
+
+
+
+### ILF: Internal Logical Files
+
+
+
+### EIF: External Interface Files
+
+
+
+### EI: External Inputs
+
+
+
+### EO: External Outputs
+
+
+
+### EQ: External Inquiries
+
+
+
+
 
 ### 2.2 Cost and effort estimation: COCOMO II
 
