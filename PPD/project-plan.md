@@ -133,12 +133,55 @@ File Type Referenced & 1-5 & 6-19 & 20+ \\ \hline
 
 
 ### EO: External Outputs
+The user needs to communicate with PywerEnjoy system outside the context of an inquiry and also PywerEnjoy system needs to communicate with users. What's occasions they need to communicate with each other, we give thwm as follows:
+- Notify the car which ride has been assigned to it
+- Notify the user that the reservation has been assigned to a specific car.
+- Notify the user the sharing car service.
+- Notify a car that its position in the zone queue has changed.
+- Notify a car that its zone has changed.
 
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+EO & Complexity & FPs \\ \hline
+Ride of car assignment notication & Low & 4 \\ \hline
+Reservation assignment to car notication & Low & 4 \\ \hline
+sharing car service notication & Low & 4 \\ \hline
+Position in the queue changed notication & Low & 4 \\ \hline
+Zone changed notication & Low & 4 \\ \hline
+\multicolumn{2}{|l|}{Total} & 20 \\ \hline
+\end{tabular}
+\end{table}
 
 
 ### EQ: External Inquiries
 
 
+An inquiry accutally is a data retrieval action, and it is a simple operation with a low complexitY. The follows provides all the External Inquiries:
+
+- A car can retrieve its complete rides and the bill got by each ride.
+- The user can retrieve the history of his reservations and the bill has been paid for the rides associated with the reservations and the economic rides conditions.
+- The operator can retrieve the number of cars in a specific zone, the location of current cars in a specific zone and the reservation has been reserved or processed.
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+EQ & Complexity & FPs \\ \hline
+Retrieve complete rides of cars & Low & 3 \\ \hline
+Retrieve the car's bill got by each ride & Low & 3 \\ \hline
+Retrieve user reservation history & Low & 3 \\ \hline
+Retrieve the user's bill has been paid for the rides & Low & 3 \\ \hline
+Retrieve the user's economic rides & Low & 3 \\ \hline
+Retrieve a list of the number of cars in a specific zone & Low & 3 \\ \hline
+Retrieve the location of current cars in a specific zone & Low & 3 \\ \hline
+Retrieve the reservation has been reserved & Low & 3 \\ \hline
+Retrieve the reservation has been processed & Low & 3 \\ \hline
+\multicolumn{2}{|l|}{Total} & 27 \\ \hline
+\end{tabular}
+\end{table}
 
 
 
