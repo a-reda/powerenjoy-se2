@@ -16,6 +16,14 @@ header-includes:
  4.	Reference Documents
 2. Project size and effort cost
     1. Size estimation: function points
+      1. Data function
+        1. ILF: Internal Logical Files
+        2. EIF: External Interface Files
+      2. Transaction function
+        1. EI: External Inputs
+        2. EO: External Outputs
+        3. EQ: External Inquiries
+      3. Overall estimation
     2. Cost and effort estimation: COCOMO II
 3. Schedule
 4. Resource allocation
@@ -119,24 +127,76 @@ File Type Referenced & 1-5 & 6-19 & 20+ \\ \hline
 \end{table}
 
 
+## 2.1.1 Data function
+### 2.1.1.1 ILF: Internal Logical Files
 
-### ILF: Internal Logical Files
+ILFs represent data that is stored and maintained within the boundary of the application. In our system (PowerEnjoy) information is stored through numbers of ILFs.
+
+- **Car data** : As the one of main units, the car, in our system its information has to be stored by system. The infromation about the car will be saved in a table or joint tables which include color of the car, CarID, car plate number, status(available, reserved, in using or unavailable), state(locked or unlocked), battery level, isCarInSafeArea, etc. For example, a record of the car is inserted into table, for this transaction the **DET** is only 7 and the **RET** is 1 so according to the ILF table we consider the complexity of this part is **Low**.
+
+- **User data** : This contains all the information about users and joint other data, for instance, user accounts, bills information, reservation information and so on. So when a record of user is modified or inserted may associate with different entities in the system. In this case many fields and tables will be saved or changed, thus we consider the complexity of this function point as **Avg**.
+
+- **Reservation data** : In this part, almost all other data are associate with the reservation operation. For example when a reservation is added or deleted or modified all the fields and tables which relate to it will be changed and saved like the available number of car, the bill table, users information, location and so on. So for this part its complexity of function points we set **High**.  
+
+- **Ride data** : For this part, it links to reservation and bill system as well as location information but its data storage is not as much as complax as reservation. When a record of a ride is saved in table the actually saved fields only contain location information. Hence, we consider its complexity as **Low**.
+
+- **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
+
+- **Bill data** :
+
+
+By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ILF & Complexity & FPs \\ \hline
+Car data & Low & 7 \\ \hline
+User data & Average & 10 \\ \hline
+Reservation data & High & 15 \\ \hline
+Ride data & Low & 7 \\ \hline
+Safe areas and charge stations data & Low & 7 \\ \hline
+Bill data & Low & 7 \\ \hline
+\multicolumn{2}{|c|}{Total} & 53 \\ \hline
+\end{tabular}
+\end{table}
+
+
+### 2.1.1.2 EIF: External Interface Files
+
+EIF is a user identifiable group of logically related data or control information referenced by the application, but maintained within the boundary of another application. The primary intent of an EIF is to hold data referenced through one or more elementary processes within the boundary of the application counted. This means an EIF counted for an application must be in an ILF in another application. In our system(PowerEnjoy) it needs to access three external handlers(APIs):
+
+- **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
+
+- **Google map service** :
+
+According to the EIF complexity matrix we get the result as follow:
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+EIF & Complexity & FPs \\ \hline
+Payment & Low & 5 \\ \hline
+Google Map & Average & 7 \\ \hline
+\multicolumn{2}{|c|}{Total} & 12 \\ \hline
+\end{tabular}
+\end{table}
+
+
+## 2.1.2 Transaction function
+### 2.1.2.1 EI: External Inputs
 
 
 
-### EIF: External Interface Files
+### 2.1.2.2 EO: External Outputs
 
 
 
-### EI: External Inputs
+### 2.1.2.3 EQ: External Inquiries
 
-
-
-### EO: External Outputs
-
-
-
-### EQ: External Inquiries
+## 2.1.3 Overall estimation
 
 
 
@@ -156,3 +216,8 @@ File Type Referenced & 1-5 & 6-19 & 20+ \\ \hline
 
 
 ## 6.Effort spent
+
+###  Lidong Zhang
+
+16/01/2017 2h
+18/01/2017 4h
