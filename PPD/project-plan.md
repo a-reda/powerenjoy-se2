@@ -137,20 +137,26 @@ The user needs to communicate with PywerEnjoy system outside the context of an i
 - Notify the car which ride has been assigned to it
 - Notify the user that the reservation has been assigned to a specific car.
 - Notify the user the sharing car service.
-- Notify a car that its position in the zone queue has changed.
-- Notify a car that its zone has changed.
+- Notify the user has been checked in.
+- Notify the user has been checked out.
+- Notify the bill of the user after ride.
+- Notify the car the user who made the reservation has been near the car.
+- Notify the car the user has changed his location.
 
 \begin{table}[]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
 EO & Complexity & FPs \\ \hline
-Ride of car assignment notication & Low & 4 \\ \hline
-Reservation assignment to car notication & Low & 4 \\ \hline
-sharing car service notication & Low & 4 \\ \hline
-Position in the queue changed notication & Low & 4 \\ \hline
-Zone changed notication & Low & 4 \\ \hline
-\multicolumn{2}{|l|}{Total} & 20 \\ \hline
+Notification to the car which ride has been assigned to it & Low & 4 \\ \hline
+Notification to the user which car he reserved & Low & 4 \\ \hline
+Notification to the user the sharing car service & Low & 4 \\ \hline
+Notification to the car that the user has been checked in & Low & 4 \\ \hline
+Notification to the car that the user has been checked out & Low & 4 \\ \hline
+Notification to the user the bill he has paid after ride & Low & 4 \\ \hline
+Notification to the car the user who made the reservation has been near the car & Low & 4 \\ \hline
+Notification to the car the user has changed his location & Low & 4 \\ \hline
+\multicolumn{2}{|l|}{Total} & 32 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -183,7 +189,8 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 \end{tabular}
 \end{table}
 
-
+### Overall estimation
+The following table summarizes the results of our estimation activity:
 
 ### 2.2 Cost and effort estimation: COCOMO II
 
