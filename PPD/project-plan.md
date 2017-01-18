@@ -166,6 +166,8 @@ Bill data & Low & 7 \\ \hline
 ### 2.1.1.2 EIF: External Interface Files
 
 EIF is a user identifiable group of logically related data or control information referenced by the application, but maintained within the boundary of another application. The primary intent of an EIF is to hold data referenced through one or more elementary processes within the boundary of the application counted. This means an EIF counted for an application must be in an ILF in another application. In our system(PowerEnjoy) it needs to access three external handlers(APIs):
+=======
+### EO: External Outputs
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
@@ -192,14 +194,63 @@ Google Map & Average & 7 \\ \hline
 
 ### 2.1.2.2 EO: External Outputs
 
+The user needs to communicate with PywerEnjoy system outside the context of an inquiry and also PywerEnjoy system needs to communicate with users. What's occasions they need to communicate with each other, we give thwm as follows:
+- Notify the car which ride has been assigned to it
+- Notify the user that the reservation has been assigned to a specific car.
+- Notify the user the sharing car service.
+- Notify the user has been checked in.
+- Notify the user has been checked out.
+- Notify the bill of the user after ride.
+- Notify the car the user who made the reservation has been near the car.
+- Notify the car the user has changed his location.
 
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+EO & Complexity & FPs \\ \hline
+Notification to the car which ride has been assigned to it & Low & 4 \\ \hline
+Notification to the user which car he reserved & Low & 4 \\ \hline
+Notification to the user the sharing car service & Low & 4 \\ \hline
+Notification to the car that the user has been checked in & Low & 4 \\ \hline
+Notification to the car that the user has been checked out & Low & 4 \\ \hline
+Notification to the user the bill he has paid after ride & Low & 4 \\ \hline
+Notification to the car the user who made the reservation has been near the car & Low & 4 \\ \hline
+Notification to the car the user has changed his location & Low & 4 \\ \hline
+\multicolumn{2}{|l|}{Total} & 32 \\ \hline
+\end{tabular}
+\end{table}
 
 ### 2.1.2.3 EQ: External Inquiries
 
+An inquiry accutally is a data retrieval action, and it is a simple operation with a low complexitY. The follows provides all the External Inquiries:
+
+- A car can retrieve its complete rides and the bill got by each ride.
+- The user can retrieve the history of his reservations and the bill has been paid for the rides associated with the reservations and the economic rides conditions.
+- The operator can retrieve the number of cars in a specific zone, the location of current cars in a specific zone and the reservation has been reserved or processed.
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+EQ & Complexity & FPs \\ \hline
+Retrieve complete rides of cars & Low & 3 \\ \hline
+Retrieve the car's bill got by each ride & Low & 3 \\ \hline
+Retrieve user reservation history & Low & 3 \\ \hline
+Retrieve the user's bill has been paid for the rides & Low & 3 \\ \hline
+Retrieve the user's economic rides & Low & 3 \\ \hline
+Retrieve a list of the number of cars in a specific zone & Low & 3 \\ \hline
+Retrieve the location of current cars in a specific zone & Low & 3 \\ \hline
+Retrieve the reservation has been reserved & Low & 3 \\ \hline
+Retrieve the reservation has been processed & Low & 3 \\ \hline
+\multicolumn{2}{|l|}{Total} & 27 \\ \hline
+\end{tabular}
+\end{table}
+
 ## 2.1.3 Overall estimation
 
-
-
+The following table summarizes the results of our estimation activity:
 
 
 ### 2.2 Cost and effort estimation: COCOMO II
