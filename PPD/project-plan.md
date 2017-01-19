@@ -329,6 +329,14 @@ we can give the estimate of the expected size of our project from 2 parts: Softw
 \end{table}
 
 
+The table above present some of of the most important factors, defined by COCOMO II, that effect the duration and cost of a project. The scale factors are the following:
+- *PREC Precedenteness* The experience of working with similar related software system in a large scale. Given that it is our first experience, this factor will be set to low.
+- *FLEX Development Flexibility*  This scale represents to which extent we should comply to external specifications and specifications. Since the specifications were derived from a broad description of the system, we will set this value to Nominal.
+- *RESL Risk Resolution*
+- *TEAM*
+- *PMAT*
+
+
 #### 2.2.1 Software Scale Drivers
 #### 2.2.2 Software Cost Drivers
 ##### 2.2.2.1 Product
