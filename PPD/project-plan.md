@@ -142,8 +142,7 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
-- **Bill data** : For this part we consider its complexity as **Avg** because
-
+- **Bill data** : For this part we consider its complexity as **Avg** because the data of this part associate with user data, reservation data, ride data, etc. So when a record of bill is inserted in the table it will link to many attributes.
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
