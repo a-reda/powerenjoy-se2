@@ -290,7 +290,7 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 
 The following table summarizes the results of our estimation activity:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{My caption}
 \label{my-label}
@@ -330,12 +330,36 @@ we can give the estimate of the expected size of our project from 2 parts: Softw
 
 
 The table above present some of of the most important factors, defined by COCOMO II, that effect the duration and cost of a project. The scale factors are the following:
+
 - *PREC Precedenteness* The experience of working with similar related software system in a large scale. Given that it is our first experience, this factor will be set to low.
 - *FLEX Development Flexibility*  This scale represents to which extent we should comply to external specifications and specifications. Since the specifications were derived from a broad description of the system, we will set this value to Nominal.
-- *RESL Risk Resolution*
-- *TEAM*
-- *PMAT*
+- *RESL Risk Resolution* The amount of risk management that is reserved for the project. As the risk management in our project is average, this will be set to nominal
+- *TEAM Team cohesion* It represents the problems that may arise from the project stakeholders. Since this project doesn't involve a big number stakeholders, we will set this one to Very High
+- *PMAT Process Maturity* Defines how much the software engineering process is well established and improved. In our case, we will set this factor to Level 1 as its our first experience.
 
+
+From the Scale Factor Value defined by COCOMO II, we obtain the following values for the Scale Factors
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{Scale Factors} & \textbf{Level} & \textbf{Value} \\ \hline
+\textbf{PREC $SF_{1}$} & Low & 4.96 \\ \hline
+\textbf{FLEX $SF_{2}$} & Nominal & 3.04 \\ \hline
+\textbf{RESL $SF_{3}$} & Nominal & 4.24 \\ \hline
+\textbf{TEAM $SF_{4}$} & Very High & 1.10 \\ \hline
+\textbf{PMAT $SF_{5}$} & Level 1 & 7.80 \\ \hline
+\multicolumn{2}{|r|}{\textbf{Total}} & 21.14 \\ \hline
+\end{tabular}
+\caption{Estimated scale factors}
+\end{table}
+
+Afterwards, we need to calculate a scale component using the following formula and $B=0.91$:
+
+\centerline{$E = B + 0.01* \sum_{j=1}^{5}SF_{j}$}
+
+Applying the numbers we get $\mathbf{E = 1.1214}$
 
 #### 2.2.1 Software Scale Drivers
 #### 2.2.2 Software Cost Drivers
