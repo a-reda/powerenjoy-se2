@@ -290,7 +290,14 @@ Total & 160 \\ \hline
 
 ### 2.2 Cost and effort estimation: COCOMO II
 
+we can give the estimate of the expected size of our project from 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers divides into 4 parts: product, personal, platform, project.
 
+#### 2.2.1 Software Scale Drivers
+#### 2.2.2 Software Cost Drivers
+##### 2.2.2.1 Product
+##### 2.2.2.2 Personal
+##### 2.2.2.3 Platform
+##### 2.2.2.4 Project          
 
 ## 3.Schedule
 
