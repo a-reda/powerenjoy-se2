@@ -3,6 +3,7 @@ header-includes:
   - \usepackage{float}
   - \usepackage{graphicx}
   - \usepackage{array}
+  - \usepackage{adjustbox}
   - \graphicspath{ {ITPD/resources/integrations/} }
 ---
 
@@ -146,9 +147,9 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|p{6cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \hline
 ILF & Complexity & FPs \\ \hline
 Car data & Low & 7 \\ \hline
@@ -172,9 +173,9 @@ EIF is a user identifiable group of logically related data or control informatio
 
 According to the EIF complexity matrix we get the result as follow:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|p{6cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \hline
 EIF & Complexity & FPs \\ \hline
 Payment & Low & 5 \\ \hline
@@ -206,7 +207,7 @@ As specified before, this operation need to be performed with high accuracy and 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|p{6cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \hline
 \textbf{EI} & \textbf{Complexity} & FPs \\ \hline
 Insertions by the operator & Low & 3*4 \\ \hline
@@ -223,6 +224,7 @@ Modify and delete reservation & Low & 3*2 \\ \hline
 ### 2.1.2.2 EO: External Outputs
 
 The user needs to communicate with PywerEnjoy system outside the context of an inquiry and also PywerEnjoy system needs to communicate with users. What's occasions they need to communicate with each other, we give thwm as follows:
+
 - Notify the car which ride has been assigned to it
 - Notify the user that the reservation has been assigned to a specific car.
 - Notify the user the sharing car service.
@@ -232,9 +234,9 @@ The user needs to communicate with PywerEnjoy system outside the context of an i
 - Notify the car the user who made the reservation has been near the car.
 - Notify the car the user has changed his location.
 
-\begin{table}[]
+\begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|p{6cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \hline
 EO & Complexity & FPs \\ \hline
 Notification to the car which ride has been assigned to it & Low & 4 \\ \hline
@@ -258,9 +260,9 @@ An inquiry accutally is a data retrieval action, and it is a simple operation wi
 - The operator can retrieve the number of cars in a specific zone, the location of current cars in a specific zone and the reservation has been reserved or processed.
 
 
-\begin{table}[]
+\begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|p{6cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \hline
 EQ & Complexity & FPs \\ \hline
 Retrieve complete rides of cars & Low & 3 \\ \hline
@@ -282,6 +284,24 @@ The following table summarizes the results of our estimation activity:
 
 
 ### 2.2 Cost and effort estimation: COCOMO II
+
+
+\begin{table}[H]
+\begin{adjustbox}{center}
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{Scale Factors} & \textbf{Very Low} & \textbf{Low} & \textbf{Nominal} & \textbf{High} & \textbf{Very High} & \textbf{Extra High} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}PREC \\ $SF_{j}$\end{tabular}} & \begin{tabular}[c]{@{}l@{}}thoroughly\\ unpreceden\\ ted\\ 6.20\end{tabular} & \begin{tabular}[c]{@{}l@{}}largely\\ unpreceden\\ ted\\ 4.96\end{tabular} & \begin{tabular}[c]{@{}l@{}}somewhat\\ unpreceden\\ ted\\ 3.72\end{tabular} & \begin{tabular}[c]{@{}l@{}}generally\\ familiar\\ 2.48\end{tabular} & \begin{tabular}[c]{@{}l@{}}largely\\ familiar\\ 1.24\end{tabular} & \begin{tabular}[c]{@{}l@{}}thoroughly\\ familiar\\ 0.00\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}FLEX\\ $SF_{j}$\end{tabular}} & \begin{tabular}[c]{@{}l@{}}rigorous\\ 5.07\end{tabular} & \begin{tabular}[c]{@{}l@{}}occasional\\ relaxation\\ 4.05\end{tabular} & \begin{tabular}[c]{@{}l@{}}some\\ relaxation\\ 3.04\end{tabular} & \begin{tabular}[c]{@{}l@{}}general\\ conformity\\ 2.03\end{tabular} & \begin{tabular}[c]{@{}l@{}}some\\ conformity\\ 1.01\end{tabular} & \begin{tabular}[c]{@{}l@{}}general\\ goals\\ 0.00\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}RESL\\ $SF_{j}$\end{tabular}} & \begin{tabular}[c]{@{}l@{}}little (20\%)\\ 7.07\end{tabular} & \begin{tabular}[c]{@{}l@{}}some (40\%)\\ 5.65\end{tabular} & \begin{tabular}[c]{@{}l@{}}often (60\%)\\ 4.24\end{tabular} & \begin{tabular}[c]{@{}l@{}}generally\\ (75\%)\\ 2.83\end{tabular} & \begin{tabular}[c]{@{}l@{}}mostly\\ (90\%)\\ 1.41\end{tabular} & \begin{tabular}[c]{@{}l@{}}full (100\%)\\ 0.00\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}TEAM\\ $SF_{j}$\end{tabular}} & \begin{tabular}[c]{@{}l@{}}very difficult\\ interactions\\ 5.48\end{tabular} & \begin{tabular}[c]{@{}l@{}}some\\ difficult\\ interactions\\ 4.38\end{tabular} & \begin{tabular}[c]{@{}l@{}}basically\\ cooperative\\ interactions\\ 3.29\end{tabular} & \begin{tabular}[c]{@{}l@{}}largely\\ cooperative\\ 2.19\end{tabular} & \begin{tabular}[c]{@{}l@{}}highly\\ cooperative\\ 1.10\end{tabular} & \begin{tabular}[c]{@{}l@{}}seamless\\ interactions\\ 0.00\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}PMAT\\ $SF_{j}$\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Level 1\\ Lower\\ 7.80\end{tabular} & \begin{tabular}[c]{@{}l@{}}Level 1 Upper\\ 6.24\end{tabular} & \begin{tabular}[c]{@{}l@{}}Level 2\\ 4.68\end{tabular} & \begin{tabular}[c]{@{}l@{}}Level 3\\ 3.12\end{tabular} & \begin{tabular}[c]{@{}l@{}}Level 4\\ \\ 1.56\end{tabular} & \begin{tabular}[c]{@{}l@{}}Level 5\\ \\ 0.00\end{tabular} \\ \hline
+\end{tabular}
+\end{adjustbox}
+\caption{Scale Factor Values, $SF_{j}$, for COCOMO II Models }
+\end{table}
+
 
 
 
