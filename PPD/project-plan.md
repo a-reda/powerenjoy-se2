@@ -192,14 +192,14 @@ PowerEnjoy's system requires a multitude of inputs coming from different sources
 
 #### Operator
 
-- Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 12 FPs all together.
-- Validate user: This operation have a low complexity as it requires searching the user then validating his account. This will account for 4 FPs.
+- Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 3 FPs each.
+- Validate user: This operation have an average complexity as it requires searching the user then validating his account. This will account for 4 FPs.
 
 #### User
 
 - User registration: The user need to enter his personal information in order to create an account. In this step, data validation is required. Therefore, this operation have an average complexity. It will represent 4FPs.
-- Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 5FPs.
-- Reservations: The user should be able to create new reservation, modify them and also delete them. This is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 8 FPs while the modification and deletion are 4 FPs each.
+- Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 4FPs.
+- Reservations: The user should be able to create new reservation, modify them and also delete them. The creation operation is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 6 FPs while the modification and deletion are 3 FPs each.
 
 #### Cars
 
@@ -210,13 +210,13 @@ As specified before, this operation need to be performed with high accuracy and 
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{EI} & \textbf{Complexity} & FPs \\ \hline
-Insertions by the operator & Low & 12 \\ \hline
-User validation & Low & 4 \\ \hline
-User registration & Low & 4 \\ \hline
-Login & Average & 5 \\ \hline
-Create reservation & High & 8 \\ \hline
-Modify and delete reservation & Low & 4*2 \\ \hline
-\multicolumn{2}{|l|}{Total} & 41 \\ \hline
+Insertions by the operator & Low & 3*4 \\ \hline
+User validation & Average & 4 \\ \hline
+User registration & Average & 4 \\ \hline
+Login & Average & 4 \\ \hline
+Create reservation & High & 6 \\ \hline
+Modify and delete reservation & Low & 3*2 \\ \hline
+\multicolumn{2}{|l|}{Total} & 36 \\ \hline
 \end{tabular}
 \end{table}
 
