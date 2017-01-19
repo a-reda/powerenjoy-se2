@@ -35,6 +35,9 @@ header-includes:
 
 
 ### 1.2 Purpose and Scope
+The main purpose of the Project Plan Document is to analyze the expected complexity of our project and estimate the cost and effort of our project.
+
+By means of the Function Points and COCOMO approaches, we can give the estimate of the expected size of our project from 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers divides into 4 parts: product, personal, platform, project.
 
 
 ### 1.3 Definitions and Abbreviations
@@ -142,7 +145,8 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
-- **Bill data** : For this part we consider its complexity as **Avg** because the data of this part associate with user data, reservation data, ride data, etc. So when a record of bill is inserted in the table it will link to many attributes.
+- **Bill data** :
+
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
@@ -168,7 +172,7 @@ EIF is a user identifiable group of logically related data or control informatio
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
-- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from opint to another point when given two locations. So we set this to a **Avg** complexity level.
+- **Google map service** :
 
 According to the EIF complexity matrix we get the result as follow:
 
@@ -189,40 +193,27 @@ Google Map & Average & 7 \\ \hline
 
 PowerEnjoy's system requires a multitude of inputs coming from different sources. The first one is the inputs made by the system operator. This includes all the inserts of cars, zones, charging stations and users. The second source is the user as he enters personal information, credentials and reservations. The last source is cars' data that flows from all the fleet. The latter is essential since all the operations are based on the status of cars.
 
-#### Operator
-
-- Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 3 FPs each.
+Operator
+--------
+- Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 10 FPs all together.
 - Validate user: This operation have an average complexity as it requires searching the user then validating his account. This will account for 4 FPs.
 
-#### User
-
+User
+----
 - User registration: The user need to enter his personal information in order to create an account. In this step, data validation is required. Therefore, this operation have an average complexity. It will represent 4FPs.
-- Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 4FPs.
-- Reservations: The user should be able to create new reservation, modify them and also delete them. The creation operation is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 6 FPs while the modification and deletion are 3 FPs each.
+- Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 4FPS
+- Reservations: The user should be able to create new reservation, modify them and also delete them. This is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 10 FPs while the modification and deletion are 5 FPs each.
 
-#### Cars
+Cars
+----
 
 As specified before, this operation need to be performed with high accuracy and timeliness. It involves also the management of different data sources. It is a high complexity operation, so it will account for 10FPs.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-\textbf{EI} & \textbf{Complexity} & FPs \\ \hline
-Insertions by the operator & Low & 3*4 \\ \hline
-User validation & Average & 4 \\ \hline
-User registration & Average & 4 \\ \hline
-Login & Average & 4 \\ \hline
-Create reservation & High & 6 \\ \hline
-Modify and delete reservation & Low & 3*2 \\ \hline
-\multicolumn{2}{|l|}{Total} & 36 \\ \hline
-\end{tabular}
-\end{table}
 
 
 ### 2.1.2.2 EO: External Outputs
 
 The user needs to communicate with PywerEnjoy system outside the context of an inquiry and also PywerEnjoy system needs to communicate with users. What's occasions they need to communicate with each other, we give thwm as follows:
+
 - Notify the car which ride has been assigned to it
 - Notify the user that the reservation has been assigned to a specific car.
 - Notify the user the sharing car service.
@@ -279,6 +270,22 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 ## 2.1.3 Overall estimation
 
 The following table summarizes the results of our estimation activity:
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|}
+\hline
+Function Type & Value \\ \hline
+ILF: Internal Logical Files & 53 \\ \hline
+EIF: External Interface Files & 12 \\ \hline
+EI: External Inputs & 36 \\ \hline
+EO: External Outputs & 32 \\ \hline
+EQ: External Inquiries & 27 \\ \hline
+Total & 160 \\ \hline
+\end{tabular}
+\end{table}
 
 
 ### 2.2 Cost and effort estimation: COCOMO II
