@@ -188,6 +188,23 @@ Google Map & Average & 7 \\ \hline
 ## 2.1.2 Transaction function
 ### 2.1.2.1 EI: External Inputs
 
+PowerEnjoy's system requires a multitude of inputs coming from different sources. The first one is the inputs made by the system operator. This includes all the inserts of cars, zones, charging stations and users. The second source is the user as he enters personal information, credentials and reservations. The last source is cars' data that flows from all the fleet. The latter is essential since all the operations are based on the status of cars.
+
+Operator
+--------
+- Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 10 FPs all together.
+- Validate user: This operation have an average complexity as it requires searching the user then validating his account. This will account for 4 FPs.
+
+User
+----
+- User registration: The user need to enter his personal information in order to create an account. In this step, data validation is required. Therefore, this operation have an average complexity. It will represent 4FPs.
+- Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 4FPS
+- Reservations: The user should be able to create new reservation, modify them and also delete them. This is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 10 FPs while the modification and deletion are 5 FPs each.
+
+Cars
+----
+
+As specified before, this operation need to be performed with high accuracy and timeliness. It involves also the management of different data sources. It is a high complexity operation, so it will account for 10FPs. 
 
 
 ### 2.1.2.2 EO: External Outputs
