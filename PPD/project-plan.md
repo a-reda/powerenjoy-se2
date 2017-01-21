@@ -171,8 +171,7 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
-- **Bill data** :
-
+- **Bill data** : For this part we consider its complexity as **Avg** because the data of this part associate with user data, reservation data, ride data, etc. So when a record of bill is inserted in the table it will link to many attributes.
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
@@ -198,7 +197,7 @@ EIF is a user identifiable group of logically related data or control informatio
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
-- **Google map service** :
+- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from opint to another point when given two locations. So we set this to a **Avg** complexity level.
 
 According to the EIF complexity matrix we get the result as follow:
 
@@ -220,18 +219,18 @@ Google Map & Average & 7 \\ \hline
 PowerEnjoy's system requires a multitude of inputs coming from different sources. The first one is the inputs made by the system operator. This includes all the inserts of cars, zones, charging stations and users. The second source is the user as he enters personal information, credentials and reservations. The last source is cars' data that flows from all the fleet. The latter is essential since all the operations are based on the status of cars.
 
 Operator
---------
+
 - Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 10 FPs all together.
 - Validate user: This operation have an average complexity as it requires searching the user then validating his account. This will account for 4 FPs.
 
 User
-----
+
 - User registration: The user need to enter his personal information in order to create an account. In this step, data validation is required. Therefore, this operation have an average complexity. It will represent 4FPs.
 - Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 4FPS
 - Reservations: The user should be able to create new reservation, modify them and also delete them. This is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 10 FPs while the modification and deletion are 5 FPs each.
 
 Cars
-----
+
 
 As specified before, this operation need to be performed with high accuracy and timeliness. It involves also the management of different data sources. It is a high complexity operation, so it will account for 10FPs.
 
@@ -249,6 +248,7 @@ Modify and delete reservation & Low & 3*2 \\ \hline
 \multicolumn{2}{|l|}{Total} & 36 \\ \hline
 \end{tabular}
 \end{table}
+
 
 
 ### 2.1.2.2 EO: External Outputs
@@ -593,11 +593,38 @@ Effort Multipliers & 1.20 & 1.09 & 1.00 & 0.92 & 0.84 &  \\ \hline
 \end{table}
 
 ##### 2.2.2.3 Platform
-##### 2.2.2.4 Project          
+
+- **Execution Time Constraint (TIME)**
+
+Inorder to improve costumers' satisfaction and the stability, fluency of our system we assume that the execution time of the system is short in real scene so a **Nominal** level will be set here.
+
+- **Main Storage Constraint (STOR)**
+
+Considering to make the best use of the system resource and the system has enough room to backup importan data we will set the rating level as **High**.
+
+- **Platform Volatility (PVOL)**
+
+According to the identifier of the PVOL, in our case the platform is the mobile-phone operation system and computer OS. So the platform volatility depends on how ofen the customer update the OS of their devices. For the stability of our core system we don't expect the platform changes frequently. But as developlers We have to update our application periodically to serve customers. Hence the the rating level be set as **Low**.
+
+##### 2.2.2.4 Project     
+
+- **Use of Software Tools (TOOL)**   
+
+Our project environment is quite complete and it should be strong and a tool with mature life cycle and moderately integrated due to this the parameter wil be set as **High**.
+
+- **Multisite Development (SITE)**
+
+Since our team have a project meeting every week and we live in same city, we communicate with each other by social media software like whats APP and Facebook when we are not working together so we set the rating level of this part as **High**.
+
+- **Required Development Schedule (SCED)**
+
+We will set this parameter as **Nominal** which the value is 1.00. As a programer it is our duty to finish our job and present a completed project to customer on time.
+
 
 
 ## 3.Schedule
 
+It is necessary to set a schedule to make sure the project is proceeded as plan and finished on time. So we created a project schedule by using GanttProject to keep the project goes well as we expected. In this schedule will show how we started this project and what we did during each period. We also assume that the project will be continued to maintian the integrality and authenticity of the entire development process. So we added the 'Implementation and support' and 'Testing' as well as 'Evaluation' procedures though these will not be performed at the end of the project.
 
 ## 4.Resource allocation
 
