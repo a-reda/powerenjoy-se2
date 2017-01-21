@@ -628,6 +628,7 @@ It is necessary to set a schedule to make sure the project is proceeded as plan 
 
 ## 4.Resource allocation
 
+In this section we will present how we distribute our team resource to finish our project by creating a gantter chart. In the gantter chart, it can be shown that each of us is responsible for each part of the project and how much time we spent on each of tasks. Note that every time there will be a group meeting before we starting our single task. So that we can avoid misunderstanding and conflict among team members when we are working seperately. Again we also assume that we are working at developing phase so in the chart there is a incomplete task.
 
 \pagebreak
 
