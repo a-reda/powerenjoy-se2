@@ -398,7 +398,7 @@ then RELY is very low. If a failure would risk human life then RELY is very high
 \multicolumn{7}{|c|}{RELY Cost Driver} \\ \hline
 RELYDescriptors: & \begin{tabular}[c]{@{}c@{}}slight\\ inconvenience\end{tabular} & \begin{tabular}[c]{@{}c@{}}low, easily\\ recoverable losses\end{tabular} & \begin{tabular}[c]{@{}c@{}}moderate,easily \\ recoverable losses\end{tabular} & \begin{tabular}[c]{@{}c@{}}high \\ financial loss\end{tabular} & \begin{tabular}[c]{@{}c@{}}risk to \\ human life\end{tabular} &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
-Effort Multipliers & 0.82 & 0.92 & 1.00 & 1.10 & 1.26` & n/a \\ \hline
+Effort Multipliers & 0.82 & 0.92 & 1.00 & 1.10 & 1.26 & n/a \\ \hline
 \end{tabular}
 \end{table}
 
