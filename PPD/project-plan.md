@@ -382,15 +382,21 @@ According to the identifier of the PVOL, in our case the platform is the mobile-
 
 - **Use of Software Tools (TOOL)**   
 
+Our project environment is quite complete and it should be strong and a tool with mature life cycle and moderately integrated due to this the parameter wil be set as **High**.
 
 - **Multisite Development (SITE)**
 
+Since our team have a project meeting every week and we live in same city, we communicate with each other by social media software like whats APP and Facebook when we are not working together so we set the rating level of this part as **High**.
 
 - **Required Development Schedule (SCED)**
+
+We will set this parameter as **Nominal** which the value is 1.00. As a programer it is our duty to finish our job and present a completed project to customer on time.
+
 
 
 ## 3.Schedule
 
+It is necessary to set a schedule to make sure the project is proceeded as plan and finished on time. So we created a project schedule by using GanttProject to keep the project goes well as we expected. In this schedule will show how we started this project and what we did during each period. We also assume that the project will be continued to maintian the integrality and authenticity of the entire development process. So we added the 'Implementation and support' and 'Testing' as well as 'Evaluation' procedures though these will not be performed at the end of the project.
 
 ## 4.Resource allocation
 
