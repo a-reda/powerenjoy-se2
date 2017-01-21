@@ -235,7 +235,6 @@ Cars
 
 As specified before, this operation need to be performed with high accuracy and timeliness. It involves also the management of different data sources. It is a high complexity operation, so it will account for 10FPs.
 
-<<<<<<< HEAD
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{6cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
@@ -251,8 +250,6 @@ Modify and delete reservation & Low & 3*2 \\ \hline
 \end{tabular}
 \end{table}
 
-=======
->>>>>>> c2823b44d67aec16b0da4a49be5227372d30c059
 
 ### 2.1.2.2 EO: External Outputs
 
@@ -315,7 +312,7 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 
 The following table summarizes the results of our estimation activity:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{My caption}
 \label{my-label}
@@ -353,6 +350,38 @@ we can give the estimate of the expected size of our project from 2 parts: Softw
 \caption{Scale Factor Values, $SF_{j}$, for COCOMO II Models }
 \end{table}
 
+
+The table above present some of of the most important factors, defined by COCOMO II, that effect the duration and cost of a project. The scale factors are the following:
+
+- *PREC Precedenteness* The experience of working with similar related software system in a large scale. Given that it is our first experience, this factor will be set to low.
+- *FLEX Development Flexibility*  This scale represents to which extent we should comply to external specifications and specifications. Since the specifications were derived from a broad description of the system, we will set this value to Nominal.
+- *RESL Risk Resolution* The amount of risk management that is reserved for the project. As the risk management in our project is average, this will be set to nominal
+- *TEAM Team cohesion* It represents the problems that may arise from the project stakeholders. Since this project doesn't involve a big number stakeholders, we will set this one to Very High
+- *PMAT Process Maturity* Defines how much the software engineering process is well established and improved. In our case, we will set this factor to Level 1 as its our first experience.
+
+
+From the Scale Factor Value defined by COCOMO II, we obtain the following values for the Scale Factors
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{Scale Factors} & \textbf{Level} & \textbf{Value} \\ \hline
+\textbf{PREC $SF_{1}$} & Low & 4.96 \\ \hline
+\textbf{FLEX $SF_{2}$} & Nominal & 3.04 \\ \hline
+\textbf{RESL $SF_{3}$} & Nominal & 4.24 \\ \hline
+\textbf{TEAM $SF_{4}$} & Very High & 1.10 \\ \hline
+\textbf{PMAT $SF_{5}$} & Level 1 & 7.80 \\ \hline
+\multicolumn{2}{|r|}{\textbf{Total}} & 21.14 \\ \hline
+\end{tabular}
+\caption{Estimated scale factors}
+\end{table}
+
+Afterwards, we need to calculate a scale component using the following formula and $B=0.91$:
+
+\centerline{$E = B + 0.01* \sum_{j=1}^{5}SF_{j}$}
+
+Applying the numbers we get $\mathbf{E = 1.1214}$
 
 #### 2.2.1 Software Scale Drivers
 #### 2.2.2 Software Cost Drivers
@@ -573,8 +602,30 @@ Effort Multipliers & 1.20 & 1.09 & 1.00 & 0.92 & 0.84 &  \\ \hline
 ## 4.Resource allocation
 
 
+\pagebreak
+
 ## 5.Risk management
 
+The following section serves as a basis for risk management. We will identify the main risks that may arise during the execution of our project's schedule. The main areas assessed in risk identification are new technologies, user and functional requirements, system architecture, performance and finally organizational. In order to monitor and mitigate risk, we will present as well some precautions and good practices to achieve our objective.
+
+The first area is **New and Unproven Technologies**. The main business objective is the management of a fleet of "smart" electric cars that connect to PowerEnjoy servers through internet. We will have to gather car data in timely and real-time manner. Difficulties may arise when trying to keep an up-to-date data store of the situation of the cars. Data, for example, may be out of date and users are shown expired information. Consultation with engineers that took part in similar projects is advised to identify the main difficulties. Car communication is the new technology in this project. The server side, since it will be mainly developed in JAVA which is a proven technology, will not present a high risk.
+
+**User and Functional Requirements** may represent a high risk that will push us to steer into other directions. This is mainly because the user and functional requirements gathering is a tedious process. Furthermore, the requirements may change or other ones may arise during discovery and integrations process. Therefore, the requirements should be well-defined and validated with all the stakeholders of the project. In addition, a sufficient margin should be planned in the schedule to allow some time to adapt to new requirements changes. This margin is also useful if another risk caused the slowing down of the development process.
+
+Another area that should be thoroughly inspected is the **Application and System Architecture**. The decisions made in this area represent the backbone of the application. They guide the design and other important decisions later on in the process. A wrong decision may cause delays if inadequate architecture decisions are made. In this case, there will be a need of a design refactoring and implementation changes. Research about experience in similar application is needed to reduce the risk coming from this area.
+
+Moreover **Perfomance** should be assessed for all the duration of the project. Performance benchmarks should be performed at each step to avoid discovering performance problems at the end of the project. Key performance indicators should be well-defined and checked. This project relies a lot on real-time data, so performance should be closely monitored.
+
+Last but not least, **Organizational** risks have to be assessed as well. Project management should plan for an efficient execution of the project while keeping a suitable balance between the resources of the project and the expectation of the client. Reports and documentation should be produced at each milestone of the project. Through the communication and validation of these documentation with the stakeholders, we are sure that we are in a good track while recognizing problems before they cause significant delay.
+
+Code management, centralization and back-up should be performed. Version control is essential to keep back-ups, history and code sharing among the different developers. It is also a useful tool to keep track of how much work is being done and by whom.
+
+Stakeholders are also important in our risk analysis. Since the project is to be deployed in a city, many stakeholders are taking part of it. City council and project sponsors have an important role in the decision making. Therefore, they should be always kept in contact as stated before. The legal environment of the project should as well be kept in consideration. There should be a strong legal consultation about the regulations.
+
+To sum up, many risks may arise during the project execution. Although some of the risks are presented above, we should keep in mind that other unapparent risks may arise. A sufficient time margin should be included in the schedule in order to meet the project deadlines.    
+
+
+\pagebreak
 
 ## 6.Effort spent
 
