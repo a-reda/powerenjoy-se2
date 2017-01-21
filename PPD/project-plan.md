@@ -178,8 +178,7 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
-- **Bill data** :
-
+- **Bill data** : For this part we consider its complexity as **Avg** because the data of this part associate with user data, reservation data, ride data, etc. So when a record of bill is inserted in the table it will link to many attributes.
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
@@ -205,7 +204,7 @@ EIF is a user identifiable group of logically related data or control informatio
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
-- **Google map service** :
+- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from opint to another point when given two locations. So we set this to a **Avg** complexity level.
 
 According to the EIF complexity matrix we get the result as follow:
 
