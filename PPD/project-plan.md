@@ -315,10 +315,8 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[H]
 \centering
-\caption{My caption}
-\label{my-label}
 \begin{tabular}{|l|l|l|}
 \hline
 Cost Driver & Factor & Value \\ \hline
@@ -331,7 +329,7 @@ Analyst capability (ACAP) & High & 0.85 \\ \hline
 Programmer capability (PCAP) & High & 0.88 \\ \hline
 Personnel Continuity (PCON) & Nominal & 1.00 \\ \hline
 Application Experience (APEX) & Nominal & 1.00 \\ \hline
-Platform Experience(PLEX) & Nominal & 1.OO \\ \hline
+Platform Experience(PLEX) & Nominal & 1.00 \\ \hline
 Language and Tool Experience (LTEX) & Nominal & 1.00 \\ \hline
 Execution Time Constraint (TIME) & Nominal & 1.00 \\ \hline
 Main storage constraint (STOR) & High & 1.05 \\ \hline
