@@ -4,7 +4,8 @@ header-includes:
   - \usepackage{graphicx}
   - \usepackage{array}
   - \usepackage{adjustbox}
-  - \graphicspath{ {ITPD/resources/integrations/} }
+  - \usepackage{rotating}
+  - \graphicspath{ {PPD/resources/} }
 ---
 
 \input{PPD/coverpage.tex}
@@ -26,6 +27,12 @@ header-includes:
         3. EQ: External Inquiries
       3. Overall estimation
     2. Cost and effort estimation: COCOMO II
+      1. Software Scale Drivers
+      2. Software Cost Drivers
+        1. Product
+        2. Personal
+        3. Platform
+        4. Project
 3. Schedule
 4. Resource allocation
 5. Risk management
@@ -171,7 +178,8 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
-- **Bill data** : For this part we consider its complexity as **Avg** because the data of this part associate with user data, reservation data, ride data, etc. So when a record of bill is inserted in the table it will link to many attributes.
+- **Bill data** :
+
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
@@ -197,7 +205,7 @@ EIF is a user identifiable group of logically related data or control informatio
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
-- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from opint to another point when given two locations. So we set this to a **Avg** complexity level.
+- **Google map service** :
 
 According to the EIF complexity matrix we get the result as follow:
 
@@ -219,18 +227,18 @@ Google Map & Average & 7 \\ \hline
 PowerEnjoy's system requires a multitude of inputs coming from different sources. The first one is the inputs made by the system operator. This includes all the inserts of cars, zones, charging stations and users. The second source is the user as he enters personal information, credentials and reservations. The last source is cars' data that flows from all the fleet. The latter is essential since all the operations are based on the status of cars.
 
 Operator
-
+--------
 - Insert cars, zones, charging stations and users: This operations have a low complexity therefore they contribute with 10 FPs all together.
 - Validate user: This operation have an average complexity as it requires searching the user then validating his account. This will account for 4 FPs.
 
 User
-
+----
 - User registration: The user need to enter his personal information in order to create an account. In this step, data validation is required. Therefore, this operation have an average complexity. It will represent 4FPs.
 - Login: The user enters his credentials and they should be validated at the level of the server. This operation contributes with 4FPS
 - Reservations: The user should be able to create new reservation, modify them and also delete them. This is a high complexity operation as it requires to verify the current available cars. The reservation creation will account for 10 FPs while the modification and deletion are 5 FPs each.
 
 Cars
-
+----
 
 As specified before, this operation need to be performed with high accuracy and timeliness. It involves also the management of different data sources. It is a high complexity operation, so it will account for 10FPs.
 
@@ -248,7 +256,6 @@ Modify and delete reservation & Low & 3*2 \\ \hline
 \multicolumn{2}{|l|}{Total} & 36 \\ \hline
 \end{tabular}
 \end{table}
-
 
 
 ### 2.1.2.2 EO: External Outputs
@@ -308,14 +315,38 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Cost Driver & Factor & Value \\ \hline
+Required Software Reliability (RELY) & Nominal & 1.00 \\ \hline
+Database size (DATA) & High & 1.14 \\ \hline
+Product complexity (CPLX) & Very high & 1.34 \\ \hline
+Required Reusability (RUSE) & Nominal & 1.00 \\ \hline
+Documentation match to life-cycle needs(DOCU) & Nominal & 1.00 \\ \hline
+Analyst capability (ACAP) & High & 0.85 \\ \hline
+Programmer capability (PCAP) & High & 0.88 \\ \hline
+Personnel Continuity (PCON) & Nominal & 1.00 \\ \hline
+Application Experience (APEX) & Nominal & 1.00 \\ \hline
+Platform Experience(PLEX) & Nominal & 1.00 \\ \hline
+Language and Tool Experience (LTEX) & Nominal & 1.00 \\ \hline
+Execution Time Constraint (TIME) & Nominal & 1.00 \\ \hline
+Main storage constraint (STOR) & High & 1.05 \\ \hline
+Platform volatility (PVOL) & Low & 0.87 \\ \hline
+Usage of Software Tools (TOOL) & High & 0.90 \\ \hline
+Multisite development (SITE) & High & 0.93 \\ \hline
+Required development schedule (SCED) & Nominal & 1.00 \\ \hline
+\multicolumn{2}{|l|}{Product of all cost drivers} & 0.87367 \\ \hline
+\end{tabular}
+\end{table}
+
 ## 2.1.3 Overall estimation
 
 The following table summarizes the results of our estimation activity:
 
 \begin{table}[H]
 \centering
-\caption{My caption}
-\label{my-label}
 \begin{tabular}{|l|l|}
 \hline
 Function Type & Value \\ \hline
@@ -333,6 +364,7 @@ Total & 160 \\ \hline
 
 we can give the estimate of the expected size of our project from 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers divides into 4 parts: product, personal, platform, project.
 
+#### 2.2.1 Software Scale Drivers
 
 \begin{table}[H]
 \begin{adjustbox}{center}
@@ -353,7 +385,7 @@ we can give the estimate of the expected size of our project from 2 parts: Softw
 
 The table above present some of of the most important factors, defined by COCOMO II, that effect the duration and cost of a project. The scale factors are the following:
 
-- *PREC Precedenteness* The experience of working with similar related software system in a large scale. Given that it is our first experience, this factor will be set to low.
+- *PREC Precedentness* The experience of working with similar related software system in a large scale. Given that it is our first experience, this factor will be set to low.
 - *FLEX Development Flexibility*  This scale represents to which extent we should comply to external specifications and specifications. Since the specifications were derived from a broad description of the system, we will set this value to Nominal.
 - *RESL Risk Resolution* The amount of risk management that is reserved for the project. As the risk management in our project is average, this will be set to nominal
 - *TEAM Team cohesion* It represents the problems that may arise from the project stakeholders. Since this project doesn't involve a big number stakeholders, we will set this one to Very High
@@ -383,7 +415,6 @@ Afterwards, we need to calculate a scale component using the following formula a
 
 Applying the numbers we get $\mathbf{E = 1.1214}$
 
-#### 2.2.1 Software Scale Drivers
 #### 2.2.2 Software Cost Drivers
 ##### 2.2.2.1 Product
 - Required Software Reliability:
@@ -391,15 +422,17 @@ Applying the numbers we get $\mathbf{E = 1.1214}$
 If the effect of a software failure is only slight inconvenience
 then RELY is very low. If a failure would risk human life then RELY is very high. The PowerEnjoy is an essential way to get a car and it can also provide sharing service which is benefit for both of user and car driver, but when the user want to reserve a car to go somewhere,  this system still can be replace by other application, like CartoGo and Uber. For this reason, the RELY cost driver is set to nominal.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{RELY Cost Driver} \\ \hline
-RELYDescriptors: & \begin{tabular}[c]{@{}c@{}}slight\\ inconvenience\end{tabular} & \begin{tabular}[c]{@{}c@{}}low, easily\\ recoverable losses\end{tabular} & \begin{tabular}[c]{@{}c@{}}moderate,easily \\ recoverable losses\end{tabular} & \begin{tabular}[c]{@{}c@{}}high \\ financial loss\end{tabular} & \begin{tabular}[c]{@{}c@{}}risk to \\ human life\end{tabular} &  \\ \hline
+RELY Descriptors: & slight inconvenience & low, easily recoverable losses & moderate, easily recoverable losses & high financial loss & risk to human life &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
-Effort Multipliers & 0.82 & 0.92 & 1.00 & 1.10 & 1.26` & n/a \\ \hline
+Effort Multipliers & 0.82 & 0.92 & 1.00 & 1.10 & 1.26 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 - Data Base Size
@@ -407,15 +440,17 @@ Effort Multipliers & 0.82 & 0.92 & 1.00 & 1.10 & 1.26` & n/a \\ \hline
 We consider the size of our database.What wo need to store are users information, car information, ride information, location information and bill information and something else, so we guess our database will reach a 3GB database. Due to the line of codes will be at lease of 10.000 SLOC, the ratio D/P (measured
 as testing DB bytes/program SLOC) is about 300, which result in the value in this part will be high.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{DATA Cost Driver} \\ \hline
-\begin{tabular}[c]{@{}c@{}}DATA*\\ Descriptors\end{tabular} & \begin{tabular}[c]{@{}c@{}}Testing DB\\ bytes/PgmSLOC \textless 10\end{tabular} & 10 \textless= D/P \textless100 & 100 \textless= D/P \textless1000 & D/P \textgreater= 1000 & \begin{tabular}[c]{@{}c@{}}90th\\ percentile\end{tabular} &  \\ \hline
+DATA* Descriptors & Testing DB bytes/ PgmSLOC \textless 10 & 10 \textless= D/P \textless100 & 100 \textless= D/P \textless1000 & D/P \textgreater= 1000 & 90th percentile &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & n/a & 0.90 & 1.00 & 1.14 & 1.28 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -424,7 +459,8 @@ Effort Multipliers & n/a & 0.90 & 1.00 & 1.14 & 1.28 & n/a \\ \hline
 Complexity is divided into five areas: control operations, computational operations, device-dependent operations, data management operations, and user interface management operations. According to the complexity of our project, we set very high for the CPLX.
 
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{max size={12cm}{\textheight}}
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -437,39 +473,36 @@ Nominal & \begin{tabular}[c]{@{}c@{}}Mostly simple \\ nesting.\\ Some inter \\ m
 \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Very\\ High\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reentrant and \\ recursive coding.\\ Fixed priority \\ interrupt handling. \\ Task synchronization,\\ complex callbacks,\\ heterogeneous\\ distributed \\ processing. \\ Single processor \\ hard real-time control.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Difficult but \\ structured \\ numerical analysis:\\ near singular \\ matrix equations,\\ partial differential \\ equations. Simple \\ parallelization.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Routines for \\ interrupt diagnosis,\\ servicing,\\ \\ masking. \\ Communication \\ line handling.\\ Performance\\ intensive\\ embedded\\ systems.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Distributed\\ database \\ coordination.\\ Complex triggers.\\ Search\\ optimization.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Moderately \\ complex 2D/3D,\\ dynamic \\ graphics,\\ multimedia.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Extra \\ High\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Multiple resource \\ scheduling with \\ dynamically \\ changing priorities.\\ Microcode-level \\ control.Distributed \\ hard real-time \\ control.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Difficult and \\ unstructured \\ numericalanalysis:\\ highly accurate \\ analysis of \\ noisy, stochastic \\ data. Complex \\ parallelization\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Device timing \\ dependent coding,\\ micro programmed \\ operations. \\ Performance \\ critical\\ embedded\\ systems.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Highly coupled,\\ dynamic relational \\ and object \\ structures. \\ Natural\\ language \\ data\\ management.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Complex multimedia,\\ virtual reality,\\ natural language \\ interface.\end{tabular}} \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
-
-
-
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{CPLX Cost Driver} \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 0.73 & 0.87 & 1.00 & 1.17 & 1.34 & 1.74 \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
-
-
-
 
 - Required reusability
 
-Since the component’s careful design, documentation, and testing has been well down before, so we set the The RUSE cost driver (Required Reusablity) as nominal.
+Since the component’s careful design, documentation, and testing has been well down before, so we set the The RUSE cost driver (Required Reusability) as nominal.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{RUSE Cost Driver} \\ \hline
-RUSE Descriptors: &  & none & \begin{tabular}[c]{@{}c@{}}across \\ project\end{tabular} & \begin{tabular}[c]{@{}c@{}}across \\ program\end{tabular} & \begin{tabular}[c]{@{}c@{}}across product \\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}across multiple \\ product lines\end{tabular} \\ \hline
+RUSE Descriptors: &  & none & across project& across program & across product line & across multiple product lines \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & n/a & 0.95 & 1.00 & 1.07 & 1.15 & 1.24 \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -478,15 +511,17 @@ Effort Multipliers & n/a & 0.95 & 1.00 & 1.07 & 1.15 & 1.24 \\ \hline
 The rating scale for the DOCU cost driver is evaluated in terms of the suitability of the project’s documentation to its life-cycle needs. In our case, the Documents are really detailed and every need of the product life-cycle can be predicted by our Documents, so we set the DOCU as nominal.
 
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
-\multicolumn{7}{|c|}{RUSE Cost Driver} \\ \hline
-RUSE Descriptors: &  & none & \begin{tabular}[c]{@{}c@{}}across \\ project\end{tabular} & \begin{tabular}[c]{@{}c@{}}across \\ program\end{tabular} & \begin{tabular}[c]{@{}c@{}}across product \\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}across multiple \\ product lines\end{tabular} \\ \hline
+\multicolumn{7}{|c|}{DOCU Cost Driver} \\ \hline
+DOCU Descriptors: & Many lifecycle needs uncovered & Some lifecycle needs uncovered & Right-sized to life-cycle needs & Excessive for life-cycle needs & Very excessive for life-cycle needs & \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
-Effort Multipliers & n/a & 0.95 & 1.00 & 1.07 & 1.15 & 1.24 \\ \hline
+Effort Multipliers & 0.81  & 0.91 & 1.00 & 1.11 & 1.23 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -498,15 +533,17 @@ Effort Multipliers & n/a & 0.95 & 1.00 & 1.07 & 1.15 & 1.24 \\ \hline
 The analysis and design ability, efficiency and thoroughness, and the ability to communicate and cooperate are really important. All of the elements have been well done because of our effort. For this reason, this parameter is set to high.
 
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{ACAP Cost Driver} \\ \hline
 ACAP Descriptors: & \begin{tabular}[c]{@{}c@{}}15th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}35th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}55th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}75th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}90th\\ percentile\end{tabular} &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 1.42 & 1.19 & 1.00 & 0.85 & 0.71 &  \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 - Programmer Capability
@@ -514,15 +551,17 @@ Effort Multipliers & 1.42 & 1.19 & 1.00 & 0.85 & 0.71 &  \\ \hline
 We consider the evaluation of Programmer Capability(PCAP) should be as a team rather than as
 individuals. The ability, efficiency and thoroughness, and the ability to communicate and cooperate  are really important. For this reason, this parameter is set to high.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{PCAP Cost Driver} \\ \hline
 PCAP Descriptors: & \begin{tabular}[c]{@{}c@{}}15th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}35th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}55th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}75th\\ percentile\end{tabular} & \begin{tabular}[c]{@{}c@{}}90th\\ percentile\end{tabular} &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 1.34 & 1.15 & 1.00 & 0.88 & 0.76 &  \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -531,15 +570,17 @@ Effort Multipliers & 1.34 & 1.15 & 1.00 & 0.88 & 0.76 &  \\ \hline
 
 In our case, the parameter is nominal. since we spent a lot of time on this project from October 2016 to February 2017 and we still need to make a presentation on March 2017, we have spent half year to do this project.The reason why we can't set this parameter as high or very high is because we only spent our spare time to do this project after our class. For this reason, the PCON is set to nominal.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{PCON Cost Driver} \\ \hline
 PCON Descriptors: & 48\% / year & 24\% / year & 12\% / year & 6\% / year & 3\% / year &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 1.29 & 1.12 & 1.00 & 0.90 & 0.81 &  \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -548,15 +589,17 @@ Effort Multipliers & 1.29 & 1.12 & 1.00 & 0.90 & 0.81 &  \\ \hline
 The rating for APEX is dependent on the level of applications experience of the project team developing the software system. We all have more than 4 years study experience of computer science, but our development skills are still limited. For this reason, the PCON is set to nominal.
 
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{APEX Cost Driver} \\ \hline
 APEX Descriptors: & \textless=2 months & 6 months & 1 year & 3 year & 6 year &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 1.22 & 1.10 & 1.00 & 0.88 & 0.81 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -565,15 +608,17 @@ Effort Multipliers & 1.22 & 1.10 & 1.00 & 0.88 & 0.81 & n/a \\ \hline
 The usage of platforms, including graphic user interface, database, networking, and distributed
 middleware capabilities, we have used all the platforms before within a limited time.  For this reason, the PLEX is set to nominal.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{PLEX Cost Driver} \\ \hline
 PLEX Descriptors: & \textless=2 months & 6 months & 1 year & 3 year & 6 year &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 1.19 & 1.09 & 1.00 & 0.91 & 0.85 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
@@ -581,30 +626,34 @@ Effort Multipliers & 1.19 & 1.09 & 1.00 & 0.91 & 0.85 & n/a \\ \hline
 
 For our team, the experience on the project’s programming language, experience on the project’s supporting tool can be set to nominal.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{LTEX Cost Driver} \\ \hline
 LTEX Descriptors: & \textless=2 months & 6 months & 1 year & 3 year & 6 year &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extra High \\ \hline
 Effort Multipliers & 1.20 & 1.09 & 1.00 & 0.92 & 0.84 &  \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 ##### 2.2.2.3 Platform
 
+##### 2.2.2.4 Project          
+
 - **Execution Time Constraint (TIME)**
 
-Inorder to improve costumers' satisfaction and the stability, fluency of our system we assume that the execution time of the system is short in real scene so a **Nominal** level will be set here.
+In order to improve costumers' satisfaction and the stability, fluency of our system we assume that the execution time of the system is short in real scene so a **Nominal** level will be set here.
 
 - **Main Storage Constraint (STOR)**
 
-Considering to make the best use of the system resource and the system has enough room to backup importan data we will set the rating level as **High**.
+Considering to make the best use of the system resource and the system has enough room to backup important data we will set the rating level as **High**.
 
 - **Platform Volatility (PVOL)**
 
-According to the identifier of the PVOL, in our case the platform is the mobile-phone operation system and computer OS. So the platform volatility depends on how ofen the customer update the OS of their devices. For the stability of our core system we don't expect the platform changes frequently. But as developlers We have to update our application periodically to serve customers. Hence the the rating level be set as **Low**.
+According to the identifier of the PVOL, in our case the platform is the mobile-phone operation system and computer OS. So the platform volatility depends on how often the customer update the OS of their devices. For the stability of our core system we don't expect the platform changes frequently. But as developers We have to update our application periodically to serve customers. Hence the the rating level be set as **Low**.
 
 ##### 2.2.2.4 Project     
 
@@ -620,15 +669,26 @@ Since our team have a project meeting every week and we live in same city, we co
 
 We will set this parameter as **Nominal** which the value is 1.00. As a programer it is our duty to finish our job and present a completed project to customer on time.
 
-
-
 ## 3.Schedule
 
 It is necessary to set a schedule to make sure the project is proceeded as plan and finished on time. So we created a project schedule by using GanttProject to keep the project goes well as we expected. In this schedule will show how we started this project and what we did during each period. We also assume that the project will be continued to maintian the integrality and authenticity of the entire development process. So we added the 'Implementation and support' and 'Testing' as well as 'Evaluation' procedures though these will not be performed at the end of the project.
 
+\begin{sidewaysfigure}
+\includegraphics[width=\textwidth]{gantter-chart}
+\caption{Project's Gantter Chart}
+\end{sidewaysfigure}
+
+\pagebreak
+
 ## 4.Resource allocation
 
 In this section we will present how we distribute our team resource to finish our project by creating a gantter chart. In the gantter chart, it can be shown that each of us is responsible for each part of the project and how much time we spent on each of tasks. Note that every time there will be a group meeting before we starting our single task. So that we can avoid misunderstanding and conflict among team members when we are working seperately. Again we also assume that we are working at developing phase so in the chart there is a incomplete task.
+
+\begin{sidewaysfigure}
+\includegraphics[width=\textwidth]{staff-resources-allocation}
+\caption{Resources Allocation Diagram}
+\end{sidewaysfigure}
+
 
 \pagebreak
 
@@ -642,7 +702,7 @@ The first area is **New and Unproven Technologies**. The main business objective
 
 Another area that should be thoroughly inspected is the **Application and System Architecture**. The decisions made in this area represent the backbone of the application. They guide the design and other important decisions later on in the process. A wrong decision may cause delays if inadequate architecture decisions are made. In this case, there will be a need of a design refactoring and implementation changes. Research about experience in similar application is needed to reduce the risk coming from this area.
 
-Moreover **Perfomance** should be assessed for all the duration of the project. Performance benchmarks should be performed at each step to avoid discovering performance problems at the end of the project. Key performance indicators should be well-defined and checked. This project relies a lot on real-time data, so performance should be closely monitored.
+Moreover **Performance** should be assessed for all the duration of the project. Performance benchmarks should be performed at each step to avoid discovering performance problems at the end of the project. Key performance indicators should be well-defined and checked. This project relies a lot on real-time data, so performance should be closely monitored.
 
 Last but not least, **Organizational** risks have to be assessed as well. Project management should plan for an efficient execution of the project while keeping a suitable balance between the resources of the project and the expectation of the client. Reports and documentation should be produced at each milestone of the project. Through the communication and validation of these documentation with the stakeholders, we are sure that we are in a good track while recognizing problems before they cause significant delay.
 
