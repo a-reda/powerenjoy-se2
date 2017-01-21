@@ -33,6 +33,8 @@ header-includes:
         2. Personal
         3. Platform
         4. Project
+      3. Effort equation
+      4. Schedule estimation
 3. Schedule
 4. Resource allocation
 5. Risk management
@@ -314,31 +316,6 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-Cost Driver & Factor & Value \\ \hline
-Required Software Reliability (RELY) & Nominal & 1.00 \\ \hline
-Database size (DATA) & High & 1.14 \\ \hline
-Product complexity (CPLX) & Very high & 1.34 \\ \hline
-Required Reusability (RUSE) & Nominal & 1.00 \\ \hline
-Documentation match to life-cycle needs(DOCU) & Nominal & 1.00 \\ \hline
-Analyst capability (ACAP) & High & 0.85 \\ \hline
-Programmer capability (PCAP) & High & 0.88 \\ \hline
-Personnel Continuity (PCON) & Nominal & 1.00 \\ \hline
-Application Experience (APEX) & Nominal & 1.00 \\ \hline
-Platform Experience(PLEX) & Nominal & 1.00 \\ \hline
-Language and Tool Experience (LTEX) & Nominal & 1.00 \\ \hline
-Execution Time Constraint (TIME) & Nominal & 1.00 \\ \hline
-Main storage constraint (STOR) & High & 1.05 \\ \hline
-Platform volatility (PVOL) & Low & 0.87 \\ \hline
-Usage of Software Tools (TOOL) & High & 0.90 \\ \hline
-Multisite development (SITE) & High & 0.93 \\ \hline
-Required development schedule (SCED) & Nominal & 1.00 \\ \hline
-\multicolumn{2}{|l|}{Product of all cost drivers} & 0.87367 \\ \hline
-\end{tabular}
-\end{table}
 
 ## 2.1.3 Overall estimation
 
@@ -732,6 +709,64 @@ Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hl
 Effort Multipliers & 1.43 & 1.14 & 1.00 & 1.00 & 1.00 & n/a \\ \hline
 \end{tabular}
 \end{table}
+
+Overall, our results are counted by the following table:
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Cost Driver & Factor & Value \\ \hline
+Required Software Reliability (RELY) & Nominal & 1.00 \\ \hline
+Database size (DATA) & High & 1.14 \\ \hline
+Product complexity (CPLX) & Very high & 1.34 \\ \hline
+Required Reusability (RUSE) & Nominal & 1.00 \\ \hline
+Documentation match to life-cycle needs(DOCU) & Nominal & 1.00 \\ \hline
+Analyst capability (ACAP) & High & 0.85 \\ \hline
+Programmer capability (PCAP) & High & 0.88 \\ \hline
+Personnel Continuity (PCON) & Nominal & 1.00 \\ \hline
+Application Experience (APEX) & Nominal & 1.00 \\ \hline
+Platform Experience(PLEX) & Nominal & 1.00 \\ \hline
+Language and Tool Experience (LTEX) & Nominal & 1.00 \\ \hline
+Execution Time Constraint (TIME) & Nominal & 1.00 \\ \hline
+Main storage constraint (STOR) & High & 1.05 \\ \hline
+Platform volatility (PVOL) & Low & 0.87 \\ \hline
+Usage of Software Tools (TOOL) & High & 0.90 \\ \hline
+Multisite development (SITE) & High & 0.93 \\ \hline
+Required development schedule (SCED) & Nominal & 1.00 \\ \hline
+\multicolumn{2}{|l|}{Product of all cost drivers} & 0.87367 \\ \hline
+\end{tabular}
+\end{table}
+
+### 2.2.3 Effort equation
+
+According to COCOMO II manuel we got Eq.1 to calculate the value of Effort:
+
+\[Effort = A\cdot EAF\cdot KSLOC^{E}\]  (Eq.1)
+
+where A = 2.94(from COCOMO II), EAF = 0.87367 (calculated from cost drivers analysis), E = 1.1214(calculated from scale drivers analysis), and KSLOC was calculated before in function points section and we got 7.360 as the lower bound of KSLOC and 10.720 as its upper bound.
+
+So the final result as following:
+
+- \[Effort_{Lower} = 24.0886\]
+- \[Effort_{Upper} = 36.7244\]
+
+### 2.2.4 Schedule estimation
+
+The formula of duration as following:
+
+- \[Duration = 3.67\cdot Effort^{F}\]
+
+where F = 0.28 + 0.2  (E - B) and B = 0.91 according to COCOMO manuel. Since the value of Effort is in a range so for the upper bound of duration we got:
+
+-  \[Duration_{Upper} = 11.7225\] months
+
+The lower bound of duration :
+
+- \[Duration_{Lower} = 10.2328\] months
+
+From the results, the overall time of the entire project is around 10 month but no more than 12 month. And the result is quite close to our estimated time.
+
 
 ## 3.Schedule
 
