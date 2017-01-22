@@ -315,13 +315,13 @@ The following table summarizes the results of our estimation activity:
 \centering
 \begin{tabular}{|l|l|}
 \hline
-Function Type & Value \\ \hline
+\textit{Function Type} & \textit{Value} \\ \hline
 ILF: Internal Logical Files & 53 \\ \hline
 EIF: External Interface Files & 12 \\ \hline
 EI: External Inputs & 36 \\ \hline
 EO: External Outputs & 32 \\ \hline
 EQ: External Inquiries & 27 \\ \hline
-Total & 160 \\ \hline
+\textbf{Total} & 160 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -329,22 +329,26 @@ Considering Java Enterprise Edition as a development platform and dis-
 regarding the aspects concerning the implementation of the mobile applications, we can estimate the total number of lines of code.
 Depending on the conversion rate, we have a lower bound of:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
+\begin{adjustbox}{center}
 \begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{3}{|l|}{SLOC = 160*46 = 7360} \\ \hline
+\multicolumn{3}{|l|}{\textbf{SLOC = 160*46 = 7360}} \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 and an upper bound of
 
-\begin{table}[]
+\begin{table}[H]
 \centering
+\begin{adjustbox}{center}
 \begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{3}{|l|}{SLOC = 160*67 = 10720} \\ \hline
+\multicolumn{3}{|l|}{\textbf{SLOC = 160*67 = 10720}} \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 
