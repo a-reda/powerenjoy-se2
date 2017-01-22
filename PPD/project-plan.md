@@ -316,7 +316,6 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 \end{tabular}
 \end{table}
 
-
 ## 2.1.3 Overall estimation
 
 The following table summarizes the results of our estimation activity:
@@ -332,6 +331,28 @@ EI: External Inputs & 36 \\ \hline
 EO: External Outputs & 32 \\ \hline
 EQ: External Inquiries & 27 \\ \hline
 Total & 160 \\ \hline
+\end{tabular}
+\end{table}
+
+Considering Java Enterprise Edition as a development platform and dis-
+regarding the aspects concerning the implementation of the mobile applications, we can estimate the total number of lines of code.
+Depending on the conversion rate, we have a lower bound of:
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|l|}{SLOC = 160*46 = 7360} \\ \hline
+\end{tabular}
+\end{table}
+
+and an upper bound of
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|l|}{SLOC = 160*67 = 10720} \\ \hline
 \end{tabular}
 \end{table}
 
