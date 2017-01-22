@@ -33,6 +33,8 @@ header-includes:
         2. Personal
         3. Platform
         4. Project
+      3. Effort equation
+      4. Schedule estimation
 3. Schedule
 4. Resource allocation
 5. Risk management
@@ -178,8 +180,7 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
-- **Bill data** :
-
+- **Bill data** : For this part we consider its complexity as **Avg** because the data of this part associate with user data, reservation data, ride data, etc. So when a record of bill is inserted in the table it will link to many attributes.
 
 By using the previously defined tables(ILF complexity matrix), this is the count we obtain:
 
@@ -205,7 +206,7 @@ EIF is a user identifiable group of logically related data or control informatio
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
-- **Google map service** :
+- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from opint to another point when given two locations. So we set this to a **Avg** complexity level.
 
 According to the EIF complexity matrix we get the result as follow:
 
@@ -315,34 +316,6 @@ Retrieve the reservation has been processed & Low & 3 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[]
-\centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{|l|l|l|}
-\hline
-Cost Driver & Factor & Value \\ \hline
-Required Software Reliability (RELY) & Nominal & 1.00 \\ \hline
-Database size (DATA) & High & 1.14 \\ \hline
-Product complexity (CPLX) & Very high & 1.34 \\ \hline
-Required Reusability (RUSE) & Nominal & 1.00 \\ \hline
-Documentation match to life-cycle needs(DOCU) & Nominal & 1.00 \\ \hline
-Analyst capability (ACAP) & High & 0.85 \\ \hline
-Programmer capability (PCAP) & High & 0.88 \\ \hline
-Personnel Continuity (PCON) & Nominal & 1.00 \\ \hline
-Application Experience (APEX) & Nominal & 1.00 \\ \hline
-Platform Experience(PLEX) & Nominal & 1.OO \\ \hline
-Language and Tool Experience (LTEX) & Nominal & 1.00 \\ \hline
-Execution Time Constraint (TIME) & Nominal & 1.00 \\ \hline
-Main storage constraint (STOR) & High & 1.05 \\ \hline
-Platform volatility (PVOL) & Low & 0.87 \\ \hline
-Usage of Software Tools (TOOL) & High & 0.90 \\ \hline
-Multisite development (SITE) & High & 0.93 \\ \hline
-Required development schedule (SCED) & Nominal & 1.00 \\ \hline
-\multicolumn{2}{|l|}{Product of all cost drivers} & 0.87367 \\ \hline
-\end{tabular}
-\end{table}
-
 ## 2.1.3 Overall estimation
 
 The following table summarizes the results of our estimation activity:
@@ -358,6 +331,28 @@ EI: External Inputs & 36 \\ \hline
 EO: External Outputs & 32 \\ \hline
 EQ: External Inquiries & 27 \\ \hline
 Total & 160 \\ \hline
+\end{tabular}
+\end{table}
+
+Considering Java Enterprise Edition as a development platform and dis-
+regarding the aspects concerning the implementation of the mobile applications, we can estimate the total number of lines of code.
+Depending on the conversion rate, we have a lower bound of:
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|l|}{SLOC = 160*46 = 7360} \\ \hline
+\end{tabular}
+\end{table}
+
+and an upper bound of
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|l|}{SLOC = 160*67 = 10720} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -419,7 +414,7 @@ Applying the numbers we get $\mathbf{E = 1.1214}$
 
 #### 2.2.2 Software Cost Drivers
 ##### 2.2.2.1 Product
-- Required Software Reliability:
+- **Required Software Reliability**
 
 If the effect of a software failure is only slight inconvenience
 then RELY is very low. If a failure would risk human life then RELY is very high. The PowerEnjoy is an essential way to get a car and it can also provide sharing service which is benefit for both of user and car driver, but when the user want to reserve a car to go somewhere,  this system still can be replace by other application, like CartoGo and Uber. For this reason, the RELY cost driver is set to nominal.
@@ -437,7 +432,7 @@ Effort Multipliers & 0.82 & 0.92 & 1.00 & 1.10 & 1.26 & n/a \\ \hline
 \end{adjustbox}
 \end{table}
 
-- Data Base Size
+- **Data Base Size**
 
 We consider the size of our database.What wo need to store are users information, car information, ride information, location information and bill information and something else, so we guess our database will reach a 3GB database. Due to the line of codes will be at lease of 10.000 SLOC, the ratio D/P (measured
 as testing DB bytes/program SLOC) is about 300, which result in the value in this part will be high.
@@ -456,7 +451,7 @@ Effort Multipliers & n/a & 0.90 & 1.00 & 1.14 & 1.28 & n/a \\ \hline
 \end{table}
 
 
-- Product complexity
+- **Product complexity**
 
 Complexity is divided into five areas: control operations, computational operations, device-dependent operations, data management operations, and user interface management operations. According to the complexity of our project, we set very high for the CPLX.
 
@@ -490,7 +485,7 @@ Effort Multipliers & 0.73 & 0.87 & 1.00 & 1.17 & 1.34 & 1.74 \\ \hline
 \end{adjustbox}
 \end{table}
 
-- Required reusability
+- **Required reusability**
 
 Since the component’s careful design, documentation, and testing has been well down before, so we set the The RUSE cost driver (Required Reusability) as nominal.
 
@@ -508,7 +503,7 @@ Effort Multipliers & n/a & 0.95 & 1.00 & 1.07 & 1.15 & 1.24 \\ \hline
 \end{table}
 
 
-- Documentation match to life-cycle needs
+- **Documentation match to life-cycle needs**
 
 The rating scale for the DOCU cost driver is evaluated in terms of the suitability of the project’s documentation to its life-cycle needs. In our case, the Documents are really detailed and every need of the product life-cycle can be predicted by our Documents, so we set the DOCU as nominal.
 
@@ -530,7 +525,7 @@ Effort Multipliers & 0.81  & 0.91 & 1.00 & 1.11 & 1.23 & n/a \\ \hline
 
 ##### 2.2.2.2 Personal
 
-- Analyst Capability
+- **Analyst Capability**
 
 The analysis and design ability, efficiency and thoroughness, and the ability to communicate and cooperate are really important. All of the elements have been well done because of our effort. For this reason, this parameter is set to high.
 
@@ -548,7 +543,7 @@ Effort Multipliers & 1.42 & 1.19 & 1.00 & 0.85 & 0.71 &  \\ \hline
 \end{adjustbox}
 \end{table}
 
-- Programmer Capability
+- **Programmer Capability**
 
 We consider the evaluation of Programmer Capability(PCAP) should be as a team rather than as
 individuals. The ability, efficiency and thoroughness, and the ability to communicate and cooperate  are really important. For this reason, this parameter is set to high.
@@ -568,7 +563,7 @@ Effort Multipliers & 1.34 & 1.15 & 1.00 & 0.88 & 0.76 &  \\ \hline
 
 
 
-- Personnel Continuity
+- **Personnel Continuity**
 
 In our case, the parameter is nominal. since we spent a lot of time on this project from October 2016 to February 2017 and we still need to make a presentation on March 2017, we have spent half year to do this project.The reason why we can't set this parameter as high or very high is because we only spent our spare time to do this project after our class. For this reason, the PCON is set to nominal.
 
@@ -586,7 +581,7 @@ Effort Multipliers & 1.29 & 1.12 & 1.00 & 0.90 & 0.81 &  \\ \hline
 \end{table}
 
 
-- Application Experience
+- **Application Experience**
 
 The rating for APEX is dependent on the level of applications experience of the project team developing the software system. We all have more than 4 years study experience of computer science, but our development skills are still limited. For this reason, the PCON is set to nominal.
 
@@ -605,7 +600,7 @@ Effort Multipliers & 1.22 & 1.10 & 1.00 & 0.88 & 0.81 & n/a \\ \hline
 \end{table}
 
 
-- Platform Experience
+- **Platform Experience**
 
 The usage of platforms, including graphic user interface, database, networking, and distributed
 middleware capabilities, we have used all the platforms before within a limited time.  For this reason, the PLEX is set to nominal.
@@ -624,7 +619,7 @@ Effort Multipliers & 1.19 & 1.09 & 1.00 & 0.91 & 0.85 & n/a \\ \hline
 \end{table}
 
 
-- Language and Toolset Experience
+- **Language and Toolset Experience**
 
 For our team, the experience on the project’s programming language, experience on the project’s supporting tool can be set to nominal.
 
@@ -643,19 +638,50 @@ Effort Multipliers & 1.20 & 1.09 & 1.00 & 0.92 & 0.84 &  \\ \hline
 
 ##### 2.2.2.3 Platform
 
-##### 2.2.2.4 Project          
-
 - **Execution Time Constraint (TIME)**
 
 In order to improve costumers' satisfaction and the stability, fluency of our system we assume that the execution time of the system is short in real scene so a **Nominal** level will be set here.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\multicolumn{7}{|c|}{TIME Cost Driver} \\ \hline
+TIME Descriptors: &  &  & ≤ 50\% use of available execution time & 70\% use of available execution time & 85\% use of available execution time & 95\% use of available execution time \\ \hline
+Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
+Effort Multipliers & n/a & n/a & 1.00 & 1.11 & 1.29 & 1.63 \\ \hline
+\end{tabular}
+\end{table}
 
 - **Main Storage Constraint (STOR)**
 
 Considering to make the best use of the system resource and the system has enough room to backup important data we will set the rating level as **High**.
 
+\begin{table}[]
+\centering
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\multicolumn{7}{|c|}{STOR Cost Driver} \\ \hline
+STOR Descriptors: &  &  & ≤ 50\% useof available storage & 70\% use ofavailable storage & 85\% use ofavailable storage & 95\% use ofavailable storage \\ \hline
+Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
+Effort Multipliers & n/a & n/a & 1.00 & 1.05 & 1.17 & 1.46 \\ \hline
+\end{tabular}
+\end{table}
+
 - **Platform Volatility (PVOL)**
 
 According to the identifier of the PVOL, in our case the platform is the mobile-phone operation system and computer OS. So the platform volatility depends on how often the customer update the OS of their devices. For the stability of our core system we don't expect the platform changes frequently. But as developers We have to update our application periodically to serve customers. Hence the the rating level be set as **Low**.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\multicolumn{7}{|c|}{PVOL Cost Driver} \\ \hline
+PVOL Descriptors: &  & Major change every 12mo.; Minor change every 1 mo. & Major: 6mo.; Minor:2 wk. & Major: 2mo.;Minor:1 wk. & Major: 2wk.;Minor: 2days &  \\ \hline
+Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
+Effort Multipliers & n/a & 0.87 & 1.00 & 1.15 & 1.30 & n/a \\ \hline
+\end{tabular}
+\end{table}
 
 ##### 2.2.2.4 Project     
 
@@ -663,16 +689,109 @@ According to the identifier of the PVOL, in our case the platform is the mobile-
 
 Our project environment is quite complete and it should be strong and a tool with mature life cycle and moderately integrated due to this the parameter wil be set as **High**.
 
+\begin{table}[]
+\centering
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\multicolumn{7}{|c|}{TOOL Cost Driver} \\ \hline
+TOOLDescriptors & edit, code,debug & simple,frontend,backendCASE, littleintegration & basic lifecycletools,moderatelyintegrated & strong,mature lifecycletools,moderatelyintegrated & strong,mature,proactivelife-cycletools, wellintegratedwithprocesses,methods,reuse &  \\ \hline
+Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
+Effort Multipliers & 1.17 & 1.09 & 1.00 & 0.90 & 0.78 & n/a \\ \hline
+\end{tabular}
+\end{table}
+
 - **Multisite Development (SITE)**
 
 Since our team have a project meeting every week and we live in same city, we communicate with each other by social media software like whats APP and Facebook when we are not working together so we set the rating level of this part as **High**.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\multicolumn{7}{|c|}{SITE Cost Driver} \\ \hline
+SITE:CollocationDescriptors: & International & Multi-cityand Multicompany & Multi-city orMulticompany & Same cityor metro.area & Samebuilding orcomplex & Fullycollocated \\ \hline
+SITE:CommunicationsDescriptors: & Somephone, mail & Individualphone, FAX & Narrowband email & Widebandelectroniccommunication. & Widebandelect.comm.,occasionalvideo conf. & Interactivemultimedia \\ \hline
+Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
+Effort Multipliers & 1.22 & 1.09 & 1.00 & 0.93 & 0.86 & 0.80 \\ \hline
+\end{tabular}
+\end{table}
 
 - **Required Development Schedule (SCED)**
 
 We will set this parameter as **Nominal** which the value is 1.00. As a programer it is our duty to finish our job and present a completed project to customer on time.
 
+\begin{table}[]
+\centering
+\begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\multicolumn{7}{|c|}{SCED Cost Driver} \\ \hline
+SCEDDescriptors & 75\%of nominal & 85\%of nominal & 100\%of nominal & 130\%of nominal & 160\%of nominal &  \\ \hline
+Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
+Effort Multipliers & 1.43 & 1.14 & 1.00 & 1.00 & 1.00 & n/a \\ \hline
+\end{tabular}
+\end{table}
+
+Overall, our results are counted by the following table:
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Cost Driver & Factor & Value \\ \hline
+Required Software Reliability (RELY) & Nominal & 1.00 \\ \hline
+Database size (DATA) & High & 1.14 \\ \hline
+Product complexity (CPLX) & Very high & 1.34 \\ \hline
+Required Reusability (RUSE) & Nominal & 1.00 \\ \hline
+Documentation match to life-cycle needs(DOCU) & Nominal & 1.00 \\ \hline
+Analyst capability (ACAP) & High & 0.85 \\ \hline
+Programmer capability (PCAP) & High & 0.88 \\ \hline
+Personnel Continuity (PCON) & Nominal & 1.00 \\ \hline
+Application Experience (APEX) & Nominal & 1.00 \\ \hline
+Platform Experience(PLEX) & Nominal & 1.00 \\ \hline
+Language and Tool Experience (LTEX) & Nominal & 1.00 \\ \hline
+Execution Time Constraint (TIME) & Nominal & 1.00 \\ \hline
+Main storage constraint (STOR) & High & 1.05 \\ \hline
+Platform volatility (PVOL) & Low & 0.87 \\ \hline
+Usage of Software Tools (TOOL) & High & 0.90 \\ \hline
+Multisite development (SITE) & High & 0.93 \\ \hline
+Required development schedule (SCED) & Nominal & 1.00 \\ \hline
+\multicolumn{2}{|l|}{Product of all cost drivers} & 0.87367 \\ \hline
+\end{tabular}
+\end{table}
+
+### 2.2.3 Effort equation
+
+According to COCOMO II manuel we got Eq.1 to calculate the value of Effort:
+
+\[Effort = A\cdot EAF\cdot KSLOC^{E}\]  (Eq.1)
+
+where A = 2.94(from COCOMO II), EAF = 0.87367 (calculated from cost drivers analysis), E = 1.1214(calculated from scale drivers analysis), and KSLOC was calculated before in function points section and we got 7.360 as the lower bound of KSLOC and 10.720 as its upper bound.
+
+So the final result as following:
+
+- \[Effort_{Lower} = 24.0886\]
+- \[Effort_{Upper} = 36.7244\]
+
+### 2.2.4 Schedule estimation
+
+The formula of duration as following:
+
+- \[Duration = 3.67\cdot Effort^{F}\]
+
+where F = 0.28 + 0.2  (E - B) and B = 0.91 according to COCOMO manuel. Since the value of Effort is in a range so for the upper bound of duration we got:
+
+-  \[Duration_{Upper} = 11.7225\] months
+
+The lower bound of duration :
+
+- \[Duration_{Lower} = 10.2328\] months
+
+From the results, the overall time of the entire project is around 10 month but no more than 12 month. And the result is quite close to our estimated time.
+
+
 ## 3.Schedule
 
+It is necessary to set a schedule to make sure the project is proceeded as plan and finished on time. So we created a project schedule by using GanttProject to keep the project goes well as we expected. In this schedule will show how we started this project and what we did during each period. We also assume that the project will be continued to maintian the integrality and authenticity of the entire development process. So we added the 'Implementation and support' and 'Testing' as well as 'Evaluation' procedures though these will not be performed at the end of the project.
 
 \begin{sidewaysfigure}
 \includegraphics[width=\textwidth]{gantter-chart}
@@ -683,10 +802,13 @@ We will set this parameter as **Nominal** which the value is 1.00. As a programe
 
 ## 4.Resource allocation
 
+In this section we will present how we distribute our team resource to finish our project by creating a gantter chart. In the gantter chart, it can be shown that each of us is responsible for each part of the project and how much time we spent on each of tasks. Note that every time there will be a group meeting before we starting our single task. So that we can avoid misunderstanding and conflict among team members when we are working seperately. Again we also assume that we are working at developing phase so in the chart there is a incomplete task.
+
 \begin{sidewaysfigure}
 \includegraphics[width=\textwidth]{staff-resources-allocation}
 \caption{Resources Allocation Diagram}
 \end{sidewaysfigure}
+
 
 \pagebreak
 
