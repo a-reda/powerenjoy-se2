@@ -12,10 +12,9 @@ header-includes:
 
 ### __Content__
 1. Introduction
- 1.	Revision History
- 2.	Purpose and Scope
- 3.	Definitions and Abbreviations
- 4.	Reference Documents
+ 1.	Purpose and Scope
+ 2.	Definitions and Abbreviations
+ 3.	Reference Documents
 2. Project size and effort cost
     1. Size estimation: function points
       1. Data function
@@ -43,10 +42,8 @@ header-includes:
 \pagebreak
 
 ## 1.Introduction
-### 1.1 Revision History
 
-
-### 1.2 Purpose and Scope
+### 1.1 Purpose and Scope
 
 The main purpose of the Project Plan Document is to analyze the expected complexity of our project and estimate the cost and effort of our project.
 
@@ -55,7 +52,7 @@ Using Function Points and COCOMO approaches, we will give an estimate of the exp
 We will also present a Schedule and Resource Allocation charts. Finally, we will identify the main risk areas that may alter the good execution of the project. We will present some measures in order to mitigate the risks.
 
 
-### 1.3 Definitions and Abbreviations
+### 1.2 Definitions and Abbreviations
 
 
 ### Abbreviations
@@ -87,7 +84,7 @@ We will also present a Schedule and Resource Allocation charts. Finally, we will
 - LTEX：Language and Toolset Experience
 
 
-### 1.4 Reference Documents
+### 1.3 Reference Documents
 
 - Project planning example document
 - Project Management Basics
@@ -846,5 +843,5 @@ To sum up, many risks may arise during the project execution. Although some of t
 - 16/01/2017 1h
 - 18/01/2017 3h
 - 19/01/2017 4h
-- 21/01/2017 2h 
+- 21/01/2017 2h
 - 22/01/2017 1h
