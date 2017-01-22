@@ -33,12 +33,14 @@ header-includes:
         2. Personal
         3. Platform
         4. Project
-      3. Effort equation
+      3. Effort equation
       4. Schedule estimation
 3. Schedule
 4. Resource allocation
 5. Risk management
 6. Effort spent
+
+\pagebreak
 
 ## 1.Introduction
 ### 1.1 Revision History
@@ -48,9 +50,9 @@ header-includes:
 
 The main purpose of the Project Plan Document is to analyze the expected complexity of our project and estimate the cost and effort of our project.
 
-By means of the Function Points and COCOMO approaches, we can give the estimate of the expected size of our project from 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers divides into 4 parts: product, personal, platform, project.
+Using Function Points and COCOMO approaches, we will give an estimate of the expected size of our project from 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers is divided into 4 parts: product, personal, platform, project.
 
-Finally, we're going to work on Schedule and Resource allocation and evaluation on the possible risks that PowerEnjoy could face.
+We will also present a Schedule and Resource Allocation charts. Finally, we will identify the main risk areas that may alter the good execution of the project. We will present some measures in order to mitigate the risks.
 
 
 ### 1.3 Definitions and Abbreviations
@@ -89,24 +91,16 @@ Finally, we're going to work on Schedule and Resource allocation and evaluation 
 
 - Project planning example document
 - Project Management Basics
-- CII_modelman2000.0
+- CII Model Man 2000.0
 - Assignments AA 2016-2017
-- Project Management Basics + Advanced Dec. 1
-
-
 
 ## 2.Project size, cost and effort estimation
 
 ### 2.1 Size estimation: Function Points
 
-Complexity matrix for function points
 
-Internal Logical Files (ILF), External Interface Files (EIF), External Inputs (EI), External Outputs (EO) and External Inquiries (EQ).
-Each functional component is classified as a certain complexity based on its associated file numbers such as Data
-Element Types (DET), File Types Referenced (FTR) and Record Element Types (RET). The complexity matrix for
-the five components is shown in Table 1. Table 2 illustrates how each function component is then assigned a weight
-according to its complexity. The Unadjusted Function Point (UFP) is calculated with Equation 1, where Wij are the
-complexity weights and Zij are the counts for each function component.
+In this section we will present the different functional components: Internal Logical Files (ILF), External Interface Files (EIF), External Inputs (EI), External Outputs (EO) and External Inquiries (EQ). Each one of them is classified by complexity that is assigned depending on its associated file numbers such as Data
+Element Types (DET), File Types Referenced (FTR) and Record Element Types (RET). We will assign function point to each functional component regarding our project. Afterwards, we will calculate the Unadjusted Function Points (UFP).
 
 
 \begin{table}[H]
@@ -176,7 +170,7 @@ ILFs represent data that is stored and maintained within the boundary of the app
 
 - **Reservation data** : In this part, almost all other data are associate with the reservation operation. For example when a reservation is added or deleted or modified all the fields and tables which relate to it will be changed and saved like the available number of car, the bill table, users information, location and so on. So for this part its complexity of function points we set **High**.  
 
-- **Ride data** : For this part, it links to reservation and bill system as well as location information but its data storage is not as much as complax as reservation. When a record of a ride is saved in table the actually saved fields only contain location information. Hence, we consider its complexity as **Low**.
+- **Ride data** : For this part, it links to reservation and bill system as well as location information but its data storage is not as much as complex as reservation. When a record of a ride is saved in table the actually saved fields only contain location information. Hence, we consider its complexity as **Low**.
 
 - **Safe areas and charge stations data** : For this part we consider its complexity of function point is **Low** since the operation of this part is fixed and stable even there is a data updating or modifying it will be a small changing.
 
@@ -202,11 +196,11 @@ Bill data & Low & 7 \\ \hline
 
 ### 2.1.1.2 EIF: External Interface Files
 
-EIF is a user identifiable group of logically related data or control information referenced by the application, but maintained within the boundary of another application. The primary intent of an EIF is to hold data referenced through one or more elementary processes within the boundary of the application counted. This means an EIF counted for an application must be in an ILF in another application. In our system(PowerEnjoy) it needs to access three external handlers(APIs):
+EIF is a user identifiable group of logically related data or control information referenced by the application, but maintained within the boundary of another application. The primary intent of an EIF is to hold data referenced through one or more elementary processes within the boundary of the application counted. This means an EIF counted for an application must be in an ILF in another application. In our system(PowerEnjoy) it needs to access two external handlers(APIs):
 
 - **Payment handler** :  the process and data storage for this part is simple as we only access the third-party API of payment when a transaction happens, our system only needs to store data and receive data so its complexity is set to **Low**.
 
-- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from opint to another point when given two locations. So we set this to a **Avg** complexity level.
+- **Google map service** : compare to the Payment handler the Google map API is more frequently used and more complex. For example given a address, get the correspondent coordinates, or return the result of estimation time which means from point to another point when given two locations. So we set this to a **Avg** complexity level.
 
 According to the EIF complexity matrix we get the result as follow:
 
@@ -261,7 +255,7 @@ Modify and delete reservation & Low & 3*2 \\ \hline
 
 ### 2.1.2.2 EO: External Outputs
 
-The user needs to communicate with PywerEnjoy system outside the context of an inquiry and also PywerEnjoy system needs to communicate with users. What's occasions they need to communicate with each other, we give thwm as follows:
+The user needs to communicate with PowerEnjoy system outside the context of an inquiry and also PywerEnjoy system needs to communicate with users. What's occasions they need to communicate with each other, we give thwm as follows:
 
 - Notify the car which ride has been assigned to it
 - Notify the user that the reservation has been assigned to a specific car.
@@ -291,7 +285,7 @@ Notification to the car the user has changed his location & Low & 4 \\ \hline
 
 ### 2.1.2.3 EQ: External Inquiries
 
-An inquiry accutally is a data retrieval action, and it is a simple operation with a low complexitY. The follows provides all the External Inquiries:
+An inquiry actually is a data retrieval action, and it is a simple operation with a low complexity. The following provides all the External Inquiries:
 
 - A car can retrieve its complete rides and the bill got by each ride.
 - The user can retrieve the history of his reservations and the bill has been paid for the rides associated with the reservations and the economic rides conditions.
@@ -359,7 +353,7 @@ and an upper bound of
 
 ### 2.2 Cost and effort estimation: COCOMO II
 
-we can give the estimate of the expected size of our project from 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers divides into 4 parts: product, personal, platform, project.
+In order to estimate the size of the project, we will use COCOMO II. According to COCOMO II, We can give the estimate of the expected size of our project regarding 2 parts: Software Scale Drivers and Software Cost Drivers. The  Software Cost Drivers is composed of 4 parts: product, personal, platform, project.
 
 #### 2.2.1 Software Scale Drivers
 
@@ -454,24 +448,6 @@ Effort Multipliers & n/a & 0.90 & 1.00 & 1.14 & 1.28 & n/a \\ \hline
 - **Product complexity**
 
 Complexity is divided into five areas: control operations, computational operations, device-dependent operations, data management operations, and user interface management operations. According to the complexity of our project, we set very high for the CPLX.
-
-
-\begin{table}[H]
-\begin{adjustbox}{max size={12cm}{\textheight}}
-\centering
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-\multicolumn{6}{|c|}{Component Complexity Ratings Levels} \\ \hline
- & \begin{tabular}[c]{@{}c@{}}Control\\ Operations\end{tabular} & \begin{tabular}[c]{@{}c@{}}Computational\\ Operations\end{tabular} & \begin{tabular}[c]{@{}c@{}}Device\\ dependent\\ Operations\end{tabular} & \begin{tabular}[c]{@{}c@{}}Data\\ Management\\ Operations\end{tabular} & \begin{tabular}[c]{@{}c@{}}User Interface\\ Management\\ Operations\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}c@{}}Very\\  Low\end{tabular} & \begin{tabular}[c]{@{}c@{}}Straight-line code \\ with a few non-nested\\ structured programming\\ operators: DOs,CASEs,\\  IFTHEN-ELSEs.\\ Simple module composition\\  via procedure \\ callsor simplescripts.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Evaluation of \\ simple expressions:\\ e.g., A=B+C*(DE)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Simple read,\\ write statements\\ with simple \\ formats.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Simple arrays \\ in main memory.\\ Simple COTSDB \\ queries,updates.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Simple \\ inputforms, \\ report \\ generators.\end{tabular} \\ \hline
-Low & \begin{tabular}[c]{@{}c@{}}Straight forward \\ nesting of structured \\ programming operators.\\ Mostly simplep \\ redicates\end{tabular} & \begin{tabular}[c]{@{}c@{}}Evaluation of \\ moderate-level \\ expressions:\\ e.g.,\\ D=SQRT(B**2-4.*A*C)\end{tabular} & \begin{tabular}[c]{@{}c@{}}No cognizance \\ needed of \\ particular\\ processor or I/O\\ device \\ characteristics\\ I/O done at \\ GET/PUT level.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Single file \\ subsetting with \\ no datas tructure\\ changes, noedits,\\  no intermediate \\ files.\\ Moderately complex \\ COTSDB queries,\\ updates.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Use of simple \\ graphic user \\ interface (GUI)\\ builders.\end{tabular} \\ \hline
-Nominal & \begin{tabular}[c]{@{}c@{}}Mostly simple \\ nesting.\\ Some inter \\ module control.\\ Decision tables.\\ Simple call backs\\ or message passing,\\ including middleware\\ supported distributed \\ processing\end{tabular} & \begin{tabular}[c]{@{}c@{}}Use of standard \\ math and statistical \\ routines. Basic \\ matrix/vector \\ operations.\end{tabular} & \begin{tabular}[c]{@{}c@{}}I/O processing \\ includes\\ device selection,\\ status checking \\ and error \\ processing.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Multi-file \\ input and single\\ file output. \\ Simple structural \\ changes, simple \\ edits. Complex \\ COTS-DB queries,\\ updates.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Simple use \\ of widget \\ set.\end{tabular} \\ \hline
-\multicolumn{1}{|l|}{High} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Highly nested \\ structured programming \\ operators with many\\ compound predicates.\\ Queue and stack \\ control.Homogeneous,\\ distributed processing.\\ Single process or \\ soft real-time control.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Basic numerical \\ analysis:\\ multivariate \\ interpolation,\\ ordinary \\ differential \\ equations.\\ Basic truncation,\\ round-off concerns.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Operations at \\ physical \\ I/O level \\ (physical storage\\ address translations;\\ seeks, reads,etc.).\\ Optimized I/O \\ overlap.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Simple triggers \\ activated by \\ data stream \\ contents.\\ Complex data \\ restructuring.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Widget \\ set\\ development\\ and extension.\\ Simple voice \\ I/O, \\ multimedia.\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Very\\ High\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reentrant and \\ recursive coding.\\ Fixed priority \\ interrupt handling. \\ Task synchronization,\\ complex callbacks,\\ heterogeneous\\ distributed \\ processing. \\ Single processor \\ hard real-time control.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Difficult but \\ structured \\ numerical analysis:\\ near singular \\ matrix equations,\\ partial differential \\ equations. Simple \\ parallelization.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Routines for \\ interrupt diagnosis,\\ servicing,\\ \\ masking. \\ Communication \\ line handling.\\ Performance\\ intensive\\ embedded\\ systems.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Distributed\\ database \\ coordination.\\ Complex triggers.\\ Search\\ optimization.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Moderately \\ complex 2D/3D,\\ dynamic \\ graphics,\\ multimedia.\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Extra \\ High\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Multiple resource \\ scheduling with \\ dynamically \\ changing priorities.\\ Microcode-level \\ control.Distributed \\ hard real-time \\ control.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Difficult and \\ unstructured \\ numericalanalysis:\\ highly accurate \\ analysis of \\ noisy, stochastic \\ data. Complex \\ parallelization\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Device timing \\ dependent coding,\\ micro programmed \\ operations. \\ Performance \\ critical\\ embedded\\ systems.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Highly coupled,\\ dynamic relational \\ and object \\ structures. \\ Natural\\ language \\ data\\ management.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Complex multimedia,\\ virtual reality,\\ natural language \\ interface.\end{tabular}} \\ \hline
-\end{tabular}
-\end{adjustbox}
-\end{table}
 
 \begin{table}[H]
 \begin{adjustbox}{center}
@@ -642,7 +618,8 @@ Effort Multipliers & 1.20 & 1.09 & 1.00 & 0.92 & 0.84 &  \\ \hline
 
 In order to improve costumers' satisfaction and the stability, fluency of our system we assume that the execution time of the system is short in real scene so a **Nominal** level will be set here.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
@@ -651,13 +628,15 @@ TIME Descriptors: &  &  & ≤ 50\% use of available execution time & 70\% use of
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
 Effort Multipliers & n/a & n/a & 1.00 & 1.11 & 1.29 & 1.63 \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 - **Main Storage Constraint (STOR)**
 
 Considering to make the best use of the system resource and the system has enough room to backup important data we will set the rating level as **High**.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
@@ -666,21 +645,24 @@ STOR Descriptors: &  &  & ≤ 50\% useof available storage & 70\% use ofavailabl
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
 Effort Multipliers & n/a & n/a & 1.00 & 1.05 & 1.17 & 1.46 \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 - **Platform Volatility (PVOL)**
 
 According to the identifier of the PVOL, in our case the platform is the mobile-phone operation system and computer OS. So the platform volatility depends on how often the customer update the OS of their devices. For the stability of our core system we don't expect the platform changes frequently. But as developers We have to update our application periodically to serve customers. Hence the the rating level be set as **Low**.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{PVOL Cost Driver} \\ \hline
-PVOL Descriptors: &  & Major change every 12mo.; Minor change every 1 mo. & Major: 6mo.; Minor:2 wk. & Major: 2mo.;Minor:1 wk. & Major: 2wk.;Minor: 2days &  \\ \hline
+PVOL Descriptors: &  & Major change every 12mo.; Minor change every 1 mo. & Major: 6mo.; Minor:2 wk. & Major: 2mo.; Minor:1 wk. & Major: 2wk.; Minor: 2days &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
 Effort Multipliers & n/a & 0.87 & 1.00 & 1.15 & 1.30 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 ##### 2.2.2.4 Project     
@@ -689,55 +671,62 @@ Effort Multipliers & n/a & 0.87 & 1.00 & 1.15 & 1.30 & n/a \\ \hline
 
 Our project environment is quite complete and it should be strong and a tool with mature life cycle and moderately integrated due to this the parameter wil be set as **High**.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{TOOL Cost Driver} \\ \hline
-TOOLDescriptors & edit, code,debug & simple,frontend,backendCASE, littleintegration & basic lifecycletools,moderatelyintegrated & strong,mature lifecycletools,moderatelyintegrated & strong,mature,proactivelife-cycletools, wellintegratedwithprocesses,methods,reuse &  \\ \hline
+TOOL Descriptors & edit, code, debug & simple, front end, backendCASE, little integration & basic lifecycle tools, moderately integrated & strong, mature lifecycle tools, moderately integrated & strong, mature, proactive life-cycle tools, well integrated with processes, methods, reuse &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
 Effort Multipliers & 1.17 & 1.09 & 1.00 & 0.90 & 0.78 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 - **Multisite Development (SITE)**
 
 Since our team have a project meeting every week and we live in same city, we communicate with each other by social media software like whats APP and Facebook when we are not working together so we set the rating level of this part as **High**.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{SITE Cost Driver} \\ \hline
-SITE:CollocationDescriptors: & International & Multi-cityand Multicompany & Multi-city orMulticompany & Same cityor metro.area & Samebuilding orcomplex & Fullycollocated \\ \hline
-SITE:CommunicationsDescriptors: & Somephone, mail & Individualphone, FAX & Narrowband email & Widebandelectroniccommunication. & Widebandelect.comm.,occasionalvideo conf. & Interactivemultimedia \\ \hline
+SITE: Collocation Descriptors: & International & Multi-city and Multi company & Multi-city or Multi company & Same city or metro.area & Same building or complex & Fully collocated \\ \hline
+SITE: Communications Descriptors: & Some phone, mail & Individual phone, FAX & Narrow band email & Wide band electronic communication. & Wide band elect. comm., occasional video conf. & Interactive multimedia \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
 Effort Multipliers & 1.22 & 1.09 & 1.00 & 0.93 & 0.86 & 0.80 \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 - **Required Development Schedule (SCED)**
 
 We will set this parameter as **Nominal** which the value is 1.00. As a programer it is our duty to finish our job and present a completed project to customer on time.
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 \hline
 \multicolumn{7}{|c|}{SCED Cost Driver} \\ \hline
-SCEDDescriptors & 75\%of nominal & 85\%of nominal & 100\%of nominal & 130\%of nominal & 160\%of nominal &  \\ \hline
+SCED Descriptors & 75\%of nominal & 85\%of nominal & 100\%of nominal & 130\%of nominal & 160\%of nominal &  \\ \hline
 Rating Levels & Very Low & Low & Nominal & High & Very High & Extral High \\ \hline
 Effort Multipliers & 1.43 & 1.14 & 1.00 & 1.00 & 1.00 & n/a \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
-Overall, our results are counted by the following table:
+Overall, our results are sumarized by the following table:
 
-\begin{table}[]
+\begin{table}[H]
+\begin{adjustbox}{center}
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
-Cost Driver & Factor & Value \\ \hline
+\textit{Cost Driver} & \textit{Factor} & \textit{Value} \\ \hline
 Required Software Reliability (RELY) & Nominal & 1.00 \\ \hline
 Database size (DATA) & High & 1.14 \\ \hline
 Product complexity (CPLX) & Very high & 1.34 \\ \hline
@@ -755,43 +744,44 @@ Platform volatility (PVOL) & Low & 0.87 \\ \hline
 Usage of Software Tools (TOOL) & High & 0.90 \\ \hline
 Multisite development (SITE) & High & 0.93 \\ \hline
 Required development schedule (SCED) & Nominal & 1.00 \\ \hline
-\multicolumn{2}{|l|}{Product of all cost drivers} & 0.87367 \\ \hline
+\multicolumn{2}{|l|}{\textbf{Product of all cost drivers}} & 0.87367 \\ \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
-### 2.2.3 Effort equation
+### 2.2.3 Effort equation
 
 According to COCOMO II manuel we got Eq.1 to calculate the value of Effort:
 
-\[Effort = A\cdot EAF\cdot KSLOC^{E}\]  (Eq.1)
+$Effort = A\cdot EAF\cdot KSLOC^{E}$  (Eq.1)
 
 where A = 2.94(from COCOMO II), EAF = 0.87367 (calculated from cost drivers analysis), E = 1.1214(calculated from scale drivers analysis), and KSLOC was calculated before in function points section and we got 7.360 as the lower bound of KSLOC and 10.720 as its upper bound.
 
 So the final result as following:
 
-- \[Effort_{Lower} = 24.0886\]
-- \[Effort_{Upper} = 36.7244\]
+- $Effort_{Lower} = 24.0886$
+- $Effort_{Upper} = 36.7244$
 
 ### 2.2.4 Schedule estimation
 
 The formula of duration as following:
 
-- \[Duration = 3.67\cdot Effort^{F}\]
+- $Duration = 3.67\cdot Effort^{F}$
 
-where F = 0.28 + 0.2  (E - B) and B = 0.91 according to COCOMO manuel. Since the value of Effort is in a range so for the upper bound of duration we got:
+where $F = 0.28 + 0.2  (E - B)$ and $B = 0.91$ according to COCOMO II manual. Since the value of Effort is in a range so for the upper bound of duration we got:
 
--  \[Duration_{Upper} = 11.7225\] months
+-  $Duration_{Upper} = 11.7225$ months
 
 The lower bound of duration :
 
-- \[Duration_{Lower} = 10.2328\] months
+- $Duration_{Lower} = 10.2328$ months
 
 From the results, the overall time of the entire project is around 10 month but no more than 12 month. And the result is quite close to our estimated time.
 
 
 ## 3.Schedule
 
-It is necessary to set a schedule to make sure the project is proceeded as plan and finished on time. So we created a project schedule by using GanttProject to keep the project goes well as we expected. In this schedule will show how we started this project and what we did during each period. We also assume that the project will be continued to maintian the integrality and authenticity of the entire development process. So we added the 'Implementation and support' and 'Testing' as well as 'Evaluation' procedures though these will not be performed at the end of the project.
+It is necessary to set a schedule to make sure the project is proceeded as planned and finished on time. So we created a project schedule by using Gantt Project tool to keep the project goes well as we expected. In this schedule will show when the project is started and what we did during each period. We also assume that the project will be continued to maintain the integrality and authenticity of the entire development process. So we added the 'Implementation and support' and 'Testing' as well as 'Evaluation' procedures though these will not be performed at the end of the project.
 
 \begin{sidewaysfigure}
 \includegraphics[width=\textwidth]{gantter-chart}
@@ -802,7 +792,7 @@ It is necessary to set a schedule to make sure the project is proceeded as plan 
 
 ## 4.Resource allocation
 
-In this section we will present how we distribute our team resource to finish our project by creating a gantter chart. In the gantter chart, it can be shown that each of us is responsible for each part of the project and how much time we spent on each of tasks. Note that every time there will be a group meeting before we starting our single task. So that we can avoid misunderstanding and conflict among team members when we are working seperately. Again we also assume that we are working at developing phase so in the chart there is a incomplete task.
+In this section we will present how we distribute our team resource to finish our project by creating a Gantter chart. In the Gantter Chart, it can be shown that each of us is responsible for each part of the project and how much time we spent on each of tasks. Note that every time there will be a group meeting before we starting our single task. So that we can avoid misunderstanding and conflict among team members when we are working separately. Again we also assume that we are working at developing phase so in the chart there are incomplete tasks.
 
 \begin{sidewaysfigure}
 \includegraphics[width=\textwidth]{staff-resources-allocation}
@@ -839,14 +829,22 @@ To sum up, many risks may arise during the project execution. Although some of t
 
 ###  Lidong Zhang
 
-16/01/2017 2h
-18/01/2017 4h
-19/01/2017 2h
-20/01/2017 4h
-21/10/2017 3h
+- 16/01/2017 2h
+- 18/01/2017 4h
+- 19/01/2017 2h
+- 20/01/2017 4h
+- 21/10/2017 3h
 
 ### Jinling Xing
 
-17/01/2017 2h
-19/01/2017 6.5h
-21/01/2017 5h
+- 17/01/2017 2h
+- 19/01/2017 6.5h
+- 21/01/2017 5h
+
+### Reda Aissaoui
+
+- 16/01/2017 1h
+- 18/01/2017 3h
+- 19/01/2017 4h
+- 21/01/2017 2h 
+- 22/01/2017 1h
