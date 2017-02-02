@@ -33,9 +33,15 @@
 
 ### 1. Introduction
 
+Code inspection is the most formal review type. It is led by the trained moderators. During inspection the documents are prepared and checked thoroughly by the reviewers before the meeting. It involves peers to examine the product. A separate preparation is carried out during which the product is examined and the defects are found.
+
 ### 2. Assigned Class
 
+Our group assigned class is '../apache-ofbiz-16.11.01/applications/order/src/main/java/org/apache/ofbiz/order/thirdparty/taxware/TaxwareUTL.java'. And our task is to perform the inspection and report on the quality status of selected code extracts using the checklist for Java code inspection reported. Also we are asked to deliver a document having the structure described in the code inspection assignments document.
+
 ### 3. Functional role of the Class
+
+
 
 ### 4. Code Inspection checklist
 ####4.1 Naming Conventions
@@ -72,6 +78,6 @@
 
 ####4.17 Flow of Control
 
-####4.18 Files 
+####4.18 Files
 
 ### 5. Effort spent
