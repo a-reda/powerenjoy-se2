@@ -10,6 +10,12 @@
 
 Requires taxcommon.class
 
+The class assigned to us is TaxWareUTL. The class, that is part of the following package
+**org.apache.ofbiz.order.thirdparty.taxware** . The class is part of an integration third party software, called TaxWare. This software is a solution for calculating the taxes.
+
+The main goal of this integration is to be able to write TaxWare libraries.
+After exploring the other java files present with this one, we found class TaxwareServices that make use of TaxwareUTL. This class instantiates TaxwareUTL and sets a shipping address, a shipping amount and items. The process() function is then called in order to generate the file.  
+
 TaxWare software
 
 Why are they using BigDecimal. Currency calculations require precision to a specific degree, such as two digits after the decimal for most currencies. They also require a specific type of rounding behavior, such as always rounding up in the case of taxes.
