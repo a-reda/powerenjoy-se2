@@ -8,6 +8,13 @@
 
 #### 2. Assigned class
 
+Requires taxcommon.class
+
+TaxWare software
+
+Why are they using BigDecimal. Currency calculations require precision to a specific degree, such as two digits after the decimal for most currencies. They also require a specific type of rounding behavior, such as always rounding up in the case of taxes.
+
+
 #### 3. Functional role of class
 
 #### 4. Code inspection checklist
