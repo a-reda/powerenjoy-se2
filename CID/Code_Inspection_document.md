@@ -1,5 +1,10 @@
-\input{CID/coverpage.tex}
+---
+header-includes:
+  - \usepackage{float}
 
+---
+
+\input{CID/coverpage.tex}
 
 
 ### __Content__
@@ -39,6 +44,8 @@
 
 Code inspection is the most formal review type. It is led by the trained moderators. During inspection the documents are prepared and checked thoroughly by the reviewers before the meeting. It involves peers to examine the product. A separate preparation is carried out during which the product is examined and the defects are found.
 
+The main goal of ode inspection is to have an efficient and readable code. This improves the maintainability of the code. It also increases the code-reuse.
+
 ### 2. Assigned Class
 
 Requires taxcommon.class
@@ -65,9 +72,9 @@ Why are they using BigDecimal. Currency calculations require precision to a spec
 ### 4. Code Inspection checklist
 ####4.1 Naming Conventions
 
-\begin{table}[]
+\begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|}
 \hline
 \multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Code} & \multicolumn{1}{c|}{Issue} \\ \hline
 84 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
@@ -80,15 +87,17 @@ Why are they using BigDecimal. Currency calculations require precision to a spec
 \end{table}
 
 ####4.2 Indention
+
 No errors found.
+
 ####4.3 Braces
 
 \begin{table}[]
 \centering
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
 \multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
-77,118,119,243,244,247,248,463 & Missing braces for single If statment \\ \hline
+77, 118, 119, 243, 244, 247, 248, 463 & Missing braces for single If statment \\ \hline
 \end{tabular}
 \end{table}
 
@@ -96,10 +105,10 @@ No errors found.
 
 \begin{table}[]
 \centering
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{4cm}|p{8cm}|}
 \hline
 \multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
-\begin{tabular}[c]{@{}l@{}}80,85,93,101,111,113,136,138,140,146,220,\\ 277,280,301,312,323,345,356,367,453,462\end{tabular} & The blank line is useless according to the describle \\ \hline
+\begin{tabular}[c]{@{}l@{}}80, 85, 93, 101, 111, 113, 136, 138, 140, 146, 220, \\ 277, 280, 301, 312, 323, 345, 356, 367, 453, 462\end{tabular} & The blank line is useless according to the describle \\ \hline
 \end{tabular}
 \end{table}
 
