@@ -15,5 +15,5 @@
 - ~~DD submission deadline __11/12/2016__~~
 - ~~Testing document submission deadline __15/01/2017__~~
 - ~~Project management deadline __22/01/2017__~~
-- Code inspection deadline __05/02/2017__
+- ~~Code inspection deadline __05/02/2017__~~
 - Final presentation (to be scheduled)
