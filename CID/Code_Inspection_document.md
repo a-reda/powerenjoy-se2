@@ -11,7 +11,6 @@
 #### 3. Functional role of class
 
 #### 4. Code inspection checklist
-
        1. Naming Conventions
        2. Indention
        3. Braces
@@ -30,7 +29,6 @@
        16. Exceptions
        17. Flow of Control
        18. Files
-
 #### 5. Effort spent
 
 
@@ -65,55 +63,43 @@ Why are they using BigDecimal. Currency calculations require precision to a spec
 ### 4. Code Inspection checklist
 ####4.1 Naming Conventions
 
-\begin{table}[]
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Code} & \multicolumn{1}{c|}{Issue} \\ \hline
-84 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
-123 & fos = new FileOutputStream(outFile); & The name of variable is not meaningful. \\ \hline
-219 & DataFile df = null; & The name of variable is not meaningful. \\ \hline
-272,273 & \begin{tabular}[c]{@{}l@{}}String headStr = retBuffer.toString().substring(0, 283);,\\ String itemStr = retBuffer.toString().substring(284);\end{tabular} & The name of variable is not meaningful. \\ \hline
-288 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
-259 & ModelField mf = (ModelField) model.fields.get(a); & The name of variable is not meaningful. \\ \hline
-\end{tabular}
-\end{table}
-
 ####4.2 Indention
-No errors found.
-####4.3 Braces
 
-\begin{table}[]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
-77,118,119,243,244,247,248,463 & Missing braces for single If statment \\ \hline
-\end{tabular}
-\end{table}
+####4.3 Braces
 
 ####4.4 File Organization
 
-\begin{table}[]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
-\begin{tabular}[c]{@{}l@{}}80,85,93,101,111,113,136,138,140,146,220,\\ 277,280,301,312,323,345,356,367,453,462\end{tabular} & The blank line is useless according to the describle \\ \hline
-\end{tabular}
-\end{table}
-
 ####4.5 Wrapping Lines
-No errors found.
-####4.6 Comments
 
-There are few comments that are not meaningful for example line 74 '// make sure we have everything before processing'.
+####4.6 Comments
 
 ####4.7 Java Source Files
 
+ 20.Each Java source file contains a single public class or interface.
+
+Satisfied
+
+21.The public class is the first class or interface in the file.
+
+Satisfied
+
+22.Check that the external program interfaces are implemented consistently with what is described in the javadoc.
+
+
 ####4.8 Package and Import Statements
+24.If any package statements are needed, they should be the rst non-comment statements. Import statements follow.
+
+
+Satisfied
+
+
 
 ####4.9 Class and Interface Declarations
+27.Check that the code is free of duplicates, long methods, big classes,
+breaking encapsulation, as well as if coupling and cohesion are ade-
+quate.
+
+There are too many duplicates codes to make the adjustment lists(from numberLine 292), nesting three if-else statements and two of them also nesting a list of parallel if statements.
 
 ####4.10 Initialization and Declarations
 
@@ -121,39 +107,15 @@ There are few comments that are not meaningful for example line 74 '// make sure
 
 ####4.12 Arrays
 
+The numberLine 294 is :List currentItem = new ArrayList();  
+A new ArrayList is desired, the constructors have not been called.
 ####4.13 Object Comparison
-
-~~~~ {#object .java .numberLines startFrom="263"}
-if (shipToAddress == null)
-    throw new TaxwareException("Shipping address has not been set.");
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 ####4.14 Output Format
 
 ####4.15 Computation, Comparisons and Assignments
 
 ####4.16 Exceptions
-
-
-~~~~ {#object .java .numberLines startFrom="124"}
-try {
-    fos = new FileOutputStream(outFile);
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-~~~~ {#object .java .numberLines startFrom="131"}
-try {
-    fos.close();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The two exceptions quoted before do not take any action on the fact that there is a file I/O error. only the stack trace is printed.
-
 
 ####4.17 Flow of Control
 
