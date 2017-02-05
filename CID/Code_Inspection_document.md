@@ -146,7 +146,7 @@ The code section starting at *line 287 to line 456*, contains multiple lines exc
 
 ####4.5 Wrapping Lines
 
-No issues found.
+No issue found.
 
 ####4.6 Comments
 
