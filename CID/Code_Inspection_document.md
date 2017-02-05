@@ -233,10 +233,9 @@ No issue found.
 ### 5. Effort spent
 
 ### Reda Aissaoui
-- 05/02/2016 2h
-- 03/02/2016 1h
 - 01/02/2016 1h
-
+- 03/02/2016 1h
+- 05/02/2016 2h
 
 ### Xing Jinling
 - 03/02/2017 3h
