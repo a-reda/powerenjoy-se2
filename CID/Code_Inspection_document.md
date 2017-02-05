@@ -152,12 +152,33 @@ satisfied
 The numberLine 294 is :List currentItem = new ArrayList();  
 A new ArrayList is desired, the constructors have not been called.
 ####4.13 Object Comparison
+~~~~ {#object .java .numberLines startFrom="263"}
+if (shipToAddress == null)
+   throw new TaxwareException("Shipping address has not been set.");
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ####4.14 Output Format
 
 ####4.15 Computation, Comparisons and Assignments
 
 ####4.16 Exceptions
+~~~~ {#object .java .numberLines startFrom="124"}
+try {
+    fos = new FileOutputStream(outFile);
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="131"}
+try {
+    fos.close();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The two exceptions quoted before do not take any action on the fact that there is a file I/O error. only the stack trace is printed.
 
 ####4.17 Flow of Control
 
