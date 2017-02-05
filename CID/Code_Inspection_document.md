@@ -1,5 +1,10 @@
-\input{CID/coverpage.tex}
+---
+header-includes:
+  - \usepackage{float}
 
+---
+
+\input{CID/coverpage.tex}
 
 
 ### __Content__
@@ -37,6 +42,8 @@
 
 Code inspection is the most formal review type. It is led by the trained moderators. During inspection the documents are prepared and checked thoroughly by the reviewers before the meeting. It involves peers to examine the product. A separate preparation is carried out during which the product is examined and the defects are found.
 
+The main goal of ode inspection is to have an efficient and readable code. This improves the maintainability of the code. It also increases the code-reuse.
+
 ### 2. Assigned Class
 
 Requires taxcommon.class
@@ -63,31 +70,66 @@ Why are they using BigDecimal. Currency calculations require precision to a spec
 ### 4. Code Inspection checklist
 ####4.1 Naming Conventions
 
+<<<<<<< HEAD
 ####4.2 Indention
 
 ####4.3 Braces
 
 ####4.4 File Organization
 
+=======
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Code} & \multicolumn{1}{c|}{Issue} \\ \hline
+84 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
+123 & fos = new FileOutputStream(outFile); & The name of variable is not meaningful. \\ \hline
+219 & DataFile df = null; & The name of variable is not meaningful. \\ \hline
+272,273 & \begin{tabular}[c]{@{}l@{}}String headStr = retBuffer.toString().substring(0, 283);,\\ String itemStr = retBuffer.toString().substring(284);\end{tabular} & The name of variable is not meaningful. \\ \hline
+288 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
+259 & ModelField mf = (ModelField) model.fields.get(a); & The name of variable is not meaningful. \\ \hline
+\end{tabular}
+\end{table}
+
+####4.2 Indention
+
+No errors found.
+
+####4.3 Braces
+
+\begin{table}[]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
+77, 118, 119, 243, 244, 247, 248, 463 & Missing braces for single If statment \\ \hline
+\end{tabular}
+\end{table}
+
+####4.4 File Organization
+
+\begin{table}[]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
+\begin{tabular}[c]{@{}l@{}}80, 85, 93, 101, 111, 113, 136, 138, 140, 146, 220, \\ 277, 280, 301, 312, 323, 345, 356, 367, 453, 462\end{tabular} & The blank line is useless according to the describle \\ \hline
+\end{tabular}
+\end{table}
+
+>>>>>>> 33e4101f4de77b8bfdb177f8403a19baf918126d
 ####4.5 Wrapping Lines
 
 ####4.6 Comments
 
 ####4.7 Java Source Files
 
- 20.Each Java source file contains a single public class or interface.
 
 Satisfied
-
-21.The public class is the first class or interface in the file.
-
-Satisfied
-
-22.Check that the external program interfaces are implemented consistently with what is described in the javadoc.
 
 
 ####4.8 Package and Import Statements
-24.If any package statements are needed, they should be the rst non-comment statements. Import statements follow.
 
 
 Satisfied
@@ -102,9 +144,9 @@ quate.
 There are too many duplicates codes to make the adjustment lists(from numberLine 292), nesting three if-else statements and two of them also nesting a list of parallel if statements.
 
 ####4.10 Initialization and Declarations
-
+satisfied
 ####4.11 Method Calls
-
+satisfied
 ####4.12 Arrays
 
 The numberLine 294 is :List currentItem = new ArrayList();  
