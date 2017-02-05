@@ -7,42 +7,44 @@ header-includes:
 \input{CID/coverpage.tex}
 
 
-### __Content__
+#### __Content__
 
-#### 1. Introduction
+######  1. Introduction
 
-#### 2. Assigned class
+######  2. Assigned class
 
-#### 3. Functional role of class
+######  3. Functional role of class
 
-#### 4. Code inspection checklist
-       1. Naming Conventions
-       2. Indention
-       3. Braces
-       4. File Organization
-       5. Wrapping Lines
-       6. Comments
-       7. Java Source Files
-       8. Package and Import Statements
-       9. Class and Interface Declarations
-       10. Initialization and Declarations
-       11. Method Calls
-       12. Arrays
-       13. Object Comparison
-       14. Output Format
-       15. Computation, Comparisons and Assignments
-       16. Exceptions
-       17. Flow of Control
-       18. Files
-#### 5. Effort spent
+######  4. Code inspection checklist
 
+  1. Naming Conventions
+  2. Indention
+  3. Braces
+  4. File Organization
+  5. Wrapping Lines
+  6. Comments
+  7. Java Source Files
+  8. Package and Import Statements
+  9. Class and Interface Declarations
+  10. Initialization and Declarations
+  11. Method Calls
+  12. Arrays
+  13. Object Comparison
+  14. Output Format
+  15. Computation, Comparisons and Assignments
+  16. Exceptions
+  17. Flow of Control
+  18. Files
 
+######  5. Effort spent
+
+\pagebreak
 
 ### 1. Introduction
 
 Code inspection is the most formal review type. It is led by the trained moderators. During inspection the documents are prepared and checked thoroughly by the reviewers before the meeting. It involves peers to examine the product. A separate preparation is carried out during which the product is examined and the defects are found.
 
-The main goal of ode inspection is to have an efficient and readable code. This improves the maintainability of the code. It also increases the code-reuse.
+The main goal of the code inspection is to have an efficient and readable code. This improves the maintainability of the code. It also increases the code-reuse.
 
 ### 2. Assigned Class
 
@@ -66,31 +68,39 @@ TaxWare software
 
 Why are they using BigDecimal. Currency calculations require precision to a specific degree, such as two digits after the decimal for most currencies. They also require a specific type of rounding behavior, such as always rounding up in the case of taxes.
 
+\pagebreak
 
-### 4. Code Inspection checklist
+### 4. Code Inspection Checklist
+
 ####4.1 Naming Conventions
 
-<<<<<<< HEAD
-####4.2 Indention
+In the following, the name of the variable is meaningless. A more relevant variable name can be chosen.
 
-####4.3 Braces
+~~~~ {#object .java .numberLines startFrom="84"}
+Record rec = (Record) i.next();
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-####4.4 File Organization
+~~~~ {#object .java .numberLines startFrom="123"}
+FileOutputStream fos = new FileOutputStream(outFile);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=======
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|}
-\hline
-\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Code} & \multicolumn{1}{c|}{Issue} \\ \hline
-84 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
-123 & fos = new FileOutputStream(outFile); & The name of variable is not meaningful. \\ \hline
-219 & DataFile df = null; & The name of variable is not meaningful. \\ \hline
-272,273 & \begin{tabular}[c]{@{}l@{}}String headStr = retBuffer.toString().substring(0, 283);,\\ String itemStr = retBuffer.toString().substring(284);\end{tabular} & The name of variable is not meaningful. \\ \hline
-288 & Record rec = (Record) i.next(); & The name of variable is not meaningful. \\ \hline
-259 & ModelField mf = (ModelField) model.fields.get(a); & The name of variable is not meaningful. \\ \hline
-\end{tabular}
-\end{table}
+~~~~ {#object .java .numberLines startFrom="219"}
+DataFile df = null;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="272"}
+String headStr = retBuffer.toString().substring(0, 283);
+String itemStr = retBuffer.toString().substring(284);\end{tabular}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="288"}
+Record rec = (Record) i.next();
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="259"}
+ModelField mf = (ModelField) model.fields.get(a);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 ####4.2 Indention
 
@@ -98,43 +108,59 @@ No errors found.
 
 ####4.3 Braces
 
-\begin{table}[]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
-77, 118, 119, 243, 244, 247, 248, 463 & Missing braces for single If statment \\ \hline
-\end{tabular}
-\end{table}
+The following pieces of code have missing braces for single statement IF.
+
+~~~~ {#object .java .numberLines startFrom="259"}
+if (processed)
+    throw new TaxwareException("Cannot re-process records.");
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="118"}
+if (Debug.verboseOn()) Debug.logVerbose("::Out String::", module);
+if (Debug.verboseOn()) Debug.logVerbose("\"" + outBuffer.toString() + "\"", module);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="243"}
+if (Debug.verboseOn()) Debug.logVerbose("Taxware Return: " + result, module);
+if (result != 1)
+    throw new TaxwareException("Taxware processing failed (" + result + ")");
+
+if (Debug.verboseOn()) Debug.logVerbose("::Return String::", module);
+if (Debug.verboseOn()) Debug.logVerbose("\"" + inBuffer.toString() + "\"", module);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="261"}
+if (!setShipping)
+    throw new TaxwareException("Shipping amount has not been set.");
+if (shipToAddress == null)
+    throw new TaxwareException("Shipping address has not been set.");
+if (records.size() == 0)
+    throw new TaxwareException("No items have been defined.");
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~ {#object .java .numberLines startFrom="463"}
+if (Debug.verboseOn()) Debug.logVerbose("Field: " + name + " => " + value, module);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ####4.4 File Organization
 
-\begin{table}[]
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\multicolumn{1}{|c|}{Row} & \multicolumn{1}{c|}{Issue} \\ \hline
-\begin{tabular}[c]{@{}l@{}}80, 85, 93, 101, 111, 113, 136, 138, 140, 146, 220, \\ 277, 280, 301, 312, 323, 345, 356, 367, 453, 462\end{tabular} & The blank line is useless according to the describle \\ \hline
-\end{tabular}
-\end{table}
+The following lines refer to blank lines that are useless: 80, 85, 93, 101, 111, 113, 136, 138, 140, 146, 220, 277, 280, 301, 312, 323, 345, 356, 367, 453, 462.
 
->>>>>>> 33e4101f4de77b8bfdb177f8403a19baf918126d
+The line 222 is too long.
+
+The code section starting at line 287 to line 456, contains multiple lines exceeding a length of 80. The lines 296, 354 and 463 exceeding 120 characters.
+
 ####4.5 Wrapping Lines
 
 ####4.6 Comments
 
 ####4.7 Java Source Files
 
-
 Satisfied
-
 
 ####4.8 Package and Import Statements
 
-
 Satisfied
-
-
 
 ####4.9 Class and Interface Declarations
 27.Check that the code is free of duplicates, long methods, big classes,
@@ -144,14 +170,21 @@ quate.
 There are too many duplicates codes to make the adjustment lists(from numberLine 292), nesting three if-else statements and two of them also nesting a list of parallel if statements.
 
 ####4.10 Initialization and Declarations
-satisfied
+
 ####4.11 Method Calls
-satisfied
+
+No significant
+
 ####4.12 Arrays
 
-The numberLine 294 is :List currentItem = new ArrayList();  
+~~~~ {#object .java .numberLines startFrom="294"}
+List currentItem = new ArrayList();  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 A new ArrayList is desired, the constructors have not been called.
+
 ####4.13 Object Comparison
+
 ~~~~ {#object .java .numberLines startFrom="263"}
 if (shipToAddress == null)
    throw new TaxwareException("Shipping address has not been set.");
@@ -162,6 +195,9 @@ if (shipToAddress == null)
 ####4.15 Computation, Comparisons and Assignments
 
 ####4.16 Exceptions
+
+The try-catch blocks quoted below do not take any action on the fact that there is a file I/O error. only the stack trace is printed.
+
 ~~~~ {#object .java .numberLines startFrom="124"}
 try {
     fos = new FileOutputStream(outFile);
@@ -178,10 +214,10 @@ try {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The two exceptions quoted before do not take any action on the fact that there is a file I/O error. only the stack trace is printed.
-
 ####4.17 Flow of Control
 
 ####4.18 Files
+
+\pagebreak
 
 ### 5. Effort spent
