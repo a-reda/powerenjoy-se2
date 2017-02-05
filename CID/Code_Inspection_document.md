@@ -46,27 +46,21 @@ Code inspection is the most formal review type. It is led by the trained moderat
 
 The main goal of the code inspection is to have an efficient and readable code. This improves the maintainability of the code. It also increases the code-reuse.
 
+In the following document we identify the class to be inspected. After defining the context of the class, we go through a list of points that estimate the general quality of the code.
+
 ### 2. Assigned Class
 
-Requires taxcommon.class
-
-TaxWare software
-
-Why are they using BigDecimal. Currency calculations require precision to a specific degree, such as two digits after the decimal for most currencies. They also require a specific type of rounding behavior, such as always rounding up in the case of taxes.
-
-Our group assigned class is '../apache-ofbiz-16.11.01/applications/order/src/main/java/org/apache/ofbiz/order/thirdparty/taxware/TaxwareUTL.java'. And our task is to perform the inspection and report on the quality status of selected code extracts using the checklist for Java code inspection reported. Also we are asked to deliver a document having the structure described in the code inspection assignments document.
+The class assigned to us is TaxWareUTL. It can be found in the following path '../apache-ofbiz-16.11.01/applications/order/src/main/java/org/apache/ofbiz/
+order/thirdparty/taxware/TaxwareUTL.java'. The class, that is part of the following package
+**org.apache.ofbiz.order.thirdparty.taxware** . The class is part of an integration third party software, called TaxWare. This software is a solution for calculating the taxes.
 
 ### 3. Functional role of the Class
 
-The class assigned to us is TaxWareUTL. The class, that is part of the following package
-**org.apache.ofbiz.order.thirdparty.taxware** . The class is part of an integration third party software, called TaxWare. This software is a solution for calculating the taxes.
+The main goal of this integration is to be able to write TaxWare libraries. We looked for the utility of the TaxWare software. It is now called Sovos and is used to calculate the taxes. In the US, since each product sold should be taxed according to shipping address, this software comes handy to facilitate the tax calcualation for e-commerces. The software hides the complexity of the calculations and avoid having hardcoded tax calculation function.
 
-The main goal of this integration is to be able to write TaxWare libraries.
-After exploring the other java files present with this one, we found class TaxwareServices that make use of TaxwareUTL. This class instantiates TaxwareUTL and sets a shipping address, a shipping amount and items. The process() function is then called in order to generate the file.  
+After exploring the other java files present with the assigned one, we found class TaxwareServices that make use of TaxwareUTL. This class instantiates TaxwareUTL and sets a shipping address, a shipping amount and items. The process() function is then called in order to generate the file.  
 
-TaxWare software
-
-Why are they using BigDecimal. Currency calculations require precision to a specific degree, such as two digits after the decimal for most currencies. They also require a specific type of rounding behavior, such as always rounding up in the case of taxes.
+In the code they are using BigDecimal as an entity to store numbers. This is done because currency calculations require precision to a specific degree, such as two digits after the decimal for most currencies. They also require a specific type of rounding behavior, such as always rounding up in the case of taxes.
 
 \pagebreak
 
@@ -104,7 +98,7 @@ ModelField mf = (ModelField) model.fields.get(a);
 
 ####4.2 Indention
 
-No errors found.
+No issue found.
 
 ####4.3 Braces
 
@@ -144,36 +138,44 @@ if (Debug.verboseOn()) Debug.logVerbose("Field: " + name + " => " + value, modul
 
 ####4.4 File Organization
 
-The following lines refer to blank lines that are useless: 80, 85, 93, 101, 111, 113, 136, 138, 140, 146, 220, 277, 280, 301, 312, 323, 345, 356, 367, 453, 462.
+The following lines refer to blank lines that are useless: *80, 85, 93, 101, 111, 113, 136, 138, 140, 146, 220, 277, 280, 301, 312, 323, 345, 356, 367, 453, 462*.
 
 The line 222 is too long.
 
-The code section starting at line 287 to line 456, contains multiple lines exceeding a length of 80. The lines 296, 354 and 463 exceeding 120 characters.
+The code section starting at *line 287 to line 456*, contains multiple lines exceeding a length of 80. The lines *296, 354 and 463* exceeding 120 characters.
 
 ####4.5 Wrapping Lines
 
+No issues found.
+
 ####4.6 Comments
+
+There are few comments that are not meaningful for example *line 74*:
+
+~~~~ {#object .java .numberLines startFrom="463"}
+// make sure we have everything before processing'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ####4.7 Java Source Files
 
-Satisfied
+No issue found.
 
 ####4.8 Package and Import Statements
 
-Satisfied
+No issue found.
 
 ####4.9 Class and Interface Declarations
-27.Check that the code is free of duplicates, long methods, big classes,
-breaking encapsulation, as well as if coupling and cohesion are ade-
-quate.
 
-There are too many duplicates codes to make the adjustment lists(from numberLine 292), nesting three if-else statements and two of them also nesting a list of parallel if statements.
+Check that the code is free of duplicates, long methods, big classes,
+breaking encapsulation, as well as if coupling and cohesion are adequate: There are too many duplicates codes to make the adjustment lists (*starting from line 292*), nesting three if-else statements and two of them also nesting a list of parallel if statements.
 
 ####4.10 Initialization and Declarations
 
+No issue found.
+
 ####4.11 Method Calls
 
-No significant
+No issue found.
 
 ####4.12 Arrays
 
@@ -192,7 +194,11 @@ if (shipToAddress == null)
 
 ####4.14 Output Format
 
+No issue found.
+
 ####4.15 Computation, Comparisons and Assignments
+
+The last block section (*line 287 to line 456*) of the code does not avoid brutish programing. It contains too many if statements over a computation that can be made generically.
 
 ####4.16 Exceptions
 
@@ -216,8 +222,27 @@ try {
 
 ####4.17 Flow of Control
 
+No issue found.
+
 ####4.18 Files
+
+No issue found.
 
 \pagebreak
 
 ### 5. Effort spent
+
+### Reda Aissaoui
+- 05/02/2016 2h
+- 03/02/2016 1h
+- 01/02/2016 1h
+
+
+### Xing Jinling
+- 03/02/2017 3h
+- 05/02/2017 1h
+
+
+### Zhang Lidong
+- 02/02/2017 2h
+- 03/02/2017 2h
