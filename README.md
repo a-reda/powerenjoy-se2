@@ -16,4 +16,4 @@
 - ~~Testing document submission deadline __15/01/2017__~~
 - ~~Project management deadline __22/01/2017__~~
 - ~~Code inspection deadline __05/02/2017__~~
-- Final presentation (to be scheduled)
+- Final presentation __06/03/2017 2PM to 4 PM__
